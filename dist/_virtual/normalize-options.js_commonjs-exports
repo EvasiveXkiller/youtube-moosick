@@ -1,0 +1,4 @@
+var normalizeOptions = {};
+
+export { normalizeOptions as __exports };
+//# sourceMappingURL=normalize-options.js_commonjs-exports.map

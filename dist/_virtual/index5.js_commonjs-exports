@@ -1,0 +1,4 @@
+var async = {};
+
+export { async as __exports };
+//# sourceMappingURL=index5.js_commonjs-exports.map

@@ -1,0 +1,4 @@
+var lib = {exports: {}};
+
+export { lib as l };
+//# sourceMappingURL=index2.js_commonjs-module.map

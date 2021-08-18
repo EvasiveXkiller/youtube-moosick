@@ -1,0 +1,4 @@
+var stat = {};
+
+export { stat as __exports };
+//# sourceMappingURL=stat.js_commonjs-exports.map

@@ -1,0 +1,4 @@
+var forEach = {};
+
+export { forEach as __exports };
+//# sourceMappingURL=for-each2.js_commonjs-exports.map

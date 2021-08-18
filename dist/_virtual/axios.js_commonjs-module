@@ -1,0 +1,4 @@
+var axios = {exports: {}};
+
+export { axios as a };
+//# sourceMappingURL=axios.js_commonjs-module.map
