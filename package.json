@@ -30,6 +30,9 @@
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-run": "^2.1.0",
     "@rollup/plugin-typescript": "^8.2.5",
+    "@types/tough-cookie": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
     "eslint": "^7.32.0",
     "eslint-config-xo": "^0.38.0",
     "eslint-config-xo-typescript": "^0.44.0",
@@ -39,6 +42,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.172",
     "axios": "^0.21.1",
     "lodash": "^4.17.21",
     "readdir-enhanced": "^6.0.4",
