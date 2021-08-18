@@ -1,4 +1,4 @@
-var stream = {};
+var iterator = {};
 
-export { stream as __exports };
+export { iterator as __exports };
 //# sourceMappingURL=index4.js_commonjs-exports.map

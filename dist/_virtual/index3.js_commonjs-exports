@@ -1,4 +1,4 @@
-var iterator = {};
+var async = {};
 
-export { iterator as __exports };
+export { async as __exports };
 //# sourceMappingURL=index3.js_commonjs-exports.map

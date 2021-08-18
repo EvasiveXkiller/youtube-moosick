@@ -5,14 +5,17 @@ import _ from './node_modules/lodash/lodash.js';
 import './node_modules/@jsdevtools/readdir-enhanced/lib/index.js';
 import { endPointType, categoryType } from './enums.js';
 import { utils } from './utils.js';
+import { IllegalArgumentError } from './resources/errors/illegalArgument.error.js';
+import { IllegalStateError } from './resources/errors/illegalState.error.js';
 import { __exports as cookie } from './_virtual/cookie.js_commonjs-exports';
 
 axios.defaults.adapter = http_1;
 // ASYNC AWAIT SUPPORT EVERYWHERE, CALLBACK HELL IT IS NOW
-class ytMooSick {
+class MooSick {
     client;
     cookies;
-    ytCfg;
+    // FIXME: where is this coming from?
+    config;
     constructor() {
         this.cookies = new cookie.CookieJar();
         this.client = axios.create({
@@ -24,6 +27,10 @@ class ytMooSick {
             withCredentials: true,
         });
         this.client.interceptors.request.use((req) => {
+            if (!req.baseURL
+                || !req.headers) {
+                throw new IllegalStateError('Incomplete `req`');
+            }
             const cookies = this.cookies.getCookieStringSync(req.baseURL);
             if (cookies && cookies.length > 0) {
                 req.headers.Cookie = cookies;
@@ -31,45 +38,69 @@ class ytMooSick {
             return req;
         }, async (err) => Promise.reject(err));
         this.client.interceptors.response.use((res) => {
-            if (res.headers.hasOwnProperty('set-cookie')) {
-                if (res.headers['set-cookie'] instanceof Array) {
-                    res.headers['set-cookie'].map((value) => {
-                        this.cookies.setCookieSync(cookie.Cookie.parse(value), res.config.baseURL);
-                    });
-                }
-                else {
-                    this.cookies.setCookieSync(cookie.Cookie.parse(res.headers['set-cookie']), res.config.baseURL);
-                }
+            if (!res.config?.baseURL
+                || (typeof res.headers !== 'object')) {
+                throw new IllegalStateError('Incomplete `req`');
+            }
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            const { headers } = res;
+            if (headers['set-cookie'] == null) {
+                return res;
+            }
+            if (headers['set-cookie'] instanceof Array) {
+                headers['set-cookie'].forEach((value) => {
+                    this.parseAndSetCookie(value, res.config.baseURL);
+                });
+            }
+            else {
+                this.parseAndSetCookie(headers['set-cookie'], res.config.baseURL);
             }
             return res;
         });
     }
+    parseAndSetCookie(cookieString, baseURL) {
+        const cookie$1 = cookie.Cookie.parse(cookieString);
+        if (cookie$1 == null) {
+            throw new IllegalArgumentError(`"${String(cookieString)}" is not a cookie`, 'cookieString');
+        }
+        this.cookies.setCookieSync(cookie$1, baseURL);
+    }
     // Soonner or later destructure functions into individual files
-    async _createApiRequest(endpointName, inputVariables, inputQuery = {}) {
-        const headers = { 'x-origin': this.client.defaults.baseURL,
-            'X-Goog-Visitor-Id': this.ytCfg.VISITOR_DATA || '',
-            'X-YouTube-Client-Name': this.ytCfg.INNERTUBE_CONTEXT_CLIENT_NAME,
-            'X-YouTube-Client-Version': this.ytCfg.INNERTUBE_CLIENT_VERSION,
-            'X-YouTube-Device': this.ytCfg.DEVICE,
-            'X-YouTube-Page-CL': this.ytCfg.PAGE_CL,
-            'X-YouTube-Page-Label': this.ytCfg.PAGE_BUILD_LABEL,
-            'X-YouTube-Utc-Offset': String(-new Date().getTimezoneOffset()),
-            'X-YouTube-Time-Zone': new Intl.DateTimeFormat().resolvedOptions().timeZone, ...this.client.defaults.headers };
-        return new Promise((resolve, reject) => {
-            this.client.post(`youtubei/${this.ytCfg.INNERTUBE_API_VERSION}/${endpointName}?${querystring.stringify({ alt: 'json',
-                key: this.ytCfg.INNERTUBE_API_KEY, ...inputQuery })}`, Object.assign(inputVariables, utils.createApiContext(this.ytCfg)), {
-                responseType: 'json',
-                headers,
-            })
-                .then((res) => {
-                if (res.data.hasOwnProperty('responseContext')) {
-                    resolve(res.data);
-                }
-            })
-                .catch((err) => {
-                reject(err);
-            });
+    // TODO: probably define each api req's input vars & input queries,
+    // then make this func generic so it's type safe
+    async _createApiRequest(endpointName, inputVariables = {}, inputQuery = {}) {
+        const res = await this.client.post(`youtubei/${this.config.INNERTUBE_API_VERSION}/${endpointName}?${
+        // eslint is drunk
+        // eslint-disable-next-line
+        new URLSearchParams({
+            alt: 'json',
+            key: this.config.INNERTUBE_API_KEY,
+            ...inputQuery,
+        })
+            .toString()}`, {
+            ...inputVariables,
+            ...utils.createApiContext(this.config),
+        }, {
+            responseType: 'json',
+            headers: {
+                'x-origin': this.client.defaults.baseURL ?? '',
+                'X-Goog-Visitor-Id': this.config.VISITOR_DATA ?? '',
+                'X-YouTube-Client-Name': this.config.INNERTUBE_CONTEXT_CLIENT_NAME,
+                'X-YouTube-Client-Version': this.config.INNERTUBE_CLIENT_VERSION,
+                'X-YouTube-Device': this.config.DEVICE,
+                'X-YouTube-Page-CL': this.config.PAGE_CL,
+                'X-YouTube-Page-Label': this.config.PAGE_BUILD_LABEL,
+                'X-YouTube-Utc-Offset': String(-new Date().getTimezoneOffset()),
+                'X-YouTube-Time-Zone': new Intl.DateTimeFormat().resolvedOptions().timeZone,
+                ...this.client.defaults.headers,
+            },
         });
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        if (res.data?.responseContext != null) {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+            return res.data;
+        }
+        return null;
     }
     /**
      * Initialize the client for usage
@@ -86,10 +117,10 @@ class ytMooSick {
                         }
                         catch (_) {
                         }
-                    }).filter(Boolean).forEach((cfg) => (this.ytCfg = Object.assign(cfg, this.ytCfg)));
+                    }).filter(Boolean).forEach((cfg) => (this.config = Object.assign(cfg, this.config)));
                     resolve({
-                        locale: this.ytCfg.LOCALE,
-                        logged_in: this.ytCfg.LOGGED_IN,
+                        locale: this.config.LOCALE,
+                        logged_in: this.config.LOGGED_IN,
                     });
                 }
                 catch (err) {
@@ -284,5 +315,5 @@ class ytMooSick {
     }
 }
 
-export { ytMooSick };
+export { MooSick };
 //# sourceMappingURL=index.js.map
