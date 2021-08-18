@@ -69,7 +69,7 @@ export default [{
 	input: 'src/index.ts',
 	output: {
 		sourcemap: true,
-		format: 'cjs',
+		format: 'esm',
 		dir: 'dist',
 		preserveModules: true,
 		preserveModulesRoot: 'src',
