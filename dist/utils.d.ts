@@ -1,5 +1,18 @@
 export declare class utils {
-    static fv(input: any, query: any, justOne?: boolean): any;
+    /**
+     * fv (FieldVisitor)
+     * Traverses an object through a colon-delimited query path
+     * @param input An input record
+     * @param query A colon delimited string
+     * @param justOne Whether to return the
+     * @example
+     * ```js
+     * 	const input = { a: { b: { c: 1 } } };
+     *
+     * 	fv(input, 'a:b:c', false); // result === 1
+     * ```
+     * */
+    static fv<T extends Record<string, any>>(input: T, query: string): unknown;
     static hms2ms(input: string): number;
     static createApiContext(ytcfg: any): {
         context: {
@@ -33,12 +46,12 @@ export declare class utils {
             };
         };
     };
-    static buildEndpointContext(typeName: any, browseId: any): {
+    static buildEndpointContext(typeName: string, browseId: string): {
         browseEndpointContextSupportedConfigs: {
             browseEndpointContextMusicConfig: {
                 pageType: string;
             };
         };
-        browseId: any;
+        browseId: string;
     };
 }

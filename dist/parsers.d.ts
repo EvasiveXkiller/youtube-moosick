@@ -3,23 +3,23 @@ export declare const parseSearchResult: (context: any) => {
 };
 export declare const parseSongSearchResult: (context: any) => {
     content: never[];
-    continuation: any;
+    continuation: unknown;
 };
 export declare const parseVideoSearchResult: (context: any) => {
     content: never[];
-    contination: any;
+    contination: unknown;
 };
 export declare const parseAlbumSearchResult: (context: any) => {
     content: never[];
-    contination: any;
+    contination: unknown;
 };
 export declare const parseArtistSearchResult: (context: any) => {
     content: never[];
-    contination: any;
+    contination: unknown;
 };
 export declare const parsePlaylistSearchResult: (context: any) => {
     content: never[];
-    contination: any;
+    contination: unknown;
 };
 export declare const parseArtistPage: (context: any) => {
     name: string;
@@ -35,7 +35,7 @@ export declare const parsePlaylistPage: (context: any) => {
     dateYear: string;
     content: never[];
     thumbnails: never[];
-    continuation: any;
+    continuation: unknown;
 };
 export declare const parseAlbumPage: (context: any) => {
     title: string;
@@ -56,5 +56,5 @@ export declare const parseNextPanel: (context: any) => {
     playlistId: string;
     content: never[];
     currentIndex: number;
-    contination: any;
+    contination: unknown;
 };
