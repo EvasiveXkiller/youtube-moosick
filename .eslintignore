@@ -1,0 +1,4 @@
+src/*.js
+public/*.js
+*.d.ts
+node_modules/**/*
