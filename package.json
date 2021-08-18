@@ -4,7 +4,9 @@
   "description": "youtube music api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "rollup -c -w",
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,17 @@
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.15.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-run": "^2.1.0",
+    "@rollup/plugin-typescript": "^8.2.5",
     "eslint": "^7.32.0",
+    "eslint-config-xo": "^0.38.0",
+    "eslint-config-xo-typescript": "^0.44.0",
+    "rollup": "^2.56.2",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-execute": "^1.1.1",
     "typescript": "^4.3.5"
   },
   "dependencies": {
