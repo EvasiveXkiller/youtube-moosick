@@ -1,10 +1,39 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2021",
-        "sourceMap": true
-    },
+    "include": [
+		"src/**/*", 
+		"types/**/*", 
+		".eslintrc.cjs",
+		"*.config.js",
+	],
     "exclude": [
-        "node_modules"
-    ]
+        "node_modules",
+        "dist",
+    ],
+    "compilerOptions": {
+		"typeRoots": [
+			"node_modules/@types",
+		],
+		"types": [
+			"node",
+		],
+		"lib": [
+			"esnext",
+		],
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"module": "esnext",
+		"target": "esnext",
+		"sourceMap": true,
+		"moduleResolution": "node",
+		"noEmit": false,
+		"strict": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"useDefineForClassFields": true,
+		"allowSyntheticDefaultImports": true,
+		"importsNotUsedAsValues": "error",
+		"experimentalDecorators": true,
+		"noImplicitOverride": true,
+	}
 }
