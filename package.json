@@ -1,6 +1,6 @@
 {
   "name": "youtube-moosick",
-  "version": "0.0.0.0.0010",
+  "version": "0.0.0",
   "description": "youtube music api",
   "main": "index.js",
   "scripts": {
