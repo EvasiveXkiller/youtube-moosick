@@ -28,7 +28,7 @@ const BindToClass = (functionsObject, thisClass) => {
 
 // ASYNC AWAIT SUPPORT EVERYWHERE, CALLBACK HELL IT IS NOW
 
-class ytMooSick {
+export class ytMooSick {
     client: AxiosInstance;
     cookies: tough;
     ytCfg: any;
