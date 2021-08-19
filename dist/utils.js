@@ -4,15 +4,15 @@ class utils {
      * Traverses an object through a colon-delimited query path
      * @param input An input record
      * @param query A colon delimited string
-     * @param justOne Whether to return the
+     * @param single
      * @example
      * ```js
-     * 	const input = { a: { b: { c: 1 } } };
+     *    const input = { a: { b: { c: 1 } } };
      *
-     * 	fv(input, 'a:b:c', false); // result === 1
+     *    fv(input, 'a:b:c', false); // result === 1
      * ```
      * */
-    static fv(input, query) {
+    static fv(input, query, single = false) {
         let result = input;
         const keyPath = query.split(':');
         for (const key of keyPath) {
@@ -90,6 +90,9 @@ class utils {
             },
             browseId,
         };
+    }
+    // Parse enums from here for utils
+    static parseTypeName(typeName) {
     }
 }
 

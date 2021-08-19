@@ -1,4 +1,4 @@
-import { categoryType } from './enums';
+import { categoryURIBase64 } from './enums';
 export declare class MooSick {
     private client;
     private cookies;
@@ -24,7 +24,7 @@ export declare class MooSick {
      * @param _pageLimit Max pages to obtain
      * @returns {Promise<unknown>} An object formatted by parsers.js
      */
-    search(query: string, categoryName?: categoryType, _pageLimit?: number): Promise<unknown>;
+    search(query: string, categoryName?: categoryURIBase64, _pageLimit?: number): Promise<unknown>;
     getAlbum(browseId: string): Promise<unknown>;
     /**
      * Gets the playlist using the Youtube Music API
@@ -38,5 +38,5 @@ export declare class MooSick {
      * @param browseId The artist ID, sanitized
      * @returns {Promise<unknown>} An object formatted by the artist page
      */
-    getArtist(browseId: any): Promise<unknown>;
+    getArtist(browseId: string): Promise<unknown>;
 }

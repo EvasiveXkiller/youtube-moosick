@@ -34,6 +34,73 @@ interface YTConfig {
     DEVICE: string;
     PAGE_CL: string;
     PAGE_BUILD_LABEL: string;
+    CLIENT_CANARY_STATE: string;
+
+}
+
+// Just ditch stuff i guess if u dont need, and im pretty sure we dont need every param here
+// Or we can just leave it as any
+interface full {
+    "CLIENT_CANARY_STATE": string;
+    "DEVICE": string;
+    "ELEMENT_POOL_DEFAULT_CAP": number;
+    "EVENT_ID": string;
+    // Experiment flags is a big object, probably dont need it
+    "EXPERIMENT_FLAGS": Object,
+    "GAPI_HINT_PARAMS": string,
+    "GAPI_HOST": string,
+    "GAPI_LOCALE": string,
+    "GL": string,
+    "HL": string,
+    "HTML_DIR": string,
+    "HTML_LANG": string,
+    "INNERTUBE_API_KEY": string,
+    "INNERTUBE_API_VERSION": string,
+    "INNERTUBE_CLIENT_NAME": string,
+    "INNERTUBE_CLIENT_VERSION": string,
+    "INNERTUBE_CONTEXT": Object
+    "INNERTUBE_CONTEXT_CLIENT_NAME": 67,
+    "INNERTUBE_CONTEXT_CLIENT_VERSION": string,
+    "INNERTUBE_CONTEXT_GL": string,
+    "INNERTUBE_CONTEXT_HL": string,
+    "LATEST_ECATCHER_SERVICE_TRACKING_PARAMS": Object
+    "LOGGED_IN": false,
+    "PAGE_BUILD_LABEL": string,
+    "PAGE_CL": number,
+    "SERVER_NAME": string,
+    "SIGNIN_URL": string,
+    "VISITOR_DATA": string,
+    "WEB_PLAYER_CONTEXT_CONFIGS": Object
+    "XSRF_FIELD_NAME": string,
+    "XSRF_TOKEN": string,
+    "YPC_MB_URL": string,
+    "YTR_FAMILY_CREATION_URL": string,
+    "SERVER_VERSION": string,
+    "LOCALE": string,
+    "REUSE_COMPONENTS": boolean;
+    "STAMPER_STABLE_LIST": boolean;
+    "DATASYNC_ID": string,
+    "SERIALIZED_CLIENT_CONFIG_DATA": string,
+    "CLIENT_PROTOCOL": string,
+    "CLIENT_TRANSPORT": string,
+    "USE_EMBEDDED_INNERTUBE_DATA": boolean;
+    "VISIBILITY_ROOT": string,
+    "YTMUSIC_ICON_SRC": string,
+    "YTMUSIC_LOGO_SRC": string,
+    "UPLOAD_URL": string,
+    "TRANSFER_PAGE_SIGNIN_URL": string,
+    "LOGOUT_URL": string,
+    "IS_SUBSCRIBER": boolean;
+    "IS_MOBILE_WEB": boolean;
+    "INITIAL_ENDPOINT": string,
+    // pretty sure we dont need this
+    "HOTKEY_DIALOG": Object,
+    "DEFAULT_ALBUM_IMAGE_SRC": string,
+    "AUDIO_QUALITY": string,
+    "ADD_SCRAPER_ATTRIBUTES": boolean;
+    "ACTIVE_ACCOUNT_IS_MADISON_ACCOUNT": boolean;
+    "YTMUSIC_WHITE_ICON_SRC": string,
+    "YTMUSIC_WHITE_LOGO_SRC": string
 }
 
 // ASYNC AWAIT SUPPORT EVERYWHERE, CALLBACK HELL IT IS NOW
@@ -43,7 +110,7 @@ export class MooSick {
     private cookies: tough.CookieJar;
 
     // FIXME: where is this coming from?
-    // @REPLY initialize func filter foreach function
+    // @REPLY came from `initialize` func filter foreach function
     // probably this set to any since the object that comes out is huge
     private config: any;
 
@@ -216,7 +283,7 @@ export class MooSick {
      * @param _pageLimit Max pages to obtain
      * @returns {Promise<unknown>} An object formatted by parsers.js
      */
-    async search(query: string, categoryName?: categoryURIBase64, _pageLimit = 1) : Promise<unknown> {
+    async search(query: string, categoryName?: categoryURIBase64, _pageLimit = 1): Promise<unknown> {
         return new Promise(async (resolve, reject) => {
             let result: Object;
             const context = await this._createApiRequest(endPointType.SEARCH, {
