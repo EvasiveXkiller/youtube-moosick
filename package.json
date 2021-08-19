@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.172",
-    "@types/node": "^16.6.1",
+    "@types/node": "^16.6.2",
     "axios": "^0.21.1",
     "lodash": "^4.17.21",
     "readdir-enhanced": "^6.0.4",
