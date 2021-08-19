@@ -1,4 +1,0 @@
-var directoryReader = {};
-
-export { directoryReader as __exports };
-//# sourceMappingURL=directory-reader.js_commonjs-exports.map

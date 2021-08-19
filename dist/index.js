@@ -2,11 +2,11 @@ import axios from './node_modules/axios/index.js';
 import http_1 from './node_modules/axios/lib/adapters/http.js';
 import './node_modules/tough-cookie/lib/cookie.js';
 import _ from './node_modules/lodash/lodash.js';
-import './node_modules/@jsdevtools/readdir-enhanced/lib/index.js';
 import { endPointType, categoryType } from './enums.js';
 import { utils } from './utils.js';
 import { IllegalArgumentError } from './resources/errors/illegalArgument.error.js';
 import { IllegalStateError } from './resources/errors/illegalState.error.js';
+import { URLSearchParams } from 'url';
 import { __exports as cookie } from './_virtual/cookie.js_commonjs-exports';
 
 axios.defaults.adapter = http_1;
@@ -15,6 +15,8 @@ class MooSick {
     client;
     cookies;
     // FIXME: where is this coming from?
+    // @REPLY initialize func filter foreach function
+    // probably this set to any since the object that comes out is huge
     config;
     constructor() {
         this.cookies = new cookie.CookieJar();
@@ -107,29 +109,24 @@ class MooSick {
      * @returns {Promise<unknown>} A ready to use API object
      */
     async initialize() {
-        return new Promise((resolve, reject) => {
-            this.client.get('/')
-                .then((res) => {
-                try {
-                    res.data.split('ytcfg.set(').map((v) => {
-                        try {
-                            return JSON.parse(v.split(');')[0]);
-                        }
-                        catch (_) {
-                        }
-                    }).filter(Boolean).forEach((cfg) => (this.config = Object.assign(cfg, this.config)));
-                    resolve({
-                        locale: this.config.LOCALE,
-                        logged_in: this.config.LOGGED_IN,
-                    });
-                }
-                catch (err) {
-                    reject(err);
-                }
-            })
-                .catch((err) => {
+        return new Promise(async (resolve, reject) => {
+            const res = await this.client.get(`/`);
+            try {
+                res.data.split('ytcfg.set(').map((v) => {
+                    try {
+                        return JSON.parse(v.split(');')[0]);
+                    }
+                    catch (_) {
+                    }
+                }).filter(Boolean).forEach((cfg) => (this.config = Object.assign(cfg, this.config)));
+                resolve({
+                    locale: this.config.LOCALE,
+                    logged_in: this.config.LOGGED_IN,
+                });
+            }
+            catch (err) {
                 reject(err);
-            });
+            }
         });
     }
     /**
@@ -139,7 +136,7 @@ class MooSick {
      */
     async getSearchSuggestions(query) {
         return new Promise((resolve, reject) => {
-            this._createApiRequest('music/get_search_suggestions', {
+            this._createApiRequest(endPointType.SUGGESTIONS, {
                 input: query,
             })
                 .then((content) => {

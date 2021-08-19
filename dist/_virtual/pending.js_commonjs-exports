@@ -1,4 +1,0 @@
-var pending = {};
-
-export { pending as __exports };
-//# sourceMappingURL=pending.js_commonjs-exports.map
