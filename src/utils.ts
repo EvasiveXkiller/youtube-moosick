@@ -51,65 +51,66 @@ export class utils {
 		return props instanceof Array ? props : [props];
 	}
 
-	static hms2ms(input: string) {
-		try {
-			const p = input.split(':');
-			let s = 0;
-			let f = 1;
-			while (p.length > 0) {
-				s += f * parseInt(p.pop(), 10);
-				f *= 60;
-			}
+    static hms2ms(input: string) {
+        try {
+            const p = input.split(':');
+            let s = 0;
+            let f = 1;
+            while (p.length > 0) {
+                s += f * parseInt(p.pop(), 10);
+                f *= 60;
+            }
 
-			return s * 1e3;
-		} catch (e) {
-			return 0;
-		}
-	}
+            return s * 1e3;
+        } catch (e) {
+            return 0;
+        }
+    }
 
-	static createApiContext(ytcfg) {
-		return {
-			context: {
-				capabilities: {},
-				client: {
-					clientName: ytcfg.INNERTUBE_CLIENT_NAME,
-					clientVersion: ytcfg.INNERTUBE_CLIENT_VERSION,
-					experimentIds: [],
-					experimentsToken: '',
-					gl: ytcfg.GL,
-					hl: ytcfg.HL,
-					locationInfo: {
-						locationPermissionAuthorizationStatus: 'LOCATION_PERMISSION_AUTHORIZATION_STATUS_UNSUPPORTED',
-					},
-					musicAppInfo: {
-						musicActivityMasterSwitch: 'MUSIC_ACTIVITY_MASTER_SWITCH_INDETERMINATE',
-						musicLocationMasterSwitch: 'MUSIC_LOCATION_MASTER_SWITCH_INDETERMINATE',
-						pwaInstallabilityStatus: 'PWA_INSTALLABILITY_STATUS_UNKNOWN',
-					},
-					utcOffsetMinutes: -new Date().getTimezoneOffset(),
-				},
-				request: {
-					internalExperimentFlags: [{
-						key: 'force_music_enable_outertube_tastebuilder_browse',
-						value: 'true',
-					},
-					{
-						key: 'force_music_enable_outertube_playlist_detail_browse',
-						value: 'true',
-					},
-					{
-						key: 'force_music_enable_outertube_search_suggestions',
-						value: 'true',
-					}],
-					sessionIndex: {},
-				},
-				user: {
-					enableSafetyMode: false,
-				},
-			},
-		};
-	}
+    static createApiContext(ytcfg) {
+        return {
+            context: {
+                capabilities: {},
+                client: {
+                    clientName: ytcfg.INNERTUBE_CLIENT_NAME,
+                    clientVersion: ytcfg.INNERTUBE_CLIENT_VERSION,
+                    experimentIds: [],
+                    experimentsToken: '',
+                    gl: ytcfg.GL,
+                    hl: ytcfg.HL,
+                    locationInfo: {
+                        locationPermissionAuthorizationStatus: 'LOCATION_PERMISSION_AUTHORIZATION_STATUS_UNSUPPORTED',
+                    },
+                    musicAppInfo: {
+                        musicActivityMasterSwitch: 'MUSIC_ACTIVITY_MASTER_SWITCH_INDETERMINATE',
+                        musicLocationMasterSwitch: 'MUSIC_LOCATION_MASTER_SWITCH_INDETERMINATE',
+                        pwaInstallabilityStatus: 'PWA_INSTALLABILITY_STATUS_UNKNOWN',
+                    },
+                    utcOffsetMinutes: -new Date().getTimezoneOffset(),
+                },
+                request: {
+                    internalExperimentFlags: [{
+                        key: 'force_music_enable_outertube_tastebuilder_browse',
+                        value: 'true',
+                    },
+                        {
+                            key: 'force_music_enable_outertube_playlist_detail_browse',
+                            value: 'true',
+                        },
+                        {
+                            key: 'force_music_enable_outertube_search_suggestions',
+                            value: 'true',
+                        }],
+                    sessionIndex: {},
+                },
+                user: {
+                    enableSafetyMode: false,
+                },
+            },
+        };
+    }
 
+<<<<<<< HEAD
 	static buildEndpointContext(typeName: string, browseId: string) {
 		return {
 			browseEndpointContextSupportedConfigs: {
@@ -125,4 +126,21 @@ export class utils {
 	public static parseTypeName(typeName: string) {
 
 	}
+=======
+    static buildEndpointContext(typeName: string, browseId: string) {
+        return {
+            browseEndpointContextSupportedConfigs: {
+                browseEndpointContextMusicConfig: {
+                    pageType: `MUSIC_PAGE_TYPE_${typeName.toUpperCase()}`,
+                },
+            },
+            browseId,
+        };
+    }
+
+    // Parse enums from here for utils
+    public static parseTypeName(typeName: string) {
+
+    }
+>>>>>>> 30d2d7d59e397341beab22e3e76ef4bd26903cf5
 }
