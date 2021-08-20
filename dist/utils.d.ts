@@ -1,18 +1,18 @@
 export declare class utils {
     /**
      * fv (FieldVisitor)
-     * Traverses an object through a colon-delimited query path
+     * Traverses an object through a colon-delimited query path & returns the values of its prop/field
      * @param input An input record
      * @param query A colon delimited string
-     * @param single
+     * @param shallow If false, recurses through object to find any nested object's prop/field value which matches the query
      * @example
      * ```js
-     *    const input = { a: { b: { c: 1 } } };
+     * 	const input = { a: { b: { c: 1 } } };
      *
-     *    fv(input, 'a:b:c', false); // result === 1
+     * 	fv(input, 'a:b:c', false); // result === 1
      * ```
      * */
-    static fv<T extends Record<string, any>>(input: T, query: string, single?: boolean): unknown;
+    static fv(input: Record<string | number | symbol, any>, query: string, shallow?: boolean): unknown[];
     static hms2ms(input: string): number;
     static createApiContext(ytcfg: any): {
         context: {
