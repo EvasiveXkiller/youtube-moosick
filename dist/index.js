@@ -2,11 +2,12 @@ import axios from './node_modules/axios/index.js';
 import http_1 from './node_modules/axios/lib/adapters/http.js';
 import './node_modules/tough-cookie/lib/cookie.js';
 import _ from './node_modules/lodash/lodash.js';
-import './node_modules/@jsdevtools/readdir-enhanced/lib/index.js';
-import { endPointType, categoryType } from './enums.js';
+import { endPointType, categoryURIBase64, categoryType } from './enums.js';
 import { utils } from './utils.js';
 import { IllegalArgumentError } from './resources/errors/illegalArgument.error.js';
 import { IllegalStateError } from './resources/errors/illegalState.error.js';
+import { URLSearchParams } from 'url';
+import { parsers } from './parsers.js';
 import { __exports as cookie } from './_virtual/cookie.js_commonjs-exports';
 
 axios.defaults.adapter = http_1;
@@ -15,6 +16,8 @@ class MooSick {
     client;
     cookies;
     // FIXME: where is this coming from?
+    // @REPLY came from `initialize` func filter foreach function
+    // probably this set to any since the object that comes out is huge
     config;
     constructor() {
         this.cookies = new cookie.CookieJar();
@@ -107,29 +110,26 @@ class MooSick {
      * @returns {Promise<unknown>} A ready to use API object
      */
     async initialize() {
-        return new Promise((resolve, reject) => {
-            this.client.get('/')
-                .then((res) => {
-                try {
-                    res.data.split('ytcfg.set(').map((v) => {
-                        try {
-                            return JSON.parse(v.split(');')[0]);
-                        }
-                        catch (_) {
-                        }
-                    }).filter(Boolean).forEach((cfg) => (this.config = Object.assign(cfg, this.config)));
-                    resolve({
-                        locale: this.config.LOCALE,
-                        logged_in: this.config.LOGGED_IN,
-                    });
-                }
-                catch (err) {
-                    reject(err);
-                }
-            })
-                .catch((err) => {
+        return new Promise(async (resolve, reject) => {
+            const res = await this.client.get(`/`);
+            try {
+                const frontDelimiter = `ytcfg.set(`, splitDelimiter = `);`;
+                res.data.split(frontDelimiter).map((v) => {
+                    try {
+                        return JSON.parse(v.split(splitDelimiter)[0]);
+                    }
+                    catch (_) {
+                    }
+                }).filter(Boolean)
+                    .forEach((cfg) => (this.config = Object.assign(cfg, this.config)));
+                resolve({
+                    locale: this.config.LOCALE,
+                    logged_in: this.config.LOGGED_IN,
+                });
+            }
+            catch (err) {
                 reject(err);
-            });
+            }
         });
     }
     /**
@@ -138,21 +138,24 @@ class MooSick {
      * @returns {Promise<unknown>} An object formatted with utils class
      */
     async getSearchSuggestions(query) {
-        return new Promise((resolve, reject) => {
-            this._createApiRequest('music/get_search_suggestions', {
+        return new Promise(async (resolve, reject) => {
+            const res = await this._createApiRequest(endPointType.SUGGESTIONS, {
                 input: query,
-            })
-                .then((content) => {
-                try {
-                    resolve(utils.fv(content, 'searchSuggestionRenderer:navigationEndpoint:query'));
-                }
-                catch (error) {
-                    reject(error);
-                }
-            })
-                .catch((error) => {
-                reject(error);
             });
+            // I dont think this is the best way, maybe the fv seems nice but that is really unreadable
+            // Probably think of a better way
+            if (!res.hasOwnProperty("contents"))
+                reject(`no results found`);
+            const contents = res.contents[0].searchSuggestionRenderer.contents;
+            if (!contents)
+                reject(new IllegalStateError("result array not found"));
+            const rendererCompressed = contents.map((searchSuggestionRenderer) => {
+                return {
+                    track: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? "",
+                    artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? ""
+                };
+            });
+            return resolve(rendererCompressed);
         });
     }
     /**
@@ -163,68 +166,48 @@ class MooSick {
      * @returns {Promise<unknown>} An object formatted by parsers.js
      */
     async search(query, categoryName, _pageLimit = 1) {
-        return new Promise((resolve, reject) => {
-            let result = {};
-            this._createApiRequest(endPointType.SEARCH, {
+        return new Promise(async (resolve, reject) => {
+            let result;
+            const context = await this._createApiRequest(endPointType.SEARCH, {
                 query,
-                params: utils.getCategoryURI(categoryName),
-            })
-                .then((context) => {
-                try {
-                    switch (_.upperCase(categoryName)) {
-                        case categoryType.SONG:
-                            result = parsers.parseSongSearchResult(context);
-                            break;
-                        case categoryType.VIDEO:
-                            result = parsers.parseVideoSearchResult(context);
-                            break;
-                        case categoryType.ALBUM:
-                            result = parsers.parseAlbumSearchResult(context);
-                            break;
-                        case categoryType.ARTIST:
-                            result = parsers.parseArtistSearchResult(context);
-                            break;
-                        case categoryType.PLAYLISTS:
-                            result = parsers.parsePlaylistSearchResult(context);
-                            break;
-                        default:
-                            result = parsers.parseSearchResult(context);
-                            break;
-                    }
-                    resolve(result);
-                }
-                catch (error) {
-                    resolve({
-                        error: error.message,
-                    });
-                }
-            })
-                .catch((error) => {
-                reject(error);
+                params: categoryName,
             });
+            switch (categoryName) {
+                case categoryURIBase64.SONG:
+                    result = parsers.parseSongSearchResult(context);
+                    break;
+                case categoryURIBase64.VIDEO:
+                    result = parsers.parseVideoSearchResult(context);
+                    break;
+                case categoryURIBase64.ALBUM:
+                    result = parsers.parseAlbumSearchResult(context);
+                    break;
+                case categoryURIBase64.ARTIST:
+                    result = parsers.parseArtistSearchResult(context);
+                    break;
+                case categoryURIBase64.PLAYLISTS:
+                    result = parsers.parsePlaylistSearchResult(context);
+                    break;
+                default:
+                    result = parsers.parseSearchResult(context);
+                    break;
+            }
+            resolve(result);
         });
     }
     async getAlbum(browseId) {
-        if (_.startsWith(browseId, 'MPREb')) {
-            return new Promise((resolve, reject) => {
-                this._createApiRequest(endPointType.SEARCH, utils.buildEndpointContext(categoryType.ALBUM, browseId))
-                    .then((context) => {
-                    try {
-                        const result = parsers.parseAlbumPage(context);
-                        resolve(result);
-                    }
-                    catch (error) {
-                        resolve({
-                            error: error.message,
-                        });
-                    }
-                })
-                    .catch((error) => {
-                    reject(error);
-                });
-            });
-        }
-        throw new Error('invalid album browse id.');
+        if (!_.startsWith(browseId, 'MPREb'))
+            throw new Error('invalid album browse id.');
+        return new Promise((resolve, reject) => {
+            const ctx = this._createApiRequest(endPointType.SEARCH, utils.buildEndpointContext(categoryType.ALBUM, browseId));
+            try {
+                const result = parsers.parseAlbumPage(ctx);
+                resolve(result);
+            }
+            catch (error) {
+                reject(error.message);
+            }
+        });
     }
     /**
      * Gets the playlist using the Youtube Music API
@@ -233,58 +216,50 @@ class MooSick {
      * @returns {Promise<unknown>} An object formatted by the parser
      */
     async getPlaylist(browseId, contentLimit = 100) {
-        if (_.startsWith(browseId, 'VL') || _.startsWith(browseId, 'PL')) {
-            _.startsWith(browseId, 'PL') && (browseId = 'VL' + browseId);
-            return new Promise((resolve, reject) => {
-                this._createApiRequest(endPointType.BROWSE, utils.buildEndpointContext(categoryType.PLAYLISTS, browseId))
-                    .then((context) => {
-                    try {
-                        const result = parsers.parsePlaylistPage(context);
-                        const getContinuations = (params) => {
-                            this._createApiRequest(endPointType.BROWSE, {}, {
-                                ctoken: params.continuation,
-                                continuation: params.continuation,
-                                itct: params.continuation.clickTrackingParams,
-                            })
-                                .then((context) => {
-                                const continuationResult = parsers.parsePlaylistPage(context);
-                                if (Array.isArray(continuationResult.content)) {
-                                    result.content = _.concat(result.content, continuationResult.content);
-                                    result.continuation = continuationResult.continuation;
-                                }
-                                if (!Array.isArray(continuationResult.continuation) && result.continuation instanceof Object) {
-                                    if (contentLimit > result.content.length) {
-                                        getContinuations(continuationResult.continuation);
-                                    }
-                                    else {
-                                        resolve(result);
-                                    }
-                                }
-                                else {
-                                    resolve(result);
-                                }
-                            });
-                        };
-                        if (contentLimit > result.content.length && (!Array.isArray(result.continuation) && result.continuation instanceof Object)) {
-                            getContinuations(result.continuation);
+        if (!(_.startsWith(browseId, 'VL') || _.startsWith(browseId, 'PL')))
+            throw new Error('invalid playlist id.');
+        _.startsWith(browseId, 'PL') && (browseId = 'VL' + browseId);
+        return new Promise(async (resolve, reject) => {
+            const ctx = this._createApiRequest(endPointType.BROWSE, utils.buildEndpointContext(categoryType.PLAYLISTS, browseId));
+            try {
+                const result = parsers.parsePlaylistPage(ctx);
+                const getContinuations = async (params) => {
+                    const ctx = this._createApiRequest(endPointType.BROWSE, {}, {
+                        ctoken: params.continuation,
+                        continuation: params.continuation,
+                        itct: params.continuation.clickTrackingParams,
+                    });
+                    const continuationResult = parsers.parsePlaylistPage(ctx);
+                    if (Array.isArray(continuationResult.content)) {
+                        result.content = _.concat(result.content, continuationResult.content);
+                        result.continuation = continuationResult.continuation;
+                    }
+                    if (!Array.isArray(continuationResult.continuation) && result.continuation instanceof Object) {
+                        if (contentLimit > result.content.length) {
+                            await getContinuations(continuationResult.continuation);
                         }
                         else {
                             resolve(result);
-                            return;
                         }
                     }
-                    catch (error) {
-                        resolve({
-                            error: error.message,
-                        });
+                    else {
+                        resolve(result);
                     }
-                })
-                    .catch((error) => {
-                    reject(error);
+                };
+                if (contentLimit > result.content.length && (!Array.isArray(result.continuation) && result.continuation instanceof Object)) {
+                    await getContinuations(result.continuation);
+                }
+                else {
+                    resolve(result);
+                    return;
+                }
+            }
+            catch (error) {
+                resolve({
+                    error: error.message,
                 });
-            });
-        }
-        throw new Error('invalid playlist id.');
+            }
+        });
     }
     /**
      * Gets the artist details from Youtube Music
@@ -292,26 +267,20 @@ class MooSick {
      * @returns {Promise<unknown>} An object formatted by the artist page
      */
     async getArtist(browseId) {
-        if (_.startsWith(browseId, 'UC')) {
-            return new Promise((resolve, reject) => {
-                this._createApiRequest(endPointType.BROWSE, utils.buildEndpointContext(categoryType.ARTIST, browseId))
-                    .then((context) => {
-                    try {
-                        const result = parsers.parseArtistPage(context);
-                        resolve(result);
-                    }
-                    catch (error) {
-                        resolve({
-                            error: error.message,
-                        });
-                    }
-                })
-                    .catch((error) => {
-                    reject(error);
+        if (!_.startsWith(browseId, 'UC'))
+            throw new Error('invalid artist browse id.');
+        return new Promise(async (resolve, reject) => {
+            const ctx = await this._createApiRequest(endPointType.BROWSE, utils.buildEndpointContext(categoryType.ARTIST, browseId));
+            try {
+                const result = parsers.parseArtistPage(ctx);
+                resolve(result);
+            }
+            catch (error) {
+                resolve({
+                    error: error.message,
                 });
-            });
-        }
-        throw new Error('invalid artist browse id.');
+            }
+        });
     }
 }
 

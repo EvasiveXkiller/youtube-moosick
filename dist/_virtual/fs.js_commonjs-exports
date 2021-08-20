@@ -1,4 +1,0 @@
-var fs = {};
-
-export { fs as __exports };
-//# sourceMappingURL=fs.js_commonjs-exports.map

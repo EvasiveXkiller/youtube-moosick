@@ -120,4 +120,9 @@ export class utils {
 			browseId,
 		};
 	}
+
+	// Parse enums from here for utils
+	public static parseTypeName(typeName: string) {
+
+	}
 }
