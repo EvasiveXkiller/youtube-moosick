@@ -37,19 +37,8 @@ class utils {
         return props instanceof Array ? props : [props];
     }
     static hms2ms(input) {
-        try {
-            const p = input.split(':');
-            let s = 0;
-            let f = 1;
-            while (p.length > 0) {
-                s += f * parseInt(p.pop(), 10);
-                f *= 60;
-            }
-            return s * 1e3;
-        }
-        catch (e) {
-            return 0;
-        }
+        const splitDigits = input.split(':');
+        return (splitDigits.reduceRight((prev, curr, i, arr) => prev + parseInt(curr) * 60 ** (arr.length - 1 - i), 0) * 1000);
     }
     static createApiContext(ytcfg) {
         return {
@@ -85,7 +74,7 @@ class utils {
                         {
                             key: 'force_music_enable_outertube_search_suggestions',
                             value: 'true',
-                        }
+                        },
                     ],
                     sessionIndex: {},
                 },

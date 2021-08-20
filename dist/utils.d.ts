@@ -1,4 +1,4 @@
-import type { ytcfgInterface } from "./cfgInterface";
+import type { ytcfgInterface } from './cfgInterface';
 export declare class utils {
     /**
      * fv (FieldVisitor)

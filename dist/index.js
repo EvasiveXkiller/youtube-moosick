@@ -111,9 +111,10 @@ class MooSick {
      */
     async initialize() {
         return new Promise(async (resolve, reject) => {
-            const res = await this.client.get(`/`);
+            const res = await this.client.get('/');
             try {
-                const frontDelimiter = `ytcfg.set(`, splitDelimiter = `);`;
+                const frontDelimiter = 'ytcfg.set(';
+                const splitDelimiter = ');';
                 res.data.split(frontDelimiter).map((v) => {
                     try {
                         return JSON.parse(v.split(splitDelimiter)[0]);
@@ -144,18 +145,18 @@ class MooSick {
             });
             // I dont think this is the best way, maybe the fv seems nice but that is really unreadable
             // Probably think of a better way
-            if (!res.hasOwnProperty("contents"))
-                reject(`no results found`);
-            const contents = res.contents[0].searchSuggestionRenderer.contents;
-            if (!contents)
-                reject(new IllegalStateError("result array not found"));
-            const rendererCompressed = contents.map((searchSuggestionRenderer) => {
-                return {
-                    track: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? "",
-                    artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? ""
-                };
-            });
-            return resolve(rendererCompressed);
+            if (!res.hasOwnProperty('contents')) {
+                reject('no results found');
+            }
+            const { contents } = res.contents[0].searchSuggestionRenderer;
+            if (!contents) {
+                reject(new IllegalStateError('result array not found'));
+            }
+            const rendererCompressed = contents.map((searchSuggestionRenderer) => ({
+                track: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
+                artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
+            }));
+            resolve(rendererCompressed);
         });
     }
     /**
@@ -196,8 +197,9 @@ class MooSick {
         });
     }
     async getAlbum(browseId) {
-        if (!_.startsWith(browseId, 'MPREb'))
+        if (!_.startsWith(browseId, 'MPREb')) {
             throw new Error('invalid album browse id.');
+        }
         return new Promise((resolve, reject) => {
             const ctx = this._createApiRequest(endPointType.SEARCH, utils.buildEndpointContext(categoryType.ALBUM, browseId));
             try {
@@ -216,8 +218,9 @@ class MooSick {
      * @returns {Promise<unknown>} An object formatted by the parser
      */
     async getPlaylist(browseId, contentLimit = 100) {
-        if (!(_.startsWith(browseId, 'VL') || _.startsWith(browseId, 'PL')))
+        if (!(_.startsWith(browseId, 'VL') || _.startsWith(browseId, 'PL'))) {
             throw new Error('invalid playlist id.');
+        }
         _.startsWith(browseId, 'PL') && (browseId = 'VL' + browseId);
         return new Promise(async (resolve, reject) => {
             const ctx = this._createApiRequest(endPointType.BROWSE, utils.buildEndpointContext(categoryType.PLAYLISTS, browseId));
@@ -267,8 +270,9 @@ class MooSick {
      * @returns {Promise<unknown>} An object formatted by the artist page
      */
     async getArtist(browseId) {
-        if (!_.startsWith(browseId, 'UC'))
+        if (!_.startsWith(browseId, 'UC')) {
             throw new Error('invalid artist browse id.');
+        }
         return new Promise(async (resolve, reject) => {
             const ctx = await this._createApiRequest(endPointType.BROWSE, utils.buildEndpointContext(categoryType.ARTIST, browseId));
             try {
