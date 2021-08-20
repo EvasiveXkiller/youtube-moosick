@@ -12,6 +12,8 @@ var categoryType;
     categoryType["ALBUM"] = "ALBUM";
     categoryType["ARTIST"] = "ARTIST";
     categoryType["PLAYLISTS"] = "PLAYLIST";
+    categoryType["EP"] = "EP";
+    categoryType["SINGLE"] = "SINGLE";
 })(categoryType || (categoryType = {}));
 var categoryURIBase64;
 (function (categoryURIBase64) {

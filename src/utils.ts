@@ -1,73 +1,69 @@
+import type {ytcfgInterface} from "./cfgInterface";
+
 export class utils {
-	/**
-	 * fv (FieldVisitor)
-	 * Traverses an object through a colon-delimited query path & returns the values of its prop/field
-	 * @param input An input record
-	 * @param query A colon delimited string
-	 * @param shallow If false, recurses through object to find any nested object's prop/field value which matches the query
-	 * @example
-	 * ```js
-	 * 	const input = { a: { b: { c: 1 } } };
-	 *
-	 * 	fv(input, 'a:b:c', false); // result === 1
-	 * ```
-	 * */
-	public static fv(input: Record<string | number | symbol, any>, query: string, shallow = false): unknown[] {
-		const props = query
-			.split(':')
-			.reduce<any>(
-			function findPropValuesOfKey(obj: typeof input, key: typeof query): unknown | unknown[] {
-				if (typeof obj !== 'object') {
-					return [];
-				}
+    /**
+     * fv (FieldVisitor)
+     * Traverses an object through a colon-delimited query path & returns the values of its prop/field
+     * @param input An input record
+     * @param query A colon delimited string
+     * @param shallow If false, recuses through object to find any nested object's prop/field value which matches the query
+     * @example
+     * ```js
+     *    const input = { a: { b: { c: 1 } } };
+     *
+     *    fv(input, 'a:b:c', false); // result === 1
+     * ```
+     * */
+    public static fv(input: Record<string | number | symbol, any>, query: string, shallow = false): unknown[] {
+        const props = query
+            .split(':')
+            .reduce<any>(
+                function findPropValuesOfKey(obj: typeof input, key: typeof query): unknown | unknown[] {
+                    if (typeof obj !== 'object') {
+                        return [];
+                    }
 
-				let props = [];
+                    let props = [];
 
-				if (Object.prototype.hasOwnProperty.call(obj, key)) {
-					if (shallow) {
-						return obj[key] as unknown;
-					}
+                    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                        if (shallow) {
+                            return obj[key] as unknown;
+                        }
 
-					props.push(obj[key]);
-				}
+                        props.push(obj[key]);
+                    }
 
-				if (!(obj instanceof Array)) {
-					obj = Object.values(obj);
-				}
+                    if (!(obj instanceof Array)) {
+                        obj = Object.values(obj);
+                    }
 
-				(obj as any[])
-					.forEach(
-						(objPart) => props.push(
-							findPropValuesOfKey(objPart, key),
-						),
-					);
-				props = props.flat(1);
+                    (obj as any[])
+                        .forEach(
+                            (objPart) => props.push(
+                                findPropValuesOfKey(objPart, key),
+                            ),
+                        );
+                    props = props.flat(1);
 
-				return props.length === 1 ? props[0] : props;
-			},
-			input,
-		) as unknown;
+                    return props.length === 1 ? props[0] : props;
+                },
+                input,
+            ) as unknown;
 
-		return props instanceof Array ? props : [props];
-	}
-
-    static hms2ms(input: string) {
-        try {
-            const p = input.split(':');
-            let s = 0;
-            let f = 1;
-            while (p.length > 0) {
-                s += f * parseInt(p.pop(), 10);
-                f *= 60;
-            }
-
-            return s * 1e3;
-        } catch (e) {
-            return 0;
-        }
+        return props instanceof Array ? props : [props];
     }
 
-    static createApiContext(ytcfg) {
+    static hms2ms(input: string): number {
+        const splitDigits = input.split(":");
+        return (
+            splitDigits.reduceRight(
+                (prev, curr, i, arr) =>
+                    prev + parseInt(curr) as number * 60 ** (arr.length - 1 - i), 0
+            ) * 1000
+        )
+    }
+
+    static createApiContext(ytcfg: ytcfgInterface) {
         return {
             context: {
                 capabilities: {},
@@ -89,10 +85,11 @@ export class utils {
                     utcOffsetMinutes: -new Date().getTimezoneOffset(),
                 },
                 request: {
-                    internalExperimentFlags: [{
-                        key: 'force_music_enable_outertube_tastebuilder_browse',
-                        value: 'true',
-                    },
+                    internalExperimentFlags: [
+                        {
+                            key: 'force_music_enable_outertube_tastebuilder_browse',
+                            value: 'true',
+                        },
                         {
                             key: 'force_music_enable_outertube_playlist_detail_browse',
                             value: 'true',
@@ -100,7 +97,8 @@ export class utils {
                         {
                             key: 'force_music_enable_outertube_search_suggestions',
                             value: 'true',
-                        }],
+                        }
+                    ],
                     sessionIndex: {},
                 },
                 user: {
@@ -110,23 +108,6 @@ export class utils {
         };
     }
 
-<<<<<<< HEAD
-	static buildEndpointContext(typeName: string, browseId: string) {
-		return {
-			browseEndpointContextSupportedConfigs: {
-				browseEndpointContextMusicConfig: {
-					pageType: `MUSIC_PAGE_TYPE_${typeName.toUpperCase()}`,
-				},
-			},
-			browseId,
-		};
-	}
-
-	// Parse enums from here for utils
-	public static parseTypeName(typeName: string) {
-
-	}
-=======
     static buildEndpointContext(typeName: string, browseId: string) {
         return {
             browseEndpointContextSupportedConfigs: {
@@ -142,5 +123,5 @@ export class utils {
     public static parseTypeName(typeName: string) {
 
     }
->>>>>>> 30d2d7d59e397341beab22e3e76ef4bd26903cf5
+
 }

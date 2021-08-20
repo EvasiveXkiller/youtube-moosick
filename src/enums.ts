@@ -10,7 +10,9 @@ export enum categoryType {
     VIDEO = "VIDEO",
     ALBUM = "ALBUM",
     ARTIST = "ARTIST",
-    PLAYLISTS = "PLAYLIST"
+    PLAYLISTS = "PLAYLIST",
+    EP = "EP",
+    SINGLE = "SINGLE"
 }
 
 

@@ -9,7 +9,9 @@ export declare enum categoryType {
     VIDEO = "VIDEO",
     ALBUM = "ALBUM",
     ARTIST = "ARTIST",
-    PLAYLISTS = "PLAYLIST"
+    PLAYLISTS = "PLAYLIST",
+    EP = "EP",
+    SINGLE = "SINGLE"
 }
 export declare enum categoryURIBase64 {
     SONG = "RAAGAAgACgA",

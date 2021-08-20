@@ -4,12 +4,12 @@ class utils {
      * Traverses an object through a colon-delimited query path & returns the values of its prop/field
      * @param input An input record
      * @param query A colon delimited string
-     * @param shallow If false, recurses through object to find any nested object's prop/field value which matches the query
+     * @param shallow If false, recuses through object to find any nested object's prop/field value which matches the query
      * @example
      * ```js
-     * 	const input = { a: { b: { c: 1 } } };
+     *    const input = { a: { b: { c: 1 } } };
      *
-     * 	fv(input, 'a:b:c', false); // result === 1
+     *    fv(input, 'a:b:c', false); // result === 1
      * ```
      * */
     static fv(input, query, shallow = false) {
@@ -73,7 +73,8 @@ class utils {
                     utcOffsetMinutes: -new Date().getTimezoneOffset(),
                 },
                 request: {
-                    internalExperimentFlags: [{
+                    internalExperimentFlags: [
+                        {
                             key: 'force_music_enable_outertube_tastebuilder_browse',
                             value: 'true',
                         },
@@ -84,7 +85,8 @@ class utils {
                         {
                             key: 'force_music_enable_outertube_search_suggestions',
                             value: 'true',
-                        }],
+                        }
+                    ],
                     sessionIndex: {},
                 },
                 user: {
