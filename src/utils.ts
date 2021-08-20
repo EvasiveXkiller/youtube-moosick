@@ -1,10 +1,10 @@
 export class utils {
 	/**
 	 * fv (FieldVisitor)
-	 * Traverses an object through a colon-delimited query path
+	 * Traverses an object through a colon-delimited query path & returns the values of its prop/field
 	 * @param input An input record
 	 * @param query A colon delimited string
-	 * @param justOne Whether to return the
+	 * @param shallow If false, recurses through object to find any nested object's prop/field value which matches the query
 	 * @example
 	 * ```js
 	 * 	const input = { a: { b: { c: 1 } } };
@@ -12,20 +12,43 @@ export class utils {
 	 * 	fv(input, 'a:b:c', false); // result === 1
 	 * ```
 	 * */
-	static fv<T extends Record<string, any>>(input: T, query: string): unknown {
-		let result: any = input;
-		const keyPath = query.split(':');
+	public static fv(input: Record<string | number | symbol, any>, query: string, shallow = false): unknown[] {
+		const props = query
+			.split(':')
+			.reduce<any>(
+			function findPropValuesOfKey(obj: typeof input, key: typeof query): unknown | unknown[] {
+				if (typeof obj !== 'object') {
+					return [];
+				}
 
-		for (const key of keyPath) {
-			if (typeof result !== 'object') {
-				return result as T[keyof T];
-			}
+				let props = [];
 
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-			result = (result as Record<string | number | symbol, any>)[key];
-		}
+				if (Object.prototype.hasOwnProperty.call(obj, key)) {
+					if (shallow) {
+						return obj[key] as unknown;
+					}
 
-		return result ?? [];
+					props.push(obj[key]);
+				}
+
+				if (!(obj instanceof Array)) {
+					obj = Object.values(obj);
+				}
+
+				(obj as any[])
+					.forEach(
+						(objPart) => props.push(
+							findPropValuesOfKey(objPart, key),
+						),
+					);
+				props = props.flat(1);
+
+				return props.length === 1 ? props[0] : props;
+			},
+			input,
+		) as unknown;
+
+		return props instanceof Array ? props : [props];
 	}
 
 	static hms2ms(input: string) {
