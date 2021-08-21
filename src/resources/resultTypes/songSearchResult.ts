@@ -1,5 +1,5 @@
 import type { categoryType } from '../../enums';
-import type { thumbnails } from '../generalTypes/thumbnails';
+import type { Thumbnails } from '../generalTypes/thumbnails';
 
 export class SongSearchResult {
 	type: categoryType;
@@ -10,7 +10,7 @@ export class SongSearchResult {
 	artist: unknown[];
 	album: unknown[];
 	duration: number;
-	thumbnails: thumbnails[];
+	thumbnails: Thumbnails[];
 	params: any;
 
 	constructor(type: categoryType,
@@ -21,7 +21,7 @@ export class SongSearchResult {
 		artist: unknown[],
 		album: unknown[],
 		duration: number,
-		thumbnails: thumbnails[],
+		thumbnails: Thumbnails[],
 		params: any,
 	) {
 		this.type = type;

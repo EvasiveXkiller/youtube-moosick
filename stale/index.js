@@ -199,8 +199,8 @@ class YoutubeMusicApi {
     }
 
     /**
-     * Searches for the album with the album ID
-     * @param browseId The album ID, sanitized
+     * Searches for the Album with the Album ID
+     * @param browseId The Album ID, sanitized
      * @returns {Promise<unknown>} An object formatted by the parser
      */
     getAlbum(browseId) {
@@ -220,7 +220,7 @@ class YoutubeMusicApi {
                     .catch(error => reject(error))
             })
         } else {
-            throw new Error('invalid album browse id.')
+            throw new Error('invalid Album browse id.')
         }
     }
 

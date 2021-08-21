@@ -2,6 +2,11 @@ import type { ytcfgInterface } from './cfgInterface';
 import { Artist } from './resources/generalTypes/artist';
 import { IllegalArgumentError } from './resources/errors';
 import type { Run } from './resources/resultTypes/sectionList';
+import { Album } from './resources/generalTypes/album';
+import { Thumbnails } from './resources/generalTypes/thumbnails';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import objectScan from 'object-scan';
 
 export class utils {
 	/**
@@ -193,11 +198,29 @@ export class utils {
 			.filter(Boolean);
 		// Returns an array of objects of class artist
 		// FIXME wtf is this type
-		return multiDimension.map((element) => (new Artist({
+		return multiDimension.map((element) => (Artist.from({
 			name: element.text,
 			id: element.navigationEndpoint.browseEndpoint.browseId,
 			url: `https://music.youtube.com/channel/${element.navigationEndpoint.browseEndpoint.browseId}`,
 		})));
+	}
+
+	static albumParser(runsArray: Run[], delimiter = ' • '): Album {
+		// Gets the positions of the delimiter
+		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
+
+		return Album.from({
+			name: runsArray[positions[1] + 1].text,
+			id: runsArray[positions[1] + 1].navigationEndpoint.browseEndpoint.browseId,
+			url: `https://music.youtube.com/channel/${runsArray[positions[1] + 1].navigationEndpoint.browseEndpoint.browseId}`,
+		});
+	}
+
+	static thumbnailParser(sectionContext: any): Thumbnails[] {
+		return objectScan(['**.musicThumbnailRenderer.**.thumbnails'], {
+			rtn: 'value',
+			reverse: false,
+		})(sectionContext) as Thumbnails[];
 	}
 
 	// Parse enums from here for utils

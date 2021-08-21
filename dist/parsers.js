@@ -34,9 +34,9 @@ class parsers {
                     URL                 concat the prefix with videoID
                     playlistID          just get the playlistID
                     artist              an array of artist objects
-                    album               an object album
+                    Album               an object Album
                     duration            just get the duration in number miliseconds
-                    thumbnails          an array of thumbnails objects
+                    Thumbnails          an array of Thumbnails objects
                     params              have no idea what is this
                      */
                     const type = _.nth(utils.fv(flexColumn[1], 'runs:text'), 0); // FIXME:  convert this string to enum i guess
@@ -47,7 +47,7 @@ class parsers {
                     const artist = this.artistParser(flexColumn);
                     const album = this.albumParser(flexColumn);
                     const duration = utils.hms2ms(_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 6));
-                    const thumbnail = utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails');
+                    const thumbnail = utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails');
                     const params = utils.fv(sectionContext, 'playNavigationEndpoint:params');
                     return new songSearchResult(type, name, videoID, URL, playlistID, artist, album, duration, thumbnail, params);
             }

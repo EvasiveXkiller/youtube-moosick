@@ -54,7 +54,7 @@ exports.parseSearchResult = (context) => {
                         return {}
                     })(),
                     duration: utils.hms2ms(_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 6)),
-                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails'),
+                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails'),
                     params: utils.fv(sectionContext, 'playNavigationEndpoint:params')
                 }))
                 break
@@ -67,7 +67,7 @@ exports.parseSearchResult = (context) => {
                     author: _.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 2),
                     views: _.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 4),
                     duration: utils.hms2ms(_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 6)),
-                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails'),
+                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails'),
                     params: utils.fv(sectionContext, 'playNavigationEndpoint:params'),
                 }))
                 break
@@ -76,7 +76,7 @@ exports.parseSearchResult = (context) => {
                     type: _.lowerCase(_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 0)),
                     browseId: utils.fv(_.at(sectionContext, 'navigationEndpoint'), 'browseEndpoint:browseId'),
                     name: utils.fv(_.nth(flexColumn, 0), 'runs:text'),
-                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails')
+                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails')
                 }))
                 break
             case 'EP':
@@ -94,7 +94,7 @@ exports.parseSearchResult = (context) => {
                     name: utils.fv(_.nth(flexColumn, 0), 'runs:text'),
                     artist: (_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 2)),
                     year: _.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 4),
-                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails')
+                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails')
                 }))
                 break
             case 'Playlist':
@@ -116,7 +116,7 @@ exports.parseSearchResult = (context) => {
                             0
                         )
                     ),
-                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails')
+                    thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails')
                 }))
                 break
             default:
@@ -186,7 +186,7 @@ exports.parseSongSearchResult = (context) => {
                 return {}
             })(),
             duration: utils.hms2ms(_.last(utils.fv(flexColumn[1], 'runs:text', true))),
-            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails', true),
+            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails', true),
             params: utils.fv(sectionContext, 'playNavigationEndpoint:params')
         })
 
@@ -220,7 +220,7 @@ exports.parseVideoSearchResult = (context) => {
             author: _.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 0),
             views: _.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 2),
             duration: utils.hms2ms(_.last(utils.fv(_.nth(flexColumn, 1), 'runs:text'))),
-            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails'),
+            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails'),
             params: utils.fv(sectionContext, 'playNavigationEndpoint:params')
         }))
     })
@@ -257,7 +257,7 @@ exports.parseAlbumSearchResult = (context) => {
             name: utils.fv(_.nth(flexColumn, 0), 'runs:text'),
             artist: _.join(_.filter(utils.fv(_.nth(flexColumn, 1), 'runs:text').slice(1, -1), v => ' • ' != v && true), ''),
             year: _.last(utils.fv(_.nth(flexColumn, 1), 'runs:text')),
-            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails'),
+            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails'),
         }))
     })
     return result
@@ -285,7 +285,7 @@ exports.parseArtistSearchResult = (context) => {
             type: _.lowerCase(_.first(utils.fv(_.nth(flexColumn, 1), 'runs:text'))),
             browseId: utils.fv(_.at(sectionContext, 'navigationEndpoint'), 'browseEndpoint:browseId'),
             name: utils.fv(_.nth(flexColumn, 0), 'runs:text'),
-            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails')
+            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails')
         }))
     })
     return result
@@ -327,7 +327,7 @@ exports.parsePlaylistSearchResult = (context) => {
                     0
                 )
             ),
-            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails')
+            thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails')
         }))
     })
     return result
@@ -346,7 +346,7 @@ exports.parseArtistPage = context => {
         context, 'musicImmersiveHeaderRenderer'
     )
     result.name = utils.fv(_.at(headerContext, 'title'), 'text')
-    result.thumbnails = utils.fv(_.at(headerContext, 'thumbnail'), 'musicThumbnailRenderer:thumbnails')
+    result.thumbnails = utils.fv(_.at(headerContext, 'thumbnail'), 'musicThumbnailRenderer:Thumbnails')
 
     const descriptionContext = utils.fv(
         context, 'musicDescriptionShelfRenderer'
@@ -444,7 +444,7 @@ exports.parseArtistPage = context => {
                                 browseId: utils.fv(_.at(itemContext[i], 'navigationEndpoint'), 'browseEndpoint:browseId'),
                                 name: utils.fv(_.at(itemContext[i], 'title'), 'text'),
                                 year: utils.fv(_.at(itemContext[i], 'subtitle'), 'text'),
-                                thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:thumbnails')
+                                thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:Thumbnails')
                             })
                             break
                         case 'albums':
@@ -453,7 +453,7 @@ exports.parseArtistPage = context => {
                                 browseId: utils.fv(_.at(itemContext[i], 'navigationEndpoint'), 'browseEndpoint:browseId'),
                                 name: utils.fv(_.at(itemContext[i], 'title'), 'text'),
                                 year: _.nth(utils.fv(_.at(itemContext[i], 'subtitle'), 'text'), 2),
-                                thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:thumbnails')
+                                thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:Thumbnails')
                             })
                             break
                         case 'videos':
@@ -464,7 +464,7 @@ exports.parseArtistPage = context => {
                                 name: utils.fv(_.at(itemContext[i], 'title'), 'text'),
                                 author: _.join(_.dropRight(utils.fv(_.at(itemContext[i], 'subtitle'), 'text'), 2), ''),
                                 views: _.nth(utils.fv(_.at(itemContext[i], 'subtitle'), 'text'), 2),
-                                thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:thumbnails')
+                                thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:Thumbnails')
                             })
                             break
                     }
@@ -477,7 +477,7 @@ exports.parseArtistPage = context => {
                             browseId: utils.fv(_.at(itemContext, 'navigationEndpoint'), 'browseEndpoint:browseId'),
                             name: utils.fv(_.at(itemContext, 'title'), 'text'),
                             year: utils.fv(_.at(itemContext, 'subtitle'), 'text'),
-                            thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:thumbnails')
+                            thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:Thumbnails')
                         })
                         break
                     case 'albums':
@@ -486,7 +486,7 @@ exports.parseArtistPage = context => {
                             browseId: utils.fv(_.at(itemContext, 'navigationEndpoint'), 'browseEndpoint:browseId'),
                             name: utils.fv(_.at(itemContext, 'title'), 'text'),
                             year: _.nth(utils.fv(_.at(itemContext, 'subtitle'), 'text'), 2),
-                            thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:thumbnails')
+                            thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:Thumbnails')
                         })
                         break
                     case 'videos':
@@ -497,7 +497,7 @@ exports.parseArtistPage = context => {
                             name: utils.fv(_.at(itemContext, 'title'), 'text'),
                             author: _.join(_.dropRight(utils.fv(_.at(itemContext, 'subtitle'), 'text'), 2), ''),
                             views: _.nth(utils.fv(_.at(itemContext, 'subtitle'), 'text'), 2),
-                            thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:thumbnails')
+                            thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:Thumbnails')
                         })
                         break
                 }
@@ -528,7 +528,7 @@ exports.parsePlaylistPage = context => {
         result.owner = _.nth(utils.fv(_.at(pageHeader, 'subtitle'), 'runs:text'), 2)
         result.trackCount = parseInt(_.words(_.nth(utils.fv(_.at(pageHeader, 'secondSubtitle'), 'runs:text'), 0)))
         result.dateYear = _.nth(utils.fv(_.at(pageHeader, 'subtitle'), 'runs:text'), 4)
-        result.thumbnails = utils.fv(pageHeader, 'croppedSquareThumbnailRenderer:thumbnails')
+        result.thumbnails = utils.fv(pageHeader, 'croppedSquareThumbnailRenderer:Thumbnails')
     }
 
     const itemContext = utils.fv(
@@ -564,7 +564,7 @@ exports.parsePlaylistPage = context => {
                     return 1 < a.length ? a : 0 < a.length ? a[0] : a
                 })(),
                 duration: utils.hms2ms(utils.fv(itemContext[i], 'musicResponsiveListItemFixedColumnRenderer:runs:text', true)),
-                thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:thumbnails')
+                thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:Thumbnails')
             })
         }
     } else {
@@ -596,7 +596,7 @@ exports.parsePlaylistPage = context => {
                 return 1 < a.length ? a : 0 < a.length ? a[0] : a
             })(),
             duration: utils.hms2ms(utils.fv(itemContext, 'musicResponsiveListItemFixedColumnRenderer:runs:text', true)),
-            thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:thumbnails', true)
+            thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:Thumbnails', true)
         })
     }
     return result
@@ -626,7 +626,7 @@ exports.parseAlbumPage = context => {
     result.date = albumRelease.releaseDate
     result.duration = parseInt(albumRelease.durationMs)
     result.playlistId = albumRelease.audioPlaylistId
-    result.thumbnails = utils.fv(albumRelease, 'thumbnailDetails:thumbnails')
+    result.thumbnails = utils.fv(albumRelease, 'thumbnailDetails:Thumbnails')
 
     const albumReleaseDetail = utils.fv(
         context, 'musicAlbumReleaseDetail'
@@ -641,14 +641,14 @@ exports.parseAlbumPage = context => {
             result.artist.push({
                 name: albumArtist[i].name,
                 browseId: albumArtist[i].externalChannelId,
-                thumbnails: utils.fv(albumArtist[i], 'thumbnailDetails:thumbnails')
+                thumbnails: utils.fv(albumArtist[i], 'thumbnailDetails:Thumbnails')
             })
         }
     } else if (albumArtist instanceof Object) {
         result.artist.push({
             name: albumArtist.name,
             browseId: albumArtist.externalChannelId,
-            thumbnails: utils.fv(albumArtist, 'thumbnailDetails:thumbnails')
+            thumbnails: utils.fv(albumArtist, 'thumbnailDetails:Thumbnails')
         })
     }
 
@@ -662,7 +662,7 @@ exports.parseAlbumPage = context => {
                 videoId: albumTrack[i].videoId,
                 artistNames: albumTrack[i].artistNames,
                 duration: parseInt(albumTrack[i].lengthMs),
-                thumbnails: utils.fv(albumTrack[i], 'thumbnailDetails:thumbnails')
+                thumbnails: utils.fv(albumTrack[i], 'thumbnailDetails:Thumbnails')
             })
         }
     } else if (albumTrack instanceof Object) {
@@ -671,7 +671,7 @@ exports.parseAlbumPage = context => {
             videoId: albumTrack.videoId,
             artistNames: albumTrack.artistNames,
             duration: parseInt(albumTrack.lengthMs),
-            thumbnails: utils.fv(albumTrack, 'thumbnailDetails:thumbnails')
+            thumbnails: utils.fv(albumTrack, 'thumbnailDetails:Thumbnails')
         })
     }
     return result

@@ -6,12 +6,12 @@ import { results } from './resources/resultTypes/results';
 import { categoryType } from './enums';
 import type { MusicResponsiveListItemFlexColumnRenderer } from './songresultRaw';
 import type { Artist } from './resources/generalTypes/artist';
-import type { thumbnails } from './resources/generalTypes/thumbnails';
-import type { album } from './resources/generalTypes/album';
+import type { Thumbnails } from './resources/generalTypes/thumbnails';
+import type { Album } from './resources/generalTypes/album';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import objectScan from 'object-scan';
-import type {FlexColumn, Run} from './resources/resultTypes/sectionList';
+import type { FlexColumn, Run } from './resources/resultTypes/sectionList';
 
 export class parsers {
 	// Make this one global function and call the other stuff
@@ -21,7 +21,6 @@ export class parsers {
 		// Go to the part which i have no idea
 		/**
          * Section list is an array of musiclistrenderer
-
          */
 		let sectionList = utils.fv(context, 'musicResponsiveListItemRenderer');
 
@@ -29,12 +28,8 @@ export class parsers {
 			sectionList = [sectionList];
 		}
 
-		sectionList.forEach((sectionContext: any) => {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-			const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
-				rtn: 'parent',
-				reverse: false,
-			})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
+		sectionList.forEach((sectionContext: MusicListRenderer) => {
+
 			const type = searchType ?? flexColumn[1].musicResponsiveListItemRenderer.text.runs[1].text; // FIXME:  convert this string to enum i guess
 			switch (type) {
 				case 'Song':
@@ -48,42 +43,44 @@ export class parsers {
                     name                just use the value;
                     videoID             just get the videoID
                     URL                 concat the prefix with videoID
-                    playlistID          just get the playlistID
+                    playlistID          just get the playlistID (if its a song then what the hell is this)
                     artist              an array of artist objects
-                    album               an object album
+                    Album               an object Album
                     duration            just get the duration in number miliseconds
-                    thumbnails          an array of thumbnails objects
+                    Thumbnails          an array of Thumbnails objects
                     params              have no idea what is this
                      */
 
 					// new parser
-					const duration = runsArray[runsArray.length - 1].text;
-
                 // const type = _.nth(utils.fv(flexColumn[1], 'runs:text'), 0) as categoryType; // FIXME:  convert this string to enum i guess
                 // const name = utils.fv(flexColumn[0], 'runs:text') as unknown as string;
                 // const videoID = utils.fv(sectionContext, 'playNavigationEndpoint:videoId') as unknown as string;
                 // const URL = `https://www.youtube.com/watch?v${utils.fv(sectionContext, 'playNavigationEndpoint:videoId')}` as unknown as string;
                 // const playlistID = utils.fv(sectionContext, 'playNavigationEndpoint:playlistId') as unknown as string;
                 // const artist = this.artistParser(flexColumn) as unknown as Artist;
-                // const album = this.albumParser(flexColumn) as unknown as album;
+                // const Album = this.albumParser(flexColumn) as unknown as Album;
                 // const duration = utils.hms2ms(_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 6))!;
-                // const thumbnail = utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails') as unknown as thumbnails;
+                // const thumbnail = utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails') as unknown as Thumbnails;
                 // const params = utils.fv(sectionContext, 'playNavigationEndpoint:params') as unknown;
                 //
-                // return new SongSearchResult(type, name, videoID, URL, playlistID, artist, album, duration, thumbnail, params);
+                // return new SongSearchResult(type, name, videoID, URL, playlistID, artist, Album, duration, thumbnail, params);
 			}
 		});
 	}
 
 	/**
-     * Build the song item
-     * @param flexColumn
-     * @private
-     */
-	private static parseSongSearchResult(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]) {
+	 * Build the song item
+	 * @private
+	 * @param sectionContext
+	 */
+	private static parseSongSearchResult(sectionContext: MusicResponsiveListItemFlexColumnRenderer[]) {
+		const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
+			rtn: 'parent',
+			reverse: false,
+		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
 
-        // eslint-disable-next-line no-warning-comments
-	    /*
+		// eslint-disable-next-line no-warning-comments
+		/*
 	    FIXME objectScan has no ts typings so error everywhere
 	    FIXME shove the stuff into a song object
 	     */
@@ -92,41 +89,12 @@ export class parsers {
 		const id = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]) as string;
 		const url = `https://www.youtube.com/watch?v=${id}`;
 		// const playlistId (have no idea do we need it or not, seems like the auto suggestion feature on normal browsers)
-       const artist = utils.artistParser(flexColumn[1] as Run[]);
-       const album
-	}
-
-	private static artistParser(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]) {
-		const a = [];
-		let c = utils.fv(flexColumn[1], 'runs')[2];
-		if (Array.isArray(c)) {
-			c = _.filter(c, (o) => o.navigationEndpoint);
-			for (let i = 0; i < c.length; i++) {
-				a.push({
-					name: utils.fv(c[i], 'text'),
-					browseId: utils.fv(c[i], 'browseEndpoint:browseId'),
-				});
-			}
-		} else {
-			a.push({
-				name: utils.fv(c, 'text'),
-				browseId: utils.fv(c, 'browseEndpoint:browseId'),
-			});
-		}
-
-		return a.length > 1 ? a : a.length > 0 ? a[0] : a;
-	}
-
-	public static albumParser(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]): any {
-		const c = (_.nth(utils.fv(_.nth(flexColumn[1], 'runs'), 4)));
-		if (!Array.isArray(c) && c instanceof Object) {
-			return {
-				name: utils.fv(c, 'text'),
-				browseId: utils.fv(c, 'browseEndpoint:browseId'),
-			};
-		}
-
-		return {};
+		const artist = utils.artistParser(flexColumn[1] as Run[]);
+		const album = utils.albumParser(flexColumn[1] as Run[]);
+		const duration = utils.hms2ms((flexColumn[flexColumn.length - 1].text) as string);
+		const thumbnail = utils.thumbnailParser(sectionContext);
+		// What is this supposed to do?
+		// const params = ??
 	}
 
 // static parseSongSearchResult(context: any): Array<SongSearchResult> {
@@ -180,7 +148,7 @@ export class parsers {
 //                 }
 //                 return 1 < a.length ? a : 0 < a.length ? a[0] : a
 //             })(),
-//             album: (function () {
+//             Album: (function () {
 //                 var c = _.first(utils.fv(flexColumn[1], 'runs', true))
 //                 if (!Array.isArray(c) && c instanceof Object) return {
 //                     name: utils.fv(c, 'text'),
@@ -189,7 +157,7 @@ export class parsers {
 //                 return {}
 //             })(),
 //             duration: utils.hms2ms(_.last(utils.fv(flexColumn[1], 'runs:text', true))),
-//             thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails', true),
+//             Thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails', true),
 //             params: utils.fv(sectionContext, 'playNavigationEndpoint:params')
 //         })
 //
@@ -223,7 +191,7 @@ export class parsers {
 //             author: _.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 0),
 //             views: _.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 2),
 //             duration: utils.hms2ms(_.last(utils.fv(_.nth(flexColumn, 1), 'runs:text'))),
-//             thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails'),
+//             Thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails'),
 //             params: utils.fv(sectionContext, 'playNavigationEndpoint:params')
 //         }))
 //     })
@@ -260,7 +228,7 @@ export class parsers {
 //             name: utils.fv(_.nth(flexColumn, 0), 'runs:text'),
 //             artist: _.join(_.filter(utils.fv(_.nth(flexColumn, 1), 'runs:text').slice(1, -1), v => ' • ' != v && true), ''),
 //             year: _.last(utils.fv(_.nth(flexColumn, 1), 'runs:text')),
-//             thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails'),
+//             Thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails'),
 //         }))
 //     })
 //     return result
@@ -288,7 +256,7 @@ export class parsers {
 //             type: _.lowerCase(_.first(utils.fv(_.nth(flexColumn, 1), 'runs:text'))),
 //             browseId: utils.fv(_.at(sectionContext, 'navigationEndpoint'), 'browseEndpoint:browseId'),
 //             name: utils.fv(_.nth(flexColumn, 0), 'runs:text'),
-//             thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails')
+//             Thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails')
 //         }))
 //     })
 //     return result
@@ -330,7 +298,7 @@ export class parsers {
 //                     0
 //                 )
 //             ),
-//             thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails')
+//             Thumbnails: utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails')
 //         }))
 //     })
 //     return result
@@ -342,14 +310,14 @@ export class parsers {
 //         description: '',
 //         views: '',
 //         products: {},
-//         thumbnails: []
+//         Thumbnails: []
 //     }
 //
 //     const headerContext = utils.fv(
 //         context, 'musicImmersiveHeaderRenderer'
 //     )
 //     result.name = utils.fv(_.at(headerContext, 'title'), 'text')
-//     result.thumbnails = utils.fv(_.at(headerContext, 'thumbnail'), 'musicThumbnailRenderer:thumbnails')
+//     result.Thumbnails = utils.fv(_.at(headerContext, 'thumbnail'), 'musicThumbnailRenderer:Thumbnails')
 //
 //     const descriptionContext = utils.fv(
 //         context, 'musicDescriptionShelfRenderer'
@@ -389,7 +357,7 @@ export class parsers {
 //         ))
 //         result.products.songs.content.push({
 //             name: utils.fv(_.nth(flexColumn, 0), 'runs:text'),
-//             album: (function () {
+//             Album: (function () {
 //                 var c = (utils.fv(_.nth(flexColumn, 2), 'runs'))
 //                 if (!Array.isArray(c) && c instanceof Object) return {
 //                     name: utils.fv(c, 'text'),
@@ -447,7 +415,7 @@ export class parsers {
 //                                 browseId: utils.fv(_.at(itemContext[i], 'navigationEndpoint'), 'browseEndpoint:browseId'),
 //                                 name: utils.fv(_.at(itemContext[i], 'title'), 'text'),
 //                                 year: utils.fv(_.at(itemContext[i], 'subtitle'), 'text'),
-//                                 thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:thumbnails')
+//                                 Thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:Thumbnails')
 //                             })
 //                             break
 //                         case 'albums':
@@ -456,7 +424,7 @@ export class parsers {
 //                                 browseId: utils.fv(_.at(itemContext[i], 'navigationEndpoint'), 'browseEndpoint:browseId'),
 //                                 name: utils.fv(_.at(itemContext[i], 'title'), 'text'),
 //                                 year: _.nth(utils.fv(_.at(itemContext[i], 'subtitle'), 'text'), 2),
-//                                 thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:thumbnails')
+//                                 Thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:Thumbnails')
 //                             })
 //                             break
 //                         case 'videos':
@@ -467,7 +435,7 @@ export class parsers {
 //                                 name: utils.fv(_.at(itemContext[i], 'title'), 'text'),
 //                                 author: _.join(_.dropRight(utils.fv(_.at(itemContext[i], 'subtitle'), 'text'), 2), ''),
 //                                 views: _.nth(utils.fv(_.at(itemContext[i], 'subtitle'), 'text'), 2),
-//                                 thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:thumbnails')
+//                                 Thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:Thumbnails')
 //                             })
 //                             break
 //                     }
@@ -480,7 +448,7 @@ export class parsers {
 //                             browseId: utils.fv(_.at(itemContext, 'navigationEndpoint'), 'browseEndpoint:browseId'),
 //                             name: utils.fv(_.at(itemContext, 'title'), 'text'),
 //                             year: utils.fv(_.at(itemContext, 'subtitle'), 'text'),
-//                             thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:thumbnails')
+//                             Thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:Thumbnails')
 //                         })
 //                         break
 //                     case 'albums':
@@ -489,7 +457,7 @@ export class parsers {
 //                             browseId: utils.fv(_.at(itemContext, 'navigationEndpoint'), 'browseEndpoint:browseId'),
 //                             name: utils.fv(_.at(itemContext, 'title'), 'text'),
 //                             year: _.nth(utils.fv(_.at(itemContext, 'subtitle'), 'text'), 2),
-//                             thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:thumbnails')
+//                             Thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:Thumbnails')
 //                         })
 //                         break
 //                     case 'videos':
@@ -500,7 +468,7 @@ export class parsers {
 //                             name: utils.fv(_.at(itemContext, 'title'), 'text'),
 //                             author: _.join(_.dropRight(utils.fv(_.at(itemContext, 'subtitle'), 'text'), 2), ''),
 //                             views: _.nth(utils.fv(_.at(itemContext, 'subtitle'), 'text'), 2),
-//                             thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:thumbnails')
+//                             Thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:Thumbnails')
 //                         })
 //                         break
 //                 }
@@ -517,7 +485,7 @@ export class parsers {
 //         trackCount: 0,
 //         dateYear: '',
 //         content: [],
-//         thumbnails: [],
+//         Thumbnails: [],
 //         continuation: utils.fv(
 //             context, 'nextContinuationData', true
 //         )
@@ -531,7 +499,7 @@ export class parsers {
 //         result.owner = _.nth(utils.fv(_.at(pageHeader, 'subtitle'), 'runs:text'), 2)
 //         result.trackCount = parseInt(_.words(_.nth(utils.fv(_.at(pageHeader, 'secondSubtitle'), 'runs:text'), 0)))
 //         result.dateYear = _.nth(utils.fv(_.at(pageHeader, 'subtitle'), 'runs:text'), 4)
-//         result.thumbnails = utils.fv(pageHeader, 'croppedSquareThumbnailRenderer:thumbnails')
+//         result.Thumbnails = utils.fv(pageHeader, 'croppedSquareThumbnailRenderer:Thumbnails')
 //     }
 //
 //     const itemContext = utils.fv(
@@ -567,7 +535,7 @@ export class parsers {
 //                     return 1 < a.length ? a : 0 < a.length ? a[0] : a
 //                 })(),
 //                 duration: utils.hms2ms(utils.fv(itemContext[i], 'musicResponsiveListItemFixedColumnRenderer:runs:text', true)),
-//                 thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:thumbnails')
+//                 Thumbnails: utils.fv(itemContext[i], 'musicThumbnailRenderer:Thumbnails')
 //             })
 //         }
 //     } else {
@@ -599,7 +567,7 @@ export class parsers {
 //                 return 1 < a.length ? a : 0 < a.length ? a[0] : a
 //             })(),
 //             duration: utils.hms2ms(utils.fv(itemContext, 'musicResponsiveListItemFixedColumnRenderer:runs:text', true)),
-//             thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:thumbnails', true)
+//             Thumbnails: utils.fv(itemContext, 'musicThumbnailRenderer:Thumbnails', true)
 //         })
 //     }
 //     return result
@@ -618,7 +586,7 @@ export class parsers {
 //         duration: 0,
 //         artist: [],
 //         tracks: [],
-//         thumbnails: []
+//         Thumbnails: []
 //     }
 //
 //     const albumRelease = utils.fv(
@@ -629,7 +597,7 @@ export class parsers {
 //     result.date = albumRelease.releaseDate
 //     result.duration = parseInt(albumRelease.durationMs)
 //     result.playlistId = albumRelease.audioPlaylistId
-//     result.thumbnails = utils.fv(albumRelease, 'thumbnailDetails:thumbnails')
+//     result.Thumbnails = utils.fv(albumRelease, 'thumbnailDetails:Thumbnails')
 //
 //     const albumReleaseDetail = utils.fv(
 //         context, 'musicAlbumReleaseDetail'
@@ -644,14 +612,14 @@ export class parsers {
 //             result.artist.push({
 //                 name: albumArtist[i].name,
 //                 browseId: albumArtist[i].externalChannelId,
-//                 thumbnails: utils.fv(albumArtist[i], 'thumbnailDetails:thumbnails')
+//                 Thumbnails: utils.fv(albumArtist[i], 'thumbnailDetails:Thumbnails')
 //             })
 //         }
 //     } else if (albumArtist instanceof Object) {
 //         result.artist.push({
 //             name: albumArtist.name,
 //             browseId: albumArtist.externalChannelId,
-//             thumbnails: utils.fv(albumArtist, 'thumbnailDetails:thumbnails')
+//             Thumbnails: utils.fv(albumArtist, 'thumbnailDetails:Thumbnails')
 //         })
 //     }
 //
@@ -665,7 +633,7 @@ export class parsers {
 //                 videoId: albumTrack[i].videoId,
 //                 artistNames: albumTrack[i].artistNames,
 //                 duration: parseInt(albumTrack[i].lengthMs),
-//                 thumbnails: utils.fv(albumTrack[i], 'thumbnailDetails:thumbnails')
+//                 Thumbnails: utils.fv(albumTrack[i], 'thumbnailDetails:Thumbnails')
 //             })
 //         }
 //     } else if (albumTrack instanceof Object) {
@@ -674,7 +642,7 @@ export class parsers {
 //             videoId: albumTrack.videoId,
 //             artistNames: albumTrack.artistNames,
 //             duration: parseInt(albumTrack.lengthMs),
-//             thumbnails: utils.fv(albumTrack, 'thumbnailDetails:thumbnails')
+//             Thumbnails: utils.fv(albumTrack, 'thumbnailDetails:Thumbnails')
 //         })
 //     }
 //     return result

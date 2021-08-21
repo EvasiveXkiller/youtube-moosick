@@ -198,7 +198,7 @@ class MooSick {
     }
     async getAlbum(browseId) {
         if (!_.startsWith(browseId, 'MPREb')) {
-            throw new Error('invalid album browse id.');
+            throw new Error('invalid Album browse id.');
         }
         return new Promise((resolve, reject) => {
             const ctx = this._createApiRequest(endPointType.SEARCH, utils.buildEndpointContext(categoryType.ALBUM, browseId));
