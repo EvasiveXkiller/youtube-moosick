@@ -22,3 +22,21 @@ export enum categoryURIBase64 {
 	ARTIST = 'BAAGAAgASgA',
 	PLAYLISTS = 'BAAGAAgACgB',
 }
+export enum constantLinks {
+	VIDEOLINK = 'https://www.youtube.com/watch?v=',
+	CHANNELLINK = 'https://music.youtube.com/channel/',
+}
+
+// constant delimters for types, probably can do better
+
+export enum songOffset {
+	ARTIST = 0,
+	ALBUM = 1,
+	DURATION = 2,
+}
+
+export enum videoOffset {
+	ARTIST = 0,
+	VIEWS = 1,
+	DURATION = 2,
+}

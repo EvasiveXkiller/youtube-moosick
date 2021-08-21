@@ -5,7 +5,7 @@ import type { ArtistSearchResults } from './artistSearchResults';
 import type { PlaylistSearchResult } from './playlistSearchResult';
 import { Item } from '../../item';
 
-export class results extends Item {
+export class Results extends Item {
 	public declare results: SongSearchResult |
 	VideoSearchResult |
 	AlbumSearchResult |

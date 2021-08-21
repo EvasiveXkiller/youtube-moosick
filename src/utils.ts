@@ -6,7 +6,7 @@ import { Thumbnails } from './resources/generalTypes/thumbnails';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import objectScan from 'object-scan';
-import { categoryType } from './enums';
+import {categoryType, constantLinks, songOffset} from './enums';
 import { IllegalTypeError } from './resources/errors/illegalType.error';
 
 export class utils {
@@ -192,13 +192,13 @@ export class utils {
 	static artistParser(runsArray: Run[], delimiter = ' • '): Artist[] {
 		// Only "SONGS" and "VIDEOS" are supported for this function to extract
 		if (runsArray[0].text as categoryType !== categoryType.SONG || categoryType.VIDEO) {
-			throw new IllegalTypeError('Only the "SONGS" and "VIDEOS" are supported');
+			throw new IllegalTypeError('Only "categoryType.SONG" and "categoryType.VIDEO" are can be decoded');
 		}
 
 		// Gets the positions of the delimiter
 		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
 		// Gets the object located between the 1st and 2nd delimiter
-		const multiDimension = runsArray.slice(positions[0] + 1, positions[1])
+		const multiDimension = runsArray.slice(positions[songOffset.ARTIST] + 1, positions[songOffset.ARTIST + 1])
 			// Strip out unrelated objects like "&"
 			.map((element) => element.navigationEndpoint === undefined ? null : element)
 			.filter(Boolean);
@@ -207,23 +207,23 @@ export class utils {
 		return multiDimension.map((element) => (Artist.from({
 			name: element.text,
 			id: element.navigationEndpoint.browseEndpoint.browseId,
-			url: `https://music.youtube.com/channel/${element.navigationEndpoint.browseEndpoint.browseId}`,
+			url: constantLinks.CHANNELLINK + element.navigationEndpoint.browseEndpoint.browseId,
 		})));
 	}
 
 	static albumParser(runsArray: Run[], delimiter = ' • '): Album {
 		// Only "SONGS" and "VIDEOS" are supported for this function to extract
 		if (runsArray[0].text as categoryType !== categoryType.SONG || categoryType.VIDEO) {
-			throw new IllegalTypeError('Only the "SONGS" and "VIDEOS" are supported');
+			throw new IllegalTypeError('Only "categoryType.SONG" and "categoryType.VIDEO" are can be decoded');
 		}
 
 		// Gets the positions of the delimiter
 		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
 
 		return Album.from({
-			name: runsArray[positions[1] + 1].text,
-			id: runsArray[positions[1] + 1].navigationEndpoint.browseEndpoint.browseId,
-			url: `https://music.youtube.com/channel/${runsArray[positions[1] + 1].navigationEndpoint.browseEndpoint.browseId}`,
+			name: runsArray[positions[songOffset.ALBUM] + 1].text,
+			id: runsArray[songOffset.ALBUM + 1].navigationEndpoint.browseEndpoint.browseId,
+			url: constantLinks.CHANNELLINK + runsArray[songOffset.ALBUM + 1].navigationEndpoint.browseEndpoint.browseId,
 		});
 	}
 

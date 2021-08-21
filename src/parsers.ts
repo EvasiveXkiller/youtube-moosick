@@ -1,17 +1,14 @@
-import _ from 'lodash';
-import { SongSearchResult } from './resources/resultTypes/songSearchResult';
-
 import { utils } from './utils';
-import { results } from './resources/resultTypes/results';
-import { categoryType } from './enums';
+import { categoryType, constantLinks, videoOffset } from './enums';
 import type { MusicResponsiveListItemFlexColumnRenderer } from './songresultRaw';
-import type { Artist } from './resources/generalTypes/artist';
-import type { Thumbnails } from './resources/generalTypes/thumbnails';
-import type { Album } from './resources/generalTypes/album';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import objectScan from 'object-scan';
 import type { Run } from './resources/resultTypes/sectionList';
+import { IllegalTypeError } from './resources/errors/illegalType.error';
+import { SongSearchResult } from './resources/resultTypes/songSearchResult';
+import { VideoSearchResult } from './resources/resultTypes/videoSearchResult';
+import type { Artist } from './resources/generalTypes/artist';
 
 export class parsers {
 	// Make this one global function and call the other stuff
@@ -34,41 +31,17 @@ export class parsers {
 			})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
 			// probably insert a type here
 			const type = searchType ?? flexColumn[1].musicResponsiveListItemRenderer.text.runs[1].text as categoryType;
+			// Is there a way to put this in map?, most likely will be more readable and u can separate into files
 			switch (type) {
-				case categoryType.SONG:
+				case categoryType.SONG: {
 					parsers.parseSongSearchResult(sectionContext);
-				case 'Song':
-					// @frozen
-					/*
-                    I have no idea is this the best way
-                    Seperate the process into objects, then build the output then return it
-                    @type songSearchResults
+					break;
+				}
 
-                    type                convert it into enum
-                    name                just use the value;
-                    videoID             just get the videoID
-                    URL                 concat the prefix with videoID
-                    playlistID          just get the playlistID (if its a song then what the hell is this)
-                    artist              an array of artist objects
-                    Album               an object Album
-                    duration            just get the duration in number miliseconds
-                    Thumbnails          an array of Thumbnails objects
-                    params              have no idea what is this
-                     */
-
-					// new parser
-                // const type = _.nth(utils.fv(flexColumn[1], 'runs:text'), 0) as categoryType; // FIXME:  convert this string to enum i guess
-                // const name = utils.fv(flexColumn[0], 'runs:text') as unknown as string;
-                // const videoID = utils.fv(sectionContext, 'playNavigationEndpoint:videoId') as unknown as string;
-                // const URL = `https://www.youtube.com/watch?v${utils.fv(sectionContext, 'playNavigationEndpoint:videoId')}` as unknown as string;
-                // const playlistID = utils.fv(sectionContext, 'playNavigationEndpoint:playlistId') as unknown as string;
-                // const artist = this.artistParser(flexColumn) as unknown as Artist;
-                // const Album = this.albumParser(flexColumn) as unknown as Album;
-                // const duration = utils.hms2ms(_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 6))!;
-                // const thumbnail = utils.fv(sectionContext, 'musicThumbnailRenderer:Thumbnails') as unknown as Thumbnails;
-                // const params = utils.fv(sectionContext, 'playNavigationEndpoint:params') as unknown;
-                //
-                // return new SongSearchResult(type, name, videoID, URL, playlistID, artist, Album, duration, thumbnail, params);
+				case categoryType.VIDEO: {
+					parsers.parseVideoSearchResult(sectionContext);
+					break;
+				}
 			}
 		});
 	}
@@ -78,11 +51,15 @@ export class parsers {
 	 * @private
 	 * @param sectionContext
 	 */
-	private static parseSongSearchResult(sectionContext: MusicResponsiveListItemFlexColumnRenderer[]) {
+	// Probably the type of sectionContext is wrong have to check on it more
+	private static parseSongSearchResult(sectionContext: MusicResponsiveListItemFlexColumnRenderer[]): SongSearchResult {
 		const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
 			rtn: 'parent',
 			reverse: false,
 		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
+		if (flexColumn[1].text as categoryType !== categoryType.SONG) {
+			throw new IllegalTypeError(`Type ${flexColumn[1].text as string} cannot be applied to ${categoryType.SONG} function`);
+		}
 
 		// eslint-disable-next-line no-warning-comments
 		/*
@@ -100,6 +77,27 @@ export class parsers {
 		const thumbnail = utils.thumbnailParser(sectionContext);
 		// What is this supposed to do?
 		// const params = ??
+	}
+
+	private static parseVideoSearchResult(sectionContext: MusicResponsiveListItemFlexColumnRenderer[]): VideoSearchResult {
+		const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
+			rtn: 'parent',
+			reverse: false,
+		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
+		if (flexColumn[1].text as categoryType !== categoryType.VIDEO) {
+			throw new IllegalTypeError(`Type ${flexColumn[1].text as string} cannot be applied to ${categoryType.VIDEO} function`);
+		}
+
+		const videoId = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]) as string;
+		return VideoSearchResult.from({
+			type: categoryType.VIDEO,
+			name: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]) as string,
+			videoId,
+			url: constantLinks.CHANNELLINK + videoId,
+			author: utils.artistParser(flexColumn[1] as Run[])!,
+			views: flexColumn[videoOffset.VIEWS].text as string,
+			duration: utils.hms2ms(flexColumn[videoOffset.DURATION].text as string),
+		});
 	}
 
 // static parseSongSearchResult(context: any): Array<SongSearchResult> {
