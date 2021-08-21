@@ -1,3 +1,3 @@
-export class videoSearchResult {
+export class VideoSearchResult {
 
 }

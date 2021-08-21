@@ -24,4 +24,4 @@ class songSearchResult {
 }
 
 export { songSearchResult };
-//# sourceMappingURL=songSearchResult.js.map
+//# sourceMappingURL=SongSearchResult.js.map

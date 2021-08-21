@@ -1,3 +1,3 @@
-export class playlistSearchResult {
+export class PlaylistSearchResult {
 
 }

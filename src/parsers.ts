@@ -1,41 +1,45 @@
-import _ from "lodash";
-import {songSearchResult} from "./resources/resultTypes/songSearchResult";
+import _ from 'lodash';
+import { SongSearchResult } from './resources/resultTypes/songSearchResult';
 
-import {utils} from "./utils";
-import {results} from "./resources/resultTypes/results";
-import type {categoryType} from "./enums";
-import {frozen} from "./resources/resultTypes/frozen";
-import type {MusicResponsiveListItemFlexColumnRenderer} from "./songresultRaw";
-import type {artist} from "./resources/generalTypes/artist";
-import type {thumbnails} from "./resources/generalTypes/thumbnails";
-import type {album} from "./resources/generalTypes/album";
+import { utils } from './utils';
+import { results } from './resources/resultTypes/results';
+import { categoryType } from './enums';
+import type { MusicResponsiveListItemFlexColumnRenderer } from './songresultRaw';
+import type { Artist } from './resources/generalTypes/artist';
+import type { thumbnails } from './resources/generalTypes/thumbnails';
+import type { album } from './resources/generalTypes/album';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import objectScan from 'object-scan';
+import type {FlexColumn, Run} from './resources/resultTypes/sectionList';
 
 export class parsers {
-
-    // Make this one global function and call the other stuff
-    // Probably other methods should be private
-    static parseSearchResult(context: any, searchType?: categoryType): any {
-        const result = new results();
-        // Go to the part which i have no idea
-        /**
+	// Make this one global function and call the other stuff
+	// Probably other methods should be private
+	static parseSearchResult(context: any, searchType?: categoryType): any {
+		const result = new results();
+		// Go to the part which i have no idea
+		/**
          * Section list is an array of musiclistrenderer
 
          */
-        sectionList : sectionContext
-        let sectionList = utils.fv(context, 'musicResponsiveListItemRenderer');
+		let sectionList = utils.fv(context, 'musicResponsiveListItemRenderer');
 
-        if (!Array.isArray(sectionList))
-            sectionList = [sectionList]
+		if (!Array.isArray(sectionList)) {
+			sectionList = [sectionList];
+		}
 
-
-        sectionList.forEach((sectionContext: any) => {
-            let flexColumn: Array<MusicResponsiveListItemFlexColumnRenderer>
-            flexColumn = _.concat(utils.fv(sectionContext, 'musicResponsiveListItemFlexColumnRenderer'))
-            const type = searchType ?? _.nth(utils.fv(flexColumn[1], 'runs:text'), 0) //FIXME:  convert this string to enum i guess
-            switch (type) {
-                case 'Song':
-                    //@frozen
-                        /*
+		sectionList.forEach((sectionContext: any) => {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+			const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
+				rtn: 'parent',
+				reverse: false,
+			})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
+			const type = searchType ?? flexColumn[1].musicResponsiveListItemRenderer.text.runs[1].text; // FIXME:  convert this string to enum i guess
+			switch (type) {
+				case 'Song':
+					// @frozen
+					/*
                     I have no idea is this the best way
                     Seperate the process into objects, then build the output then return it
                     @type songSearchResults
@@ -52,55 +56,80 @@ export class parsers {
                     params              have no idea what is this
                      */
 
-                    const type = _.nth(utils.fv(flexColumn[1], 'runs:text'), 0) as categoryType //FIXME:  convert this string to enum i guess
-                    const name = utils.fv(flexColumn[0], "runs:text") as unknown as string;
-                    const videoID = utils.fv(sectionContext, 'playNavigationEndpoint:videoId') as unknown as string
-                    const URL = `https://www.youtube.com/watch?v${utils.fv(sectionContext, 'playNavigationEndpoint:videoId')}` as unknown as string;
-                    const playlistID = utils.fv(sectionContext, 'playNavigationEndpoint:playlistId') as unknown as string;
-                    const artist = this.artistParser(flexColumn) as unknown as artist;
-                    const album = this.albumParser(flexColumn) as unknown as album;
-                    const duration = utils.hms2ms(_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 6)) as number
-                    const thumbnail = utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails') as unknown as thumbnails
-                    const params = utils.fv(sectionContext, 'playNavigationEndpoint:params') as unknown
+					// new parser
+					const duration = runsArray[runsArray.length - 1].text;
 
-                    return new songSearchResult(type, name, videoID, URL, playlistID, artist, album, duration, thumbnail, params)
-            }
-        })
-    }
+                // const type = _.nth(utils.fv(flexColumn[1], 'runs:text'), 0) as categoryType; // FIXME:  convert this string to enum i guess
+                // const name = utils.fv(flexColumn[0], 'runs:text') as unknown as string;
+                // const videoID = utils.fv(sectionContext, 'playNavigationEndpoint:videoId') as unknown as string;
+                // const URL = `https://www.youtube.com/watch?v${utils.fv(sectionContext, 'playNavigationEndpoint:videoId')}` as unknown as string;
+                // const playlistID = utils.fv(sectionContext, 'playNavigationEndpoint:playlistId') as unknown as string;
+                // const artist = this.artistParser(flexColumn) as unknown as Artist;
+                // const album = this.albumParser(flexColumn) as unknown as album;
+                // const duration = utils.hms2ms(_.nth(utils.fv(_.nth(flexColumn, 1), 'runs:text'), 6))!;
+                // const thumbnail = utils.fv(sectionContext, 'musicThumbnailRenderer:thumbnails') as unknown as thumbnails;
+                // const params = utils.fv(sectionContext, 'playNavigationEndpoint:params') as unknown;
+                //
+                // return new SongSearchResult(type, name, videoID, URL, playlistID, artist, album, duration, thumbnail, params);
+			}
+		});
+	}
 
-    private static artistParser(flexColumn: Array<MusicResponsiveListItemFlexColumnRenderer>) {
-        let a = [];
-        let c = utils.fv(flexColumn[1], 'runs')[2];
-        if (Array.isArray(c)) {
-            c = _.filter(c, function (o) {
-                return o.navigationEndpoint
-            })
-            for (var i = 0; i < c.length; i++) {
-                a.push({
-                    name: utils.fv(c[i], 'text'),
-                    browseId: utils.fv(c[i], 'browseEndpoint:browseId')
-                })
-            }
-        } else {
-            a.push({
-                name: utils.fv(c, 'text'),
-                browseId: utils.fv(c, 'browseEndpoint:browseId')
-            })
-        }
-        return 1 < a.length ? a : 0 < a.length ? a[0] : a
-    }
+	/**
+     * Build the song item
+     * @param flexColumn
+     * @private
+     */
+	private static parseSongSearchResult(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]) {
 
-    public static albumParser(flexColumn: Array<MusicResponsiveListItemFlexColumnRenderer>): any {
+        // eslint-disable-next-line no-warning-comments
+	    /*
+	    FIXME objectScan has no ts typings so error everywhere
+	    FIXME shove the stuff into a song object
+	     */
+		const type = categoryType.SONG;
+		const name = objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]) as string;
+		const id = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]) as string;
+		const url = `https://www.youtube.com/watch?v=${id}`;
+		// const playlistId (have no idea do we need it or not, seems like the auto suggestion feature on normal browsers)
+       const artist = utils.artistParser(flexColumn[1] as Run[]);
+       const album
+	}
 
-        let c = (_.nth(utils.fv(_.nth(flexColumn[1], 'runs'), 4)))
-        if (!Array.isArray(c) && c instanceof Object) return {
-            name: utils.fv(c, 'text'),
-            browseId: utils.fv(c, 'browseEndpoint:browseId')
-        }
-        return {}
-    }
+	private static artistParser(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]) {
+		const a = [];
+		let c = utils.fv(flexColumn[1], 'runs')[2];
+		if (Array.isArray(c)) {
+			c = _.filter(c, (o) => o.navigationEndpoint);
+			for (let i = 0; i < c.length; i++) {
+				a.push({
+					name: utils.fv(c[i], 'text'),
+					browseId: utils.fv(c[i], 'browseEndpoint:browseId'),
+				});
+			}
+		} else {
+			a.push({
+				name: utils.fv(c, 'text'),
+				browseId: utils.fv(c, 'browseEndpoint:browseId'),
+			});
+		}
 
-// static parseSongSearchResult(context: any): Array<songSearchResult> {
+		return a.length > 1 ? a : a.length > 0 ? a[0] : a;
+	}
+
+	public static albumParser(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]): any {
+		const c = (_.nth(utils.fv(_.nth(flexColumn[1], 'runs'), 4)));
+		if (!Array.isArray(c) && c instanceof Object) {
+			return {
+				name: utils.fv(c, 'text'),
+				browseId: utils.fv(c, 'browseEndpoint:browseId'),
+			};
+		}
+
+		return {};
+	}
+
+// static parseSongSearchResult(context: any): Array<SongSearchResult> {
 //     const result = {
 //         content: [],
 //         continuation: utils.fv(

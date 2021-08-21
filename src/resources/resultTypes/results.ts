@@ -1,42 +1,43 @@
-import type {songSearchResult} from "./songSearchResult";
-import type {videoSearchResult} from "./videoSearchResult";
-import type {albumSearchResult} from "./albumSearchResult";
-import type {artistSearchResults} from "./artistSearchResults";
-import type {playlistSearchResult} from "./playlistSearchResult";
+import type { SongSearchResult } from './songSearchResult';
+import type { VideoSearchResult } from './videoSearchResult';
+import type { AlbumSearchResult } from './albumSearchResult';
+import type { ArtistSearchResults } from './artistSearchResults';
+import type { PlaylistSearchResult } from './playlistSearchResult';
 
 export class results {
-    private _results: songSearchResult |
-        videoSearchResult |
-        albumSearchResult |
-        artistSearchResults |
-        playlistSearchResult |
-        Array<null> | undefined
-    private _continuation: string | undefined
+	private _results: SongSearchResult |
+	VideoSearchResult |
+	AlbumSearchResult |
+	ArtistSearchResults |
+	PlaylistSearchResult |
+	null[] | undefined;
 
-    constructor(results?: songSearchResult |
-                    videoSearchResult |
-                    albumSearchResult |
-                    artistSearchResults |
-                    playlistSearchResult |
-                    Array<null>
-        , continuation?: string | undefined) {
-        this._results = results;
-        this._continuation = continuation
-    }
+	private _continuation: string | undefined;
 
-    get continuation(): string | undefined {
-        return this._continuation;
-    }
+	constructor(results?: SongSearchResult |
+	VideoSearchResult |
+	AlbumSearchResult |
+	ArtistSearchResults |
+	PlaylistSearchResult |
+	null[]
+	, continuation?: string | undefined) {
+		this._results = results;
+		this._continuation = continuation;
+	}
 
-    set continuation(value: string | undefined) {
-        this._continuation = value;
-    }
+	get continuation(): string | undefined {
+		return this._continuation;
+	}
 
-    get results(): songSearchResult | videoSearchResult | albumSearchResult | artistSearchResults | playlistSearchResult | Array<null> | undefined {
-        return this._results;
-    }
+	set continuation(value: string | undefined) {
+		this._continuation = value;
+	}
 
-    set results(value: songSearchResult | videoSearchResult | albumSearchResult | artistSearchResults | playlistSearchResult | Array<null> | undefined) {
-        this._results = value;
-    }
+	get results(): SongSearchResult | VideoSearchResult | AlbumSearchResult | ArtistSearchResults | PlaylistSearchResult | null[] | undefined {
+		return this._results;
+	}
+
+	set results(value: SongSearchResult | VideoSearchResult | AlbumSearchResult | ArtistSearchResults | PlaylistSearchResult | null[] | undefined) {
+		this._results = value;
+	}
 }

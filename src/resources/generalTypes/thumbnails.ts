@@ -1,5 +1,5 @@
-import type {ThumbnailElement} from "../../songresultRaw";
+import type { ThumbnailElement } from '../../songresultRaw';
 
-export class thumbnails implements ThumbnailElement{
+export class thumbnails implements ThumbnailElement {
 
 }

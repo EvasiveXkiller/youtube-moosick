@@ -5,10 +5,10 @@ type IfEquals<X, Y, A, B> =
     (<T>() => T extends Y ? 1 : 2) ? A : B;
 type WritableProps<T> = Pick<T, {
 	[P in keyof T]: IfEquals<
-		{ [Q in P]: T[P] },
-		{ -readonly [Q in P]: T[P] },
-		P,
-		never
+	{ [Q in P]: T[P] },
+	{ -readonly [Q in P]: T[P] },
+	P,
+	never
 	>
 }[keyof T]>;
 export type ItemOptions<T extends abstract new (...args: any[]) => any> = {
