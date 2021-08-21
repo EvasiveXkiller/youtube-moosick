@@ -7,6 +7,7 @@ import { Thumbnails } from './resources/generalTypes/thumbnails';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import objectScan from 'object-scan';
+import {categoryType} from "./enums";
 
 export class utils {
 	/**
@@ -224,7 +225,8 @@ export class utils {
 	}
 
 	// Parse enums from here for utils
-	public static parseTypeName(typeName: string) {
-
+	// Probably dont need it but see how
+	public static parseTypeName(typeName: string): categoryType {
+		return typeName as categoryType;
 	}
 }

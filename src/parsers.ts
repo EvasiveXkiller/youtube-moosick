@@ -11,13 +11,12 @@ import type { Album } from './resources/generalTypes/album';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import objectScan from 'object-scan';
-import type { FlexColumn, Run } from './resources/resultTypes/sectionList';
+import type { Run } from './resources/resultTypes/sectionList';
 
 export class parsers {
 	// Make this one global function and call the other stuff
 	// Probably other methods should be private
 	static parseSearchResult(context: any, searchType?: categoryType): any {
-		const result = new results();
 		// Go to the part which i have no idea
 		/**
          * Section list is an array of musiclistrenderer
@@ -29,9 +28,15 @@ export class parsers {
 		}
 
 		sectionList.forEach((sectionContext: MusicListRenderer) => {
-
-			const type = searchType ?? flexColumn[1].musicResponsiveListItemRenderer.text.runs[1].text; // FIXME:  convert this string to enum i guess
+			const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
+				rtn: 'parent',
+				reverse: false,
+			})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
+			// probably insert a type here
+			const type = searchType ?? flexColumn[1].musicResponsiveListItemRenderer.text.runs[1].text as categoryType;
 			switch (type) {
+				case categoryType.SONG:
+					parsers.parseSongSearchResult(sectionContext);
 				case 'Song':
 					// @frozen
 					/*
