@@ -6,7 +6,7 @@ import { Thumbnails } from './resources/generalTypes/thumbnails';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import objectScan from 'object-scan';
-import {categoryType, constantLinks, songOffset} from './enums';
+import { categoryType, constantLinks, flexColumnDefinition, playlistOffset, songOffset } from './enums';
 import { IllegalTypeError } from './resources/errors/illegalType.error';
 
 export class utils {
@@ -211,27 +211,50 @@ export class utils {
 		})));
 	}
 
+	/**
+	 * Parses the album from the flexcolumn, if can
+	 * @param runsArray
+	 * @param delimiter
+	 */
 	static albumParser(runsArray: Run[], delimiter = ' • '): Album {
 		// Only "SONGS" and "VIDEOS" are supported for this function to extract
-		if (runsArray[0].text as categoryType !== categoryType.SONG || categoryType.VIDEO) {
-			throw new IllegalTypeError('Only "categoryType.SONG" and "categoryType.VIDEO" are can be decoded');
+		if (runsArray[flexColumnDefinition.GENERAL].text as categoryType !== categoryType.SONG
+			|| runsArray[flexColumnDefinition.GENERAL].text as categoryType !== categoryType.VIDEO
+		|| runsArray[flexColumnDefinition.GENERAL].text as categoryType !== categoryType.PLAYLISTS) {
+			throw new IllegalTypeError('Only "categoryType.SONG","categoryType.VIDEOS","categoryType.PLAYLISTS" can be decoded');
 		}
 
 		// Gets the positions of the delimiter
+		// Probably can deprecate the following line, or use a constant
 		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
-
+		// Determines what limiter to use
+		const typedDelimiter = (runsArray[flexColumnDefinition.GENERAL].text as categoryType) === categoryType.PLAYLISTS ? playlistOffset.AUTHOR : songOffset.ARTIST;
 		return Album.from({
-			name: runsArray[positions[songOffset.ALBUM] + 1].text,
+			name: runsArray[positions[typedDelimiter] + 1].text,
 			id: runsArray[songOffset.ALBUM + 1].navigationEndpoint.browseEndpoint.browseId,
-			url: constantLinks.CHANNELLINK + runsArray[songOffset.ALBUM + 1].navigationEndpoint.browseEndpoint.browseId,
+			url: constantLinks.CHANNELLINK + runsArray[typedDelimiter + 1].navigationEndpoint.browseEndpoint.browseId,
 		});
 	}
 
+	/**
+	 * Gets the thumbnail from the sectionList
+	 * @param sectionContext
+	 */
 	static thumbnailParser(sectionContext: any): Thumbnails[] {
 		return objectScan(['**.musicThumbnailRenderer.**.thumbnails'], {
 			rtn: 'value',
 			reverse: false,
 		})(sectionContext) as Thumbnails[];
+	}
+
+	/**
+	 * Gets the playlist count and extracts them
+	 * @param flexColumn
+	 */
+	// Probably wrong type here
+	static playlistCountExtractor(flexColumn: Run[]): number {
+		const extracted = (objectScan(['**.text.runs'], { rtn: 'value', reverse: false, abort: true })(flexColumn[1])) as Run[];
+		return parseInt(extracted[extracted.length - 1].text, 10);
 	}
 
 	// Parse enums from here for utils

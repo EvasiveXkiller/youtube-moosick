@@ -27,6 +27,11 @@ export enum constantLinks {
 	CHANNELLINK = 'https://music.youtube.com/channel/',
 }
 
+export enum flexColumnDefinition {
+	GENERAL = 1,
+	SUPPLEMENT = 2,
+}
+
 // constant delimters for types, probably can do better
 
 export enum songOffset {
@@ -39,4 +44,9 @@ export enum videoOffset {
 	ARTIST = 0,
 	VIEWS = 1,
 	DURATION = 2,
+}
+
+export enum playlistOffset {
+	AUTHOR = 0,
+	SONGCOUNT = 1,
 }
