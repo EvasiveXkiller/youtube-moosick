@@ -1,13 +1,13 @@
 import type { ytcfgInterface } from './cfgInterface';
 import { Artist } from './resources/generalTypes/artist';
-import { IllegalArgumentError } from './resources/errors';
 import type { Run } from './resources/resultTypes/sectionList';
 import { Album } from './resources/generalTypes/album';
 import { Thumbnails } from './resources/generalTypes/thumbnails';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import objectScan from 'object-scan';
-import {categoryType} from "./enums";
+import { categoryType } from './enums';
+import { IllegalTypeError } from './resources/errors/illegalType.error';
 
 export class utils {
 	/**
@@ -190,6 +190,11 @@ export class utils {
                     { name: 'The Kid Laroi', browseId: 'UCof4hiuvv9BPhVCh90QHErw' } ]
 	 */
 	static artistParser(runsArray: Run[], delimiter = ' • '): Artist[] {
+		// Only "SONGS" and "VIDEOS" are supported for this function to extract
+		if (runsArray[0].text as categoryType !== categoryType.SONG || categoryType.VIDEO) {
+			throw new IllegalTypeError('Only the "SONGS" and "VIDEOS" are supported');
+		}
+
 		// Gets the positions of the delimiter
 		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
 		// Gets the object located between the 1st and 2nd delimiter
@@ -207,6 +212,11 @@ export class utils {
 	}
 
 	static albumParser(runsArray: Run[], delimiter = ' • '): Album {
+		// Only "SONGS" and "VIDEOS" are supported for this function to extract
+		if (runsArray[0].text as categoryType !== categoryType.SONG || categoryType.VIDEO) {
+			throw new IllegalTypeError('Only the "SONGS" and "VIDEOS" are supported');
+		}
+
 		// Gets the positions of the delimiter
 		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
 
