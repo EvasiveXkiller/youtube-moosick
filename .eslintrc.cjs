@@ -25,5 +25,10 @@ module.exports = {
 		'arrow-parens': ['error', 'always'],
 		'@typescript-eslint/no-non-null-assertion': ['off'],
 		'new-cap': ['off'],
+		'@typescript-eslint/indent': ['error', 'tab', {
+			SwitchCase: 1,
+			ignoredNodes: ['TSTypeParameterInstantiation'],
+		}],
+		'@typescript-eslint/no-useless-constructor': ['off'],
 	},
 };
