@@ -1,499 +1,499 @@
 export interface SongResultRaw {
-    responseContext?: ResponseContext;
-    trackingParams?:  string;
-    contents?:        Contents;
+	responseContext?: ResponseContext;
+	trackingParams?: string;
+	contents?: Contents;
 }
 
 export interface Contents {
-    tabbedSearchResultsRenderer?: TabbedSearchResultsRenderer;
+	tabbedSearchResultsRenderer?: TabbedSearchResultsRenderer;
 }
 
 export interface TabbedSearchResultsRenderer {
-    tabs?: Tab[];
+	tabs?: Tab[];
 }
 
 export interface Tab {
-    tabRenderer?: TabRenderer;
+	tabRenderer?: TabRenderer;
 }
 
 export interface TabRenderer {
-    title?:          string;
-    selected?:       boolean;
-    content?:        TabRendererContent;
-    tabIdentifier?:  string;
-    trackingParams?: string;
+	title?: string;
+	selected?: boolean;
+	content?: TabRendererContent;
+	tabIdentifier?: string;
+	trackingParams?: string;
 }
 
 export interface TabRendererContent {
-    sectionListRenderer?: SectionListRenderer;
+	sectionListRenderer?: SectionListRenderer;
 }
 
 export interface SectionListRenderer {
-    contents?:       SectionListRendererContent[];
-    trackingParams?: string;
-    header?:         Header;
+	contents?: SectionListRendererContent[];
+	trackingParams?: string;
+	header?: Header;
 }
 
 export interface SectionListRendererContent {
-    musicShelfRenderer?: MusicShelfRenderer;
+	musicShelfRenderer?: MusicShelfRenderer;
 }
 
 export interface MusicShelfRenderer {
-    title?:          BottomText;
-    contents?:       MusicShelfRendererContent[];
-    trackingParams?: string;
-    shelfDivider?:   ShelfDivider;
-    bottomText?:     BottomText;
-    bottomEndpoint?: Endpoint;
+	title?: BottomText;
+	contents?: MusicShelfRendererContent[];
+	trackingParams?: string;
+	shelfDivider?: ShelfDivider;
+	bottomText?: BottomText;
+	bottomEndpoint?: Endpoint;
 }
 
 export interface Endpoint {
-    clickTrackingParams?: string;
-    searchEndpoint?:      SearchEndpoint;
+	clickTrackingParams?: string;
+	searchEndpoint?: SearchEndpoint;
 }
 
 export interface SearchEndpoint {
-    query?:  Query;
-    params?: string;
+	query?: Query;
+	params?: string;
 }
 
 export enum Query {
-    DoWhatWeLike = "do what we like",
+	DoWhatWeLike = 'do what we like',
 }
 
 export interface BottomText {
-    runs?: BottomTextRun[];
+	runs?: BottomTextRun[];
 }
 
 export interface BottomTextRun {
-    text?: string;
+	text?: string;
 }
 
 export interface MusicShelfRendererContent {
-    musicResponsiveListItemRenderer?: MusicResponsiveListItemRenderer;
+	musicResponsiveListItemRenderer?: MusicResponsiveListItemRenderer;
 }
 
 export interface MusicResponsiveListItemRenderer {
-    trackingParams?:         string;
-    thumbnail?:              MusicResponsiveListItemRendererThumbnail;
-    overlay?:                Overlay;
-    flexColumns?:            FlexColumn[];
-    menu?:                   Menu;
-    playlistItemData?:       PlaylistItemData;
-    flexColumnDisplayStyle?: string;
-    itemHeight?:             ItemHeight;
-    navigationEndpoint?:     MusicResponsiveListItemRendererNavigationEndpoint;
-    badges?:                 Badge[];
+	trackingParams?: string;
+	thumbnail?: MusicResponsiveListItemRendererThumbnail;
+	overlay?: Overlay;
+	flexColumns?: FlexColumn[];
+	menu?: Menu;
+	playlistItemData?: PlaylistItemData;
+	flexColumnDisplayStyle?: string;
+	itemHeight?: ItemHeight;
+	navigationEndpoint?: MusicResponsiveListItemRendererNavigationEndpoint;
+	badges?: Badge[];
 }
 
 export interface Badge {
-    musicInlineBadgeRenderer?: MusicInlineBadgeRenderer;
+	musicInlineBadgeRenderer?: MusicInlineBadgeRenderer;
 }
 
 export interface MusicInlineBadgeRenderer {
-    trackingParams?:    string;
-    icon?:              Icon;
-    accessibilityData?: Accessibility;
+	trackingParams?: string;
+	icon?: Icon;
+	accessibilityData?: Accessibility;
 }
 
 export interface Accessibility {
-    accessibilityData?: AccessibilityData;
+	accessibilityData?: AccessibilityData;
 }
 
 export interface AccessibilityData {
-    label?: string;
+	label?: string;
 }
 
 export interface Icon {
-    iconType?: string;
+	iconType?: string;
 }
 
 export interface FlexColumn {
-    musicResponsiveListItemFlexColumnRenderer?: MusicResponsiveListItemFlexColumnRenderer;
+	musicResponsiveListItemFlexColumnRenderer?: MusicResponsiveListItemFlexColumnRenderer;
 }
 
 export interface MusicResponsiveListItemFlexColumnRenderer {
-    text?:            Text;
-    displayPriority?: DisplayPriority;
+	text?: Text;
+	displayPriority?: DisplayPriority;
 }
 
 export enum DisplayPriority {
-    MusicResponsiveListItemColumnDisplayPriorityHigh = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH",
+	MusicResponsiveListItemColumnDisplayPriorityHigh = 'MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH',
 }
 
 export interface Text {
-    runs?: PurpleRun[];
+	runs?: PurpleRun[];
 }
 
 export interface PurpleRun {
-    text?:               string;
-    navigationEndpoint?: RunNavigationEndpoint;
+	text?: string;
+	navigationEndpoint?: RunNavigationEndpoint;
 }
 
 export interface RunNavigationEndpoint {
-    clickTrackingParams?: string;
-    watchEndpoint?:       WatchEndpoint;
-    browseEndpoint?:      BrowseEndpoint;
+	clickTrackingParams?: string;
+	watchEndpoint?: WatchEndpoint;
+	browseEndpoint?: BrowseEndpoint;
 }
 
 export interface BrowseEndpoint {
-    browseId?:                              string;
-    browseEndpointContextSupportedConfigs?: BrowseEndpointContextSupportedConfigs;
+	browseId?: string;
+	browseEndpointContextSupportedConfigs?: BrowseEndpointContextSupportedConfigs;
 }
 
 export interface BrowseEndpointContextSupportedConfigs {
-    browseEndpointContextMusicConfig?: BrowseEndpointContextMusicConfig;
+	browseEndpointContextMusicConfig?: BrowseEndpointContextMusicConfig;
 }
 
 export interface BrowseEndpointContextMusicConfig {
-    pageType?: PageType;
+	pageType?: PageType;
 }
 
 export enum PageType {
-    MusicPageTypeAlbum = "MUSIC_PAGE_TYPE_ALBUM",
-    MusicPageTypeArtist = "MUSIC_PAGE_TYPE_ARTIST",
-    MusicPageTypePlaylist = "MUSIC_PAGE_TYPE_PLAYLIST",
-    MusicPageTypeUserChannel = "MUSIC_PAGE_TYPE_USER_CHANNEL",
+	MusicPageTypeAlbum = 'MUSIC_PAGE_TYPE_ALBUM',
+	MusicPageTypeArtist = 'MUSIC_PAGE_TYPE_ARTIST',
+	MusicPageTypePlaylist = 'MUSIC_PAGE_TYPE_PLAYLIST',
+	MusicPageTypeUserChannel = 'MUSIC_PAGE_TYPE_USER_CHANNEL',
 }
 
 export interface WatchEndpoint {
-    videoId?:                            string;
-    playlistId?:                         string;
-    loggingContext?:                     LoggingContext;
-    watchEndpointMusicSupportedConfigs?: WatchEndpointMusicSupportedConfigs;
-    params?:                             Params;
+	videoId?: string;
+	playlistId?: string;
+	loggingContext?: LoggingContext;
+	watchEndpointMusicSupportedConfigs?: WatchEndpointMusicSupportedConfigs;
+	params?: Params;
 }
 
 export interface LoggingContext {
-    vssLoggingContext?: VssLoggingContext;
+	vssLoggingContext?: VssLoggingContext;
 }
 
 export interface VssLoggingContext {
-    serializedContextData?: string;
+	serializedContextData?: string;
 }
 
 export enum Params {
-    WAEB = "wAEB",
-    WAEB8GECGAE3D = "wAEB8gECGAE%3D",
-    WAEB8GECKAE3D = "wAEB8gECKAE%3D",
+	WAEB = 'wAEB',
+	WAEB8GECGAE3D = 'wAEB8gECGAE%3D',
+	WAEB8GECKAE3D = 'wAEB8gECKAE%3D',
 }
 
 export interface WatchEndpointMusicSupportedConfigs {
-    watchEndpointMusicConfig?: WatchEndpointMusicConfig;
+	watchEndpointMusicConfig?: WatchEndpointMusicConfig;
 }
 
 export interface WatchEndpointMusicConfig {
-    musicVideoType?: MusicVideoType;
+	musicVideoType?: MusicVideoType;
 }
 
 export enum MusicVideoType {
-    MusicVideoTypeAtv = "MUSIC_VIDEO_TYPE_ATV",
-    MusicVideoTypeUgc = "MUSIC_VIDEO_TYPE_UGC",
+	MusicVideoTypeAtv = 'MUSIC_VIDEO_TYPE_ATV',
+	MusicVideoTypeUgc = 'MUSIC_VIDEO_TYPE_UGC',
 }
 
 export enum ItemHeight {
-    MusicResponsiveListItemHeightTall = "MUSIC_RESPONSIVE_LIST_ITEM_HEIGHT_TALL",
+	MusicResponsiveListItemHeightTall = 'MUSIC_RESPONSIVE_LIST_ITEM_HEIGHT_TALL',
 }
 
 export interface Menu {
-    menuRenderer?: MenuRenderer;
+	menuRenderer?: MenuRenderer;
 }
 
 export interface MenuRenderer {
-    items?:          ItemElement[];
-    trackingParams?: string;
-    accessibility?:  Accessibility;
+	items?: ItemElement[];
+	trackingParams?: string;
+	accessibility?: Accessibility;
 }
 
 export interface ItemElement {
-    menuNavigationItemRenderer?:    MenuItemRenderer;
-    menuServiceItemRenderer?:       MenuItemRenderer;
-    toggleMenuServiceItemRenderer?: ToggleMenuServiceItemRenderer;
+	menuNavigationItemRenderer?: MenuItemRenderer;
+	menuServiceItemRenderer?: MenuItemRenderer;
+	toggleMenuServiceItemRenderer?: ToggleMenuServiceItemRenderer;
 }
 
 export interface MenuItemRenderer {
-    text?:               BottomText;
-    icon?:               Icon;
-    navigationEndpoint?: MenuNavigationItemRendererNavigationEndpoint;
-    trackingParams?:     string;
-    serviceEndpoint?:    ServiceEndpoint;
+	text?: BottomText;
+	icon?: Icon;
+	navigationEndpoint?: MenuNavigationItemRendererNavigationEndpoint;
+	trackingParams?: string;
+	serviceEndpoint?: ServiceEndpoint;
 }
 
 export interface MenuNavigationItemRendererNavigationEndpoint {
-    clickTrackingParams?:   string;
-    watchEndpoint?:         WatchEndpoint;
-    modalEndpoint?:         ModalEndpoint;
-    browseEndpoint?:        BrowseEndpoint;
-    shareEntityEndpoint?:   ShareEntityEndpoint;
-    watchPlaylistEndpoint?: WatchPlaylistEndpoint;
+	clickTrackingParams?: string;
+	watchEndpoint?: WatchEndpoint;
+	modalEndpoint?: ModalEndpoint;
+	browseEndpoint?: BrowseEndpoint;
+	shareEntityEndpoint?: ShareEntityEndpoint;
+	watchPlaylistEndpoint?: WatchPlaylistEndpoint;
 }
 
 export interface ModalEndpoint {
-    modal?: Modal;
+	modal?: Modal;
 }
 
 export interface Modal {
-    modalWithTitleAndButtonRenderer?: ModalWithTitleAndButtonRenderer;
+	modalWithTitleAndButtonRenderer?: ModalWithTitleAndButtonRenderer;
 }
 
 export interface ModalWithTitleAndButtonRenderer {
-    title?:   BottomText;
-    content?: BottomText;
-    button?:  Button;
+	title?: BottomText;
+	content?: BottomText;
+	button?: Button;
 }
 
 export interface Button {
-    buttonRenderer?: ButtonRenderer;
+	buttonRenderer?: ButtonRenderer;
 }
 
 export interface ButtonRenderer {
-    style?:              StyleEnum;
-    isDisabled?:         boolean;
-    text?:               BottomText;
-    navigationEndpoint?: ButtonRendererNavigationEndpoint;
-    trackingParams?:     string;
+	style?: StyleEnum;
+	isDisabled?: boolean;
+	text?: BottomText;
+	navigationEndpoint?: ButtonRendererNavigationEndpoint;
+	trackingParams?: string;
 }
 
 export interface ButtonRendererNavigationEndpoint {
-    clickTrackingParams?: string;
-    signInEndpoint?:      SignInEndpoint;
+	clickTrackingParams?: string;
+	signInEndpoint?: SignInEndpoint;
 }
 
 export interface SignInEndpoint {
-    hack?: boolean;
+	hack?: boolean;
 }
 
 export enum StyleEnum {
-    StyleBlueText = "STYLE_BLUE_TEXT",
+	StyleBlueText = 'STYLE_BLUE_TEXT',
 }
 
 export interface ShareEntityEndpoint {
-    serializedShareEntity?: string;
+	serializedShareEntity?: string;
 }
 
 export interface WatchPlaylistEndpoint {
-    playlistId?: string;
-    params?:     Params;
+	playlistId?: string;
+	params?: Params;
 }
 
 export interface ServiceEndpoint {
-    clickTrackingParams?: string;
-    queueAddEndpoint?:    QueueAddEndpoint;
+	clickTrackingParams?: string;
+	queueAddEndpoint?: QueueAddEndpoint;
 }
 
 export interface QueueAddEndpoint {
-    queueTarget?:         QueueTarget;
-    queueInsertPosition?: QueueInsertPosition;
-    commands?:            Command[];
+	queueTarget?: QueueTarget;
+	queueInsertPosition?: QueueInsertPosition;
+	commands?: Command[];
 }
 
 export interface Command {
-    clickTrackingParams?: string;
-    addToToastAction?:    AddToToastAction;
+	clickTrackingParams?: string;
+	addToToastAction?: AddToToastAction;
 }
 
 export interface AddToToastAction {
-    item?: AddToToastActionItem;
+	item?: AddToToastActionItem;
 }
 
 export interface AddToToastActionItem {
-    notificationTextRenderer?: NotificationTextRenderer;
+	notificationTextRenderer?: NotificationTextRenderer;
 }
 
 export interface NotificationTextRenderer {
-    successResponseText?: BottomText;
-    trackingParams?:      string;
+	successResponseText?: BottomText;
+	trackingParams?: string;
 }
 
 export enum QueueInsertPosition {
-    InsertAfterCurrentVideo = "INSERT_AFTER_CURRENT_VIDEO",
-    InsertAtEnd = "INSERT_AT_END",
+	InsertAfterCurrentVideo = 'INSERT_AFTER_CURRENT_VIDEO',
+	InsertAtEnd = 'INSERT_AT_END',
 }
 
 export interface QueueTarget {
-    videoId?:    string;
-    playlistId?: string;
+	videoId?: string;
+	playlistId?: string;
 }
 
 export interface ToggleMenuServiceItemRenderer {
-    defaultText?:            BottomText;
-    defaultIcon?:            Icon;
-    defaultServiceEndpoint?: DefaultServiceEndpoint;
-    toggledText?:            BottomText;
-    toggledIcon?:            Icon;
-    trackingParams?:         string;
-    toggledServiceEndpoint?: ToggledServiceEndpoint;
+	defaultText?: BottomText;
+	defaultIcon?: Icon;
+	defaultServiceEndpoint?: DefaultServiceEndpoint;
+	toggledText?: BottomText;
+	toggledIcon?: Icon;
+	trackingParams?: string;
+	toggledServiceEndpoint?: ToggledServiceEndpoint;
 }
 
 export interface DefaultServiceEndpoint {
-    clickTrackingParams?: string;
-    modalEndpoint?:       ModalEndpoint;
+	clickTrackingParams?: string;
+	modalEndpoint?: ModalEndpoint;
 }
 
 export interface ToggledServiceEndpoint {
-    clickTrackingParams?: string;
-    likeEndpoint?:        LikeEndpoint;
+	clickTrackingParams?: string;
+	likeEndpoint?: LikeEndpoint;
 }
 
 export interface LikeEndpoint {
-    status?: string;
-    target?: Target;
+	status?: string;
+	target?: Target;
 }
 
 export interface Target {
-    playlistId?: string;
+	playlistId?: string;
 }
 
 export interface MusicResponsiveListItemRendererNavigationEndpoint {
-    clickTrackingParams?: string;
-    browseEndpoint?:      BrowseEndpoint;
+	clickTrackingParams?: string;
+	browseEndpoint?: BrowseEndpoint;
 }
 
 export interface Overlay {
-    musicItemThumbnailOverlayRenderer?: MusicItemThumbnailOverlayRenderer;
+	musicItemThumbnailOverlayRenderer?: MusicItemThumbnailOverlayRenderer;
 }
 
 export interface MusicItemThumbnailOverlayRenderer {
-    background?:      Background;
-    content?:         MusicItemThumbnailOverlayRendererContent;
-    contentPosition?: ContentPosition;
-    displayStyle?:    DisplayStyle;
+	background?: Background;
+	content?: MusicItemThumbnailOverlayRendererContent;
+	contentPosition?: ContentPosition;
+	displayStyle?: DisplayStyle;
 }
 
 export interface Background {
-    verticalGradient?: VerticalGradient;
+	verticalGradient?: VerticalGradient;
 }
 
 export interface VerticalGradient {
-    gradientLayerColors?: string[];
+	gradientLayerColors?: string[];
 }
 
 export interface MusicItemThumbnailOverlayRendererContent {
-    musicPlayButtonRenderer?: MusicPlayButtonRenderer;
+	musicPlayButtonRenderer?: MusicPlayButtonRenderer;
 }
 
 export interface MusicPlayButtonRenderer {
-    playNavigationEndpoint?: PlayNavigationEndpoint;
-    trackingParams?:         string;
-    playIcon?:               Icon;
-    pauseIcon?:              Icon;
-    iconColor?:              number;
-    backgroundColor?:        number;
-    activeBackgroundColor?:  number;
-    loadingIndicatorColor?:  number;
-    playingIcon?:            Icon;
-    iconLoadingColor?:       number;
-    activeScaleFactor?:      number;
-    buttonSize?:             ButtonSize;
-    rippleTarget?:           RippleTarget;
-    accessibilityPlayData?:  Accessibility;
-    accessibilityPauseData?: Accessibility;
+	playNavigationEndpoint?: PlayNavigationEndpoint;
+	trackingParams?: string;
+	playIcon?: Icon;
+	pauseIcon?: Icon;
+	iconColor?: number;
+	backgroundColor?: number;
+	activeBackgroundColor?: number;
+	loadingIndicatorColor?: number;
+	playingIcon?: Icon;
+	iconLoadingColor?: number;
+	activeScaleFactor?: number;
+	buttonSize?: ButtonSize;
+	rippleTarget?: RippleTarget;
+	accessibilityPlayData?: Accessibility;
+	accessibilityPauseData?: Accessibility;
 }
 
 export enum ButtonSize {
-    MusicPlayButtonSizeSmall = "MUSIC_PLAY_BUTTON_SIZE_SMALL",
+	MusicPlayButtonSizeSmall = 'MUSIC_PLAY_BUTTON_SIZE_SMALL',
 }
 
 export interface PlayNavigationEndpoint {
-    clickTrackingParams?:   string;
-    watchEndpoint?:         WatchEndpoint;
-    watchPlaylistEndpoint?: WatchPlaylistEndpoint;
+	clickTrackingParams?: string;
+	watchEndpoint?: WatchEndpoint;
+	watchPlaylistEndpoint?: WatchPlaylistEndpoint;
 }
 
 export enum RippleTarget {
-    MusicPlayButtonRippleTargetSelf = "MUSIC_PLAY_BUTTON_RIPPLE_TARGET_SELF",
+	MusicPlayButtonRippleTargetSelf = 'MUSIC_PLAY_BUTTON_RIPPLE_TARGET_SELF',
 }
 
 export enum ContentPosition {
-    MusicItemThumbnailOverlayContentPositionCentered = "MUSIC_ITEM_THUMBNAIL_OVERLAY_CONTENT_POSITION_CENTERED",
+	MusicItemThumbnailOverlayContentPositionCentered = 'MUSIC_ITEM_THUMBNAIL_OVERLAY_CONTENT_POSITION_CENTERED',
 }
 
 export enum DisplayStyle {
-    MusicItemThumbnailOverlayDisplayStylePersistent = "MUSIC_ITEM_THUMBNAIL_OVERLAY_DISPLAY_STYLE_PERSISTENT",
+	MusicItemThumbnailOverlayDisplayStylePersistent = 'MUSIC_ITEM_THUMBNAIL_OVERLAY_DISPLAY_STYLE_PERSISTENT',
 }
 
 export interface PlaylistItemData {
-    videoId?: string;
+	videoId?: string;
 }
 
 export interface MusicResponsiveListItemRendererThumbnail {
-    musicThumbnailRenderer?: MusicThumbnailRenderer;
+	musicThumbnailRenderer?: MusicThumbnailRenderer;
 }
 
 export interface MusicThumbnailRenderer {
-    thumbnail?:      MusicThumbnailRendererThumbnail;
-    thumbnailCrop?:  ThumbnailCrop;
-    thumbnailScale?: ThumbnailScale;
-    trackingParams?: string;
+	thumbnail?: MusicThumbnailRendererThumbnail;
+	thumbnailCrop?: ThumbnailCrop;
+	thumbnailScale?: ThumbnailScale;
+	trackingParams?: string;
 }
 
 export interface MusicThumbnailRendererThumbnail {
-    thumbnails?: ThumbnailElement[];
+	thumbnails?: ThumbnailElement[];
 }
 
 export interface ThumbnailElement {
-    url?:    string;
-    width?:  number;
-    height?: number;
+	url?: string;
+	width?: number;
+	height?: number;
 }
 
 export enum ThumbnailCrop {
-    MusicThumbnailCropCircle = "MUSIC_THUMBNAIL_CROP_CIRCLE",
-    MusicThumbnailCropUnspecified = "MUSIC_THUMBNAIL_CROP_UNSPECIFIED",
+	MusicThumbnailCropCircle = 'MUSIC_THUMBNAIL_CROP_CIRCLE',
+	MusicThumbnailCropUnspecified = 'MUSIC_THUMBNAIL_CROP_UNSPECIFIED',
 }
 
 export enum ThumbnailScale {
-    MusicThumbnailScaleAspectFill = "MUSIC_THUMBNAIL_SCALE_ASPECT_FILL",
-    MusicThumbnailScaleAspectFit = "MUSIC_THUMBNAIL_SCALE_ASPECT_FIT",
+	MusicThumbnailScaleAspectFill = 'MUSIC_THUMBNAIL_SCALE_ASPECT_FILL',
+	MusicThumbnailScaleAspectFit = 'MUSIC_THUMBNAIL_SCALE_ASPECT_FIT',
 }
 
 export interface ShelfDivider {
-    musicShelfDividerRenderer?: MusicShelfDividerRenderer;
+	musicShelfDividerRenderer?: MusicShelfDividerRenderer;
 }
 
 export interface MusicShelfDividerRenderer {
-    hidden?: boolean;
+	hidden?: boolean;
 }
 
 export interface Header {
-    chipCloudRenderer?: ChipCloudRenderer;
+	chipCloudRenderer?: ChipCloudRenderer;
 }
 
 export interface ChipCloudRenderer {
-    chips?:                Chip[];
-    collapsedRowCount?:    number;
-    trackingParams?:       string;
-    horizontalScrollable?: boolean;
+	chips?: Chip[];
+	collapsedRowCount?: number;
+	trackingParams?: string;
+	horizontalScrollable?: boolean;
 }
 
 export interface Chip {
-    chipCloudChipRenderer?: ChipCloudChipRenderer;
+	chipCloudChipRenderer?: ChipCloudChipRenderer;
 }
 
 export interface ChipCloudChipRenderer {
-    style?:              StyleClass;
-    text?:               BottomText;
-    navigationEndpoint?: Endpoint;
-    trackingParams?:     string;
-    accessibilityData?:  Accessibility;
-    isSelected?:         boolean;
+	style?: StyleClass;
+	text?: BottomText;
+	navigationEndpoint?: Endpoint;
+	trackingParams?: string;
+	accessibilityData?: Accessibility;
+	isSelected?: boolean;
 }
 
 export interface StyleClass {
-    styleType?: string;
+	styleType?: string;
 }
 
 export interface ResponseContext {
-    maxAgeSeconds?:         number;
-    serviceTrackingParams?: ServiceTrackingParam[];
+	maxAgeSeconds?: number;
+	serviceTrackingParams?: ServiceTrackingParam[];
 }
 
 export interface ServiceTrackingParam {
-    service?: string;
-    params?:  Param[];
+	service?: string;
+	params?: Param[];
 }
 
 export interface Param {
-    key?:   string;
-    value?: string;
+	key?: string;
+	value?: string;
 }
