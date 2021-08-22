@@ -20,3 +20,33 @@ export declare enum categoryURIBase64 {
     ARTIST = "BAAGAAgASgA",
     PLAYLISTS = "BAAGAAgACgB"
 }
+export declare enum constantLinks {
+    VIDEOLINK = "https://www.youtube.com/watch?v=",
+    CHANNELLINK = "https://music.youtube.com/channel/"
+}
+export declare enum flexColumnDefinition {
+    GENERAL = 1,
+    SUPPLEMENT = 2
+}
+export declare enum songOffset {
+    ARTIST = 0,
+    ALBUM = 1,
+    DURATION = 2
+}
+export declare enum videoOffset {
+    ARTIST = 0,
+    VIEWS = 1,
+    DURATION = 2
+}
+export declare enum singleOffset {
+    ARTIST = 0,
+    VIEWS = 1,
+    DURATION = 2
+}
+export declare enum playlistOffset {
+    AUTHOR = 0,
+    SONGCOUNT = 1
+}
+export declare enum artistOffset {
+    SUBSCRIBERS = 0
+}

@@ -1,4 +1,9 @@
 import type { ytcfgInterface } from './cfgInterface';
+import { Artist } from './resources/generalTypes/artist';
+import type { Run } from './resources/resultTypes/sectionList';
+import { Album } from './resources/generalTypes/album';
+import { Thumbnails } from './resources/generalTypes/thumbnails';
+import { categoryType } from './enums';
 export declare class utils {
     /**
      * fv (FieldVisitor)
@@ -55,5 +60,27 @@ export declare class utils {
         };
         browseId: string;
     };
-    static parseTypeName(typeName: string): void;
+    /**
+     * Extracts artist from flexColumn[1];
+     * @param runsArray array that complies with flexColumn[1] style
+     * @param delimiter any delimiter but ' • ' seems to be the default
+     */
+    static artistParser(runsArray: Run[], delimiter?: string): Artist[];
+    /**
+     * Parses the album from the flexcolumn, if can
+     * @param runsArray
+     * @param delimiter
+     */
+    static albumParser(runsArray: Run[], delimiter?: string): Album;
+    /**
+     * Gets the thumbnail from the sectionList
+     * @param sectionContext
+     */
+    static thumbnailParser(sectionContext: any): Thumbnails[];
+    /**
+     * Gets the playlist count and extracts them
+     * @param flexColumn
+     */
+    static playlistCountExtractor(flexColumn: Run[]): number;
+    static parseTypeName(typeName: string): categoryType;
 }

@@ -244,7 +244,7 @@ export interface User {
     lockedSafetyMode?: boolean;
 }
 export interface LatestEcatcherServiceTrackingParams {
-    "client.name"?: string;
+    'client.name'?: string;
 }
 export interface WebPlayerContextConfigs {
     WEB_PLAYER_CONTEXT_CONFIG_ID_MUSIC_WATCH?: WebPlayerContextConfigIDMusicWatch;

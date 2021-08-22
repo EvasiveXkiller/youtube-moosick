@@ -1,6 +1,6 @@
-export declare class album {
+import { Item } from '../../item';
+export declare class Album extends Item {
     name: string;
-    ID: string;
-    URL: string;
-    constructor(name: string, ID: string, URL: string);
+    id: string;
+    url: string;
 }

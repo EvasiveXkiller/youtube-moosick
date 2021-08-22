@@ -1,2 +1,2 @@
-export declare class artistSearchResults {
+export declare class ArtistSearchResults {
 }

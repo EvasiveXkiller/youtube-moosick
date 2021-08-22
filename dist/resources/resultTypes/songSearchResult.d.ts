@@ -1,15 +1,17 @@
-import type { categoryType } from "../../enums";
-import type { thumbnails } from "../generalTypes/thumbnails";
-export declare class songSearchResult {
-    type: categoryType;
+import { categoryType } from '../../enums';
+import { Item } from '../../item';
+import type { Thumbnails } from '../generalTypes/thumbnails';
+import type { Artist } from '../generalTypes/artist';
+import type { Album } from '../generalTypes/album';
+export declare class SongSearchResult extends Item {
+    type?: categoryType;
     name: string;
     videoId: string;
     URL: string;
     playlistId: string;
-    artist: unknown[];
-    album: unknown[];
+    artist: Artist[];
+    album: Album[];
     duration: number;
-    thumbnails: Array<thumbnails>;
+    thumbnails: Thumbnails[];
     params: any;
-    constructor(type: categoryType, name: string, videoId: string, URL: string, playlistId: string, artist: unknown[], album: unknown[], duration: number, thumbnails: Array<thumbnails>, params: any);
 }
