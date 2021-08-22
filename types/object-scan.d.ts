@@ -447,14 +447,9 @@ namespace ObjectScan {
 	interface ContextUnjoined<K extends string | number | symbol = string, V = any> extends Context<K, V> {
 		key: K;
 	}
-	// From: https://stackoverflow.com/a/50375286/62076
-	type UnionToIntersection<U> = (U extends any ? (k: U)=>void : never) extends ((k: infer I)=>void) ? I : never
 
-	// If T is `any` a union of both side of the condition is returned.
-	type UnionForAny<T> = T extends never ? 'A' : 'B'
-
-	// Returns true if type is any, or false for any other type.
-	type IsStrictlyAny<T> = UnionToIntersection<UnionForAny<T>> extends never ? true : false
+	type NonFunctionPropertyNames<T> = { [K in keyof T]: T[K] extends Function ? never : K }[keyof T];
+	type NonFunctionProperties<T> = Pick<T, NonFunctionPropertyNames<T>>;
 }
 
 declare module 'object-scan' {
@@ -462,7 +457,7 @@ declare module 'object-scan' {
 		K extends string | number | symbol = string,
 		V = any,
 		O extends ObjectScan.Options = ObjectScan.OptionsJoined | ObjectScan.OptionsUnjoined,
-		R extends keyof ObjectScan.Context | 'bool' | 'count',
+		R extends ObjectScan.NonFunctionPropertyNames<ObjectScan.Context> | 'bool' | 'count',
 		C extends (O extends ObjectScan.OptionsJoined ? ObjectScan.ContextJoined : ObjectScan.ContextUnjoined)
 	>(
 		matcher: string[],
