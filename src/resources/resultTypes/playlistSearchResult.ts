@@ -1,9 +1,9 @@
 import { Item } from '../../item';
-import type { categoryType } from '../../enums';
+import type { CategoryType } from '../../enums';
 import type { Artist } from '../generalTypes/artist';
 
 export class PlaylistSearchResult extends Item {
-	public declare type: categoryType;
+	public declare type: CategoryType;
 	public declare title: string;
 	public declare playlistId: string;
 	public declare url: string;

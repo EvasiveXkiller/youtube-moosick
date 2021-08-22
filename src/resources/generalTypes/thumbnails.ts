@@ -1,7 +1,7 @@
-import type { ThumbnailElement } from '../../songresultRaw';
+import type { Thumbnail } from '../../songresultRaw';
 import { Item } from '../../item';
 
-export class Thumbnails extends Item implements ThumbnailElement {
+export class Thumbnails extends Item implements Thumbnail {
 	public declare url: string;
 	public declare width: number;
 	public declare height: number;

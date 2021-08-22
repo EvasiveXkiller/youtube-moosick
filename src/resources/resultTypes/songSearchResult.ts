@@ -1,11 +1,11 @@
-import { categoryType } from '../../enums';
+import { CategoryType } from '../../enums';
 import { Item } from '../../item';
 import type { Thumbnails } from '../generalTypes/thumbnails';
 import type { Artist } from '../generalTypes/artist';
 import type { Album } from '../generalTypes/album';
 
 export class SongSearchResult extends Item {
-	public type?: categoryType = categoryType.SONG;
+	public type?: CategoryType = CategoryType.SONG;
 	public declare name: string;
 	public declare videoId: string;
 	public declare URL: string;

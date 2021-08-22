@@ -4,7 +4,7 @@ import type { Thumbnails } from '../generalTypes/thumbnails';
 
 export class PlaylistURL extends Item {
 	public declare headers: PlaylistHeader;
-	public declare playlistContent: PlaylistContent[];
+	public declare playlistContents: PlaylistContent[];
 }
 
 export class PlaylistContent extends Item {
