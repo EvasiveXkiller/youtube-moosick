@@ -1,14 +1,16 @@
 import { utils } from './utils';
-import { categoryType, constantLinks, flexColumnDefinition, videoOffset } from './enums';
+import { categoryType, constantLinks, flexColumnDefinition, playlistOffset, videoOffset } from './enums';
 import type { MusicResponsiveListItemFlexColumnRenderer } from './songresultRaw';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import objectScan from 'object-scan';
-import type { Run } from './resources/resultTypes/sectionList';
+import type { Run, Thumbnail } from './resources/resultTypes/sectionList';
 import { IllegalTypeError } from './resources/errors/illegalType.error';
 import type { SongSearchResult } from './resources/resultTypes/songSearchResult';
 import { VideoSearchResult } from './resources/resultTypes/videoSearchResult';
 import { PlaylistSearchResult } from './resources/resultTypes/playlistSearchResult';
+import { PlaylistContent, PlaylistHeader, PlaylistURL } from './resources/resultTypes/playlistURL';
+import type { Thumbnails } from './resources/generalTypes/thumbnails';
 
 export class parsers {
 	// Make this one global function and call the other stuff
@@ -116,6 +118,50 @@ export class parsers {
 			url: constantLinks.CHANNELLINK + sectionContext.navigationEndpoint.browseEndpoint.browseId!,
 			author: utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT] as Run[]),
 			count: utils.playlistCountExtractor(flexColumn[flexColumnDefinition.SUPPLEMENT] as Run[]),
+		});
+	}
+
+	public static parsePlaylistURL(context: any): PlaylistURL {
+		// Gets the entire flexColumn, and filter those with empty members
+		const flexColumn = (objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
+			rtn: 'value',
+			reverse: false,
+		})(context)).filter((item: any) => item.text.runs !== undefined) as Run[];
+		const unprocessedHeader = (objectScan(['**.musicDetailHeaderRenderer'], {
+			rtn: 'value',
+			reverse: false,
+		})(context));
+		const allThumbnails = (objectScan(['**.musicThumbnailRenderer'], {
+			rtn: 'value',
+			reverse: false,
+		})(context));
+		// The for loop increments by 2 so external counter to make it lag behind
+		let externalCounter = 0;
+		let indiContent: PlaylistContent;
+		let playlistContent: PlaylistContent;
+		for (let i = 0; i < flexColumn.length; i += 2) {
+			playlistContent = {
+				trackTitle: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[i]) as string,
+				trackId: objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[i]) as string,
+				artist: utils.artistParser(flexColumn[i]),
+				thumbnail: allThumbnails[externalCounter].thumbnail.thumbnails[0] as Thumbnails[],
+			};
+			externalCounter++;
+		}
+		return PlaylistURL.from({
+			headers: parsers.playlistURLHeaderParser(unprocessedHeader),
+			playlistContent,
+		});
+	}
+
+	private static playlistURLHeaderParser(header: any[]): PlaylistHeader {
+		return PlaylistHeader.from({
+			playlistName: header[0].title.runs[0].text as string,
+			owner: header[0].subtitle.runs[2].text as string,
+			createdYear: parseInt(header[0].subtitle.runs[4].text, 10)!,
+			thumbnail: header[0].thumbnail.croppedSquareThumbnailRenderer.thumbnail.thumbnail as Thumbnail[],
+			songCount: header[0].secondSubtitle.runs[0].text as number,
+			approxRunTime: header[0].secondSubtitle.runs[2].text as string,
 		});
 	}
 }

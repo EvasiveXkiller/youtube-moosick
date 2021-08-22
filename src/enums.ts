@@ -46,7 +46,17 @@ export enum videoOffset {
 	DURATION = 2,
 }
 
+export enum singleOffset {
+	ARTIST = 0,
+	VIEWS = 1,
+	DURATION = 2,
+}
+
 export enum playlistOffset {
 	AUTHOR = 0,
 	SONGCOUNT = 1,
+}
+
+export enum artistOffset {
+	SUBSCRIBERS = 0,
 }
