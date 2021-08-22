@@ -6,8 +6,8 @@ import { Thumbnails } from './resources/generalTypes/thumbnails';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import objectScan from 'object-scan';
-import { categoryType, constantLinks, flexColumnDefinition, playlistOffset, songOffset } from './enums';
-import { IllegalTypeError } from './resources/errors/illegalType.error';
+import { CategoryType, ConstantURLs, flexColumnDefinition, PlaylistOffset, SongOffset } from './enums';
+import { IllegalCategoryError } from './resources/errors';
 
 export class utils {
 	/**
@@ -27,37 +27,37 @@ export class utils {
 		const props = query
 			.split(':')
 			.reduce<any>(
-			function findPropValuesOfKey(obj: typeof input, key: typeof query): unknown | unknown[] {
-				if (typeof obj !== 'object') {
-					return [];
-				}
-
-				let props = [];
-
-				if (Object.prototype.hasOwnProperty.call(obj, key)) {
-					if (shallow) {
-						return obj[key] as unknown;
+				function findPropValuesOfKey(obj: typeof input, key: typeof query): unknown | unknown[] {
+					if (typeof obj !== 'object') {
+						return [];
 					}
 
-					props.push(obj[key]);
-				}
+					let props = [];
 
-				if (!(obj instanceof Array)) {
-					obj = Object.values(obj);
-				}
+					if (Object.prototype.hasOwnProperty.call(obj, key)) {
+						if (shallow) {
+							return obj[key] as unknown;
+						}
 
-				(obj as any[])
-					.forEach(
-						(objPart) => props.push(
-							findPropValuesOfKey(objPart, key),
-						),
-					);
-				props = props.flat(1);
+						props.push(obj[key]);
+					}
 
-				return props.length === 1 ? props[0] : props;
-			},
-			input,
-		) as unknown;
+					if (!(obj instanceof Array)) {
+						obj = Object.values(obj);
+					}
+
+					(obj as any[])
+						.forEach(
+							(objPart) => props.push(
+								findPropValuesOfKey(objPart, key),
+							),
+						);
+					props = props.flat(1);
+
+					return props.length === 1 ? props[0] : props;
+				},
+				input,
+			) as unknown;
 
 		return props instanceof Array ? props : [props];
 	}
@@ -191,14 +191,14 @@ export class utils {
 	 */
 	static artistParser(runsArray: Run[], delimiter = ' • '): Artist[] {
 		// Only "SONGS" and "VIDEOS" are supported for this function to extract
-		if (runsArray[0].text as categoryType !== categoryType.SONG || categoryType.VIDEO) {
-			throw new IllegalTypeError('Only "categoryType.SONG" and "categoryType.VIDEO" are can be decoded');
+		if (runsArray[0].text as CategoryType !== CategoryType.SONG || CategoryType.VIDEO) {
+			throw new IllegalCategoryError('Only "categoryType.SONG" and "categoryType.VIDEO" are can be decoded');
 		}
 
 		// Gets the positions of the delimiter
 		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
 		// Gets the object located between the 1st and 2nd delimiter
-		const multiDimension = runsArray.slice(positions[songOffset.ARTIST] + 1, positions[songOffset.ARTIST + 1])
+		const multiDimension = runsArray.slice(positions[SongOffset.ARTIST] + 1, positions[SongOffset.ARTIST + 1])
 			// Strip out unrelated objects like "&"
 			.map((element) => element.navigationEndpoint === undefined ? null : element)
 			.filter(Boolean);
@@ -207,7 +207,7 @@ export class utils {
 		return multiDimension.map((element) => (Artist.from({
 			name: element.text,
 			id: element.navigationEndpoint.browseEndpoint.browseId,
-			url: constantLinks.CHANNELLINK + element.navigationEndpoint.browseEndpoint.browseId,
+			url: ConstantURLs.CHANNEL_URL + element.navigationEndpoint.browseEndpoint.browseId,
 		})));
 	}
 
@@ -218,21 +218,21 @@ export class utils {
 	 */
 	static albumParser(runsArray: Run[], delimiter = ' • '): Album {
 		// Only "SONGS" and "VIDEOS" are supported for this function to extract
-		if (runsArray[flexColumnDefinition.GENERAL].text as categoryType !== categoryType.SONG
-			|| runsArray[flexColumnDefinition.GENERAL].text as categoryType !== categoryType.VIDEO
-		|| runsArray[flexColumnDefinition.GENERAL].text as categoryType !== categoryType.PLAYLISTS) {
-			throw new IllegalTypeError('Only "categoryType.SONG","categoryType.VIDEOS","categoryType.PLAYLISTS" can be decoded');
+		if (runsArray[flexColumnDefinition.GENERAL].text as CategoryType !== CategoryType.SONG
+			|| runsArray[flexColumnDefinition.GENERAL].text as CategoryType !== CategoryType.VIDEO
+		|| runsArray[flexColumnDefinition.GENERAL].text as CategoryType !== CategoryType.PLAYLISTS) {
+			throw new IllegalCategoryError('Only "categoryType.SONG","categoryType.VIDEOS","categoryType.PLAYLISTS" can be decoded');
 		}
 
 		// Gets the positions of the delimiter
 		// Probably can deprecate the following line, or use a constant
 		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
 		// Determines what limiter to use
-		const typedDelimiter = (runsArray[flexColumnDefinition.GENERAL].text as categoryType) === categoryType.PLAYLISTS ? playlistOffset.AUTHOR : songOffset.ARTIST;
+		const typedDelimiter = (runsArray[flexColumnDefinition.GENERAL].text as CategoryType) === CategoryType.PLAYLISTS ? PlaylistOffset.AUTHOR : SongOffset.ARTIST;
 		return Album.from({
 			name: runsArray[positions[typedDelimiter] + 1].text,
-			id: runsArray[songOffset.ALBUM + 1].navigationEndpoint.browseEndpoint.browseId,
-			url: constantLinks.CHANNELLINK + runsArray[typedDelimiter + 1].navigationEndpoint.browseEndpoint.browseId,
+			id: runsArray[SongOffset.ALBUM + 1].navigationEndpoint.browseEndpoint.browseId,
+			url: ConstantURLs.CHANNEL_URL + runsArray[typedDelimiter + 1].navigationEndpoint.browseEndpoint.browseId,
 		});
 	}
 
@@ -259,7 +259,7 @@ export class utils {
 
 	// Parse enums from here for utils
 	// Probably dont need it but see how
-	public static parseTypeName(typeName: string): categoryType {
-		return typeName as categoryType;
+	public static parseTypeName(typeName: string): CategoryType {
+		return typeName as CategoryType;
 	}
 }

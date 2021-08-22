@@ -1,13 +1,12 @@
 import { utils } from './utils';
-import { CategoryType as Category, ConstantURLs, flexColumnDefinition, PlaylistOffset, VideoOffset } from './enums';
-import type { EndpointlessRun, MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, NavigationEndpoint, Run, Thumbnail } from './songresultRaw';
+import { CategoryType as Category, ConstantURLs, flexColumnDefinition, VideoOffset } from './enums';
+import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, NavigationEndpoint, Run, Thumbnail } from './songresultRaw';
 import objectScan from 'object-scan';
-import { IllegalTypeError as IllegalCategoryError } from './resources/errors/illegalCategory.error';
+import { IllegalCategoryError } from './resources/errors';
 import type { SongSearchResult } from './resources/resultTypes/songSearchResult';
 import { VideoSearchResult } from './resources/resultTypes/videoSearchResult';
 import { PlaylistSearchResult } from './resources/resultTypes/playlistSearchResult';
 import { PlaylistContent, PlaylistHeader, PlaylistURL } from './resources/resultTypes/playlistURL';
-import type { Thumbnails } from './resources/generalTypes/thumbnails';
 
 export class parsers {
 	// Make this one global function and call the other stuff

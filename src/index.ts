@@ -3,7 +3,7 @@ import axios, { AxiosInstance } from 'axios';
 import axios0 from 'axios/lib/adapters/http';
 import tough from 'tough-cookie';
 import _ from 'lodash';
-import { categoryType, categoryURIBase64, endPointType } from './enums';
+import { CategoryType, CategoryURIBase64, EndPointType } from './enums';
 import { utils } from './utils';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors';
 import { URLSearchParams } from 'url';
@@ -182,7 +182,7 @@ export class MooSick {
 
 	// TODO: probably define each api req's input vars & input queries,
 	// then make this func generic so it's type safe
-	private async _createApiRequest(endpointName: endPointType, inputVariables = {}, inputQuery = {}) {
+	private async _createApiRequest(endpointName: EndPointType, inputVariables = {}, inputQuery = {}) {
 		const res = await this.client.post(
 			`youtubei/${
 				this.config.INNERTUBE_API_VERSION
@@ -259,7 +259,7 @@ export class MooSick {
      */
 	public async getSearchSuggestions(query: string) {
 		return new Promise(async (resolve, reject) => {
-			const res = await this._createApiRequest(endPointType.SUGGESTIONS, {
+			const res = await this._createApiRequest(EndPointType.SUGGESTIONS, {
 				input: query,
 			});
 			// I dont think this is the best way, maybe the fv seems nice but that is really unreadable
@@ -288,27 +288,27 @@ export class MooSick {
      * @param _pageLimit Max pages to obtain
      * @returns {Promise<unknown>} An object formatted by parsers.js
      */
-	async search(query: string, categoryName?: categoryURIBase64, _pageLimit = 1): Promise<unknown> {
+	async search(query: string, categoryName?: CategoryURIBase64, _pageLimit = 1): Promise<unknown> {
 		return new Promise(async (resolve, reject) => {
 			let result: Record<string, unknown>;
-			const context = await this._createApiRequest(endPointType.SEARCH, {
+			const context = await this._createApiRequest(EndPointType.SEARCH, {
 				query,
 				params: categoryName,
 			});
 			switch (categoryName) {
-				case categoryURIBase64.SONG:
+				case CategoryURIBase64.SONG:
 					result = parsers.parseSongSearchResult(context);
 					break;
-				case categoryURIBase64.VIDEO:
+				case CategoryURIBase64.VIDEO:
 					result = parsers.parseVideoSearchResult(context);
 					break;
-				case categoryURIBase64.ALBUM:
+				case CategoryURIBase64.ALBUM:
 					result = parsers.parseAlbumSearchResult(context);
 					break;
-				case categoryURIBase64.ARTIST:
+				case CategoryURIBase64.ARTIST:
 					result = parsers.parseArtistSearchResult(context);
 					break;
-				case categoryURIBase64.PLAYLISTS:
+				case CategoryURIBase64.PLAYLISTS:
 					result = parsers.parsePlaylistSearchResult(context);
 					break;
 				default:
@@ -326,7 +326,7 @@ export class MooSick {
 		}
 
 		return new Promise((resolve, reject) => {
-			const ctx = this._createApiRequest(endPointType.SEARCH, utils.buildEndpointContext(categoryType.ALBUM, browseId));
+			const ctx = this._createApiRequest(EndPointType.SEARCH, utils.buildEndpointContext(CategoryType.ALBUM, browseId));
 			try {
 				const result = parsers.parseAlbumPage(ctx);
 				resolve(result);
@@ -350,11 +350,11 @@ export class MooSick {
 		_.startsWith(browseId, 'PL') && (browseId = 'VL' + browseId);
 
 		return new Promise(async (resolve, reject) => {
-			const ctx = this._createApiRequest(endPointType.BROWSE, utils.buildEndpointContext(categoryType.PLAYLISTS, browseId));
+			const ctx = this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.PLAYLISTS, browseId));
 			try {
 				const result = parsers.parsePlaylistPage(ctx);
 				const getContinuations = async (params: any) => {
-					const ctx = this._createApiRequest(endPointType.BROWSE, {}, {
+					const ctx = this._createApiRequest(EndPointType.BROWSE, {}, {
 						ctoken: params.continuation,
 						continuation: params.continuation,
 						itct: params.continuation.clickTrackingParams,
@@ -401,7 +401,7 @@ export class MooSick {
 		}
 
 		return new Promise(async (resolve, reject) => {
-			const ctx = await this._createApiRequest(endPointType.BROWSE, utils.buildEndpointContext(categoryType.ARTIST, browseId));
+			const ctx = await this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.ARTIST, browseId));
 			try {
 				const result = parsers.parseArtistPage(ctx);
 				resolve(result);
