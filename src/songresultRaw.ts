@@ -39,11 +39,11 @@ export interface SectionListRendererContent {
 }
 
 export interface MusicShelfRenderer {
-	title: BottomText;
+	title: EndpointlessText;
 	contents: MusicShelfRendererContent[];
 	trackingParams: string;
 	shelfDivider: ShelfDivider;
-	bottomText: BottomText;
+	bottomText: EndpointlessText;
 	bottomEndpoint: Endpoint;
 }
 
@@ -53,19 +53,15 @@ export interface Endpoint {
 }
 
 export interface SearchEndpoint {
-	query: Query;
+	query: string;
 	params: string;
 }
 
-export enum Query {
-	DoWhatWeLike = 'do what we like',
+export interface EndpointlessText {
+	runs: EndpointlessTextRun[];
 }
 
-export interface BottomText {
-	runs: BottomTextRun[];
-}
-
-export interface BottomTextRun {
+export interface EndpointlessTextRun {
 	text: string;
 }
 
@@ -122,15 +118,15 @@ export enum DisplayPriority {
 }
 
 export interface Text {
-	runs: PurpleRun[];
+	runs: Run[];
 }
 
-export interface PurpleRun {
+export interface Run {
 	text: string;
-	navigationEndpoint: RunNavigationEndpoint;
+	navigationEndpoint?: NavigationEndpoint;
 }
 
-export interface RunNavigationEndpoint {
+export interface NavigationEndpoint {
 	clickTrackingParams: string;
 	watchEndpoint: WatchEndpoint;
 	browseEndpoint: BrowseEndpoint;
@@ -161,7 +157,7 @@ export interface WatchEndpoint {
 	playlistId: string;
 	loggingContext: LoggingContext;
 	watchEndpointMusicSupportedConfigs: WatchEndpointMusicSupportedConfigs;
-	params: Params;
+	params: string;
 }
 
 export interface LoggingContext {
@@ -170,12 +166,6 @@ export interface LoggingContext {
 
 export interface VssLoggingContext {
 	serializedContextData: string;
-}
-
-export enum Params {
-	WAEB = 'wAEB',
-	WAEB8GECGAE3D = 'wAEB8gECGAE%3D',
-	WAEB8GECKAE3D = 'wAEB8gECKAE%3D',
 }
 
 export interface WatchEndpointMusicSupportedConfigs {
@@ -212,7 +202,7 @@ export interface ItemElement {
 }
 
 export interface MenuItemRenderer {
-	text: BottomText;
+	text: EndpointlessText;
 	icon: Icon;
 	navigationEndpoint: MenuNavigationItemRendererNavigationEndpoint;
 	trackingParams: string;
@@ -237,8 +227,8 @@ export interface Modal {
 }
 
 export interface ModalWithTitleAndButtonRenderer {
-	title: BottomText;
-	content: BottomText;
+	title: EndpointlessText;
+	content: EndpointlessText;
 	button: Button;
 }
 
@@ -249,7 +239,7 @@ export interface Button {
 export interface ButtonRenderer {
 	style: StyleEnum;
 	isDisabled: boolean;
-	text: BottomText;
+	text: EndpointlessText;
 	navigationEndpoint: ButtonRendererNavigationEndpoint;
 	trackingParams: string;
 }
@@ -273,7 +263,7 @@ export interface ShareEntityEndpoint {
 
 export interface WatchPlaylistEndpoint {
 	playlistId: string;
-	params: Params;
+	params: string;
 }
 
 export interface ServiceEndpoint {
@@ -301,7 +291,7 @@ export interface AddToToastActionItem {
 }
 
 export interface NotificationTextRenderer {
-	successResponseText: BottomText;
+	successResponseText: EndpointlessText;
 	trackingParams: string;
 }
 
@@ -316,10 +306,10 @@ export interface QueueTarget {
 }
 
 export interface ToggleMenuServiceItemRenderer {
-	defaultText: BottomText;
+	defaultText: EndpointlessText;
 	defaultIcon: Icon;
 	defaultServiceEndpoint: DefaultServiceEndpoint;
-	toggledText: BottomText;
+	toggledText: EndpointlessText;
 	toggledIcon: Icon;
 	trackingParams: string;
 	toggledServiceEndpoint: ToggledServiceEndpoint;
@@ -401,15 +391,15 @@ export interface PlayNavigationEndpoint {
 }
 
 export enum RippleTarget {
-	MusicPlayButtonRippleTargetSelf = 'MUSIC_PLAY_BUTTON_RIPPLE_TARGET_SELF',
+	SELF = 'MUSIC_PLAY_BUTTON_RIPPLE_TARGET_SELF',
 }
 
 export enum ContentPosition {
-	MusicItemThumbnailOverlayContentPositionCentered = 'MUSIC_ITEM_THUMBNAIL_OVERLAY_CONTENT_POSITION_CENTERED',
+	CENTERED = 'MUSIC_ITEM_THUMBNAIL_OVERLAY_CONTENT_POSITION_CENTERED',
 }
 
 export enum DisplayStyle {
-	MusicItemThumbnailOverlayDisplayStylePersistent = 'MUSIC_ITEM_THUMBNAIL_OVERLAY_DISPLAY_STYLE_PERSISTENT',
+	PERSISTENT = 'MUSIC_ITEM_THUMBNAIL_OVERLAY_DISPLAY_STYLE_PERSISTENT',
 }
 
 export interface PlaylistItemData {
@@ -421,30 +411,30 @@ export interface MusicResponsiveListItemRendererThumbnail {
 }
 
 export interface MusicThumbnailRenderer {
-	thumbnail: MusicThumbnailRendererThumbnail;
+	thumbnail: MusicResponsiveListItemRendererThumbnail;
 	thumbnailCrop: ThumbnailCrop;
 	thumbnailScale: ThumbnailScale;
 	trackingParams: string;
 }
 
-export interface MusicThumbnailRendererThumbnail {
-	thumbnails: ThumbnailElement[];
+export interface MusicResponsiveListItemRendererThumbnail {
+	thumbnails: Thumbnail[];
 }
 
-export interface ThumbnailElement {
+export interface Thumbnail {
 	url: string;
 	width: number;
 	height: number;
 }
 
 export enum ThumbnailCrop {
-	MusicThumbnailCropCircle = 'MUSIC_THUMBNAIL_CROP_CIRCLE',
-	MusicThumbnailCropUnspecified = 'MUSIC_THUMBNAIL_CROP_UNSPECIFIED',
+	CIRCLE = 'MUSIC_THUMBNAIL_CROP_CIRCLE',
+	UNSPECIFIED = 'MUSIC_THUMBNAIL_CROP_UNSPECIFIED',
 }
 
 export enum ThumbnailScale {
-	MusicThumbnailScaleAspectFill = 'MUSIC_THUMBNAIL_SCALE_ASPECT_FILL',
-	MusicThumbnailScaleAspectFit = 'MUSIC_THUMBNAIL_SCALE_ASPECT_FIT',
+	FILL = 'MUSIC_THUMBNAIL_SCALE_ASPECT_FILL',
+	FIT = 'MUSIC_THUMBNAIL_SCALE_ASPECT_FIT',
 }
 
 export interface ShelfDivider {
@@ -472,7 +462,7 @@ export interface Chip {
 
 export interface ChipCloudChipRenderer {
 	style: StyleClass;
-	text: BottomText;
+	text: EndpointlessText;
 	navigationEndpoint: Endpoint;
 	trackingParams: string;
 	accessibilityData: Accessibility;
