@@ -1,7 +1,8 @@
 import { CategoryType as Category } from './enums';
+import type { MusicShelfRendererContent } from './songresultRaw';
 import { PlaylistURL } from './resources/resultTypes/playlistURL';
 export declare class parsers {
-    static parseSearchResult(context: any, searchType?: Category): any;
+    static parseSearchResult(context: MusicShelfRendererContent, searchType?: Category): any;
     /**
      * Build the song item
      * @private
