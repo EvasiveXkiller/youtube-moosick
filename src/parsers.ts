@@ -1,8 +1,6 @@
 import { utils } from './utils';
 import { categoryType, constantLinks, flexColumnDefinition, playlistOffset, videoOffset } from './enums';
 import type { MusicResponsiveListItemFlexColumnRenderer } from './songresultRaw';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 import objectScan from 'object-scan';
 import type { Run, Thumbnail } from './resources/resultTypes/sectionList';
 import { IllegalTypeError } from './resources/errors/illegalType.error';
@@ -60,7 +58,7 @@ export class parsers {
 			reverse: false,
 		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
 		if (flexColumn[flexColumnDefinition.SUPPLEMENT].text as categoryType !== categoryType.SONG) {
-			throw new IllegalTypeError(`Type ${flexColumn[flexColumnDefinition.SUPPLEMENT].text as string} cannot be applied to ${categoryType.SONG} function`);
+			throw new IllegalTypeError(`Type ${String(flexColumn[flexColumnDefinition.SUPPLEMENT].text)} cannot be applied to ${categoryType.SONG} function`);
 		}
 
 		// eslint-disable-next-line no-warning-comments
@@ -69,8 +67,8 @@ export class parsers {
 	    FIXME shove the stuff into a song object
 	     */
 		const type = categoryType.SONG;
-		const name = objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]) as string;
-		const id = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]) as string;
+		const name = objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]);
+		const id = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]);
 		const url = `https://www.youtube.com/watch?v=${id}`;
 		// const playlistId (have no idea do we need it or not, seems like the auto suggestion feature on normal browsers)
 		const artist = utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT] as Run[]);
@@ -90,10 +88,10 @@ export class parsers {
 			throw new IllegalTypeError(`Type ${flexColumn[flexColumnDefinition.SUPPLEMENT].text as string} cannot be applied to ${categoryType.VIDEO} function`);
 		}
 
-		const videoId = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]) as string;
+		const videoId = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]);
 		return VideoSearchResult.from({
 			type: categoryType.VIDEO,
-			name: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]) as string,
+			name: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]),
 			videoId,
 			url: constantLinks.CHANNELLINK + videoId,
 			author: utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT] as Run[]),
@@ -114,8 +112,8 @@ export class parsers {
 		return PlaylistSearchResult.from({
 			type: categoryType.PLAYLISTS,
 			playlistId: sectionContext.navigationEndpoint.browseEndpoint.browseId as string,
-			title: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(sectionContext) as string,
-			url: constantLinks.CHANNELLINK + sectionContext.navigationEndpoint.browseEndpoint.browseId!,
+			title: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(sectionContext),
+			url: constantLinks.CHANNELLINK + sectionContext.navigationEndpoint.browseEndpoint.browseId,
 			author: utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT] as Run[]),
 			count: utils.playlistCountExtractor(flexColumn[flexColumnDefinition.SUPPLEMENT] as Run[]),
 		});
@@ -126,7 +124,8 @@ export class parsers {
 		const flexColumn = (objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
 			rtn: 'value',
 			reverse: false,
-		})(context)).filter((item: any) => item.text.runs !== undefined) as Run[];
+		})(context) as MusicResponsiveListItemFlexColumnRenderer[])
+			.filter((item) => item.text?.runs != null);
 		const unprocessedHeader = (objectScan(['**.musicDetailHeaderRenderer'], {
 			rtn: 'value',
 			reverse: false,
@@ -141,13 +140,14 @@ export class parsers {
 		let playlistContent: PlaylistContent;
 		for (let i = 0; i < flexColumn.length; i += 2) {
 			playlistContent = {
-				trackTitle: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[i]) as string,
-				trackId: objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[i]) as string,
+				trackTitle: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[i]),
+				trackId: objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[i]),
 				artist: utils.artistParser(flexColumn[i]),
 				thumbnail: allThumbnails[externalCounter].thumbnail.thumbnails[0] as Thumbnails[],
 			};
 			externalCounter++;
 		}
+
 		return PlaylistURL.from({
 			headers: parsers.playlistURLHeaderParser(unprocessedHeader),
 			playlistContent,
