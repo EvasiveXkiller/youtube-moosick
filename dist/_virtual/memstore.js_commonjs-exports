@@ -1,0 +1,4 @@
+var memstore = {};
+
+export { memstore as __exports };
+//# sourceMappingURL=memstore.js_commonjs-exports.map
