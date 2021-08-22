@@ -146,7 +146,7 @@ export class parsers {
 
 		const playlistContents: PlaylistContent[] = [];
 
-		for (let i = 0; i < Math.floor(flexColumn.length); ++i) {
+		for (let i = 0; i < Math.floor(flexColumn.length / 2); ++i) {
 			const flexColumnPart = flexColumn[i * 2];
 
 			playlistContents.push({
