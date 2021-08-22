@@ -1,1 +1,0 @@
-{"version":3,"file":"illegalType.error.js","sources":["../../../src/resources/errors/illegalType.error.ts"],"sourcesContent":[null],"names":[],"mappings":";;MAEa,gBAAiB,SAAQ,WAAW;IAChD,YAAY,OAAe;QAC1B,KAAK,CAAC,eAAe,OAAO,GAAG,KAAK,OAAO,EAAE,GAAG,EAAE,EAAE,CAAC,CAAC;KACtD;;;;;"}
