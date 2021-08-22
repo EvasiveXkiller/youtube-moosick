@@ -1,11 +1,7 @@
-export class album {
-    name: string;
-    ID: string;
-    URL: string;
+import { Item } from '../../item';
 
-    constructor(name: string, ID: string, URL: string) {
-        this.name = name;
-        this.ID = ID;
-        this.URL = URL;
-    }
+export class Album extends Item {
+	public declare name: string;
+	public declare id: string;
+	public declare url: string;
 }

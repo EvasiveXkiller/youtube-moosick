@@ -1,3 +1,3 @@
-export class albumSearchResult {
+export class AlbumSearchResult {
 
 }
