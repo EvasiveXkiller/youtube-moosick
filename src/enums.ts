@@ -1,11 +1,11 @@
-export enum endPointType {
+export enum EndPointType {
 	SUGGESTIONS = 'music/get_search_suggestions',
 	SEARCH = 'search',
 	BROWSE = 'browse',
 	NEXT = 'next',
 }
 
-export enum categoryType {
+export enum CategoryType {
 	SONG = 'SONG',
 	VIDEO = 'VIDEO',
 	ALBUM = 'ALBUM',
@@ -15,16 +15,16 @@ export enum categoryType {
 	SINGLE = 'SINGLE',
 }
 
-export enum categoryURIBase64 {
+export enum CategoryURIBase64 {
 	SONG = 'RAAGAAgACgA',
 	VIDEO = 'BABGAAgACgA',
 	ALBUM = 'BAAGAEgACgA',
 	ARTIST = 'BAAGAAgASgA',
 	PLAYLISTS = 'BAAGAAgACgB',
 }
-export enum constantLinks {
+export enum ConstantURLs {
 	VIDEOLINK = 'https://www.youtube.com/watch?v=',
-	CHANNELLINK = 'https://music.youtube.com/channel/',
+	CHANNEL_URL = 'https://music.youtube.com/channel/',
 }
 
 export enum flexColumnDefinition {
@@ -34,29 +34,29 @@ export enum flexColumnDefinition {
 
 // constant delimters for types, probably can do better
 
-export enum songOffset {
-	ARTIST = 0,
-	ALBUM = 1,
-	DURATION = 2,
+export enum SongOffset {
+	ARTIST,
+	ALBUM,
+	DURATION,
 }
 
-export enum videoOffset {
-	ARTIST = 0,
-	VIEWS = 1,
-	DURATION = 2,
+export enum VideoOffset {
+	ARTIST,
+	VIEWS,
+	DURATION,
 }
 
-export enum singleOffset {
-	ARTIST = 0,
-	VIEWS = 1,
-	DURATION = 2,
+export enum SingleOffset {
+	ARTIST,
+	VIEWS,
+	DURATION,
 }
 
-export enum playlistOffset {
-	AUTHOR = 0,
-	SONGCOUNT = 1,
+export enum PlaylistOffset {
+	AUTHOR,
+	SONGCOUNT,
 }
 
-export enum artistOffset {
-	SUBSCRIBERS = 0,
+export enum ArtistOffset {
+	SUBSCRIBERS,
 }
