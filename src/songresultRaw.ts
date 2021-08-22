@@ -58,11 +58,7 @@ export interface SearchEndpoint {
 }
 
 export interface EndpointlessText {
-	runs: EndpointlessTextRun[];
-}
-
-export interface EndpointlessTextRun {
-	text: string;
+	runs: EndpointlessRun[];
 }
 
 export interface MusicShelfRendererContent {
@@ -121,9 +117,12 @@ export interface Text {
 	runs: Run[];
 }
 
-export interface Run {
+export interface EndpointlessRun {
 	text: string;
-	navigationEndpoint?: NavigationEndpoint;
+}
+
+export interface Run extends EndpointlessRun {
+	navigationEndpoint: NavigationEndpoint;
 }
 
 export interface NavigationEndpoint {
