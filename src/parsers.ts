@@ -1,47 +1,63 @@
 import { utils } from './utils';
-import { CategoryType as Category, ConstantURLs, flexColumnDefinition, VideoOffset } from './enums';
-import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, NavigationEndpoint, Run, Thumbnail } from './songresultRaw';
+import {
+	CategoryType as Category,
+	ConstantURLs,
+	flexColumnDefinition,
+	VideoOffset,
+} from './enums';
+import type {
+	MusicResponsiveListItemFlexColumnRenderer,
+	MusicResponsiveListItemRenderer,
+	MusicShelfRendererContent,
+	MusicThumbnailRenderer,
+	Thumbnail,
+} from './songresultRaw';
 import objectScan from 'object-scan';
 import { IllegalCategoryError } from './resources/errors';
 import type { SongSearchResult } from './resources/resultTypes/songSearchResult';
 import { VideoSearchResult } from './resources/resultTypes/videoSearchResult';
 import { PlaylistSearchResult } from './resources/resultTypes/playlistSearchResult';
-import { PlaylistContent, PlaylistHeader, PlaylistURL } from './resources/resultTypes/playlistURL';
+import {
+	PlaylistContent,
+	PlaylistHeader,
+	PlaylistURL,
+} from './resources/resultTypes/playlistURL';
+
+// TODO: i'm making a lot of assumptions for text being at [0], probably stop
+// TODO: objectScan's syntax is verbose as hell, write abstraction functions
 
 export class parsers {
 	// Make this one global function and call the other stuff
 	// Probably other methods should be private
-	static parseSearchResult(context: any, searchType?: Category): any {
+	static parseSearchResult(context: MusicShelfRendererContent, searchType?: Category): any {
 		// Go to the part which i have no idea
-		/**
-         * Section list is an array of musiclistrenderer
-         */
-		let sectionList = utils.fv(context, 'musicResponsiveListItemRenderer');
+		const musicResponsiveListItemRenderer = objectScan(
+			['**.musicResponsiveListItemRenderer'],
+			{ rtn: 'value' },
+		)(context) as MusicResponsiveListItemRenderer;
 
-		if (!Array.isArray(sectionList)) {
-			sectionList = [sectionList];
+		const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
+			rtn: 'parent',
+			reverse: false,
+		})(musicResponsiveListItemRenderer) as MusicResponsiveListItemFlexColumnRenderer[];
+		// probably insert a type here
+		const type = searchType ?? flexColumn[1].text.runs[1].text as Category;
+		// Is there a way to put this in map?, most likely will be more readable and u can separate into files
+		// hello, you could do something like Handlers[Category.SONG](sectionContext),
+		// or typescript signature overloading, where you can have 1 function that takes in many types
+		// (however that's just a syntactic wrapper for the switch case below, since you can't
+		// have different impl's for a function)
+		switch (type) {
+			case Category.SONG:
+				parsers.parseSongSearchResult(flexColumn);
+				break;
+
+			case Category.VIDEO:
+				parsers.parseVideoSearchResult(flexColumn);
+				break;
+
+			default:
 		}
-
-		sectionList.forEach((sectionContext: MusicListRenderer) => {
-			const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
-				rtn: 'parent',
-				reverse: false,
-			})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
-			// probably insert a type here
-			const type = searchType ?? flexColumn[1].musicResponsiveListItemRenderer.text.runs[1].text as Category;
-			// Is there a way to put this in map?, most likely will be more readable and u can separate into files
-			switch (type) {
-				case Category.SONG: {
-					parsers.parseSongSearchResult(sectionContext);
-					break;
-				}
-
-				case Category.VIDEO: {
-					parsers.parseVideoSearchResult(sectionContext);
-					break;
-				}
-			}
-		});
 	}
 
 	/**
@@ -55,23 +71,25 @@ export class parsers {
 			rtn: 'parent',
 			reverse: false,
 		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
-		if (flexColumn[flexColumnDefinition.SUPPLEMENT].text as Category !== Category.SONG) {
-			throw new IllegalCategoryError(`Type ${String(flexColumn[flexColumnDefinition.SUPPLEMENT].text)} cannot be applied to ${Category.SONG} function`);
+		const { runs } = flexColumn[flexColumnDefinition.SUPPLEMENT].text;
+
+		if (runs[0].text as Category !== Category.SONG) {
+			throw new IllegalCategoryError(`Type ${
+				String(flexColumn[flexColumnDefinition.SUPPLEMENT].text)
+			} cannot be applied to ${
+				Category.SONG
+			} function`);
 		}
 
-		// eslint-disable-next-line no-warning-comments
-		/*
-	    FIXME objectScan has no ts typings so error everywhere
-	    FIXME shove the stuff into a song object
-	     */
+		// FIXME: shove the stuff into a song object
 		const type = Category.SONG;
 		const name = objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]);
 		const id = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[0]);
 		const url = `https://www.youtube.com/watch?v=${id}`;
 		// const playlistId (have no idea do we need it or not, seems like the auto suggestion feature on normal browsers)
-		const artist = utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT] as Run[]);
-		const album = utils.albumParser(flexColumn[flexColumnDefinition.SUPPLEMENT] as Run[]);
-		const duration = utils.hms2ms((flexColumn[flexColumn.length - 1].text) as string);
+		const artist = utils.artistParser(runs);
+		const album = utils.albumParser(runs);
+		const duration = utils.hms2ms(flexColumn[flexColumn.length - 1].text.runs[0].text);
 		const thumbnail = utils.thumbnailParser(sectionContext);
 		// What is this supposed to do?
 		// const params = ??
@@ -82,8 +100,14 @@ export class parsers {
 			rtn: 'parent',
 			reverse: false,
 		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
-		if (flexColumn[flexColumnDefinition.SUPPLEMENT].text as Category !== Category.VIDEO) {
-			throw new IllegalCategoryError(`Type ${flexColumn[flexColumnDefinition.SUPPLEMENT].text as string} cannot be applied to ${Category.VIDEO} function`);
+
+		if (flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs[0].text !== Category.VIDEO) {
+			throw new IllegalCategoryError(
+				`Type ${
+					flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs[0].text
+				} cannot be applied to ${
+					Category.VIDEO
+				} function`);
 		}
 
 		const videoId = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]);
@@ -92,9 +116,9 @@ export class parsers {
 			name: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]),
 			videoId,
 			url: ConstantURLs.CHANNEL_URL + videoId,
-			author: utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT] as Run[]),
-			views: flexColumn[VideoOffset.VIEWS].text as string,
-			duration: utils.hms2ms(flexColumn[VideoOffset.DURATION].text as string),
+			author: utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs),
+			views: flexColumn[VideoOffset.VIEWS].text.runs[0].text,
+			duration: utils.hms2ms(flexColumn[VideoOffset.DURATION].text.runs[0].text),
 		});
 	}
 
@@ -104,7 +128,8 @@ export class parsers {
 			reverse: false,
 		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
 
-		const text: Category = objectScan(['**.text'], { rtn: 'value' })(flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs);
+		const { runs } = flexColumn[flexColumnDefinition.SUPPLEMENT].text;
+		const { text, navigationEndpoint } = runs[0];
 
 		if (text !== Category.PLAYLISTS) {
 			throw new IllegalCategoryError(
@@ -115,15 +140,13 @@ export class parsers {
 				} function`);
 		}
 
-		const navigationEndpoint = objectScan(['**.navigationEndpoint'], { rtn: 'value' })(sectionContext) as NavigationEndpoint;
-
 		return PlaylistSearchResult.from({
 			type: Category.PLAYLISTS,
 			playlistId: navigationEndpoint.browseEndpoint.browseId,
 			title: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(sectionContext),
 			url: ConstantURLs.CHANNEL_URL + navigationEndpoint.browseEndpoint.browseId,
-			author: utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs),
-			count: utils.playlistCountExtractor(flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs),
+			author: utils.artistParser(runs),
+			count: utils.playlistCountExtractor(runs),
 		});
 	}
 
