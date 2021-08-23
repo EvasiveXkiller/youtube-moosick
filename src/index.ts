@@ -13,7 +13,9 @@ import { GetPlaylistParser } from './parsers/getPlaylistParser';
 import { GetArtistParser } from './parsers/getArtistParser';
 import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
 import type { RawGetSearchSuggestions } from './resources/rawResultTypes/rawGetSearchSuggestions';
-import {SearchSuggestions} from "./resources/resultTypes/searchSuggestions";
+import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
+import {GetAlbumParser} from "./parsers/getAlbumParser";
+import type {RawGetAlbumURL} from "./resources/rawResultTypes/rawGetAlbumURL";
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
@@ -279,12 +281,10 @@ export class MooSick {
 				reject(new IllegalStateError('result array not found'));
 			}
 
-			const rendererCompressed = contents.map((searchSuggestionRenderer) => {
-				return SearchSuggestions.from({
-					title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
-					artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
-				});
-			});
+			const rendererCompressed = contents.map((searchSuggestionRenderer) => SearchSuggestions.from({
+				title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
+				artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
+			}));
 			resolve(rendererCompressed);
 		});
 	}
@@ -328,18 +328,22 @@ export class MooSick {
 		});
 	}
 
+	/**
+	 * Gets the album details
+	 * @param browseId The Id of the album, without the https nonsense
+	 */
 	async getAlbum(browseId: string) {
-		if (!_.startsWith(browseId, 'MPREb')) {
-			throw new Error('invalid Album browse id.');
+		if (!browseId.startsWith('MPREb')) {
+			throw new IllegalArgumentError('Invalid Album browse Id.');
 		}
 
-		return new Promise((resolve, reject) => {
-			const ctx = this._createApiRequest(EndPointType.SEARCH, utils.buildEndpointContext(CategoryType.ALBUM, browseId));
+		return new Promise(async (resolve, reject) => {
+			const ctx = await this._createApiRequest(EndPointType.SEARCH, utils.buildEndpointContext(CategoryType.ALBUM, browseId));
 			try {
-				const result = parsers.parseAlbumPage(ctx);
+				const result = GetAlbumParser.parseAlbumURLPage(ctx as unknown as RawGetAlbumURL);
 				resolve(result);
-			} catch (error) {
-				reject(error.message);
+			} catch (error: unknown) {
+				reject(error);
 			}
 		});
 	}
@@ -390,7 +394,7 @@ export class MooSick {
 					return;
 				}
 			} catch (error: unknown) {
-				resolve(error.message);
+				reject(error);
 			}
 		});
 	}
@@ -409,7 +413,7 @@ export class MooSick {
 			const ctx = await this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.ARTIST, browseId));
 			try {
 				// FIXME no idea how to solve this for now
-				const result = GetArtistParser.parseArtistURLPage(ctx as ArtistURLFullResult);
+				const result = GetArtistParser.parseArtistURLPage(ctx as unknown as ArtistURLFullResult);
 				resolve(result);
 			} catch (error: unknown) {
 				resolve(error);

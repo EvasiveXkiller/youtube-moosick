@@ -103,7 +103,7 @@ export class parsers {
 				} function`);
 		}
 
-		const videoId = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]);
+		const videoId = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]) as string;
 		return VideoSearchResult.from({
 			type: Category.VIDEO,
 			name: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]) as string,
@@ -136,7 +136,7 @@ export class parsers {
 		return PlaylistSearchResult.from({
 			type: Category.PLAYLISTS,
 			playlistId: navigationEndpoint.browseEndpoint.browseId,
-			title: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(sectionContext),
+			title: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(sectionContext) as string,
 			url: ConstantURLs.CHANNEL_URL + navigationEndpoint.browseEndpoint.browseId,
 			author: utils.artistParser(runs),
 			count: utils.playlistCountExtractor(runs),
