@@ -12,7 +12,7 @@ import { ConstantURLs } from '../enums';
 import { Artist } from '../resources/generalTypes/artist';
 
 export class GetArtistParser {
-	public static parseArtistURLPage(context: ArtistURLFullResult) {
+	public static parseArtistURLPage(context: ArtistURLFullResult): ArtistURL {
 		const subHeader = (objectScan(['**.musicDescriptionShelfRenderer'], {
 			rtn: 'value',
 			reverse: false,

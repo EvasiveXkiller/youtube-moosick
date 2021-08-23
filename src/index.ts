@@ -10,6 +10,10 @@ import { URLSearchParams } from 'url';
 import { parsers } from './parsers';
 import type { continuation } from './resources/resultTypes/playlistURL';
 import { GetPlaylistParser } from './parsers/getPlaylistParser';
+import { GetArtistParser } from './parsers/getArtistParser';
+import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
+import type { RawGetSearchSuggestions } from './resources/rawResultTypes/rawGetSearchSuggestions';
+import {SearchSuggestions} from "./resources/resultTypes/searchSuggestions";
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
@@ -259,26 +263,28 @@ export class MooSick {
      * @param query String query text to search
      * @returns {Promise<unknown>} An object formatted with utils class
      */
-	public async getSearchSuggestions(query: string) {
+	public async getSearchSuggestions(query: string): Promise<SearchSuggestions[]> {
 		return new Promise(async (resolve, reject) => {
 			const res = await this._createApiRequest(EndPointType.SUGGESTIONS, {
 				input: query,
-			});
+			}) as unknown as RawGetSearchSuggestions;
 			// I dont think this is the best way, maybe the fv seems nice but that is really unreadable
 			// Probably think of a better way
 			if (!res.contents !== undefined) {
-				reject('no results found');
+				reject(new IllegalStateError('No results found'));
 			}
 
-			const { contents } = res.contents[0].searchSuggestionRenderer;
+			const { contents } = res.contents[0].searchSuggestionsSectionRenderer;
 			if (!contents) {
 				reject(new IllegalStateError('result array not found'));
 			}
 
-			const rendererCompressed = contents.map((searchSuggestionRenderer: any) => ({
-				track: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
-				artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
-			}));
+			const rendererCompressed = contents.map((searchSuggestionRenderer) => {
+				return SearchSuggestions.from({
+					title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
+					artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
+				});
+			});
 			resolve(rendererCompressed);
 		});
 	}
@@ -349,8 +355,9 @@ export class MooSick {
 			throw new IllegalArgumentError(`Invalid Playlist Id ${browseId}.`);
 		}
 
-		// what the fuck is this
-		_.startsWith(browseId, 'PL') && (browseId = 'VL' + browseId);
+		if (browseId.startsWith('PL')) {
+			browseId = 'VL' + browseId;
+		}
 
 		return new Promise(async (resolve, reject) => {
 			const ctx = this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.PLAYLISTS, browseId));
@@ -401,12 +408,11 @@ export class MooSick {
 		return new Promise(async (resolve, reject) => {
 			const ctx = await this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.ARTIST, browseId));
 			try {
-				const result = parsers.parseArtistPage(ctx);
+				// FIXME no idea how to solve this for now
+				const result = GetArtistParser.parseArtistURLPage(ctx as ArtistURLFullResult);
 				resolve(result);
-			} catch (error) {
-				resolve({
-					error: error.message,
-				});
+			} catch (error: unknown) {
+				resolve(error);
 			}
 		});
 	}
