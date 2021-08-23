@@ -5,6 +5,7 @@ import type { Thumbnails } from '../generalTypes/thumbnails';
 export class PlaylistURL extends Item {
 	public declare headers: PlaylistHeader;
 	public declare playlistContents: PlaylistContent[];
+	public declare continuation: continuation;
 }
 
 export class PlaylistContent extends Item {
@@ -21,4 +22,9 @@ export class PlaylistHeader extends Item {
 	public declare thumbnail: Thumbnails[];
 	public declare songCount: number;
 	public declare approxRunTime: string;
+}
+
+export interface continuation {
+	continuation: string;
+	clickTrackingParams: string;
 }

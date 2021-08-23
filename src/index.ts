@@ -8,6 +8,8 @@ import { utils } from './utils';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors';
 import { URLSearchParams } from 'url';
 import { parsers } from './parsers';
+import type { continuation } from './resources/resultTypes/playlistURL';
+import { GetPlaylistParser } from './parsers/getPlaylistParser';
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
@@ -182,7 +184,7 @@ export class MooSick {
 
 	// TODO: probably define each api req's input vars & input queries,
 	// then make this func generic so it's type safe
-	private async _createApiRequest(endpointName: EndPointType, inputVariables = {}, inputQuery = {}) {
+	private async _createApiRequest(endpointName: EndPointType, inputVariables = {}, inputQuery = {}): Promise<string> {
 		const res = await this.client.post(
 			`youtubei/${
 				this.config.INNERTUBE_API_VERSION
@@ -264,7 +266,7 @@ export class MooSick {
 			});
 			// I dont think this is the best way, maybe the fv seems nice but that is really unreadable
 			// Probably think of a better way
-			if (!res.hasOwnProperty('contents')) {
+			if (!res.contents !== undefined) {
 				reject('no results found');
 			}
 
@@ -343,49 +345,45 @@ export class MooSick {
      * @returns {Promise<unknown>} An object formatted by the parser
      */
 	async getPlaylist(browseId: string, contentLimit = 100) {
-		if (!(_.startsWith(browseId, 'VL') || _.startsWith(browseId, 'PL'))) {
-			throw new Error('invalid playlist id.');
+		if (!(browseId.startsWith('VL') || browseId.startsWith('PL'))) {
+			throw new IllegalArgumentError(`Invalid Playlist Id ${browseId}.`);
 		}
 
+		// what the fuck is this
 		_.startsWith(browseId, 'PL') && (browseId = 'VL' + browseId);
 
 		return new Promise(async (resolve, reject) => {
 			const ctx = this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.PLAYLISTS, browseId));
 			try {
-				const result = parsers.parsePlaylistPage(ctx);
-				const getContinuations = async (params: any) => {
+				const result = GetPlaylistParser.parsePlaylistURL(ctx);
+				// No idea does this work or not
+				const getContinuations = async (params: continuation) => {
 					const ctx = this._createApiRequest(EndPointType.BROWSE, {}, {
 						ctoken: params.continuation,
 						continuation: params.continuation,
-						itct: params.continuation.clickTrackingParams,
+						itct: params.clickTrackingParams,
 					});
-					const continuationResult = parsers.parsePlaylistPage(ctx);
-					if (Array.isArray(continuationResult.content)) {
-						result.content = _.concat(result.content, continuationResult.content);
-						result.continuation = continuationResult.continuation;
-					}
+					const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
+					result.playlistContents = _.concat(result.playlistContents, continuationResult.playlistContents);
+					result.continuation = continuationResult.continuation;
 
-					if (!Array.isArray(continuationResult.continuation) && result.continuation instanceof Object) {
-						if (contentLimit > result.content.length) {
-							await getContinuations(continuationResult.continuation);
-						} else {
-							resolve(result);
-						}
+					if (Array.isArray(continuationResult.continuation)) {
+						resolve(result);
+					} else if (contentLimit > result.playlistContents.length) {
+						await getContinuations(continuationResult.continuation);
 					} else {
 						resolve(result);
 					}
 				};
 
-				if (contentLimit > result.content.length && (!Array.isArray(result.continuation) && result.continuation instanceof Object)) {
+				if (contentLimit > result.playlistContents.length && (!Array.isArray(result.continuation))) {
 					await getContinuations(result.continuation);
 				} else {
 					resolve(result);
 					return;
 				}
-			} catch (error) {
-				resolve({
-					error: error.message,
-				});
+			} catch (error: unknown) {
+				resolve(error.message);
 			}
 		});
 	}

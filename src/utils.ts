@@ -3,8 +3,6 @@ import { Artist } from './resources/generalTypes/artist';
 import type { Run } from './resources/resultTypes/sectionList';
 import { Album } from './resources/generalTypes/album';
 import { Thumbnails } from './resources/generalTypes/thumbnails';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 import objectScan from 'object-scan';
 import { CategoryType, ConstantURLs, flexColumnDefinition, PlaylistOffset, SongOffset } from './enums';
 import { IllegalCategoryError } from './resources/errors';

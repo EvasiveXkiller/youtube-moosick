@@ -9,19 +9,12 @@ import type {
 	MusicResponsiveListItemFlexColumnRenderer,
 	MusicResponsiveListItemRenderer,
 	MusicShelfRendererContent,
-	MusicThumbnailRenderer,
-	Thumbnail,
-} from './songresultRaw';
+} from './resources/rawResultTypes/songresultRaw';
 import objectScan from 'object-scan';
 import { IllegalCategoryError } from './resources/errors';
 import type { SongSearchResult } from './resources/resultTypes/songSearchResult';
 import { VideoSearchResult } from './resources/resultTypes/videoSearchResult';
 import { PlaylistSearchResult } from './resources/resultTypes/playlistSearchResult';
-import {
-	PlaylistContent,
-	PlaylistHeader,
-	PlaylistURL,
-} from './resources/resultTypes/playlistURL';
 
 // TODO: i'm making a lot of assumptions for text being at [0], probably stop
 // TODO: objectScan's syntax is verbose as hell, write abstraction functions
@@ -113,7 +106,7 @@ export class parsers {
 		const videoId = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]);
 		return VideoSearchResult.from({
 			type: Category.VIDEO,
-			name: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]),
+			name: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]) as string,
 			videoId,
 			url: ConstantURLs.CHANNEL_URL + videoId,
 			author: utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs),
@@ -147,52 +140,6 @@ export class parsers {
 			url: ConstantURLs.CHANNEL_URL + navigationEndpoint.browseEndpoint.browseId,
 			author: utils.artistParser(runs),
 			count: utils.playlistCountExtractor(runs),
-		});
-	}
-
-	public static parsePlaylistURL(context: any): PlaylistURL {
-		// Gets the entire flexColumn, and filter those with empty members
-		const flexColumn = (objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
-			rtn: 'value',
-			reverse: false,
-		})(context) as MusicResponsiveListItemFlexColumnRenderer[])
-			.filter((item) => item.text?.runs != null);
-		const unprocessedHeader = (objectScan(['**.musicDetailHeaderRenderer'], {
-			rtn: 'value',
-			reverse: false,
-		})(context));
-		const allThumbnailRenderers = (objectScan(['**.musicThumbnailRenderer'], {
-			rtn: 'value',
-			reverse: false,
-		})(context)) as MusicThumbnailRenderer[];
-
-		const playlistContents: PlaylistContent[] = [];
-
-		for (let i = 0; i < Math.floor(flexColumn.length / 2); ++i) {
-			const flexColumnPart = flexColumn[i * 2];
-
-			playlistContents.push({
-				trackTitle: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
-				trackId: objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
-				artist: utils.artistParser(flexColumnPart.text.runs),
-				thumbnail: allThumbnailRenderers[i].thumbnail.thumbnails,
-			});
-		}
-
-		return PlaylistURL.from({
-			headers: parsers.playlistURLHeaderParser(unprocessedHeader),
-			playlistContents,
-		});
-	}
-
-	private static playlistURLHeaderParser(header: any[]): PlaylistHeader {
-		return PlaylistHeader.from({
-			playlistName: header[0].title.runs[0].text as string,
-			owner: header[0].subtitle.runs[2].text as string,
-			createdYear: parseInt(header[0].subtitle.runs[4].text, 10)!,
-			thumbnail: header[0].thumbnail.croppedSquareThumbnailRenderer.thumbnail.thumbnail as Thumbnail[],
-			songCount: header[0].secondSubtitle.runs[0].text as number,
-			approxRunTime: header[0].secondSubtitle.runs[2].text as string,
 		});
 	}
 }
