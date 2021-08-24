@@ -59,11 +59,7 @@ export class parsers {
 	 * @param sectionContext
 	 */
 	// Probably the type of sectionContext is wrong have to check on it more
-	private static parseSongSearchResult(sectionContext: MusicResponsiveListItemFlexColumnRenderer[]): SongSearchResult {
-		const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
-			rtn: 'parent',
-			reverse: false,
-		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
+	private static parseSongSearchResult(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]): SongSearchResult {
 		const { runs } = flexColumn[flexColumnDefinition.SUPPLEMENT].text;
 
 		if (runs[0].text as Category !== Category.SONG) {
@@ -88,12 +84,7 @@ export class parsers {
 		// const params = ??
 	}
 
-	private static parseVideoSearchResult(sectionContext: MusicResponsiveListItemFlexColumnRenderer[]): VideoSearchResult {
-		const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
-			rtn: 'parent',
-			reverse: false,
-		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
-
+	private static parseVideoSearchResult(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]): VideoSearchResult {
 		if (flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs[0].text !== Category.VIDEO) {
 			throw new IllegalCategoryError(
 				`Type ${
@@ -115,12 +106,7 @@ export class parsers {
 		});
 	}
 
-	private static parsePlaylistSearchResult(sectionContext: MusicResponsiveListItemFlexColumnRenderer[]): PlaylistSearchResult {
-		const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
-			rtn: 'parent',
-			reverse: false,
-		})(sectionContext) as MusicResponsiveListItemFlexColumnRenderer[];
-
+	private static parsePlaylistSearchResult(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]): PlaylistSearchResult {
 		const { runs } = flexColumn[flexColumnDefinition.SUPPLEMENT].text;
 		const { text, navigationEndpoint } = runs[0];
 
