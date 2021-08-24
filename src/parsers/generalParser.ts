@@ -1,4 +1,4 @@
-import { CategoryType, CategoryType as Category } from '../enums';
+import { Category, CategoryURIBase64 } from '../enums';
 import objectScan from 'object-scan';
 import type { Song } from '../resources/generalTypes/song';
 import type {
@@ -17,10 +17,10 @@ import { Results } from '../resources/resultTypes/results';
 // TODO: i'm making a lot of assumptions for text being at [0], probably stop
 // TODO: objectScan's syntax is verbose as hell, write abstraction functions
 
-export class generalParser {
+export class GeneralParser {
 	// Make this one global function and call the other stuff
 	// Probably other methods should be private
-	static parseSearchResult(context: GeneralFull, searchType?: Category): Results {
+	static parseSearchResult(context: GeneralFull, searchType?: CategoryURIBase64): Results {
 		// prep all the parts
 		let albums: AlbumExtended[];
 		let videos: Video[];
@@ -41,24 +41,24 @@ export class generalParser {
 					rtn: 'parent',
 					reverse: false,
 				})(item) as MusicResponsiveListItemFlexColumnRenderer[];
-				const category = flexColumnRenderer[0].text.runs[0].text as CategoryType;
+				const category = flexColumnRenderer[0].text.runs[0].text as Category;
 				switch (category) {
 					case Category.SONG:
 						songs.push(Song.from({
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, CategoryType.SONG, Boolean(searchType)),
-							...generalParser.musicResponsiveListItemRendererParser(item),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.SONG, Boolean(searchType)),
+							...GeneralParser.musicResponsiveListItemRendererParser(item),
 							thumbnails: ParsersExtended.thumbnailParser(item),
 						}));
 						break;
 					case Category.VIDEO:
 						videos.push(Video.from({
-							...generalParser.musicResponsiveListItemRendererParser(item),
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, CategoryType.VIDEO, Boolean(searchType)),
+							...GeneralParser.musicResponsiveListItemRendererParser(item),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.VIDEO, Boolean(searchType)),
 							thumbnails: ParsersExtended.thumbnailParser(item),
 						}));
-						generalParser.parseVideoSearchResult(item);
+						GeneralParser.parseVideoSearchResult(item);
 						break;
-					case CategoryType.PLAYLISTS:
+					case Category.PLAYLISTS:
 						playlists.push(Playlist.from({
 							name: objectScan(['**.text'], {
 								rtn: 'value',
@@ -66,10 +66,10 @@ export class generalParser {
 								abort: true,
 							})(flexColumnRenderer) as string,
 							browseId: flexColumnRenderer.navigationEndpoint.browseEndpoint.browseId,
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, CategoryType.PLAYLISTS, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.PLAYLISTS, Boolean(searchType)),
 						}));
 						break;
-					case CategoryType.ARTIST:
+					case Category.ARTIST:
 						artist.push(ArtistExtended.from({
 							name: objectScan(['**.text'], {
 								rtn: 'value',
@@ -78,15 +78,15 @@ export class generalParser {
 							})(flexColumnRenderer),
 							browseId: item.navigationEndpoint.browseEndpoint.browseId,
 							thumbnails: ParsersExtended.thumbnailParser(item),
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, CategoryType.ARTIST, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.ARTIST, Boolean(searchType)),
 						}));
 					// eslint is drunk here
 					// eslint-disable-next-line no-fallthrough
-					case CategoryType.ALBUM:
-					case CategoryType.SINGLE:
-					case CategoryType.EP:
+					case Category.ALBUM:
+					case Category.SINGLE:
+					case Category.EP:
 						albums.push({
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, CategoryType.ARTIST, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.ARTIST, Boolean(searchType)),
 							name: objectScan(['**.text'], {
 								rtn: 'value',
 								reverse: false,

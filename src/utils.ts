@@ -1,13 +1,4 @@
 import type { ytcfgInterface } from './cfgInterface';
-import { Artist, ArtistExtended } from './resources/generalTypes/artist';
-import { Album } from './resources/generalTypes/album';
-import { Thumbnails } from './resources/generalTypes/thumbnails';
-import objectScan from 'object-scan';
-import { CategoryType, ConstantURLs } from './enums';
-import type { PurpleRun } from './resources/rawResultTypes/comfirmedInterfaces';
-import { Song } from './resources/generalTypes/song';
-import { Playlist } from './resources/generalTypes/playlist';
-import { Video } from './resources/generalTypes/video';
 import { parseInt } from 'lodash';
 
 export class utils {

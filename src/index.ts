@@ -7,7 +7,7 @@ import { Category, CategoryURIBase64, EndPoint } from './enums';
 import { utils } from './utils';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors';
 import { URLSearchParams } from 'url';
-import { generalParser } from './parsers/generalParser';
+import { GeneralParser } from './parsers/generalParser';
 import type { continuation } from './resources/resultTypes/playlistURL';
 import { GetPlaylistParser } from './parsers/getPlaylistParser';
 import { GetArtistParser } from './parsers/getArtistParser';
@@ -16,6 +16,7 @@ import type { RawGetSearchSuggestions } from './resources/rawResultTypes/rawGetS
 import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
 import { GetAlbumParser } from './parsers/getAlbumParser';
 import type { RawGetAlbumURL } from './resources/rawResultTypes/rawGetAlbumURL';
+import type {GeneralFull} from "./resources/rawResultTypes/general/generalFull";
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
@@ -303,28 +304,8 @@ export class MooSick {
 				query,
 				params: categoryName ?? '',
 			});
-			switch (categoryName) {
-				case CategoryURIBase64.SONG:
-					result = generalParser.parseSongSearchResult(context);
-					break;
-				case CategoryURIBase64.VIDEO:
-					result = generalParser.parseVideoSearchResult(context);
-					break;
-				case CategoryURIBase64.ALBUM:
-					result = generalParser.parseAlbumSearchResult(context);
-					break;
-				case CategoryURIBase64.ARTIST:
-					result = generalParser.parseArtistSearchResult(context);
-					break;
-				case CategoryURIBase64.PLAYLISTS:
-					result = generalParser.parsePlaylistSearchResult(context);
-					break;
-				default:
-					result = generalParser.parseSearchResult(context);
-					break;
-			}
-
-			resolve(result);
+			// The switch case will be implemented in parser as the individual stuff that comes out it nearly the same
+			resolve(GeneralParser.parseSearchResult(context as unknown as GeneralFull, categoryName));
 		});
 	}
 
