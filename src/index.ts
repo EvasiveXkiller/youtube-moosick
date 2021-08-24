@@ -1,22 +1,22 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 // no idea how to import these
 import axios0 from 'axios/lib/adapters/http';
 import tough from 'tough-cookie';
-import _ from 'lodash';
 import { Category, CategoryURIBase64, EndPoint } from './enums';
 import { utils } from './utils';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors';
 import { URLSearchParams } from 'url';
 import { GeneralParser } from './parsers/generalParser';
-import type { continuation } from './resources/resultTypes/playlistURL';
 import { GetPlaylistParser } from './parsers/getPlaylistParser';
 import { GetArtistParser } from './parsers/getArtistParser';
 import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
-import type { RawGetSearchSuggestions } from './resources/rawResultTypes/rawGetSearchSuggestions';
+import type { SearchSuggestionsFullResult } from './resources/rawResultTypes/rawGetSearchSuggestions';
 import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
 import { GetAlbumParser } from './parsers/getAlbumParser';
-import type { RawGetAlbumURL } from './resources/rawResultTypes/rawGetAlbumURL';
-import type {GeneralFull} from "./resources/rawResultTypes/general/generalFull";
+import type { AlbumURLFullResult } from './resources/rawResultTypes/rawGetAlbumURL';
+import type { GeneralFull } from './resources/rawResultTypes/general/generalFull';
+import { AsyncConstructor } from './blocks/asyncConstructor';
+import type { Result } from './resources/rawResultTypes/common';
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
@@ -45,85 +45,68 @@ interface YTConfig {
 	PAGE_BUILD_LABEL: string;
 	CLIENT_CANARY_STATE: string;
 
-}
-
-// Just ditch stuff i guess if u dont need, and im pretty sure we dont need every param here
-// Or we can just leave it as any
-interface full {
-	'CLIENT_CANARY_STATE': string;
-	'DEVICE': string;
-	'ELEMENT_POOL_DEFAULT_CAP': number;
-	'EVENT_ID': string;
+	ELEMENT_POOL_DEFAULT_CAP: number;
+	EVENT_ID: string;
 	// Experiment flags is a big object, probably dont need it
-	'EXPERIMENT_FLAGS': Record<string, unknown>;
-	'GAPI_HINT_PARAMS': string;
-	'GAPI_HOST': string;
-	'GAPI_LOCALE': string;
-	'GL': string;
-	'HL': string;
-	'HTML_DIR': string;
-	'HTML_LANG': string;
-	'INNERTUBE_API_KEY': string;
-	'INNERTUBE_API_VERSION': string;
-	'INNERTUBE_CLIENT_NAME': string;
-	'INNERTUBE_CLIENT_VERSION': string;
-	'INNERTUBE_CONTEXT': Record<string, unknown>;
-	'INNERTUBE_CONTEXT_CLIENT_NAME': 67;
-	'INNERTUBE_CONTEXT_CLIENT_VERSION': string;
-	'INNERTUBE_CONTEXT_GL': string;
-	'INNERTUBE_CONTEXT_HL': string;
-	'LATEST_ECATCHER_SERVICE_TRACKING_PARAMS': Record<string, unknown>;
-	'LOGGED_IN': false;
-	'PAGE_BUILD_LABEL': string;
-	'PAGE_CL': number;
-	'SERVER_NAME': string;
-	'SIGNIN_URL': string;
-	'VISITOR_DATA': string;
-	'WEB_PLAYER_CONTEXT_CONFIGS': Record<string, unknown>;
-	'XSRF_FIELD_NAME': string;
-	'XSRF_TOKEN': string;
-	'YPC_MB_URL': string;
-	'YTR_FAMILY_CREATION_URL': string;
-	'SERVER_VERSION': string;
-	'LOCALE': string;
-	'REUSE_COMPONENTS': boolean;
-	'STAMPER_STABLE_LIST': boolean;
-	'DATASYNC_ID': string;
-	'SERIALIZED_CLIENT_CONFIG_DATA': string;
-	'CLIENT_PROTOCOL': string;
-	'CLIENT_TRANSPORT': string;
-	'USE_EMBEDDED_INNERTUBE_DATA': boolean;
-	'VISIBILITY_ROOT': string;
-	'YTMUSIC_ICON_SRC': string;
-	'YTMUSIC_LOGO_SRC': string;
-	'UPLOAD_URL': string;
-	'TRANSFER_PAGE_SIGNIN_URL': string;
-	'LOGOUT_URL': string;
-	'IS_SUBSCRIBER': boolean;
-	'IS_MOBILE_WEB': boolean;
-	'INITIAL_ENDPOINT': string;
+	EXPERIMENT_FLAGS: Record<string, unknown>;
+	GAPI_HINT_PARAMS: string;
+	GAPI_HOST: string;
+	GAPI_LOCALE: string;
+	GL: string;
+	HL: string;
+	HTML_DIR: string;
+	HTML_LANG: string;
+	INNERTUBE_CLIENT_NAME: string;
+	INNERTUBE_CONTEXT: Record<string, unknown>;
+	INNERTUBE_CONTEXT_CLIENT_VERSION: string;
+	INNERTUBE_CONTEXT_GL: string;
+	INNERTUBE_CONTEXT_HL: string;
+	LATEST_ECATCHER_SERVICE_TRACKING_PARAMS: Record<string, unknown>;
+	LOGGED_IN: false;
+	SERVER_NAME: string;
+	SIGNIN_URL: string;
+	WEB_PLAYER_CONTEXT_CONFIGS: Record<string, unknown>;
+	XSRF_FIELD_NAME: string;
+	XSRF_TOKEN: string;
+	YPC_MB_URL: string;
+	YTR_FAMILY_CREATION_URL: string;
+	SERVER_VERSION: string;
+	LOCALE: string;
+	REUSE_COMPONENTS: boolean;
+	STAMPER_STABLE_LIST: boolean;
+	DATASYNC_ID: string;
+	SERIALIZED_CLIENT_CONFIG_DATA: string;
+	CLIENT_PROTOCOL: string;
+	CLIENT_TRANSPORT: string;
+	USE_EMBEDDED_INNERTUBE_DATA: boolean;
+	VISIBILITY_ROOT: string;
+	YTMUSIC_ICON_SRC: string;
+	YTMUSIC_LOGO_SRC: string;
+	UPLOAD_URL: string;
+	TRANSFER_PAGE_SIGNIN_URL: string;
+	LOGOUT_URL: string;
+	IS_SUBSCRIBER: boolean;
+	IS_MOBILE_WEB: boolean;
+	INITIAL_ENDPOINT: string;
 	// pretty sure we dont need this
-	'HOTKEY_DIALOG': Record<string, unknown>;
-	'DEFAULT_ALBUM_IMAGE_SRC': string;
-	'AUDIO_QUALITY': string;
-	'ADD_SCRAPER_ATTRIBUTES': boolean;
-	'ACTIVE_ACCOUNT_IS_MADISON_ACCOUNT': boolean;
-	'YTMUSIC_WHITE_ICON_SRC': string;
-	'YTMUSIC_WHITE_LOGO_SRC': string;
+	HOTKEY_DIALOG: Record<string, unknown>;
+	DEFAULT_ALBUM_IMAGE_SRC: string;
+	AUDIO_QUALITY: string;
+	ADD_SCRAPER_ATTRIBUTES: boolean;
+	ACTIVE_ACCOUNT_IS_MADISON_ACCOUNT: boolean;
+	YTMUSIC_WHITE_ICON_SRC: string;
+	YTMUSIC_WHITE_LOGO_SRC: string;
 }
 
 // ASYNC AWAIT SUPPORT EVERYWHERE, CALLBACK HELL IT IS NOW
 
-export class MooSick {
-	private client: AxiosInstance;
-	private cookies: tough.CookieJar;
+export class MooSick extends AsyncConstructor {
+	private client!: AxiosInstance;
+	private cookies!: tough.CookieJar;
 
-	// FIXME: where is this coming from?
-	// @REPLY came from `initialize` func filter foreach function
-	// probably this set to any since the object that comes out is huge
-	private config: any;
+	private config!: YTConfig;
 
-	constructor() {
+	async #new() {
 		this.cookies = new tough.CookieJar();
 		this.client = axios.create({
 			baseURL: 'https://music.youtube.com/',
@@ -172,6 +155,40 @@ export class MooSick {
 
 			return res;
 		});
+
+		const res = await this.client.get<string, AxiosResponse<string>>('/');
+		const dataString = /(?<=ytcfg\.set\().+(?=\);)/.exec(res.data)?.[0];
+
+		if (dataString == null) {
+			throw new IllegalStateError('API initialization returned a nullish value');
+		}
+
+		const dataJSON = JSON.parse(dataString) as Record<string, unknown>[];
+
+		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+		this.config = {} as YTConfig;
+
+		dataJSON.forEach((dataJSONPart) => {
+			if (typeof dataJSONPart !== 'object') {
+				return;
+			}
+
+			Object
+				.entries(dataJSONPart)
+				.forEach(([key, value]) => {
+					// @ts-expect-error obj[string]
+					// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+					this.config[key] = value as any;
+				});
+		});
+
+		return this;
+	}
+
+	public static override async new<T = AsyncConstructor>(): Promise<T> {
+		void super.new();
+
+		return new MooSick().#new() as unknown as Promise<T>;
 	}
 
 	private parseAndSetCookie(cookieString: string, baseURL: string) {
@@ -191,8 +208,8 @@ export class MooSick {
 
 	// TODO: probably define each api req's input vars & input queries,
 	// then make this func generic so it's type safe
-	private async _createApiRequest(endpointName: EndPoint, inputVariables = {}, inputQuery = {}): Promise<string> {
-		const res = await this.client.post(
+	async #createApiRequest(endpointName: EndPoint, inputVariables = {}, inputQuery = {}) {
+		const res = await this.client.post<any, AxiosResponse<Result>>(
 			`youtubei/${
 				this.config.INNERTUBE_API_VERSION
 			}/${
@@ -225,69 +242,42 @@ export class MooSick {
 				},
 			});
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 		if (res.data?.responseContext != null) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 			return res.data;
 		}
 
-		return null;
-	}
-
-	/**
-     * Initialize the client for usage
-     * @returns {Promise<unknown>} A ready to use API object
-     */
-	public async initialize() {
-		return new Promise(async (resolve, reject) => {
-			const res = await this.client.get('/');
-			try {
-				const frontDelimiter = 'ytcfg.set(';
-				const splitDelimiter = ');';
-				res.data.split(frontDelimiter).map((v: string) => {
-					try {
-						return JSON.parse(v.split(splitDelimiter)[0]);
-					} catch (_) {
-					}
-				}).filter(Boolean)
-					.forEach((cfg: Record<string, unknown>) => (this.config = Object.assign(cfg, this.config)));
-				resolve({
-					locale: this.config.LOCALE,
-					logged_in: this.config.LOGGED_IN,
-				});
-			} catch (err) {
-				reject(err);
-			}
-		});
+		throw new IllegalStateError('Youtube Music API request failed (`res.data?.responseContext` was nullish)');
 	}
 
 	/**
      * Get search suggestions from Youtube Music
      * @param query String query text to search
-     * @returns {Promise<unknown>} An object formatted with utils class
+     * @returns An object formatted with utils class
      */
-	public async getSearchSuggestions(query: string): Promise<SearchSuggestions[]> {
-		return new Promise(async (resolve, reject) => {
-			const res = await this._createApiRequest(EndPoint.SUGGESTIONS, {
-				input: query,
-			}) as unknown as RawGetSearchSuggestions;
-			// I dont think this is the best way, maybe the fv seems nice but that is really unreadable
-			// Probably think of a better way
-			if (!res.contents !== undefined) {
-				reject(new IllegalStateError('No results found'));
-			}
+	public async getSearchSuggestions(query: string) {
+		const res = await this.#createApiRequest(EndPoint.SUGGESTIONS, {
+			input: query,
+		}) as SearchSuggestionsFullResult;
 
-			const { contents } = res.contents[0].searchSuggestionsSectionRenderer;
-			if (!contents) {
-				reject(new IllegalStateError('result array not found'));
-			}
+		if (res.contents == null) {
+			throw new IllegalStateError('No results found');
+		}
 
-			const rendererCompressed = contents.map((searchSuggestionRenderer) => SearchSuggestions.from({
-				title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
-				artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
-			}));
-			resolve(rendererCompressed);
-		});
+		const { contents } = res.contents[0].searchSuggestionsSectionRenderer;
+		if (!contents) {
+			throw new IllegalStateError('Results array not found');
+		}
+
+		const rendererCompressed = contents
+			.map(
+				(searchSuggestionRenderer) => SearchSuggestions
+					.from({
+						title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
+						artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
+					}),
+			);
+
+		return rendererCompressed;
 	}
 
 	/**
@@ -295,18 +285,18 @@ export class MooSick {
      * @param query String query text to search
      * @param categoryName Type of category to search
      * @param _pageLimit Max pages to obtain
-     * @returns {Promise<unknown>} An object formatted by parsers.js
+     * @returns An object formatted by parsers.js
      */
 	async search(query: string, categoryName?: CategoryURIBase64, _pageLimit = 1): Promise<unknown> {
-		return new Promise(async (resolve, reject) => {
-			let result: Record<string, unknown>;
-			const context = await this._createApiRequest(EndPoint.SEARCH, {
+		const ctx = await this.#createApiRequest(
+			EndPoint.SEARCH,
+			{
 				query,
 				params: categoryName ?? '',
-			});
-			// The switch case will be implemented in parser as the individual stuff that comes out it nearly the same
-			resolve(GeneralParser.parseSearchResult(context as unknown as GeneralFull, categoryName));
-		});
+			},
+		);
+		// The switch case will be implemented in parser as the individual stuff that comes out it nearly the same
+		return GeneralParser.parseSearchResult(ctx as GeneralFull, categoryName);
 	}
 
 	/**
@@ -315,91 +305,75 @@ export class MooSick {
 	 */
 	async getAlbum(browseId: string) {
 		if (!browseId.startsWith('MPREb')) {
-			throw new IllegalArgumentError('Invalid Album browse Id.');
+			throw new IllegalArgumentError('Album browse IDs must start with "MPREb"', 'browseId');
 		}
 
-		return new Promise(async (resolve, reject) => {
-			const ctx = await this._createApiRequest(EndPoint.SEARCH, utils.buildEndpointContext(Category.ALBUM, browseId));
-			try {
-				const result = GetAlbumParser.parseAlbumURLPage(ctx as unknown as RawGetAlbumURL);
-				resolve(result);
-			} catch (error: unknown) {
-				reject(error);
-			}
-		});
+		const ctx = await this.#createApiRequest(
+			EndPoint.SEARCH,
+			utils.buildEndpointContext(Category.ALBUM, browseId),
+		);
+
+		return GetAlbumParser.parseAlbumURLPage(ctx as AlbumURLFullResult);
 	}
 
 	/**
      * Gets the playlist using the Youtube Music API
      * @param browseId The playlist ID, sanitized
      * @param contentLimit Maximum content to get
-     * @returns {Promise<unknown>} An object formatted by the parser
+     * @returns An object formatted by the parser
      */
-	async getPlaylist(browseId: string, contentLimit = 100) {
-		if (!(browseId.startsWith('VL') || browseId.startsWith('PL'))) {
-			throw new IllegalArgumentError(`Invalid Playlist Id ${browseId}.`);
+	public async getPlaylist(browseId: string, contentLimit = 100) {
+		if (!browseId.startsWith('VL')
+			&& !browseId.startsWith('PL')) {
+			throw new IllegalArgumentError('Playlist browse IDs must start with "VL" or "PL"', 'browseId');
 		}
 
 		if (browseId.startsWith('PL')) {
 			browseId = 'VL' + browseId;
 		}
 
-		return new Promise(async (resolve, reject) => {
-			const ctx = this._createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLISTS, browseId));
-			try {
-				const result = GetPlaylistParser.parsePlaylistURL(ctx);
-				// No idea does this work or not
-				const getContinuations = async (params: continuation) => {
-					const ctx = this._createApiRequest(EndPoint.BROWSE, {}, {
-						ctoken: params.continuation,
-						continuation: params.continuation,
-						itct: params.clickTrackingParams,
-					});
-					const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
-					result.playlistContents = _.concat(result.playlistContents, continuationResult.playlistContents);
-					result.continuation = continuationResult.continuation;
+		const ctx = this.#createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLISTS, browseId));
+		const result = GetPlaylistParser.parsePlaylistURL(ctx);
 
-					if (Array.isArray(continuationResult.continuation)) {
-						resolve(result);
-					} else if (contentLimit > result.playlistContents.length) {
-						await getContinuations(continuationResult.continuation);
-					} else {
-						resolve(result);
-					}
-				};
+		while (contentLimit > result.playlistContents.length
+				&& result.continuation) {
+			const { continuation, clickTrackingParams } = result.continuation;
 
-				if (contentLimit > result.playlistContents.length && (!Array.isArray(result.continuation))) {
-					await getContinuations(result.continuation);
-				} else {
-					resolve(result);
-					return;
-				}
-			} catch (error: unknown) {
-				reject(error);
+			const ctx = this.#createApiRequest(EndPoint.BROWSE, {}, {
+				ctoken: continuation,
+				continuation,
+				itct: clickTrackingParams,
+			});
+			const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
+
+			// FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
+			if (!Array.isArray(continuationResult.playlistContents)) {
+				throw new IllegalStateError('Browse API responded with non-array `playlistContents`');
 			}
-		});
+
+			result.playlistContents.push(...continuationResult.playlistContents);
+			result.continuation = continuationResult.continuation;
+		}
+
+		return result;
 	}
 
 	/**
      * Gets the artist details from Youtube Music
      * @param browseId The artist ID, sanitized
-     * @returns {Promise<unknown>} An object formatted by the artist page
+     * @returns An object formatted by the artist page
      */
-	async getArtist(browseId: string) {
-		if (!_.startsWith(browseId, 'UC')) {
-			throw new Error('invalid artist browse id.');
+	public async getArtist(browseId: string) {
+		if (!browseId.startsWith('UC')) {
+			throw new IllegalArgumentError('Artist browse IDs must start with "UC"', 'browseId');
 		}
 
-		return new Promise(async (resolve, reject) => {
-			const ctx = await this._createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.ARTIST, browseId));
-			try {
-				// FIXME no idea how to solve this for now
-				const result = GetArtistParser.parseArtistURLPage(ctx as unknown as ArtistURLFullResult);
-				resolve(result);
-			} catch (error: unknown) {
-				resolve(error);
-			}
-		});
+		const ctx = await this.#createApiRequest(
+			EndPoint.BROWSE,
+			utils.buildEndpointContext(Category.ARTIST, browseId),
+		);
+
+		return GetArtistParser.parseArtistURLPage(ctx as ArtistURLFullResult);
 	}
 }
 
