@@ -2,6 +2,7 @@ import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../r
 import objectScan from 'object-scan';
 import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/rawResultTypes/rawGetSongURL';
 import { utils } from '../utils';
+import type { MusicDetailHeaderRenderer } from '../resources/rawResultTypes/rawGetPlaylistURL';
 
 /**
  * Used for getPlaylistURL function ONLY
@@ -17,7 +18,7 @@ export class GetPlaylistParser {
 		const unprocessedHeader = (objectScan(['**.musicDetailHeaderRenderer'], {
 			rtn: 'value',
 			reverse: false,
-		})(context));
+		})(context) as MusicDetailHeaderRenderer[]);
 		const allThumbnailRenderers = (objectScan(['**.musicThumbnailRenderer'], {
 			rtn: 'value',
 			reverse: false,
