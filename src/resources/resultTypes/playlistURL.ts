@@ -1,11 +1,11 @@
-import { Item } from '../../item';
+import { Item } from '../../blocks/item';
 import type { Artist } from '../generalTypes/artist';
 import type { Thumbnails } from '../generalTypes/thumbnails';
 
 export class PlaylistURL extends Item {
 	public declare headers: PlaylistHeader;
 	public declare playlistContents: PlaylistContent[];
-	public declare continuation: continuation;
+	public declare continuation: Continuation;
 }
 
 export class PlaylistContent extends Item {
@@ -24,7 +24,7 @@ export class PlaylistHeader extends Item {
 	public declare approxRunTime: string;
 }
 
-export interface continuation {
+export interface Continuation {
 	continuation: string;
 	clickTrackingParams: string;
 }

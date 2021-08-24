@@ -1,4 +1,4 @@
-import { Item } from '../../item';
+import { Item } from '../../blocks/item';
 import type { Thumbnails } from './thumbnails';
 import type { Artist } from './artist';
 

@@ -2,8 +2,11 @@ import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL'
 import objectScan from 'object-scan';
 import type {
 	MusicAlbumRelease,
-	MusicAlbumReleaseDetail, MusicArtist, MusicTrack,
-	RawGetAlbumURL, ThumbnailDetails,
+	MusicAlbumReleaseDetail,
+	MusicArtist,
+	MusicTrack,
+	AlbumURLFullResult,
+	ThumbnailDetails,
 } from '../resources/rawResultTypes/rawGetAlbumURL';
 import { ConstantURLs } from '../enums';
 import type { ThumbnailElement } from '../resources/rawResultTypes/comfirmedInterfaces';
@@ -11,7 +14,7 @@ import { Thumbnails } from '../resources/generalTypes/thumbnails';
 import { ArtistExtended } from '../resources/generalTypes/artist';
 
 export class GetAlbumParser {
-	public static parseAlbumURLPage(context: RawGetAlbumURL): AlbumURL {
+	public static parseAlbumURLPage(context: AlbumURLFullResult): AlbumURL {
 		// Overview of the albums
 		const albumOverview = (objectScan(['**.musicAlbumRelease'], {
 			rtn: 'value',

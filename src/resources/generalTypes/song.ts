@@ -1,11 +1,11 @@
-import { CategoryType } from '../../enums';
-import { Item } from '../../item';
+import { Category } from '../../enums';
+import { Item } from '../../blocks/item';
 import type { Thumbnails } from './thumbnails';
 import type { Artist } from './artist';
 import type { Album } from './album';
 
 export class Song extends Item {
-	public type?: CategoryType = CategoryType.SONG;
+	public type?: Category = Category.SONG;
 	public declare name: string;
 	public declare videoId: string;
 	public declare url: string;

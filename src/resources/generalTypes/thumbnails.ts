@@ -1,4 +1,4 @@
-import { Item } from '../../item';
+import { Item } from '../../blocks/item';
 import type { ThumbnailElement } from '../rawResultTypes/comfirmedInterfaces';
 
 export class Thumbnails extends Item implements ThumbnailElement {

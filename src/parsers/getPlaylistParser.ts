@@ -1,6 +1,6 @@
-import { continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL';
+import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL';
 import objectScan from 'object-scan';
-import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/rawResultTypes/songresultRaw';
+import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/rawResultTypes/rawGetSongURL';
 import { utils } from '../utils';
 
 /**
@@ -25,7 +25,7 @@ export class GetPlaylistParser {
 		const continuation = (objectScan(['**.nextContinuationData'], {
 			rtn: 'value',
 			reverse: false,
-		})(context)) as continuation;
+		})(context)) as Continuation;
 
 		const playlistContents: PlaylistContent[] = [];
 

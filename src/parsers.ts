@@ -9,7 +9,7 @@ import type {
 	MusicResponsiveListItemFlexColumnRenderer,
 	MusicResponsiveListItemRenderer,
 	MusicShelfRendererContent,
-} from './resources/rawResultTypes/songresultRaw';
+} from './resources/rawResultTypes/rawGetSongURL';
 import objectScan from 'object-scan';
 import { IllegalCategoryError } from './resources/errors';
 import type { SongSearchResult } from './resources/resultTypes/songSearchResult';
