@@ -1,9 +1,9 @@
 import type { PurpleRun } from '../resources/rawResultTypes/comfirmedInterfaces';
-import { CategoryType, ConstantURLs } from '../enums';
+import { Category, ConstantURLs } from '../enums';
 import { Artist, ArtistExtended } from '../resources/generalTypes/artist';
 import type { Video } from '../resources/generalTypes/video';
 import type { Song } from '../resources/generalTypes/song';
-import { Album } from '../resources/generalTypes/album';
+import { Album, AlbumExtended } from '../resources/generalTypes/album';
 import type { Playlist } from '../resources/generalTypes/playlist';
 import { parseInt } from 'lodash';
 import type { Thumbnails } from '../resources/generalTypes/thumbnails';
@@ -12,13 +12,13 @@ import { utils } from '../utils';
 
 export class ParsersExtended {
 	// FIXME how do you overload this????
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: CategoryType.ARTIST, trim: boolean): Partial<ArtistExtended>
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: CategoryType.VIDEO, trim: boolean): Partial<Video>
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: CategoryType.SONG, trim: boolean): Partial<Song>
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: CategoryType.ALBUM | CategoryType.SINGLE | CategoryType.EP, trim: boolean): Partial<Album>
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: CategoryType.PLAYLISTS, trim: boolean): Partial<Playlist> | undefined { // return array of capable stuff
+	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.ARTIST, trim: boolean): Partial<ArtistExtended>
+	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.VIDEO, trim: boolean): Partial<Video>
+	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.SONG, trim: boolean): Partial<Song>
+	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.ALBUM | Category.SINGLE | Category.EP, trim: boolean): Partial<Album>
+	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.PLAYLISTS, trim: boolean): Partial<Playlist> | undefined { // return array of capable stuff
 		const delimiter = ' • ';
-		const type = categoryType ?? runsArray[0].text as CategoryType;
+		const type = categoryType ?? runsArray[0].text as Category;
 		let artist: Artist[];
 		if (trim) {
 			runsArray.splice(0, 2);
@@ -30,33 +30,46 @@ export class ParsersExtended {
 		}
 
 		switch (type) {
-			case CategoryType.SONG:
-				return {
+			case Category.SONG: {
+				const song: Partial<Song> = {
 					artist,
 					album: this.albumParser(runsArray.slice(positions[0] + 1, positions[1])),
 					duration: utils.hms2ms(runsArray[runsArray.length - 1].text),
 				};
-			case CategoryType.VIDEO:
-				return {
+				return song;
+			}
+
+			case Category.VIDEO: {
+				const Video: Partial<Video> = {
 					author: artist,
 					views: utils.hms2ms(runsArray[positions[0] + 1].text),
-					length = utils.hms2ms(runsArray[runsArray.length - 1].text),
+					length: utils.hms2ms(runsArray[runsArray.length - 1].text),
 				};
-			case CategoryType.EP:
-			case CategoryType.SINGLE:
-			case CategoryType.ALBUM:
-				return {
+				return Video;
+			}
+
+			case Category.EP:
+			case Category.SINGLE:
+			case Category.ALBUM: {
+				const album: Partial<AlbumExtended> = {
 					year: parseInt(runsArray[runsArray.length - 1].text, 10),
 				};
-			case CategoryType.PLAYLISTS:
-				return {
+				return album;
+			}
+
+			case Category.PLAYLISTS: {
+				const playlists: Partial<Playlist> = {
 					trackCount: parseInt(runsArray[runsArray.length - 1].text, 10),
 					author: artist,
 				};
-			case CategoryType.ARTIST:
-				return {
+				return playlists;
+			}
+			case Category.ARTIST: {
+				const artist: Partial<ArtistExtended> = {
 					subs: runsArray[runsArray.length - 1].text,
 				};
+				return artist;
+			}
 			default:
 				break;
 		}
