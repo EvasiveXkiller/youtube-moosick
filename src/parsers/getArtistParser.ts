@@ -88,7 +88,7 @@ export class GetArtistParser {
 							title: runsInternal,
 							videoId: blockRenderer.navigationEndpoint?.watchEndpoint?.videoId ?? '',
 							URL: `${ConstantURLs.VIDEOLINK}${blockRenderer.navigationEndpoint?.watchEndpoint?.videoId ?? ''}`,
-							playlistId: blockRenderer.navigationEndpoint.watchEndpoint?.playlistId,
+							playlistId: blockRenderer.navigationEndpoint.watchEndpoint?.playlistId ?? '',
 							views: parseInt(blockRenderer.subtitle.runs[blockRenderer.subtitle.runs.length - 1].text, 10)!,
 							thumbnails: this.parseMusicThumbnailRenderer(blockRenderer.thumbnailRenderer.musicThumbnailRenderer),
 							author: this.parseArtistFromVideos(blockRenderer.subtitle.runs),
@@ -130,8 +130,8 @@ export class GetArtistParser {
 		const artistOnly = subtitleRenderer.slice(0, positions[0]);
 		return artistOnly.map((element) => (Artist.from({
 			name: element.text,
-			browseId: element.navigationEndpoint.browseEndpoint.browseId,
-			url: ConstantURLs.CHANNEL_URL + element.navigationEndpoint.browseEndpoint.browseId,
+			browseId: element.navigationEndpoint?.browseEndpoint?.browseId ?? '',
+			url: `${ConstantURLs.CHANNEL_URL}${element.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
 		})));
 	}
 }
