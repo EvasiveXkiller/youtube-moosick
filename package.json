@@ -49,6 +49,7 @@
     "lodash": "^4.17.21",
     "object-scan": "^17.0.0",
     "readdir-enhanced": "^6.0.4",
-    "tough-cookie": "^4.0.0"
+    "tough-cookie": "^4.0.0",
+    "ts-transformer-keys": "^0.4.3"
   }
 }

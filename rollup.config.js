@@ -7,6 +7,7 @@ import json from '@rollup/plugin-json';
 import run from '@rollup/plugin-run';
 import execute from 'rollup-plugin-execute';
 import del from 'rollup-plugin-delete';
+import keysTransformer from 'ts-transformer-keys/transformer';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -60,6 +61,12 @@ const plugins = [
 		include: ['src/**/*.ts'],
 		declaration: production,
 		outDir: 'dist',
+		transformers: {
+			before: [{
+				type: 'program',
+				factory: keysTransformer,
+			}],
+		},
 	}),
 
 	!production && run(),
