@@ -4,7 +4,7 @@ import type { Run } from './resources/resultTypes/sectionList';
 import { Album } from './resources/generalTypes/album';
 import { Thumbnails } from './resources/generalTypes/thumbnails';
 import objectScan from 'object-scan';
-import { CategoryType, ConstantURLs, flexColumnDefinition, PlaylistOffset, SongOffset } from './enums';
+import { Category, ConstantURLs, SongFlexColumnOffset, PlaylistOffset, SongOffset } from './enums';
 import { IllegalCategoryError } from './resources/errors';
 
 export class utils {
@@ -21,7 +21,7 @@ export class utils {
      *    fv(input, 'a:b:c', false); // result === 1
      * ```
      * */
-	public static fv(input: Record<string | number | symbol, any>, query: string, shallow = false): unknown[] {
+	public static fv(input: Record<string | number | adaptCSSSelector, any>, query: string, shallow = false): unknown[] {
 		const props = query
 			.split(':')
 			.reduce<any>(
@@ -189,7 +189,7 @@ export class utils {
 	 */
 	static artistParser(runsArray: Run[], delimiter = ' • '): Artist[] {
 		// Only "SONGS" and "VIDEOS" are supported for this function to extract
-		if (runsArray[0].text as CategoryType !== CategoryType.SONG || CategoryType.VIDEO) {
+		if (runsArray[0].text as Category !== Category.SONG || Category.VIDEO) {
 			throw new IllegalCategoryError('Only "categoryType.SONG" and "categoryType.VIDEO" are can be decoded');
 		}
 
@@ -216,9 +216,9 @@ export class utils {
 	 */
 	static albumParser(runsArray: Run[], delimiter = ' • '): Album {
 		// Only "SONGS" and "VIDEOS" are supported for this function to extract
-		if (runsArray[flexColumnDefinition.GENERAL].text as CategoryType !== CategoryType.SONG
-			|| runsArray[flexColumnDefinition.GENERAL].text as CategoryType !== CategoryType.VIDEO
-		|| runsArray[flexColumnDefinition.GENERAL].text as CategoryType !== CategoryType.PLAYLISTS) {
+		if (runsArray[SongFlexColumnOffset.ARTIST_ALBUM].text as Category !== Category.SONG
+			|| runsArray[SongFlexColumnOffset.ARTIST_ALBUM].text as Category !== Category.VIDEO
+		|| runsArray[SongFlexColumnOffset.ARTIST_ALBUM].text as Category !== Category.PLAYLISTS) {
 			throw new IllegalCategoryError('Only "categoryType.SONG","categoryType.VIDEOS","categoryType.PLAYLISTS" can be decoded');
 		}
 
@@ -226,7 +226,7 @@ export class utils {
 		// Probably can deprecate the following line, or use a constant
 		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
 		// Determines what limiter to use
-		const typedDelimiter = (runsArray[flexColumnDefinition.GENERAL].text as CategoryType) === CategoryType.PLAYLISTS ? PlaylistOffset.AUTHOR : SongOffset.ARTIST;
+		const typedDelimiter = (runsArray[SongFlexColumnOffset.ARTIST_ALBUM].text as Category) === Category.PLAYLISTS ? PlaylistOffset.AUTHOR : SongOffset.ARTIST;
 		return Album.from({
 			name: runsArray[positions[typedDelimiter] + 1].text,
 			id: runsArray[SongOffset.ALBUM + 1].navigationEndpoint.browseEndpoint.browseId,
@@ -257,7 +257,7 @@ export class utils {
 
 	// Parse enums from here for utils
 	// Probably dont need it but see how
-	public static parseTypeName(typeName: string): CategoryType {
-		return typeName as CategoryType;
+	public static parseTypeName(typeName: string): Category {
+		return typeName as Category;
 	}
 }
