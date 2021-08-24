@@ -7,15 +7,15 @@ import { CategoryType, CategoryURIBase64, EndPointType } from './enums';
 import { utils } from './utils';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors';
 import { URLSearchParams } from 'url';
-import { parsers } from './parsers';
+import { generalParser } from './parsers/generalParser';
 import type { continuation } from './resources/resultTypes/playlistURL';
 import { GetPlaylistParser } from './parsers/getPlaylistParser';
 import { GetArtistParser } from './parsers/getArtistParser';
 import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
 import type { RawGetSearchSuggestions } from './resources/rawResultTypes/rawGetSearchSuggestions';
 import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
-import {GetAlbumParser} from "./parsers/getAlbumParser";
-import type {RawGetAlbumURL} from "./resources/rawResultTypes/rawGetAlbumURL";
+import { GetAlbumParser } from './parsers/getAlbumParser';
+import type { RawGetAlbumURL } from './resources/rawResultTypes/rawGetAlbumURL';
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
@@ -301,26 +301,26 @@ export class MooSick {
 			let result: Record<string, unknown>;
 			const context = await this._createApiRequest(EndPointType.SEARCH, {
 				query,
-				params: categoryName,
+				params: categoryName ?? '',
 			});
 			switch (categoryName) {
 				case CategoryURIBase64.SONG:
-					result = parsers.parseSongSearchResult(context);
+					result = generalParser.parseSongSearchResult(context);
 					break;
 				case CategoryURIBase64.VIDEO:
-					result = parsers.parseVideoSearchResult(context);
+					result = generalParser.parseVideoSearchResult(context);
 					break;
 				case CategoryURIBase64.ALBUM:
-					result = parsers.parseAlbumSearchResult(context);
+					result = generalParser.parseAlbumSearchResult(context);
 					break;
 				case CategoryURIBase64.ARTIST:
-					result = parsers.parseArtistSearchResult(context);
+					result = generalParser.parseArtistSearchResult(context);
 					break;
 				case CategoryURIBase64.PLAYLISTS:
-					result = parsers.parsePlaylistSearchResult(context);
+					result = generalParser.parsePlaylistSearchResult(context);
 					break;
 				default:
-					result = parsers.parseSearchResult(context);
+					result = generalParser.parseSearchResult(context);
 					break;
 			}
 

@@ -1,5 +1,5 @@
 import { Item } from '../../item';
-import { Artist } from '../generalTypes/artist';
+import type { ArtistExtended } from '../generalTypes/artist';
 import type { Thumbnails } from '../generalTypes/thumbnails';
 
 export class AlbumURL extends Item {
@@ -24,8 +24,4 @@ export class Track extends Item {
 	public declare title: string;
 	public declare videoId: string;
 	public declare lengthMs: number;
-}
-
-export class ArtistExtended extends Artist {
-	public declare thumbnails: Thumbnails[];
 }

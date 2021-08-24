@@ -1,10 +1,10 @@
 import { CategoryType } from '../../enums';
 import { Item } from '../../item';
-import type { Thumbnails } from '../generalTypes/thumbnails';
-import type { Artist } from '../generalTypes/artist';
-import type { Album } from '../generalTypes/album';
+import type { Thumbnails } from './thumbnails';
+import type { Artist } from './artist';
+import type { Album } from './album';
 
-export class SongSearchResult extends Item {
+export class Song extends Item {
 	public type?: CategoryType = CategoryType.SONG;
 	public declare name: string;
 	public declare videoId: string;

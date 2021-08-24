@@ -1,25 +1,25 @@
-import { utils } from './utils';
+import { utils } from '../utils';
 import {
 	CategoryType as Category,
 	ConstantURLs,
 	flexColumnDefinition,
 	VideoOffset,
-} from './enums';
+} from '../enums';
 import type {
 	MusicResponsiveListItemFlexColumnRenderer,
 	MusicResponsiveListItemRenderer,
 	MusicShelfRendererContent,
-} from './resources/rawResultTypes/songresultRaw';
+} from '../resources/rawResultTypes/songresultRaw';
 import objectScan from 'object-scan';
-import { IllegalCategoryError } from './resources/errors';
-import type { SongSearchResult } from './resources/resultTypes/songSearchResult';
-import { VideoSearchResult } from './resources/resultTypes/videoSearchResult';
-import { PlaylistSearchResult } from './resources/resultTypes/playlistSearchResult';
+import { IllegalCategoryError } from '../resources/errors';
+import type { Song } from '../resources/generalTypes/song';
+import { VideoSearchResult } from '../resources/resultTypes/videoSearchResult';
+import { PlaylistSearchResult } from '../resources/resultTypes/playlistSearchResult';
 
 // TODO: i'm making a lot of assumptions for text being at [0], probably stop
 // TODO: objectScan's syntax is verbose as hell, write abstraction functions
 
-export class parsers {
+export class generalParser {
 	// Make this one global function and call the other stuff
 	// Probably other methods should be private
 	static parseSearchResult(context: MusicShelfRendererContent, searchType?: Category): any {
@@ -42,11 +42,11 @@ export class parsers {
 		// have different impl's for a function)
 		switch (type) {
 			case Category.SONG:
-				parsers.parseSongSearchResult(flexColumn);
+				generalParser.parseSongSearchResult(flexColumn);
 				break;
 
 			case Category.VIDEO:
-				parsers.parseVideoSearchResult(flexColumn);
+				generalParser.parseVideoSearchResult(flexColumn);
 				break;
 
 			default:
@@ -59,7 +59,7 @@ export class parsers {
 	 * @param sectionContext
 	 */
 	// Probably the type of sectionContext is wrong have to check on it more
-	private static parseSongSearchResult(sectionContext: MusicResponsiveListItemFlexColumnRenderer[]): SongSearchResult {
+	private static parseSongSearchResult(sectionContext: MusicResponsiveListItemFlexColumnRenderer[]): Song {
 		const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
 			rtn: 'parent',
 			reverse: false,
