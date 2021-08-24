@@ -1,0 +1,4 @@
+var lodash = {exports: {}};
+
+export { lodash as l };
+//# sourceMappingURL=lodash.js_commonjs-module.map
