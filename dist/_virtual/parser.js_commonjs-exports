@@ -1,0 +1,4 @@
+var parser = {};
+
+export { parser as __exports };
+//# sourceMappingURL=parser.js_commonjs-exports.map
