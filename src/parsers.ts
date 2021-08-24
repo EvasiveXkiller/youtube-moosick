@@ -1,8 +1,8 @@
 import { utils } from './utils';
 import {
-	CategoryType as Category,
+	Category,
 	ConstantURLs,
-	flexColumnDefinition,
+	SongFlexColumnOffset,
 	VideoOffset,
 } from './enums';
 import type {
@@ -15,6 +15,7 @@ import { IllegalCategoryError } from './resources/errors';
 import type { SongSearchResult } from './resources/resultTypes/songSearchResult';
 import { VideoSearchResult } from './resources/resultTypes/videoSearchResult';
 import { PlaylistSearchResult } from './resources/resultTypes/playlistSearchResult';
+import { $ } from './resources/utilities/objectScan.utility';
 
 // TODO: i'm making a lot of assumptions for text being at [0], probably stop
 // TODO: objectScan's syntax is verbose as hell, write abstraction functions
@@ -23,16 +24,9 @@ export class parsers {
 	// Make this one global function and call the other stuff
 	// Probably other methods should be private
 	static parseSearchResult(context: MusicShelfRendererContent, searchType?: Category): any {
-		// Go to the part which i have no idea
-		const musicResponsiveListItemRenderer = objectScan(
-			['**.musicResponsiveListItemRenderer'],
-			{ rtn: 'value' },
-		)(context) as MusicResponsiveListItemRenderer;
-
-		const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
-			rtn: 'parent',
-			reverse: false,
-		})(musicResponsiveListItemRenderer) as MusicResponsiveListItemFlexColumnRenderer[];
+		const flexColumn = $(
+			'.musicResponsiveListItemRenderer .musicResponsiveListItemFlexColumnRenderer',
+		)(context) as MusicResponsiveListItemFlexColumnRenderer[];
 		// probably insert a type here
 		const type = searchType ?? flexColumn[1].text.runs[1].text as Category;
 		// Is there a way to put this in map?, most likely will be more readable and u can separate into files
@@ -60,14 +54,16 @@ export class parsers {
 	 */
 	// Probably the type of sectionContext is wrong have to check on it more
 	private static parseSongSearchResult(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]): SongSearchResult {
-		const { runs } = flexColumn[flexColumnDefinition.SUPPLEMENT].text;
+		/*
+			FIXME: skimmed through actual song search results, & there's nowhere it
+					seems like there's 3 flexColumns, nor is there anywhere the string
+					"SONG" appears. Is this an update on yt's API or are we doing
+					something wrong?
+		*/
+		const category = $('.text')(flexColumn[SongFlexColumnOffset.SUPPLEMENT].text) as string;
 
-		if (runs[0].text as Category !== Category.SONG) {
-			throw new IllegalCategoryError(`Type ${
-				String(flexColumn[flexColumnDefinition.SUPPLEMENT].text)
-			} cannot be applied to ${
-				Category.SONG
-			} function`);
+		if (category as Category !== Category.SONG) {
+			throw new IllegalCategoryError(`Type ${category} cannot be applied to ${Category.SONG} function`);
 		}
 
 		// FIXME: shove the stuff into a song object
@@ -85,29 +81,29 @@ export class parsers {
 	}
 
 	private static parseVideoSearchResult(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]): VideoSearchResult {
-		if (flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs[0].text !== Category.VIDEO) {
+		if (flexColumn[SongFlexColumnOffset.SUPPLEMENT].text.runs[0].text !== Category.VIDEO) {
 			throw new IllegalCategoryError(
 				`Type ${
-					flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs[0].text
+					flexColumn[SongFlexColumnOffset.SUPPLEMENT].text.runs[0].text
 				} cannot be applied to ${
 					Category.VIDEO
 				} function`);
 		}
 
-		const videoId = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]) as string;
+		const videoId = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumn[SongFlexColumnOffset.GENERAL]) as string;
 		return VideoSearchResult.from({
 			type: Category.VIDEO,
-			name: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[flexColumnDefinition.GENERAL]) as string,
+			name: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumn[SongFlexColumnOffset.GENERAL]) as string,
 			videoId,
 			url: ConstantURLs.CHANNEL_URL + videoId,
-			author: utils.artistParser(flexColumn[flexColumnDefinition.SUPPLEMENT].text.runs),
+			author: utils.artistParser(flexColumn[SongFlexColumnOffset.SUPPLEMENT].text.runs),
 			views: flexColumn[VideoOffset.VIEWS].text.runs[0].text,
 			duration: utils.hms2ms(flexColumn[VideoOffset.DURATION].text.runs[0].text),
 		});
 	}
 
 	private static parsePlaylistSearchResult(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]): PlaylistSearchResult {
-		const { runs } = flexColumn[flexColumnDefinition.SUPPLEMENT].text;
+		const { runs } = flexColumn[SongFlexColumnOffset.SUPPLEMENT].text;
 		const { text, navigationEndpoint } = runs[0];
 
 		if (text !== Category.PLAYLISTS) {
