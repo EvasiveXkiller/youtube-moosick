@@ -1,0 +1,1 @@
+{"version":3,"file":"illegalInvocation.error.js","sources":["../../../src/resources/errors/illegalInvocation.error.ts"],"sourcesContent":[null],"names":[],"mappings":";;MAEa,sBAAuB,SAAQ,WAAW;IACtD,YAAY,OAAe;QAC1B,KAAK,CAAC,+BAA+B,OAAO,GAAG,KAAK,OAAO,EAAE,GAAG,EAAE,EAAE,CAAC,CAAC;KACtE;;;;;"}

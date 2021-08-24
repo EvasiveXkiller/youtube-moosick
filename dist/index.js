@@ -1,7 +1,6 @@
 import axios from './node_modules/axios/index.js';
 import http_1 from './node_modules/axios/lib/adapters/http.js';
 import './node_modules/tough-cookie/lib/cookie.js';
-import _ from './node_modules/lodash/lodash.js';
 import { EndPoint, Category } from './enums.js';
 import { utils } from './utils.js';
 import { IllegalArgumentError } from './resources/errors/illegalArgument.error.js';
@@ -12,18 +11,16 @@ import { GetPlaylistParser } from './parsers/getPlaylistParser.js';
 import { GetArtistParser } from './parsers/getArtistParser.js';
 import { SearchSuggestions } from './resources/resultTypes/searchSuggestions.js';
 import { GetAlbumParser } from './parsers/getAlbumParser.js';
+import { AsyncConstructor } from './blocks/asyncConstructor.js';
 import { __exports as cookie } from './_virtual/cookie.js_commonjs-exports';
 
 axios.defaults.adapter = http_1;
 // ASYNC AWAIT SUPPORT EVERYWHERE, CALLBACK HELL IT IS NOW
-class MooSick {
+class MooSick extends AsyncConstructor {
     client;
     cookies;
-    // FIXME: where is this coming from?
-    // @REPLY came from `initialize` func filter foreach function
-    // probably this set to any since the object that comes out is huge
     config;
-    constructor() {
+    async #new() {
         this.cookies = new cookie.CookieJar();
         this.client = axios.create({
             baseURL: 'https://music.youtube.com/',
@@ -64,6 +61,31 @@ class MooSick {
             }
             return res;
         });
+        const res = await this.client.get('/');
+        const dataString = /(?<=ytcfg\.set\().+(?=\);)/.exec(res.data)?.[0];
+        if (dataString == null) {
+            throw new IllegalStateError('API initialization returned a nullish value');
+        }
+        const dataJSON = JSON.parse(dataString);
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        this.config = {};
+        dataJSON.forEach((dataJSONPart) => {
+            if (typeof dataJSONPart !== 'object') {
+                return;
+            }
+            Object
+                .entries(dataJSONPart)
+                .forEach(([key, value]) => {
+                // @ts-expect-error obj[string]
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                this.config[key] = value;
+            });
+        });
+        return this;
+    }
+    static async new() {
+        void super.new();
+        return new MooSick().#new();
     }
     parseAndSetCookie(cookieString, baseURL) {
         const cookie$1 = cookie.Cookie.parse(cookieString);
@@ -75,7 +97,7 @@ class MooSick {
     // Soonner or later destructure functions into individual files
     // TODO: probably define each api req's input vars & input queries,
     // then make this func generic so it's type safe
-    async _createApiRequest(endpointName, inputVariables = {}, inputQuery = {}) {
+    async #createApiRequest(endpointName, inputVariables = {}, inputQuery = {}) {
         const res = await this.client.post(`youtubei/${this.config.INNERTUBE_API_VERSION}/${endpointName}?${
         // eslint is drunk
         // eslint-disable-next-line
@@ -102,83 +124,49 @@ class MooSick {
                 ...this.client.defaults.headers,
             },
         });
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         if (res.data?.responseContext != null) {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-return
             return res.data;
         }
-        return null;
-    }
-    /**
-     * Initialize the client for usage
-     * @returns {Promise<unknown>} A ready to use API object
-     */
-    async initialize() {
-        return new Promise(async (resolve, reject) => {
-            const res = await this.client.get('/');
-            try {
-                const frontDelimiter = 'ytcfg.set(';
-                const splitDelimiter = ');';
-                res.data.split(frontDelimiter).map((v) => {
-                    try {
-                        return JSON.parse(v.split(splitDelimiter)[0]);
-                    }
-                    catch (_) {
-                    }
-                }).filter(Boolean)
-                    .forEach((cfg) => (this.config = Object.assign(cfg, this.config)));
-                resolve({
-                    locale: this.config.LOCALE,
-                    logged_in: this.config.LOGGED_IN,
-                });
-            }
-            catch (err) {
-                reject(err);
-            }
-        });
+        throw new IllegalStateError('Youtube Music API request failed (`res.data?.responseContext` was nullish)');
     }
     /**
      * Get search suggestions from Youtube Music
      * @param query String query text to search
-     * @returns {Promise<unknown>} An object formatted with utils class
+     * @returns An object formatted with utils class
      */
     async getSearchSuggestions(query) {
-        return new Promise(async (resolve, reject) => {
-            const res = await this._createApiRequest(EndPoint.SUGGESTIONS, {
-                input: query,
-            });
-            // I dont think this is the best way, maybe the fv seems nice but that is really unreadable
-            // Probably think of a better way
-            if (!res.contents !== undefined) {
-                reject(new IllegalStateError('No results found'));
-            }
-            const { contents } = res.contents[0].searchSuggestionsSectionRenderer;
-            if (!contents) {
-                reject(new IllegalStateError('result array not found'));
-            }
-            const rendererCompressed = contents.map((searchSuggestionRenderer) => SearchSuggestions.from({
-                title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
-                artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
-            }));
-            resolve(rendererCompressed);
+        const res = await this.#createApiRequest(EndPoint.SUGGESTIONS, {
+            input: query,
         });
+        if (res.contents == null) {
+            throw new IllegalStateError('No results found');
+        }
+        const { contents } = res.contents[0].searchSuggestionsSectionRenderer;
+        if (!contents) {
+            throw new IllegalStateError('Results array not found');
+        }
+        const rendererCompressed = contents
+            .map((searchSuggestionRenderer) => SearchSuggestions
+            .from({
+            title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
+            artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
+        }));
+        return rendererCompressed;
     }
     /**
      * Searches for songs using the Youtube Music API
      * @param query String query text to search
      * @param categoryName Type of category to search
      * @param _pageLimit Max pages to obtain
-     * @returns {Promise<unknown>} An object formatted by parsers.js
+     * @returns An object formatted by parsers.js
      */
     async search(query, categoryName, _pageLimit = 1) {
-        return new Promise(async (resolve, reject) => {
-            const context = await this._createApiRequest(EndPoint.SEARCH, {
-                query,
-                params: categoryName ?? '',
-            });
-            // The switch case will be implemented in parser as the individual stuff that comes out it nearly the same
-            resolve(GeneralParser.parseSearchResult(context, categoryName));
+        const ctx = await this.#createApiRequest(EndPoint.SEARCH, {
+            query,
+            params: categoryName ?? '',
         });
+        // The switch case will be implemented in parser as the individual stuff that comes out it nearly the same
+        return GeneralParser.parseSearchResult(ctx, categoryName);
     }
     /**
      * Gets the album details
@@ -186,89 +174,56 @@ class MooSick {
      */
     async getAlbum(browseId) {
         if (!browseId.startsWith('MPREb')) {
-            throw new IllegalArgumentError('Invalid Album browse Id.');
+            throw new IllegalArgumentError('Album browse IDs must start with "MPREb"', 'browseId');
         }
-        return new Promise(async (resolve, reject) => {
-            const ctx = await this._createApiRequest(EndPoint.SEARCH, utils.buildEndpointContext(Category.ALBUM, browseId));
-            try {
-                const result = GetAlbumParser.parseAlbumURLPage(ctx);
-                resolve(result);
-            }
-            catch (error) {
-                reject(error);
-            }
-        });
+        const ctx = await this.#createApiRequest(EndPoint.SEARCH, utils.buildEndpointContext(Category.ALBUM, browseId));
+        return GetAlbumParser.parseAlbumURLPage(ctx);
     }
     /**
      * Gets the playlist using the Youtube Music API
      * @param browseId The playlist ID, sanitized
      * @param contentLimit Maximum content to get
-     * @returns {Promise<unknown>} An object formatted by the parser
+     * @returns An object formatted by the parser
      */
     async getPlaylist(browseId, contentLimit = 100) {
-        if (!(browseId.startsWith('VL') || browseId.startsWith('PL'))) {
-            throw new IllegalArgumentError(`Invalid Playlist Id ${browseId}.`);
+        if (!browseId.startsWith('VL')
+            && !browseId.startsWith('PL')) {
+            throw new IllegalArgumentError('Playlist browse IDs must start with "VL" or "PL"', 'browseId');
         }
         if (browseId.startsWith('PL')) {
             browseId = 'VL' + browseId;
         }
-        return new Promise(async (resolve, reject) => {
-            const ctx = this._createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLISTS, browseId));
-            try {
-                const result = GetPlaylistParser.parsePlaylistURL(ctx);
-                // No idea does this work or not
-                const getContinuations = async (params) => {
-                    const ctx = this._createApiRequest(EndPoint.BROWSE, {}, {
-                        ctoken: params.continuation,
-                        continuation: params.continuation,
-                        itct: params.clickTrackingParams,
-                    });
-                    const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
-                    result.playlistContents = _.concat(result.playlistContents, continuationResult.playlistContents);
-                    result.continuation = continuationResult.continuation;
-                    if (Array.isArray(continuationResult.continuation)) {
-                        resolve(result);
-                    }
-                    else if (contentLimit > result.playlistContents.length) {
-                        await getContinuations(continuationResult.continuation);
-                    }
-                    else {
-                        resolve(result);
-                    }
-                };
-                if (contentLimit > result.playlistContents.length && (!Array.isArray(result.continuation))) {
-                    await getContinuations(result.continuation);
-                }
-                else {
-                    resolve(result);
-                    return;
-                }
+        const ctx = this.#createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLISTS, browseId));
+        const result = GetPlaylistParser.parsePlaylistURL(ctx);
+        while (contentLimit > result.playlistContents.length
+            && result.continuation) {
+            const { continuation, clickTrackingParams } = result.continuation;
+            const ctx = this.#createApiRequest(EndPoint.BROWSE, {}, {
+                ctoken: continuation,
+                continuation,
+                itct: clickTrackingParams,
+            });
+            const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
+            // FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
+            if (!Array.isArray(continuationResult.playlistContents)) {
+                throw new IllegalStateError('Browse API responded with non-array `playlistContents`');
             }
-            catch (error) {
-                reject(error);
-            }
-        });
+            result.playlistContents.push(...continuationResult.playlistContents);
+            result.continuation = continuationResult.continuation;
+        }
+        return result;
     }
     /**
      * Gets the artist details from Youtube Music
      * @param browseId The artist ID, sanitized
-     * @returns {Promise<unknown>} An object formatted by the artist page
+     * @returns An object formatted by the artist page
      */
     async getArtist(browseId) {
-        if (!_.startsWith(browseId, 'UC')) {
-            throw new Error('invalid artist browse id.');
+        if (!browseId.startsWith('UC')) {
+            throw new IllegalArgumentError('Artist browse IDs must start with "UC"', 'browseId');
         }
-        return new Promise(async (resolve, reject) => {
-            const ctx = await this._createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.ARTIST, browseId));
-            try {
-                // FIXME no idea how to solve this for now
-                const result = GetArtistParser.parseArtistURLPage(ctx);
-                resolve(result);
-            }
-            catch (error) {
-                resolve(error);
-            }
-        });
+        const ctx = await this.#createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.ARTIST, browseId));
+        return GetArtistParser.parseArtistURLPage(ctx);
     }
 }
 

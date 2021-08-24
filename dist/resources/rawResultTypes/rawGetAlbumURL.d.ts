@@ -1,6 +1,6 @@
-export interface RawGetAlbumURL {
+import type { Result } from './common';
+export interface AlbumURLFullResult extends Result {
     responseContext: ResponseContext;
-    trackingParams: string;
     contents: Contents;
     header: Header;
     frameworkUpdates: FrameworkUpdates;

@@ -1,4 +1,4 @@
-import { Item } from '../../item.js';
+import { Item } from '../../blocks/item.js';
 
 class Album extends Item {
 }

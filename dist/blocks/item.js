@@ -1,4 +1,4 @@
-import { WalkUtility } from './resources/utilities/walk.utility.js';
+import { WalkUtility } from '../resources/utilities/walk.utility.js';
 
 class Item {
     /** @deprecated You're probably looking for `Item.from()` */

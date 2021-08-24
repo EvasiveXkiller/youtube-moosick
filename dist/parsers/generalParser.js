@@ -1,23 +1,23 @@
 import { Category } from '../enums.js';
 import lib from '../node_modules/object-scan/lib/index.js';
+import { Song } from '../resources/generalTypes/song.js';
 import { Video } from '../resources/generalTypes/video.js';
 import { Playlist } from '../resources/generalTypes/playlist.js';
 import { ArtistExtended } from '../resources/generalTypes/artist.js';
 import { ParsersExtended } from './parsersExtended.js';
 import { Results } from '../resources/resultTypes/results.js';
+import { $$ } from '../resources/utilities/objectScan.utility.js';
 
-// TODO: i'm making a lot of assumptions for text being at [0], probably stop
-// TODO: objectScan's syntax is verbose as hell, write abstraction functions
 class GeneralParser {
     // Make this one global function and call the other stuff
     // Probably other methods should be private
     static parseSearchResult(context, searchType) {
         // prep all the parts
-        let albums;
-        let videos;
-        let playlists;
-        let artist;
-        let songs;
+        const albums = [];
+        const videos = [];
+        const playlists = [];
+        const artist = [];
+        const songs = [];
         const musicShelf = lib(['**.musicShelfRenderer'], {
             rtn: 'value',
             reverse: false,
@@ -28,10 +28,7 @@ class GeneralParser {
                 reverse: false,
             })(shelfItem);
             for (const item of shelfContent) {
-                const flexColumnRenderer = lib(['**.musicResponsiveListItemFlexColumnRenderer'], {
-                    rtn: 'parent',
-                    reverse: false,
-                })(item);
+                const flexColumnRenderer = $$('.musicResponsiveListItemFlexColumnRenderer')(item);
                 const category = flexColumnRenderer[0].text.runs[0].text;
                 switch (category) {
                     case Category.SONG:
@@ -47,7 +44,6 @@ class GeneralParser {
                             ...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.VIDEO, Boolean(searchType)),
                             thumbnails: ParsersExtended.thumbnailParser(item),
                         }));
-                        GeneralParser.parseVideoSearchResult(item);
                         break;
                     case Category.PLAYLISTS:
                         playlists.push(Playlist.from({
@@ -56,34 +52,26 @@ class GeneralParser {
                                 reverse: false,
                                 abort: true,
                             })(flexColumnRenderer),
-                            browseId: flexColumnRenderer.navigationEndpoint.browseEndpoint.browseId,
+                            browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
                             ...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.PLAYLISTS, Boolean(searchType)),
                         }));
                         break;
                     case Category.ARTIST:
                         artist.push(ArtistExtended.from({
-                            name: lib(['**.text'], {
-                                rtn: 'value',
-                                reverse: false,
-                                abort: true,
-                            })(flexColumnRenderer),
-                            browseId: item.navigationEndpoint.browseEndpoint.browseId,
+                            name: flexColumnRenderer[0].text.runs[0].text,
+                            browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
                             thumbnails: ParsersExtended.thumbnailParser(item),
                             ...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.ARTIST, Boolean(searchType)),
                         }));
                     // eslint is drunk here
-                    // eslint-disable-next-line no-fallthrough
+                    // eslint-disable-next-line
                     case Category.ALBUM:
                     case Category.SINGLE:
                     case Category.EP:
                         albums.push({
                             ...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.ARTIST, Boolean(searchType)),
-                            name: lib(['**.text'], {
-                                rtn: 'value',
-                                reverse: false,
-                                abort: true,
-                            })(flexColumnRenderer),
-                            browseId: item.navigationEndpoint.browseEndpoint.browseId,
+                            name: flexColumnRenderer[0].text.runs[0].text,
+                            browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
                         });
                         break;
                 }
@@ -96,8 +84,7 @@ class GeneralParser {
             artist, songs,
         };
         return Results.from({
-            results: unsorted,
-            continuation: undefined,
+            result: unsorted,
         });
     }
     /**

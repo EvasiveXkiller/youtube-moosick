@@ -1,4 +1,4 @@
-import { Item } from '../../item';
+import { Item } from '../../blocks/item';
 import type { Thumbnails } from './thumbnails';
 export declare class Artist extends Item {
     name: string;

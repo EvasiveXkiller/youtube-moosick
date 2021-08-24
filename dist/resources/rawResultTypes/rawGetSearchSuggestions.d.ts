@@ -1,11 +1,11 @@
-export interface RawGetSearchSuggestions {
+import type { Result } from './common';
+export interface SearchSuggestionsFullResult extends Result {
     responseContext: ResponseContext;
-    trackingParams: string;
-    contents: RawGetSearchSuggestionsContent[];
+    contents: Contents;
 }
-export interface RawGetSearchSuggestionsContent {
+export declare type Contents = {
     searchSuggestionsSectionRenderer: SearchSuggestionsSectionRenderer;
-}
+}[];
 export interface SearchSuggestionsSectionRenderer {
     contents: SearchSuggestionsSectionRendererContent[];
 }

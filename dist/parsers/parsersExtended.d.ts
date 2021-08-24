@@ -3,13 +3,15 @@ import { Category } from '../enums';
 import { Artist, ArtistExtended } from '../resources/generalTypes/artist';
 import type { Video } from '../resources/generalTypes/video';
 import type { Song } from '../resources/generalTypes/song';
-import { Album } from '../resources/generalTypes/album';
+import { Album, AlbumExtended } from '../resources/generalTypes/album';
+import type { Playlist } from '../resources/generalTypes/playlist';
 import type { Thumbnails } from '../resources/generalTypes/thumbnails';
 export declare class ParsersExtended {
-    static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.ARTIST, trim: boolean): Partial<ArtistExtended>;
-    static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.VIDEO, trim: boolean): Partial<Video>;
-    static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.SONG, trim: boolean): Partial<Song>;
-    static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.ALBUM | Category.SINGLE | Category.EP, trim: boolean): Partial<Album>;
+    static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.ARTIST, trim: boolean): Pick<ArtistExtended, 'subs'>;
+    static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.VIDEO, trim: boolean): Pick<Video, 'author' | 'views' | 'length'>;
+    static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.SONG, trim: boolean): Pick<Song, 'artist' | 'album' | 'duration'>;
+    static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.ALBUM | Category.SINGLE | Category.EP, trim: boolean): Pick<AlbumExtended, 'year'>;
+    static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.PLAYLISTS, trim: boolean): Pick<Playlist, 'trackCount' | 'author'>;
     /**
      * Gets the thumbnail from the sectionList
      * @param sectionContext

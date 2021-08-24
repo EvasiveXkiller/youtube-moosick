@@ -1,16 +1,15 @@
 import { Category, ConstantURLs } from '../enums.js';
 import { Artist } from '../resources/generalTypes/artist.js';
 import { Album } from '../resources/generalTypes/album.js';
-import '../node_modules/lodash/lodash.js';
 import lib from '../node_modules/object-scan/lib/index.js';
 import { utils } from '../utils.js';
-import { l as lodash } from '../_virtual/lodash.js_commonjs-module';
+import { IllegalArgumentError } from '../resources/errors/illegalArgument.error.js';
 
 class ParsersExtended {
     static flexSecondRowComplexParser(runsArray, categoryType, trim) {
         const delimiter = ' • ';
         const type = categoryType ?? runsArray[0].text;
-        let artist;
+        let artist = [];
         if (trim) {
             runsArray.splice(0, 2);
         }
@@ -19,43 +18,35 @@ class ParsersExtended {
             artist = this.artistParser(runsArray.slice(0, positions[0]));
         }
         switch (type) {
-            case Category.SONG: {
-                const song = {
+            case Category.SONG:
+                return {
                     artist,
                     album: this.albumParser(runsArray.slice(positions[0] + 1, positions[1])),
                     duration: utils.hms2ms(runsArray[runsArray.length - 1].text),
                 };
-                return song;
-            }
-            case Category.VIDEO: {
-                const Video = {
+            case Category.VIDEO:
+                return {
                     author: artist,
                     views: utils.hms2ms(runsArray[positions[0] + 1].text),
                     length: utils.hms2ms(runsArray[runsArray.length - 1].text),
                 };
-                return Video;
-            }
             case Category.EP:
             case Category.SINGLE:
-            case Category.ALBUM: {
-                const album = {
-                    year: lodash.exports.parseInt(runsArray[runsArray.length - 1].text, 10),
+            case Category.ALBUM:
+                return {
+                    year: Number(runsArray[runsArray.length - 1].text),
                 };
-                return album;
-            }
-            case Category.PLAYLISTS: {
-                const playlists = {
-                    trackCount: lodash.exports.parseInt(runsArray[runsArray.length - 1].text, 10),
+            case Category.PLAYLISTS:
+                return {
+                    trackCount: Number(runsArray[runsArray.length - 1].text),
                     author: artist,
                 };
-                return playlists;
-            }
-            case Category.ARTIST: {
-                const artist = {
-                    subs: runsArray[runsArray.length - 1].text,
+            case Category.ARTIST:
+                return {
+                    subs: Number(runsArray[runsArray.length - 1].text),
                 };
-                return artist;
-            }
+            default:
+                throw new IllegalArgumentError('Unrecognized category', 'categoryType');
         }
     }
     /**
@@ -75,8 +66,8 @@ class ParsersExtended {
     static artistParser(artistRaw) {
         return artistRaw.map((artist) => (Artist.from({
             name: artist.text,
-            browseId: artist.navigationEndpoint.browseEndpoint.browseId,
-            url: ConstantURLs.CHANNEL_URL + artist.navigationEndpoint.browseEndpoint.browseId,
+            browseId: artist.navigationEndpoint?.browseEndpoint?.browseId ?? '',
+            url: ConstantURLs.CHANNEL_URL + String(artist.navigationEndpoint?.browseEndpoint?.browseId ?? ''),
         })));
     }
     /**
@@ -86,8 +77,8 @@ class ParsersExtended {
     static albumParser(albumRaw) {
         return albumRaw.map((album) => (Album.from({
             name: album.text,
-            browseId: album.navigationEndpoint.browseEndpoint.browseId,
-            url: 'ConstantURLs.CHANNEL_URL' + album.navigationEndpoint.browseEndpoint.browseId,
+            browseId: album.navigationEndpoint?.browseEndpoint?.browseId ?? '',
+            url: ConstantURLs.CHANNEL_URL + String(album.navigationEndpoint?.browseEndpoint?.browseId ?? ''),
         })));
     }
 }

@@ -1,10 +1,10 @@
-import { CategoryType } from '../../enums';
-import { Item } from '../../item';
+import { Category } from '../../enums';
+import { Item } from '../../blocks/item';
 import type { Thumbnails } from './thumbnails';
 import type { Artist } from './artist';
 import type { Album } from './album';
 export declare class Song extends Item {
-    type?: CategoryType;
+    type?: Category;
     name: string;
     videoId: string;
     url: string;

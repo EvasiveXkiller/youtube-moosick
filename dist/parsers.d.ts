@@ -1,5 +1,5 @@
 import { Category } from './enums';
-import type { MusicShelfRendererContent } from './resources/rawResultTypes/songresultRaw';
+import type { MusicShelfRendererContent } from './resources/rawResultTypes/rawGetSongURL';
 export declare class parsers {
     static parseSearchResult(context: MusicShelfRendererContent, searchType?: Category): any;
     /**

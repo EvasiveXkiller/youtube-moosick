@@ -1,4 +1,4 @@
-import { Item } from '../../item';
+import { Item } from '../../blocks/item';
 import type { ArtistExtended } from '../generalTypes/artist';
 import type { Thumbnails } from '../generalTypes/thumbnails';
 export declare class AlbumURL extends Item {
