@@ -1,6 +1,7 @@
-export interface SongResultRaw {
+import type { Result } from './common';
+
+export interface SongURLFullResult extends Result {
 	responseContext: ResponseContext;
-	trackingParams: string;
 	contents: Contents;
 }
 

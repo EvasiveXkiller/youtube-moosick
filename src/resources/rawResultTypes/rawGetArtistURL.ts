@@ -1,6 +1,7 @@
-export interface ArtistURLFullResult {
+import type { Result } from './common';
+
+export interface ArtistURLFullResult extends Result {
 	responseContext: ResponseContext;
-	trackingParams: string;
 	contents: Contents;
 	header: RawGetArtistURLHeader;
 }
