@@ -3,7 +3,7 @@ import axios, { AxiosInstance } from 'axios';
 import axios0 from 'axios/lib/adapters/http';
 import tough from 'tough-cookie';
 import _ from 'lodash';
-import { CategoryType, CategoryURIBase64, EndPointType } from './enums';
+import { Category, CategoryURIBase64, EndPoint } from './enums';
 import { utils } from './utils';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors';
 import { URLSearchParams } from 'url';
@@ -14,8 +14,8 @@ import { GetArtistParser } from './parsers/getArtistParser';
 import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
 import type { RawGetSearchSuggestions } from './resources/rawResultTypes/rawGetSearchSuggestions';
 import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
-import {GetAlbumParser} from "./parsers/getAlbumParser";
-import type {RawGetAlbumURL} from "./resources/rawResultTypes/rawGetAlbumURL";
+import { GetAlbumParser } from './parsers/getAlbumParser';
+import type { RawGetAlbumURL } from './resources/rawResultTypes/rawGetAlbumURL';
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
@@ -190,7 +190,7 @@ export class MooSick {
 
 	// TODO: probably define each api req's input vars & input queries,
 	// then make this func generic so it's type safe
-	private async _createApiRequest(endpointName: EndPointType, inputVariables = {}, inputQuery = {}): Promise<string> {
+	private async _createApiRequest(endpointName: EndPoint, inputVariables = {}, inputQuery = {}): Promise<string> {
 		const res = await this.client.post(
 			`youtubei/${
 				this.config.INNERTUBE_API_VERSION
@@ -267,7 +267,7 @@ export class MooSick {
      */
 	public async getSearchSuggestions(query: string): Promise<SearchSuggestions[]> {
 		return new Promise(async (resolve, reject) => {
-			const res = await this._createApiRequest(EndPointType.SUGGESTIONS, {
+			const res = await this._createApiRequest(EndPoint.SUGGESTIONS, {
 				input: query,
 			}) as unknown as RawGetSearchSuggestions;
 			// I dont think this is the best way, maybe the fv seems nice but that is really unreadable
@@ -299,7 +299,7 @@ export class MooSick {
 	async search(query: string, categoryName?: CategoryURIBase64, _pageLimit = 1): Promise<unknown> {
 		return new Promise(async (resolve, reject) => {
 			let result: Record<string, unknown>;
-			const context = await this._createApiRequest(EndPointType.SEARCH, {
+			const context = await this._createApiRequest(EndPoint.SEARCH, {
 				query,
 				params: categoryName,
 			});
@@ -338,7 +338,7 @@ export class MooSick {
 		}
 
 		return new Promise(async (resolve, reject) => {
-			const ctx = await this._createApiRequest(EndPointType.SEARCH, utils.buildEndpointContext(CategoryType.ALBUM, browseId));
+			const ctx = await this._createApiRequest(EndPoint.SEARCH, utils.buildEndpointContext(Category.ALBUM, browseId));
 			try {
 				const result = GetAlbumParser.parseAlbumURLPage(ctx as unknown as RawGetAlbumURL);
 				resolve(result);
@@ -364,12 +364,12 @@ export class MooSick {
 		}
 
 		return new Promise(async (resolve, reject) => {
-			const ctx = this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.PLAYLISTS, browseId));
+			const ctx = this._createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLISTS, browseId));
 			try {
 				const result = GetPlaylistParser.parsePlaylistURL(ctx);
 				// No idea does this work or not
 				const getContinuations = async (params: continuation) => {
-					const ctx = this._createApiRequest(EndPointType.BROWSE, {}, {
+					const ctx = this._createApiRequest(EndPoint.BROWSE, {}, {
 						ctoken: params.continuation,
 						continuation: params.continuation,
 						itct: params.clickTrackingParams,
@@ -410,7 +410,7 @@ export class MooSick {
 		}
 
 		return new Promise(async (resolve, reject) => {
-			const ctx = await this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.ARTIST, browseId));
+			const ctx = await this._createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.ARTIST, browseId));
 			try {
 				// FIXME no idea how to solve this for now
 				const result = GetArtistParser.parseArtistURLPage(ctx as unknown as ArtistURLFullResult);
