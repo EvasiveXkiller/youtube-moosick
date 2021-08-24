@@ -1,22 +1,22 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios, {AxiosInstance, AxiosResponse} from 'axios';
 // no idea how to import these
 import axios0 from 'axios/lib/adapters/http';
 import tough from 'tough-cookie';
-import { Category, CategoryURIBase64, EndPoint } from './enums';
-import { utils } from './utils';
-import { IllegalArgumentError, IllegalStateError } from './resources/errors';
-import { URLSearchParams } from 'url';
-import { GeneralParser } from './parsers/generalParser';
-import { GetPlaylistParser } from './parsers/getPlaylistParser';
-import { GetArtistParser } from './parsers/getArtistParser';
-import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
-import type { SearchSuggestionsFullResult } from './resources/rawResultTypes/rawGetSearchSuggestions';
-import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
-import { GetAlbumParser } from './parsers/getAlbumParser';
-import type { AlbumURLFullResult } from './resources/rawResultTypes/rawGetAlbumURL';
-import type { GeneralFull } from './resources/rawResultTypes/general/generalFull';
-import { AsyncConstructor } from './blocks/asyncConstructor';
-import type { Result } from './resources/rawResultTypes/common';
+import {Category, CategoryURIBase64, EndPoint} from './enums';
+import {utils} from './utils';
+import {IllegalArgumentError, IllegalStateError} from './resources/errors';
+import {URLSearchParams} from 'url';
+import {GeneralParser} from './parsers/generalParser';
+import {GetPlaylistParser} from './parsers/getPlaylistParser';
+import {GetArtistParser} from './parsers/getArtistParser';
+import type {ArtistURLFullResult} from './resources/rawResultTypes/rawGetArtistURL';
+import type {SearchSuggestionsFullResult} from './resources/rawResultTypes/rawGetSearchSuggestions';
+import {SearchSuggestions} from './resources/resultTypes/searchSuggestions';
+import {GetAlbumParser} from './parsers/getAlbumParser';
+import type {AlbumURLFullResult} from './resources/rawResultTypes/rawGetAlbumURL';
+import type {GeneralFull} from './resources/rawResultTypes/general/generalFull';
+import {AsyncConstructor} from './blocks/asyncConstructor';
+import type {Result} from './resources/rawResultTypes/common';
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
@@ -268,7 +268,7 @@ export class MooSick extends AsyncConstructor {
 			throw new IllegalStateError('Results array not found');
 		}
 
-		const rendererCompressed = contents
+		return contents
 			.map(
 				(searchSuggestionRenderer) => SearchSuggestions
 					.from({
@@ -276,8 +276,6 @@ export class MooSick extends AsyncConstructor {
 						artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
 					}),
 			);
-
-		return rendererCompressed;
 	}
 
 	/**

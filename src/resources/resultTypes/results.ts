@@ -1,4 +1,3 @@
-import type { Song } from '../generalTypes/song';
 import { Item } from '../../blocks/item';
 import type { AlbumSearchResult, PlaylistSearchResult, VideoSearchResult, ArtistSearchResults } from './searchResults';
 

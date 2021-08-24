@@ -59,6 +59,7 @@ export class utils {
 		return (
 			splitDigits.reduceRight(
 				(prev, curr, i, arr) =>
+					// eslint-disable-next-line no-mixed-operators
 					prev + parseInt(curr, 10) * 60 ** (arr.length - 1 - i), 0,
 			) * 1000
 		);

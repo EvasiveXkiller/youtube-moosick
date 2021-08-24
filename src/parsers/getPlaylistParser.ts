@@ -1,8 +1,8 @@
 import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL';
 import objectScan from 'object-scan';
 import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/rawResultTypes/rawGetSongURL';
-import { utils } from '../utils';
 import type { MusicDetailHeaderRenderer } from '../resources/rawResultTypes/rawGetPlaylistURL';
+import { ParsersExtended } from './parsersExtended';
 
 /**
  * Used for getPlaylistURL function ONLY
@@ -34,9 +34,9 @@ export class GetPlaylistParser {
 			const flexColumnPart = flexColumn[i * 2];
 
 			playlistContents.push({
-				trackTitle: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
-				trackId: objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
-				artist: utils.artistParser(flexColumnPart.text.runs),
+				trackTitle: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart) as string,
+				trackId: objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart) as string,
+				artist: ParsersExtended.artistParser(flexColumnPart.text.runs),
 				thumbnail: allThumbnailRenderers[i].thumbnail.thumbnails,
 			});
 		}
@@ -48,14 +48,14 @@ export class GetPlaylistParser {
 		});
 	}
 
-	private static playlistURLHeaderParser(header: any[]): PlaylistHeader {
+	private static playlistURLHeaderParser(header: MusicDetailHeaderRenderer[]): PlaylistHeader {
 		return PlaylistHeader.from({
-			playlistName: header[0].title.runs[0].text as string,
-			owner: header[0].subtitle.runs[2].text as string,
+			playlistName: header[0].title.runs[0].text,
+			owner: header[0].subtitle.runs[2].text,
 			createdYear: parseInt(header[0].subtitle.runs[4].text, 10)!,
-			thumbnail: header[0].thumbnail.croppedSquareThumbnailRenderer.thumbnail.thumbnail as Thumbnail[],
-			songCount: header[0].secondSubtitle.runs[0].text as number,
-			approxRunTime: header[0].secondSubtitle.runs[2].text as string,
+			thumbnail: header[0].thumbnail.croppedSquareThumbnailRenderer.thumbnail.thumbnails as Thumbnail[],
+			songCount: Number(header[0].secondSubtitle.runs[0].text),
+			approxRunTime: header[0].secondSubtitle.runs[2].text,
 		});
 	}
 }
