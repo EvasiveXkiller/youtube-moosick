@@ -1,20 +1,20 @@
-var EndPointType;
-(function (EndPointType) {
-    EndPointType["SUGGESTIONS"] = "music/get_search_suggestions";
-    EndPointType["SEARCH"] = "search";
-    EndPointType["BROWSE"] = "browse";
-    EndPointType["NEXT"] = "next";
-})(EndPointType || (EndPointType = {}));
-var CategoryType;
-(function (CategoryType) {
-    CategoryType["SONG"] = "SONG";
-    CategoryType["VIDEO"] = "VIDEO";
-    CategoryType["ALBUM"] = "ALBUM";
-    CategoryType["ARTIST"] = "ARTIST";
-    CategoryType["PLAYLISTS"] = "PLAYLIST";
-    CategoryType["EP"] = "EP";
-    CategoryType["SINGLE"] = "SINGLE";
-})(CategoryType || (CategoryType = {}));
+var EndPoint;
+(function (EndPoint) {
+    EndPoint["SUGGESTIONS"] = "music/get_search_suggestions";
+    EndPoint["SEARCH"] = "search";
+    EndPoint["BROWSE"] = "browse";
+    EndPoint["NEXT"] = "next";
+})(EndPoint || (EndPoint = {}));
+var Category;
+(function (Category) {
+    Category["SONG"] = "SONG";
+    Category["VIDEO"] = "VIDEO";
+    Category["ALBUM"] = "ALBUM";
+    Category["ARTIST"] = "ARTIST";
+    Category["PLAYLISTS"] = "PLAYLIST";
+    Category["EP"] = "EP";
+    Category["SINGLE"] = "SINGLE";
+})(Category || (Category = {}));
 var CategoryURIBase64;
 (function (CategoryURIBase64) {
     CategoryURIBase64["SONG"] = "RAAGAAgACgA";
@@ -28,11 +28,12 @@ var ConstantURLs;
     ConstantURLs["VIDEOLINK"] = "https://www.youtube.com/watch?v=";
     ConstantURLs["CHANNEL_URL"] = "https://music.youtube.com/channel/";
 })(ConstantURLs || (ConstantURLs = {}));
-var flexColumnDefinition;
-(function (flexColumnDefinition) {
-    flexColumnDefinition[flexColumnDefinition["GENERAL"] = 1] = "GENERAL";
-    flexColumnDefinition[flexColumnDefinition["SUPPLEMENT"] = 2] = "SUPPLEMENT";
-})(flexColumnDefinition || (flexColumnDefinition = {}));
+var SongFlexColumnOffset;
+(function (SongFlexColumnOffset) {
+    SongFlexColumnOffset[SongFlexColumnOffset["TITLE"] = 0] = "TITLE";
+    SongFlexColumnOffset[SongFlexColumnOffset["ARTIST_ALBUM"] = 1] = "ARTIST_ALBUM";
+    SongFlexColumnOffset[SongFlexColumnOffset["SUPPLEMENT"] = 2] = "SUPPLEMENT";
+})(SongFlexColumnOffset || (SongFlexColumnOffset = {}));
 // constant delimters for types, probably can do better
 var SongOffset;
 (function (SongOffset) {
@@ -62,5 +63,5 @@ var ArtistOffset;
     ArtistOffset[ArtistOffset["SUBSCRIBERS"] = 0] = "SUBSCRIBERS";
 })(ArtistOffset || (ArtistOffset = {}));
 
-export { ArtistOffset, CategoryType, CategoryURIBase64, ConstantURLs, EndPointType, PlaylistOffset, SingleOffset, SongOffset, VideoOffset, flexColumnDefinition };
+export { ArtistOffset, Category, CategoryURIBase64, ConstantURLs, EndPoint, PlaylistOffset, SingleOffset, SongFlexColumnOffset, SongOffset, VideoOffset };
 //# sourceMappingURL=enums.js.map

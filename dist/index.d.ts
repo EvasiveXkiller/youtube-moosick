@@ -1,4 +1,5 @@
 import { CategoryURIBase64 } from './enums';
+import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
 export declare class MooSick {
     private client;
     private cookies;
@@ -16,7 +17,7 @@ export declare class MooSick {
      * @param query String query text to search
      * @returns {Promise<unknown>} An object formatted with utils class
      */
-    getSearchSuggestions(query: string): Promise<unknown>;
+    getSearchSuggestions(query: string): Promise<SearchSuggestions[]>;
     /**
      * Searches for songs using the Youtube Music API
      * @param query String query text to search
@@ -25,6 +26,10 @@ export declare class MooSick {
      * @returns {Promise<unknown>} An object formatted by parsers.js
      */
     search(query: string, categoryName?: CategoryURIBase64, _pageLimit?: number): Promise<unknown>;
+    /**
+     * Gets the album details
+     * @param browseId The Id of the album, without the https nonsense
+     */
     getAlbum(browseId: string): Promise<unknown>;
     /**
      * Gets the playlist using the Youtube Music API

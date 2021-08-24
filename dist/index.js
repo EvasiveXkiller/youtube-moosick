@@ -2,12 +2,16 @@ import axios from './node_modules/axios/index.js';
 import http_1 from './node_modules/axios/lib/adapters/http.js';
 import './node_modules/tough-cookie/lib/cookie.js';
 import _ from './node_modules/lodash/lodash.js';
-import { EndPointType, CategoryURIBase64, CategoryType } from './enums.js';
+import { EndPoint, CategoryURIBase64, Category } from './enums.js';
 import { utils } from './utils.js';
 import { IllegalArgumentError } from './resources/errors/illegalArgument.error.js';
 import { IllegalStateError } from './resources/errors/illegalState.error.js';
 import { URLSearchParams } from 'url';
 import { parsers } from './parsers.js';
+import { GetPlaylistParser } from './parsers/getPlaylistParser.js';
+import { GetArtistParser } from './parsers/getArtistParser.js';
+import { SearchSuggestions } from './resources/resultTypes/searchSuggestions.js';
+import { GetAlbumParser } from './parsers/getAlbumParser.js';
 import { __exports as cookie } from './_virtual/cookie.js_commonjs-exports';
 
 axios.defaults.adapter = http_1;
@@ -140,20 +144,20 @@ class MooSick {
      */
     async getSearchSuggestions(query) {
         return new Promise(async (resolve, reject) => {
-            const res = await this._createApiRequest(EndPointType.SUGGESTIONS, {
+            const res = await this._createApiRequest(EndPoint.SUGGESTIONS, {
                 input: query,
             });
             // I dont think this is the best way, maybe the fv seems nice but that is really unreadable
             // Probably think of a better way
-            if (!res.hasOwnProperty('contents')) {
-                reject('no results found');
+            if (!res.contents !== undefined) {
+                reject(new IllegalStateError('No results found'));
             }
-            const { contents } = res.contents[0].searchSuggestionRenderer;
+            const { contents } = res.contents[0].searchSuggestionsSectionRenderer;
             if (!contents) {
                 reject(new IllegalStateError('result array not found'));
             }
-            const rendererCompressed = contents.map((searchSuggestionRenderer) => ({
-                track: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
+            const rendererCompressed = contents.map((searchSuggestionRenderer) => SearchSuggestions.from({
+                title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
                 artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
             }));
             resolve(rendererCompressed);
@@ -169,7 +173,7 @@ class MooSick {
     async search(query, categoryName, _pageLimit = 1) {
         return new Promise(async (resolve, reject) => {
             let result;
-            const context = await this._createApiRequest(EndPointType.SEARCH, {
+            const context = await this._createApiRequest(EndPoint.SEARCH, {
                 query,
                 params: categoryName,
             });
@@ -196,18 +200,22 @@ class MooSick {
             resolve(result);
         });
     }
+    /**
+     * Gets the album details
+     * @param browseId The Id of the album, without the https nonsense
+     */
     async getAlbum(browseId) {
-        if (!_.startsWith(browseId, 'MPREb')) {
-            throw new Error('invalid Album browse id.');
+        if (!browseId.startsWith('MPREb')) {
+            throw new IllegalArgumentError('Invalid Album browse Id.');
         }
-        return new Promise((resolve, reject) => {
-            const ctx = this._createApiRequest(EndPointType.SEARCH, utils.buildEndpointContext(CategoryType.ALBUM, browseId));
+        return new Promise(async (resolve, reject) => {
+            const ctx = await this._createApiRequest(EndPoint.SEARCH, utils.buildEndpointContext(Category.ALBUM, browseId));
             try {
-                const result = parsers.parseAlbumPage(ctx);
+                const result = GetAlbumParser.parseAlbumURLPage(ctx);
                 resolve(result);
             }
             catch (error) {
-                reject(error.message);
+                reject(error);
             }
         });
     }
@@ -218,38 +226,37 @@ class MooSick {
      * @returns {Promise<unknown>} An object formatted by the parser
      */
     async getPlaylist(browseId, contentLimit = 100) {
-        if (!(_.startsWith(browseId, 'VL') || _.startsWith(browseId, 'PL'))) {
-            throw new Error('invalid playlist id.');
+        if (!(browseId.startsWith('VL') || browseId.startsWith('PL'))) {
+            throw new IllegalArgumentError(`Invalid Playlist Id ${browseId}.`);
         }
-        _.startsWith(browseId, 'PL') && (browseId = 'VL' + browseId);
+        if (browseId.startsWith('PL')) {
+            browseId = 'VL' + browseId;
+        }
         return new Promise(async (resolve, reject) => {
-            const ctx = this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.PLAYLISTS, browseId));
+            const ctx = this._createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLISTS, browseId));
             try {
-                const result = parsers.parsePlaylistPage(ctx);
+                const result = GetPlaylistParser.parsePlaylistURL(ctx);
+                // No idea does this work or not
                 const getContinuations = async (params) => {
-                    const ctx = this._createApiRequest(EndPointType.BROWSE, {}, {
+                    const ctx = this._createApiRequest(EndPoint.BROWSE, {}, {
                         ctoken: params.continuation,
                         continuation: params.continuation,
-                        itct: params.continuation.clickTrackingParams,
+                        itct: params.clickTrackingParams,
                     });
-                    const continuationResult = parsers.parsePlaylistPage(ctx);
-                    if (Array.isArray(continuationResult.content)) {
-                        result.content = _.concat(result.content, continuationResult.content);
-                        result.continuation = continuationResult.continuation;
+                    const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
+                    result.playlistContents = _.concat(result.playlistContents, continuationResult.playlistContents);
+                    result.continuation = continuationResult.continuation;
+                    if (Array.isArray(continuationResult.continuation)) {
+                        resolve(result);
                     }
-                    if (!Array.isArray(continuationResult.continuation) && result.continuation instanceof Object) {
-                        if (contentLimit > result.content.length) {
-                            await getContinuations(continuationResult.continuation);
-                        }
-                        else {
-                            resolve(result);
-                        }
+                    else if (contentLimit > result.playlistContents.length) {
+                        await getContinuations(continuationResult.continuation);
                     }
                     else {
                         resolve(result);
                     }
                 };
-                if (contentLimit > result.content.length && (!Array.isArray(result.continuation) && result.continuation instanceof Object)) {
+                if (contentLimit > result.playlistContents.length && (!Array.isArray(result.continuation))) {
                     await getContinuations(result.continuation);
                 }
                 else {
@@ -258,9 +265,7 @@ class MooSick {
                 }
             }
             catch (error) {
-                resolve({
-                    error: error.message,
-                });
+                reject(error);
             }
         });
     }
@@ -274,15 +279,14 @@ class MooSick {
             throw new Error('invalid artist browse id.');
         }
         return new Promise(async (resolve, reject) => {
-            const ctx = await this._createApiRequest(EndPointType.BROWSE, utils.buildEndpointContext(CategoryType.ARTIST, browseId));
+            const ctx = await this._createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.ARTIST, browseId));
             try {
-                const result = parsers.parseArtistPage(ctx);
+                // FIXME no idea how to solve this for now
+                const result = GetArtistParser.parseArtistURLPage(ctx);
                 resolve(result);
             }
             catch (error) {
-                resolve({
-                    error: error.message,
-                });
+                resolve(error);
             }
         });
     }
