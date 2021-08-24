@@ -14,6 +14,7 @@ import { ArtistExtended } from '../resources/generalTypes/artist';
 import { ParsersExtended } from './parsersExtended';
 import { Results } from '../resources/resultTypes/results';
 import { $$ } from '../resources/utilities/objectScan.utility';
+import type { NextContinuationData } from '../resources/rawResultTypes/common';
 
 export class GeneralParser {
 	// Make this one global function and call the other stuff
@@ -25,6 +26,9 @@ export class GeneralParser {
 		const playlists: Playlist[] = [];
 		const artist: ArtistExtended[] = [];
 		const songs: Song[] = [];
+		// FIXME : tf
+		const continuation = searchType ? (objectScan(['**.nextContinuationData'], { rtn: 'value', reverse: false })(context) as NextContinuationData[])[0] : undefined;
+
 		const musicShelf = objectScan(['**.musicShelfRenderer'], {
 			rtn: 'value',
 			reverse: false,
@@ -38,6 +42,7 @@ export class GeneralParser {
 				const flexColumnRenderer = $$('.musicResponsiveListItemFlexColumnRenderer')(item) as MusicResponsiveListItemFlexColumnRenderer[];
 				const category = flexColumnRenderer[0].text.runs[0].text as Category;
 				switch (category) {
+					// FIXME: probably there is a better way to reconstruct the thing
 					case Category.SONG:
 						songs.push(Song.from({
 							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.SONG, Boolean(searchType)),
@@ -86,16 +91,55 @@ export class GeneralParser {
 			}
 		}
 
-		const unsorted = {
-			albums,
-			videos,
-			playlists,
-			artist, songs,
-		};
+		switch (searchType) {
+			case undefined: { throw new Error('Not implemented yet: undefined case'); }
+			case CategoryURIBase64.SONG: {
+				return Results.from({
+					result: songs,
+					continuation: continuation!,
+				});
+			}
 
-		return Results.from({
-			result: unsorted,
-		});
+			case CategoryURIBase64.VIDEO: {
+				return Results.from({
+					result: videos,
+					continuation: continuation!,
+				});
+			}
+
+			case CategoryURIBase64.ALBUM: {
+				return Results.from({
+					result: albums,
+					continuation: continuation!,
+				});
+			}
+
+			case CategoryURIBase64.ARTIST: {
+				return Results.from({
+					result: artist,
+					continuation: continuation!,
+				});
+			}
+
+			case CategoryURIBase64.PLAYLISTS: {
+				return Results.from({
+					result: playlists,
+					continuation: continuation!,
+				});
+			}
+
+			default: {
+				const unsorted = {
+					albums,
+					videos,
+					playlists,
+					artist, songs,
+				};
+
+				return Results.from({
+					result: unsorted,
+				});}
+		}
 	}
 
 	/**

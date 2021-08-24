@@ -36,6 +36,7 @@ export class GetPlaylistParser {
 			playlistContents.push({
 				trackTitle: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart) as string,
 				trackId: objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart) as string,
+				// FIXME: probably the type here is wrong
 				artist: ParsersExtended.artistParser(flexColumnPart.text.runs),
 				thumbnail: allThumbnailRenderers[i].thumbnail.thumbnails,
 			});

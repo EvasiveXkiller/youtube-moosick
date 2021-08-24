@@ -6,7 +6,7 @@ export class AlbumSearchResult {
 
 }
 
-export class ArtistSearchResults {
+export class ArtistSearchResult {
 
 }
 
