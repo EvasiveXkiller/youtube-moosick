@@ -98,6 +98,7 @@ export class GetArtistParser {
 				}
 			}
 		}
+
 		// wtf is not used here
 		const artistContent = ArtistContent.from({
 			albums,
@@ -129,7 +130,7 @@ export class GetArtistParser {
 		const artistOnly = subtitleRenderer.slice(0, positions[0]);
 		return artistOnly.map((element) => (Artist.from({
 			name: element.text,
-			id: element.navigationEndpoint.browseEndpoint.browseId,
+			browseId: element.navigationEndpoint.browseEndpoint.browseId,
 			url: ConstantURLs.CHANNEL_URL + element.navigationEndpoint.browseEndpoint.browseId,
 		})));
 	}

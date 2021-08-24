@@ -1,9 +1,6 @@
 import type { Song } from '../generalTypes/song';
-import type { VideoSearchResult } from './videoSearchResult';
-import type { AlbumSearchResult } from './albumSearchResult';
-import type { ArtistSearchResults } from './artistSearchResults';
-import type { PlaylistSearchResult } from './playlistSearchResult';
 import { Item } from '../../item';
+import type { AlbumSearchResult, PlaylistSearchResult, VideoSearchResult, ArtistSearchResults } from './searchResults';
 
 export class Results extends Item {
 	public declare results: Song |
@@ -11,7 +8,12 @@ export class Results extends Item {
 	AlbumSearchResult |
 	ArtistSearchResults |
 	PlaylistSearchResult |
-	null[] | undefined;
+	null[] | Unsorted[] | undefined;
 
 	public declare continuation: string | undefined;
+}
+
+export class Unsorted extends Item {
+	// Make this only accept the stuff above
+	public declare content: any[];
 }

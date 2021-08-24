@@ -1,4 +1,4 @@
-import { AlbumURL, ArtistExtended, ReleaseDate, Track } from '../resources/resultTypes/albumURL';
+import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL';
 import objectScan from 'object-scan';
 import type {
 	MusicAlbumRelease,
@@ -8,6 +8,7 @@ import type {
 import { ConstantURLs } from '../enums';
 import type { ThumbnailElement } from '../resources/rawResultTypes/comfirmedInterfaces';
 import { Thumbnails } from '../resources/generalTypes/thumbnails';
+import { ArtistExtended } from '../resources/generalTypes/artist';
 
 export class GetAlbumParser {
 	public static parseAlbumURLPage(context: RawGetAlbumURL): AlbumURL {
@@ -31,7 +32,7 @@ export class GetAlbumParser {
 		for (const eachArtist of musicArtist) {
 			artist.push(ArtistExtended.from({
 				name: eachArtist.name,
-				id: eachArtist.externalChannelId,
+				browseId: eachArtist.externalChannelId,
 				url: ConstantURLs.CHANNEL_URL + eachArtist.externalChannelId,
 				thumbnails: this.thumbnailParser(objectScan(['**.thumbnailDetails'], {
 					reverse: false,

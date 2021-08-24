@@ -8,7 +8,7 @@ export class Song extends Item {
 	public type?: CategoryType = CategoryType.SONG;
 	public declare name: string;
 	public declare videoId: string;
-	public declare URL: string;
+	public declare url: string;
 	public declare playlistId: string;
 	public declare artist: Artist[];
 	public declare album: Album[];

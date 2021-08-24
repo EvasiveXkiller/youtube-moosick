@@ -3,7 +3,7 @@ import type { Thumbnails } from './thumbnails';
 
 export class Artist extends Item {
 	public declare name: string;
-	public declare id: string;
+	public declare browseId: string;
 	public declare url: string;
 }
 
