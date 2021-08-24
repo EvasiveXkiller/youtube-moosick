@@ -1,0 +1,4 @@
+var traverser = {};
+
+export { traverser as __exports };
+//# sourceMappingURL=traverser.js_commonjs-exports.map

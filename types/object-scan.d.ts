@@ -1,4 +1,6 @@
 namespace ObjectScan {
+	type Rtn = ObjectScan.NonFunctionPropertyNames<ObjectScan.Context> | 'bool' | 'count';
+
 	interface Context<K extends string | number | symbol = string, V = unknown> {
 		/**key that callback is invoked for (respects joined option). */
 		key: K | K[];

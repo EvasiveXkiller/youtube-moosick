@@ -37,18 +37,19 @@
     "eslint": "^7.32.0",
     "eslint-config-xo": "^0.38.0",
     "eslint-config-xo-typescript": "^0.44.0",
-    "rollup": "^2.56.2",
+    "rollup": "^2.56.3",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-execute": "^1.1.1",
     "typescript": "^4.3.5"
   },
   "dependencies": {
     "@types/lodash": "^4.14.172",
-    "@types/node": "^16.6.2",
+    "@types/node": "^16.7.1",
     "axios": "^0.21.1",
     "lodash": "^4.17.21",
     "object-scan": "^17.0.0",
     "readdir-enhanced": "^6.0.4",
-    "tough-cookie": "^4.0.0"
+    "tough-cookie": "^4.0.0",
+    "ts-transformer-keys": "^0.4.3"
   }
 }

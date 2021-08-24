@@ -1,7 +1,7 @@
 import { Artist } from './resources/generalTypes/artist.js';
 import { Album } from './resources/generalTypes/album.js';
-import objectScan from 'object-scan';
-import { ConstantURLs, CategoryType, SongOffset, flexColumnDefinition, PlaylistOffset } from './enums.js';
+import lib from './node_modules/object-scan/lib/index.js';
+import { ConstantURLs, Category, SongOffset, SongFlexColumnOffset, PlaylistOffset } from './enums.js';
 import { IllegalCategoryError } from './resources/errors/illegalCategory.error.js';
 
 class utils {
@@ -163,7 +163,7 @@ class utils {
      */
     static artistParser(runsArray, delimiter = ' • ') {
         // Only "SONGS" and "VIDEOS" are supported for this function to extract
-        if (runsArray[0].text !== CategoryType.SONG || CategoryType.VIDEO) {
+        if (runsArray[0].text !== Category.SONG || Category.VIDEO) {
             throw new IllegalCategoryError('Only "categoryType.SONG" and "categoryType.VIDEO" are can be decoded');
         }
         // Gets the positions of the delimiter
@@ -188,16 +188,16 @@ class utils {
      */
     static albumParser(runsArray, delimiter = ' • ') {
         // Only "SONGS" and "VIDEOS" are supported for this function to extract
-        if (runsArray[flexColumnDefinition.GENERAL].text !== CategoryType.SONG
-            || runsArray[flexColumnDefinition.GENERAL].text !== CategoryType.VIDEO
-            || runsArray[flexColumnDefinition.GENERAL].text !== CategoryType.PLAYLISTS) {
+        if (runsArray[SongFlexColumnOffset.ARTIST_ALBUM].text !== Category.SONG
+            || runsArray[SongFlexColumnOffset.ARTIST_ALBUM].text !== Category.VIDEO
+            || runsArray[SongFlexColumnOffset.ARTIST_ALBUM].text !== Category.PLAYLISTS) {
             throw new IllegalCategoryError('Only "categoryType.SONG","categoryType.VIDEOS","categoryType.PLAYLISTS" can be decoded');
         }
         // Gets the positions of the delimiter
         // Probably can deprecate the following line, or use a constant
         const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
         // Determines what limiter to use
-        const typedDelimiter = runsArray[flexColumnDefinition.GENERAL].text === CategoryType.PLAYLISTS ? PlaylistOffset.AUTHOR : SongOffset.ARTIST;
+        const typedDelimiter = runsArray[SongFlexColumnOffset.ARTIST_ALBUM].text === Category.PLAYLISTS ? PlaylistOffset.AUTHOR : SongOffset.ARTIST;
         return Album.from({
             name: runsArray[positions[typedDelimiter] + 1].text,
             id: runsArray[SongOffset.ALBUM + 1].navigationEndpoint.browseEndpoint.browseId,
@@ -209,7 +209,7 @@ class utils {
      * @param sectionContext
      */
     static thumbnailParser(sectionContext) {
-        return objectScan(['**.musicThumbnailRenderer.**.thumbnails'], {
+        return lib(['**.musicThumbnailRenderer.**.thumbnails'], {
             rtn: 'value',
             reverse: false,
         })(sectionContext);
@@ -220,7 +220,7 @@ class utils {
      */
     // Probably wrong type here
     static playlistCountExtractor(flexColumn) {
-        const extracted = (objectScan(['**.text.runs'], { rtn: 'value', reverse: false, abort: true })(flexColumn[1]));
+        const extracted = (lib(['**.text.runs'], { rtn: 'value', reverse: false, abort: true })(flexColumn[1]));
         return parseInt(extracted[extracted.length - 1].text, 10);
     }
     // Parse enums from here for utils

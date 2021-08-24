@@ -1,10 +1,10 @@
-export declare enum EndPointType {
+export declare enum EndPoint {
     SUGGESTIONS = "music/get_search_suggestions",
     SEARCH = "search",
     BROWSE = "browse",
     NEXT = "next"
 }
-export declare enum CategoryType {
+export declare enum Category {
     SONG = "SONG",
     VIDEO = "VIDEO",
     ALBUM = "ALBUM",
@@ -24,8 +24,9 @@ export declare enum ConstantURLs {
     VIDEOLINK = "https://www.youtube.com/watch?v=",
     CHANNEL_URL = "https://music.youtube.com/channel/"
 }
-export declare enum flexColumnDefinition {
-    GENERAL = 1,
+export declare enum SongFlexColumnOffset {
+    TITLE = 0,
+    ARTIST_ALBUM = 1,
     SUPPLEMENT = 2
 }
 export declare enum SongOffset {

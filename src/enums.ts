@@ -1,11 +1,11 @@
-export enum EndPointType {
+export enum EndPoint {
 	SUGGESTIONS = 'music/get_search_suggestions',
 	SEARCH = 'search',
 	BROWSE = 'browse',
 	NEXT = 'next',
 }
 
-export enum CategoryType {
+export enum Category {
 	SONG = 'SONG',
 	VIDEO = 'VIDEO',
 	ALBUM = 'ALBUM',
@@ -22,14 +22,16 @@ export enum CategoryURIBase64 {
 	ARTIST = 'BAAGAAgASgA',
 	PLAYLISTS = 'BAAGAAgACgB',
 }
+
 export enum ConstantURLs {
 	VIDEOLINK = 'https://www.youtube.com/watch?v=',
 	CHANNEL_URL = 'https://music.youtube.com/channel/',
 }
 
-export enum flexColumnDefinition {
-	GENERAL = 1,
-	SUPPLEMENT = 2,
+export enum SongFlexColumnOffset {
+	TITLE,
+	ARTIST_ALBUM,
+	SUPPLEMENT,
 }
 
 // constant delimters for types, probably can do better
