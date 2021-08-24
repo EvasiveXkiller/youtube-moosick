@@ -54,13 +54,7 @@ export class parsers {
 	 */
 	// Probably the type of sectionContext is wrong have to check on it more
 	private static parseSongSearchResult(flexColumn: MusicResponsiveListItemFlexColumnRenderer[]): SongSearchResult {
-		/*
-			FIXME: skimmed through actual song search results, & there's nowhere it
-					seems like there's 3 flexColumns, nor is there anywhere the string
-					"SONG" appears. Is this an update on yt's API or are we doing
-					something wrong?
-		*/
-		const category = $('.text')(flexColumn[SongFlexColumnOffset.SUPPLEMENT].text) as string;
+		const category = flexColumn[SongFlexColumnOffset.SUPPLEMENT].text.runs[0].text;
 
 		if (category as Category !== Category.SONG) {
 			throw new IllegalCategoryError(`Type ${category} cannot be applied to ${Category.SONG} function`);
