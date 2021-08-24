@@ -1,4 +1,4 @@
-import type { ytcfgInterface } from './cfgInterface';
+import type { YtCfgMain } from './cfgInterface';
 export declare class utils {
     /**
      * fv (FieldVisitor)
@@ -15,16 +15,16 @@ export declare class utils {
      * */
     static fv(input: Record<string | number | symbol, any>, query: string, shallow?: boolean): unknown[];
     static hms2ms(input: string): number;
-    static createApiContext(ytcfg: ytcfgInterface): {
+    static createApiContext(ytcfg: YtCfgMain): {
         context: {
             capabilities: {};
             client: {
-                clientName: string | undefined;
-                clientVersion: string | undefined;
+                clientName: string;
+                clientVersion: string;
                 experimentIds: never[];
                 experimentsToken: string;
-                gl: string | undefined;
-                hl: string | undefined;
+                gl: string;
+                hl: string;
                 locationInfo: {
                     locationPermissionAuthorizationStatus: string;
                 };

@@ -1,4 +1,4 @@
-import { Category, ConstantURLs } from '../enums.js';
+import { ConstantURLs, Category } from '../enums.js';
 import { Artist } from '../resources/generalTypes/artist.js';
 import { Album } from '../resources/generalTypes/album.js';
 import lib from '../node_modules/object-scan/lib/index.js';

@@ -1,21 +1,101 @@
-export interface GeneralSong {
+import type { NextContinuationData } from "../common";
+export interface GeneralSongFull {
+    responseContext: ResponseContext;
     trackingParams: string;
-    thumbnail: GeneralSongThumbnail;
+    contents: Contents;
+}
+export interface Contents {
+    tabbedSearchResultsRenderer: TabbedSearchResultsRenderer;
+}
+export interface TabbedSearchResultsRenderer {
+    tabs: Tab[];
+}
+export interface Tab {
+    tabRenderer: TabRenderer;
+}
+export interface TabRenderer {
+    title: string;
+    selected: boolean;
+    content: TabRendererContent;
+    tabIdentifier: string;
+    trackingParams: string;
+}
+export interface TabRendererContent {
+    sectionListRenderer: SectionListRenderer;
+}
+export interface SectionListRenderer {
+    contents: SectionListRendererContent[];
+    trackingParams: string;
+    header: Header;
+}
+export interface SectionListRendererContent {
+    musicShelfRenderer: MusicShelfRenderer;
+}
+export interface MusicShelfRenderer {
+    title: Title;
+    contents: MusicShelfRendererContent[];
+    trackingParams: string;
+    continuations: Continuation[];
+    shelfDivider: ShelfDivider;
+}
+export interface MusicShelfRendererContent {
+    musicResponsiveListItemRenderer: MusicResponsiveListItemRenderer;
+}
+export interface MusicResponsiveListItemRenderer {
+    trackingParams: string;
+    thumbnail: MusicResponsiveListItemRendererThumbnail;
     overlay: Overlay;
     flexColumns: FlexColumn[];
     menu: Menu;
     playlistItemData: PlaylistItemData;
     flexColumnDisplayStyle: string;
-    itemHeight: string;
+    itemHeight: ItemHeight;
+    badges?: Badge[];
+}
+export interface Badge {
+    musicInlineBadgeRenderer: MusicInlineBadgeRenderer;
+}
+export interface MusicInlineBadgeRenderer {
+    trackingParams: string;
+    icon: Icon;
+    accessibilityData: Accessibility;
+}
+export interface Accessibility {
+    accessibilityData: AccessibilityData;
+}
+export interface AccessibilityData {
+    label: string;
+}
+export interface Icon {
+    iconType: IconType;
+}
+export declare enum IconType {
+    AddToPlaylist = "ADD_TO_PLAYLIST",
+    AddToRemoteQueue = "ADD_TO_REMOTE_QUEUE",
+    Album = "ALBUM",
+    Artist = "ARTIST",
+    Close = "CLOSE",
+    Favorite = "FAVORITE",
+    Mix = "MIX",
+    MusicExplicitBadge = "MUSIC_EXPLICIT_BADGE",
+    Pause = "PAUSE",
+    PlayArrow = "PLAY_ARROW",
+    QueuePlayNext = "QUEUE_PLAY_NEXT",
+    Share = "SHARE",
+    Unfavorite = "UNFAVORITE",
+    VolumeUp = "VOLUME_UP"
 }
 export interface FlexColumn {
     musicResponsiveListItemFlexColumnRenderer: MusicResponsiveListItemFlexColumnRenderer;
 }
 export interface MusicResponsiveListItemFlexColumnRenderer {
-    text: MusicResponsiveListItemFlexColumnRendererText;
-    displayPriority: string;
+    text: Text;
+    displayPriority: DisplayPriority;
 }
-export interface MusicResponsiveListItemFlexColumnRendererText {
+export declare enum DisplayPriority {
+    MusicResponsiveListItemColumnDisplayPriorityHigh = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH"
+}
+export interface Text {
     runs: PurpleRun[];
 }
 export interface PurpleRun {
@@ -35,14 +115,18 @@ export interface BrowseEndpointContextSupportedConfigs {
     browseEndpointContextMusicConfig: BrowseEndpointContextMusicConfig;
 }
 export interface BrowseEndpointContextMusicConfig {
-    pageType: string;
+    pageType: PageType;
+}
+export declare enum PageType {
+    MusicPageTypeAlbum = "MUSIC_PAGE_TYPE_ALBUM",
+    MusicPageTypeArtist = "MUSIC_PAGE_TYPE_ARTIST"
 }
 export interface WatchEndpoint {
     videoId: string;
     playlistId: string;
     loggingContext: LoggingContext;
     watchEndpointMusicSupportedConfigs: WatchEndpointMusicSupportedConfigs;
-    params?: string;
+    params?: Params;
 }
 export interface LoggingContext {
     vssLoggingContext: VssLoggingContext;
@@ -50,11 +134,20 @@ export interface LoggingContext {
 export interface VssLoggingContext {
     serializedContextData: string;
 }
+export declare enum Params {
+    WAEB = "wAEB"
+}
 export interface WatchEndpointMusicSupportedConfigs {
     watchEndpointMusicConfig: WatchEndpointMusicConfig;
 }
 export interface WatchEndpointMusicConfig {
-    musicVideoType: string;
+    musicVideoType: MusicVideoType;
+}
+export declare enum MusicVideoType {
+    MusicVideoTypeAtv = "MUSIC_VIDEO_TYPE_ATV"
+}
+export declare enum ItemHeight {
+    MusicResponsiveListItemHeightTall = "MUSIC_RESPONSIVE_LIST_ITEM_HEIGHT_TALL"
 }
 export interface Menu {
     menuRenderer: MenuRenderer;
@@ -64,26 +157,17 @@ export interface MenuRenderer {
     trackingParams: string;
     accessibility: Accessibility;
 }
-export interface Accessibility {
-    accessibilityData: AccessibilityData;
-}
-export interface AccessibilityData {
-    label: string;
-}
 export interface ItemElement {
     menuNavigationItemRenderer?: MenuItemRenderer;
     menuServiceItemRenderer?: MenuItemRenderer;
     toggleMenuServiceItemRenderer?: ToggleMenuServiceItemRenderer;
 }
 export interface MenuItemRenderer {
-    text: DefaultTextClass;
+    text: Title;
     icon: Icon;
     navigationEndpoint?: MenuNavigationItemRendererNavigationEndpoint;
     trackingParams: string;
     serviceEndpoint?: ServiceEndpoint;
-}
-export interface Icon {
-    iconType: string;
 }
 export interface MenuNavigationItemRendererNavigationEndpoint {
     clickTrackingParams: string;
@@ -99,17 +183,17 @@ export interface Modal {
     modalWithTitleAndButtonRenderer: ModalWithTitleAndButtonRenderer;
 }
 export interface ModalWithTitleAndButtonRenderer {
-    title: DefaultTextClass;
-    content: DefaultTextClass;
+    title: Title;
+    content: Title;
     button: Button;
 }
 export interface Button {
     buttonRenderer: ButtonRenderer;
 }
 export interface ButtonRenderer {
-    style: string;
+    style: StyleEnum;
     isDisabled: boolean;
-    text: DefaultTextClass;
+    text: Title;
     navigationEndpoint: ButtonRendererNavigationEndpoint;
     trackingParams: string;
 }
@@ -120,15 +204,21 @@ export interface ButtonRendererNavigationEndpoint {
 export interface SignInEndpoint {
     hack: boolean;
 }
-export interface DefaultTextClass {
-    runs: DefaultTextRun[];
+export declare enum StyleEnum {
+    StyleBlueText = "STYLE_BLUE_TEXT"
 }
-export interface DefaultTextRun {
+export interface Title {
+    runs: TitleRun[];
+}
+export interface TitleRun {
     text: string;
 }
 export interface ShareEntityEndpoint {
     serializedShareEntity: string;
-    sharePanelType: string;
+    sharePanelType: SharePanelType;
+}
+export declare enum SharePanelType {
+    SharePanelTypeUnifiedSharePanel = "SHARE_PANEL_TYPE_UNIFIED_SHARE_PANEL"
 }
 export interface ServiceEndpoint {
     clickTrackingParams: string;
@@ -136,7 +226,7 @@ export interface ServiceEndpoint {
 }
 export interface QueueAddEndpoint {
     queueTarget: PlaylistItemData;
-    queueInsertPosition: string;
+    queueInsertPosition: QueueInsertPosition;
     commands: Command[];
 }
 export interface Command {
@@ -150,17 +240,21 @@ export interface AddToToastActionItem {
     notificationTextRenderer: NotificationTextRenderer;
 }
 export interface NotificationTextRenderer {
-    successResponseText: DefaultTextClass;
+    successResponseText: Title;
     trackingParams: string;
+}
+export declare enum QueueInsertPosition {
+    InsertAfterCurrentVideo = "INSERT_AFTER_CURRENT_VIDEO",
+    InsertAtEnd = "INSERT_AT_END"
 }
 export interface PlaylistItemData {
     videoId: string;
 }
 export interface ToggleMenuServiceItemRenderer {
-    defaultText: DefaultTextClass;
+    defaultText: Title;
     defaultIcon: Icon;
     defaultServiceEndpoint: DefaultServiceEndpoint;
-    toggledText: DefaultTextClass;
+    toggledText: Title;
     toggledIcon: Icon;
     trackingParams: string;
 }
@@ -173,9 +267,9 @@ export interface Overlay {
 }
 export interface MusicItemThumbnailOverlayRenderer {
     background: Background;
-    content: Content;
-    contentPosition: string;
-    displayStyle: string;
+    content: MusicItemThumbnailOverlayRendererContent;
+    contentPosition: ContentPosition;
+    displayStyle: DisplayStyle;
 }
 export interface Background {
     verticalGradient: VerticalGradient;
@@ -183,7 +277,7 @@ export interface Background {
 export interface VerticalGradient {
     gradientLayerColors: string[];
 }
-export interface Content {
+export interface MusicItemThumbnailOverlayRendererContent {
     musicPlayButtonRenderer: MusicPlayButtonRenderer;
 }
 export interface MusicPlayButtonRenderer {
@@ -198,22 +292,34 @@ export interface MusicPlayButtonRenderer {
     playingIcon: Icon;
     iconLoadingColor: number;
     activeScaleFactor: number;
-    buttonSize: string;
-    rippleTarget: string;
+    buttonSize: ButtonSize;
+    rippleTarget: RippleTarget;
     accessibilityPlayData: Accessibility;
     accessibilityPauseData: Accessibility;
+}
+export declare enum ButtonSize {
+    MusicPlayButtonSizeSmall = "MUSIC_PLAY_BUTTON_SIZE_SMALL"
 }
 export interface PlayNavigationEndpoint {
     clickTrackingParams: string;
     watchEndpoint: WatchEndpoint;
 }
-export interface GeneralSongThumbnail {
+export declare enum RippleTarget {
+    MusicPlayButtonRippleTargetSelf = "MUSIC_PLAY_BUTTON_RIPPLE_TARGET_SELF"
+}
+export declare enum ContentPosition {
+    MusicItemThumbnailOverlayContentPositionCentered = "MUSIC_ITEM_THUMBNAIL_OVERLAY_CONTENT_POSITION_CENTERED"
+}
+export declare enum DisplayStyle {
+    MusicItemThumbnailOverlayDisplayStylePersistent = "MUSIC_ITEM_THUMBNAIL_OVERLAY_DISPLAY_STYLE_PERSISTENT"
+}
+export interface MusicResponsiveListItemRendererThumbnail {
     musicThumbnailRenderer: MusicThumbnailRenderer;
 }
 export interface MusicThumbnailRenderer {
     thumbnail: MusicThumbnailRendererThumbnail;
-    thumbnailCrop: string;
-    thumbnailScale: string;
+    thumbnailCrop: ThumbnailCrop;
+    thumbnailScale: ThumbnailScale;
     trackingParams: string;
 }
 export interface MusicThumbnailRendererThumbnail {
@@ -223,4 +329,63 @@ export interface ThumbnailElement {
     url: string;
     width: number;
     height: number;
+}
+export declare enum ThumbnailCrop {
+    MusicThumbnailCropUnspecified = "MUSIC_THUMBNAIL_CROP_UNSPECIFIED"
+}
+export declare enum ThumbnailScale {
+    MusicThumbnailScaleAspectFit = "MUSIC_THUMBNAIL_SCALE_ASPECT_FIT"
+}
+export interface Continuation {
+    nextContinuationData: NextContinuationData;
+}
+export interface ShelfDivider {
+    musicShelfDividerRenderer: MusicShelfDividerRenderer;
+}
+export interface MusicShelfDividerRenderer {
+    hidden: boolean;
+}
+export interface Header {
+    chipCloudRenderer: ChipCloudRenderer;
+}
+export interface ChipCloudRenderer {
+    chips: Chip[];
+    collapsedRowCount: number;
+    trackingParams: string;
+    horizontalScrollable: boolean;
+}
+export interface Chip {
+    chipCloudChipRenderer: ChipCloudChipRenderer;
+}
+export interface ChipCloudChipRenderer {
+    style: StyleClass;
+    navigationEndpoint: ChipCloudChipRendererNavigationEndpoint;
+    trackingParams: string;
+    icon?: Icon;
+    accessibilityData: Accessibility;
+    isSelected: boolean;
+    text?: Title;
+}
+export interface ChipCloudChipRendererNavigationEndpoint {
+    clickTrackingParams: string;
+    searchEndpoint: SearchEndpoint;
+}
+export interface SearchEndpoint {
+    query: string;
+    params?: string;
+}
+export interface StyleClass {
+    styleType: string;
+}
+export interface ResponseContext {
+    maxAgeSeconds: number;
+    serviceTrackingParams: ServiceTrackingParam[];
+}
+export interface ServiceTrackingParam {
+    service: string;
+    params: Param[];
+}
+export interface Param {
+    key: string;
+    value: string;
 }

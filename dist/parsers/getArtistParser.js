@@ -21,9 +21,9 @@ class GetArtistParser {
                 reverse: false,
             })(subHeader)),
         });
-        let albums;
-        let singles;
-        let videos;
+        const albums = [];
+        const singles = [];
+        const videos = [];
         // Gets the carousel, there should be 5 of them
         const twoRowRenderer = (lib(['**.musicCarouselShelfRenderer'], {
             rtn: 'value',
@@ -73,9 +73,9 @@ class GetArtistParser {
                     case 'videos': {
                         videos.push(Videos.from({
                             title: runsInternal,
-                            videoId: blockRenderer.navigationEndpoint.watchEndpoint.videoId,
-                            URL: `${ConstantURLs.VIDEOLINK}${blockRenderer.navigationEndpoint.watchEndpoint.videoId}`,
-                            playlistId: blockRenderer.navigationEndpoint.watchEndpoint.playlistId,
+                            videoId: blockRenderer.navigationEndpoint?.watchEndpoint?.videoId ?? '',
+                            URL: `${ConstantURLs.VIDEOLINK}${blockRenderer.navigationEndpoint?.watchEndpoint?.videoId ?? ''}`,
+                            playlistId: blockRenderer.navigationEndpoint.watchEndpoint?.playlistId ?? '',
                             views: parseInt(blockRenderer.subtitle.runs[blockRenderer.subtitle.runs.length - 1].text, 10),
                             thumbnails: this.parseMusicThumbnailRenderer(blockRenderer.thumbnailRenderer.musicThumbnailRenderer),
                             author: this.parseArtistFromVideos(blockRenderer.subtitle.runs),
@@ -114,8 +114,8 @@ class GetArtistParser {
         const artistOnly = subtitleRenderer.slice(0, positions[0]);
         return artistOnly.map((element) => (Artist.from({
             name: element.text,
-            browseId: element.navigationEndpoint.browseEndpoint.browseId,
-            url: ConstantURLs.CHANNEL_URL + element.navigationEndpoint.browseEndpoint.browseId,
+            browseId: element.navigationEndpoint?.browseEndpoint?.browseId ?? '',
+            url: `${ConstantURLs.CHANNEL_URL}${element.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
         })));
     }
 }

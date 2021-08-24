@@ -41,7 +41,9 @@ class utils {
     }
     static hms2ms(input) {
         const splitDigits = input.split(':');
-        return (splitDigits.reduceRight((prev, curr, i, arr) => prev + lodash.exports.parseInt(curr, 10) * 60 ** (arr.length - 1 - i), 0) * 1000);
+        return (splitDigits.reduceRight((prev, curr, i, arr) => 
+        // eslint-disable-next-line no-mixed-operators
+        prev + lodash.exports.parseInt(curr, 10) * 60 ** (arr.length - 1 - i), 0) * 1000);
     }
     static createApiContext(ytcfg) {
         return {

@@ -15,7 +15,19 @@ import { AsyncConstructor } from './blocks/asyncConstructor.js';
 import { __exports as cookie } from './_virtual/cookie.js_commonjs-exports';
 
 axios.defaults.adapter = http_1;
-// ASYNC AWAIT SUPPORT EVERYWHERE, CALLBACK HELL IT IS NOW
+// you found a kitten, please collect it
+// Binding for functions later on
+// Probably wont work but see how
+// const bindAndCloneToContext = (
+// 	from: Record<string | number | symbol, any>,
+// 	ctx: Record<string | number | symbol, any>,
+// ) => {
+// 	Object.entries(from).forEach(([key, value]) => {
+// 		if (typeof value === 'function') {
+// 			ctx[key] = (value as (...args: any[]) => any).bind(ctx);
+// 		}
+// 	});
+// };
 class MooSick extends AsyncConstructor {
     client;
     cookies;
@@ -145,13 +157,12 @@ class MooSick extends AsyncConstructor {
         if (!contents) {
             throw new IllegalStateError('Results array not found');
         }
-        const rendererCompressed = contents
+        return contents
             .map((searchSuggestionRenderer) => SearchSuggestions
             .from({
             title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
             artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
         }));
-        return rendererCompressed;
     }
     /**
      * Searches for songs using the Youtube Music API
@@ -205,6 +216,8 @@ class MooSick extends AsyncConstructor {
             });
             const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
             // FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
+            // I think i forgotten to change it, but i dont have faith on this system working,
+            // it relies on the old structure which i have modified
             if (!Array.isArray(continuationResult.playlistContents)) {
                 throw new IllegalStateError('Browse API responded with non-array `playlistContents`');
             }

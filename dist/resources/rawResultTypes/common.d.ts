@@ -3,3 +3,7 @@ export interface Result {
     trackingParams: string;
     contents: any;
 }
+export interface NextContinuationData {
+    continuation: string;
+    clickTrackingParams: string;
+}

@@ -1,6 +1,6 @@
 import { PlaylistURL, PlaylistHeader } from '../resources/resultTypes/playlistURL.js';
 import lib from '../node_modules/object-scan/lib/index.js';
-import { utils } from '../utils.js';
+import { ParsersExtended } from './parsersExtended.js';
 
 /**
  * Used for getPlaylistURL function ONLY
@@ -13,10 +13,10 @@ class GetPlaylistParser {
             reverse: false,
         })(context)
             .filter((item) => item.text?.runs != null);
-        const unprocessedHeader = (lib(['**.musicDetailHeaderRenderer'], {
+        const unprocessedHeader = lib(['**.musicDetailHeaderRenderer'], {
             rtn: 'value',
             reverse: false,
-        })(context));
+        })(context);
         const allThumbnailRenderers = (lib(['**.musicThumbnailRenderer'], {
             rtn: 'value',
             reverse: false,
@@ -31,7 +31,8 @@ class GetPlaylistParser {
             playlistContents.push({
                 trackTitle: lib(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
                 trackId: lib(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
-                artist: utils.artistParser(flexColumnPart.text.runs),
+                // FIXME: probably the type here is wrong
+                artist: ParsersExtended.artistParser(flexColumnPart.text.runs),
                 thumbnail: allThumbnailRenderers[i].thumbnail.thumbnails,
             });
         }
@@ -46,8 +47,8 @@ class GetPlaylistParser {
             playlistName: header[0].title.runs[0].text,
             owner: header[0].subtitle.runs[2].text,
             createdYear: parseInt(header[0].subtitle.runs[4].text, 10),
-            thumbnail: header[0].thumbnail.croppedSquareThumbnailRenderer.thumbnail.thumbnail,
-            songCount: header[0].secondSubtitle.runs[0].text,
+            thumbnail: header[0].thumbnail.croppedSquareThumbnailRenderer.thumbnail.thumbnails,
+            songCount: Number(header[0].secondSubtitle.runs[0].text),
             approxRunTime: header[0].secondSubtitle.runs[2].text,
         });
     }

@@ -3,7 +3,7 @@ import type { Category } from '../../enums';
 import type { Artist } from '../generalTypes/artist';
 export declare class AlbumSearchResult {
 }
-export declare class ArtistSearchResults {
+export declare class ArtistSearchResult {
 }
 export declare class PlaylistSearchResult extends Item {
     type: Category;
