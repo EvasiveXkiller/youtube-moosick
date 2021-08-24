@@ -1,4 +1,4 @@
-import { WalkUtility } from './resources/utilities/walk.utility';
+import { WalkUtility } from '../resources/utilities/walk.utility';
 
 type IfEquals<X, Y, A, B> =
     (<T>() => T extends X ? 1 : 2) extends
