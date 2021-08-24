@@ -1,110 +1,45 @@
-import axios, {AxiosInstance, AxiosResponse} from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 // no idea how to import these
 import axios0 from 'axios/lib/adapters/http';
 import tough from 'tough-cookie';
-import {Category, CategoryURIBase64, EndPoint} from './enums';
-import {utils} from './utils';
-import {IllegalArgumentError, IllegalStateError} from './resources/errors';
-import {URLSearchParams} from 'url';
-import {GeneralParser} from './parsers/generalParser';
-import {GetPlaylistParser} from './parsers/getPlaylistParser';
-import {GetArtistParser} from './parsers/getArtistParser';
-import type {ArtistURLFullResult} from './resources/rawResultTypes/rawGetArtistURL';
-import type {SearchSuggestionsFullResult} from './resources/rawResultTypes/rawGetSearchSuggestions';
-import {SearchSuggestions} from './resources/resultTypes/searchSuggestions';
-import {GetAlbumParser} from './parsers/getAlbumParser';
-import type {AlbumURLFullResult} from './resources/rawResultTypes/rawGetAlbumURL';
-import type {GeneralFull} from './resources/rawResultTypes/general/generalFull';
-import {AsyncConstructor} from './blocks/asyncConstructor';
-import type {Result} from './resources/rawResultTypes/common';
+import { Category, CategoryURIBase64, EndPoint } from './enums';
+import { utils } from './utils';
+import { IllegalArgumentError, IllegalStateError } from './resources/errors';
+import { URLSearchParams } from 'url';
+import { GeneralParser } from './parsers/generalParser';
+import { GetPlaylistParser } from './parsers/getPlaylistParser';
+import { GetArtistParser } from './parsers/getArtistParser';
+import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
+import type { SearchSuggestionsFullResult } from './resources/rawResultTypes/rawGetSearchSuggestions';
+import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
+import { GetAlbumParser } from './parsers/getAlbumParser';
+import type { AlbumURLFullResult } from './resources/rawResultTypes/rawGetAlbumURL';
+import type { GeneralFull } from './resources/rawResultTypes/general/generalFull';
+import { AsyncConstructor } from './blocks/asyncConstructor';
+import type { Result } from './resources/rawResultTypes/common';
+import type { YtCfgMain } from './cfgInterface';
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
 
 // Binding for functions later on
 // Probably wont work but see how
-const bindAndCloneToContext = (
-	from: Record<string | number | symbol, any>,
-	ctx: Record<string | number | symbol, any>,
-) => {
-	Object.entries(from).forEach(([key, value]) => {
-		if (typeof value === 'function') {
-			ctx[key] = (value as (...args: any[]) => any).bind(ctx);
-		}
-	});
-};
-
-interface YTConfig {
-	VISITOR_DATA: string;
-	INNERTUBE_CONTEXT_CLIENT_NAME: string;
-	INNERTUBE_CLIENT_VERSION: string;
-	INNERTUBE_API_VERSION: string;
-	INNERTUBE_API_KEY: string;
-	DEVICE: string;
-	PAGE_CL: string;
-	PAGE_BUILD_LABEL: string;
-	CLIENT_CANARY_STATE: string;
-
-	ELEMENT_POOL_DEFAULT_CAP: number;
-	EVENT_ID: string;
-	// Experiment flags is a big object, probably dont need it
-	EXPERIMENT_FLAGS: Record<string, unknown>;
-	GAPI_HINT_PARAMS: string;
-	GAPI_HOST: string;
-	GAPI_LOCALE: string;
-	GL: string;
-	HL: string;
-	HTML_DIR: string;
-	HTML_LANG: string;
-	INNERTUBE_CLIENT_NAME: string;
-	INNERTUBE_CONTEXT: Record<string, unknown>;
-	INNERTUBE_CONTEXT_CLIENT_VERSION: string;
-	INNERTUBE_CONTEXT_GL: string;
-	INNERTUBE_CONTEXT_HL: string;
-	LATEST_ECATCHER_SERVICE_TRACKING_PARAMS: Record<string, unknown>;
-	LOGGED_IN: false;
-	SERVER_NAME: string;
-	SIGNIN_URL: string;
-	WEB_PLAYER_CONTEXT_CONFIGS: Record<string, unknown>;
-	XSRF_FIELD_NAME: string;
-	XSRF_TOKEN: string;
-	YPC_MB_URL: string;
-	YTR_FAMILY_CREATION_URL: string;
-	SERVER_VERSION: string;
-	LOCALE: string;
-	REUSE_COMPONENTS: boolean;
-	STAMPER_STABLE_LIST: boolean;
-	DATASYNC_ID: string;
-	SERIALIZED_CLIENT_CONFIG_DATA: string;
-	CLIENT_PROTOCOL: string;
-	CLIENT_TRANSPORT: string;
-	USE_EMBEDDED_INNERTUBE_DATA: boolean;
-	VISIBILITY_ROOT: string;
-	YTMUSIC_ICON_SRC: string;
-	YTMUSIC_LOGO_SRC: string;
-	UPLOAD_URL: string;
-	TRANSFER_PAGE_SIGNIN_URL: string;
-	LOGOUT_URL: string;
-	IS_SUBSCRIBER: boolean;
-	IS_MOBILE_WEB: boolean;
-	INITIAL_ENDPOINT: string;
-	// pretty sure we dont need this
-	HOTKEY_DIALOG: Record<string, unknown>;
-	DEFAULT_ALBUM_IMAGE_SRC: string;
-	AUDIO_QUALITY: string;
-	ADD_SCRAPER_ATTRIBUTES: boolean;
-	ACTIVE_ACCOUNT_IS_MADISON_ACCOUNT: boolean;
-	YTMUSIC_WHITE_ICON_SRC: string;
-	YTMUSIC_WHITE_LOGO_SRC: string;
-}
-
-// ASYNC AWAIT SUPPORT EVERYWHERE, CALLBACK HELL IT IS NOW
+// const bindAndCloneToContext = (
+// 	from: Record<string | number | symbol, any>,
+// 	ctx: Record<string | number | symbol, any>,
+// ) => {
+// 	Object.entries(from).forEach(([key, value]) => {
+// 		if (typeof value === 'function') {
+// 			ctx[key] = (value as (...args: any[]) => any).bind(ctx);
+// 		}
+// 	});
+// };
 
 export class MooSick extends AsyncConstructor {
 	private client!: AxiosInstance;
 	private cookies!: tough.CookieJar;
 
-	private config!: YTConfig;
+	private config!: YtCfgMain;
 
 	async #new() {
 		this.cookies = new tough.CookieJar();
@@ -166,7 +101,7 @@ export class MooSick extends AsyncConstructor {
 		const dataJSON = JSON.parse(dataString) as Record<string, unknown>[];
 
 		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-		this.config = {} as YTConfig;
+		this.config = {} as YtCfgMain;
 
 		dataJSON.forEach((dataJSONPart) => {
 			if (typeof dataJSONPart !== 'object') {
@@ -345,6 +280,8 @@ export class MooSick extends AsyncConstructor {
 			const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
 
 			// FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
+			// I think i forgotten to change it, but i dont have faith on this system working,
+			// it relies on the old structure which i have modified
 			if (!Array.isArray(continuationResult.playlistContents)) {
 				throw new IllegalStateError('Browse API responded with non-array `playlistContents`');
 			}

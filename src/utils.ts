@@ -1,4 +1,4 @@
-import type { ytcfgInterface } from './cfgInterface';
+import type { YtCfgMain } from './cfgInterface';
 import { parseInt } from 'lodash';
 
 export class utils {
@@ -65,7 +65,7 @@ export class utils {
 		);
 	}
 
-	static createApiContext(ytcfg: ytcfgInterface) {
+	static createApiContext(ytcfg: YtCfgMain) {
 		return {
 			context: {
 				capabilities: {},
