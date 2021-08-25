@@ -25,6 +25,7 @@
   "homepage": "https://github.com/EvasiveXkiller/youtube-moosick#readme",
   "devDependencies": {
     "@nextools/suppress-experimental-warnings": "^0.1.0",
+    "@types/glob": "^7.1.4",
     "@types/tape": "^4.13.2",
     "@types/tough-cookie": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
