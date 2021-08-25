@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "tape": "node tests/test.cjs",
     "dev": "rollup -c -w",
     "build": "rollup -c"
   },
@@ -40,6 +41,7 @@
     "rollup": "^2.56.3",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-execute": "^1.1.1",
+    "tape": "^5.3.1",
     "typescript": "^4.3.5"
   },
   "dependencies": {
