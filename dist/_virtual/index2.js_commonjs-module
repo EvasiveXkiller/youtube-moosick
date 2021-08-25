@@ -1,4 +1,0 @@
-var src = {exports: {}};
-
-export { src as s };
-//# sourceMappingURL=index2.js_commonjs-module.map

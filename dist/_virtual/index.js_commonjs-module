@@ -1,4 +1,0 @@
-var followRedirects = {exports: {}};
-
-export { followRedirects as f };
-//# sourceMappingURL=index.js_commonjs-module.map
