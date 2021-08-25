@@ -1,4 +1,0 @@
-var browser = {exports: {}};
-
-export { browser as b };
-//# sourceMappingURL=browser.js_commonjs-module.map
