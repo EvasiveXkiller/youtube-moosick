@@ -1,13 +1,6 @@
-import { Category, CategoryURIBase64 } from '../enums';
 import objectScan from 'object-scan';
+import { Category, CategoryURIBase64 } from '../enums';
 import { Song } from '../resources/generalTypes/song';
-import type {
-	GeneralFull,
-	MusicResponsiveListItemFlexColumnRenderer,
-	MusicResponsiveListItemRenderer,
-	MusicShelfRenderer,
-} from '../resources/rawResultTypes/general/generalFull';
-import type { AlbumExtended } from '../resources/generalTypes/album';
 import { Video } from '../resources/generalTypes/video';
 import { Playlist } from '../resources/generalTypes/playlist';
 import { ArtistExtended } from '../resources/generalTypes/artist';
@@ -15,6 +8,13 @@ import { ParsersExtended } from './parsersExtended';
 import { Results } from '../resources/resultTypes/results';
 import { $$ } from '../resources/utilities/objectScan.utility';
 import type { NextContinuationData } from '../resources/rawResultTypes/common';
+import type { AlbumExtended } from '../resources/generalTypes/album';
+import type {
+	GeneralFull,
+	MusicResponsiveListItemFlexColumnRenderer,
+	MusicResponsiveListItemRenderer,
+	MusicShelfRenderer,
+} from '../resources/rawResultTypes/general/generalFull';
 
 export class GeneralParser {
 	// Make this one global function and call the other stuff
@@ -26,7 +26,6 @@ export class GeneralParser {
 		const playlists: Playlist[] = [];
 		const artist: ArtistExtended[] = [];
 		const songs: Song[] = [];
-		// FIXME : tf
 		const continuation = searchType ? (objectScan(['**.nextContinuationData'], { rtn: 'value', reverse: false })(context) as NextContinuationData[])[0] : undefined;
 
 		const musicShelf = objectScan(['**.musicShelfRenderer'], {

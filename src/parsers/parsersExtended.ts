@@ -1,14 +1,14 @@
-import type { PurpleRun } from '../resources/rawResultTypes/comfirmedInterfaces';
+import objectScan from 'object-scan';
+import { Album, AlbumExtended } from '../resources/generalTypes/album';
 import { Category, ConstantURLs } from '../enums';
 import { Artist, ArtistExtended } from '../resources/generalTypes/artist';
-import type { Video } from '../resources/generalTypes/video';
-import type { Song } from '../resources/generalTypes/song';
-import { Album, AlbumExtended } from '../resources/generalTypes/album';
-import type { Playlist } from '../resources/generalTypes/playlist';
-import type { Thumbnails } from '../resources/generalTypes/thumbnails';
-import objectScan from 'object-scan';
 import { utils } from '../utils';
 import { IllegalArgumentError } from '../resources/errors';
+import type { Video } from '../resources/generalTypes/video';
+import type { Song } from '../resources/generalTypes/song';
+import type { PurpleRun } from '../resources/rawResultTypes/comfirmedInterfaces';
+import type { Playlist } from '../resources/generalTypes/playlist';
+import type { Thumbnails } from '../resources/generalTypes/thumbnails';
 
 export class ParsersExtended {
 	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.ARTIST, trim: boolean): Pick<ArtistExtended, 'subs'>

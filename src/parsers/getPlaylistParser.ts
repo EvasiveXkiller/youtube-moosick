@@ -1,8 +1,8 @@
-import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL';
 import objectScan from 'object-scan';
+import { ParsersExtended } from './parsersExtended';
+import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL';
 import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/rawResultTypes/rawGetSongURL';
 import type { MusicDetailHeaderRenderer } from '../resources/rawResultTypes/rawGetPlaylistURL';
-import { ParsersExtended } from './parsersExtended';
 
 /**
  * Used for getPlaylistURL function ONLY
@@ -32,7 +32,6 @@ export class GetPlaylistParser {
 
 		for (let i = 0; i < Math.floor(flexColumn.length / 2); ++i) {
 			const flexColumnPart = flexColumn[i * 2];
-
 			playlistContents.push({
 				trackTitle: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart) as string,
 				trackId: objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart) as string,

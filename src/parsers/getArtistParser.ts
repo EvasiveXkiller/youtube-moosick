@@ -1,15 +1,15 @@
 import objectScan from 'object-scan';
 import { Thumbnails } from '../resources/generalTypes/thumbnails';
-import type { MusicThumbnailRenderer } from '../resources/rawResultTypes/comfirmedInterfaces';
+import { Artist } from '../resources/generalTypes/artist';
+import { ConstantURLs } from '../enums';
 import { Albums, ArtistContent, ArtistHeader, ArtistURL, Single, Videos } from '../resources/resultTypes/artistURL';
+import type { MusicThumbnailRenderer } from '../resources/rawResultTypes/comfirmedInterfaces';
 import type {
 	ArtistURLFullResult,
 	MusicDescriptionShelfRenderer,
 	MusicTwoRowItemRenderer,
 	MusicCarouselShelfRenderer, SubtitleRun,
 } from '../resources/rawResultTypes/rawGetArtistURL';
-import { ConstantURLs } from '../enums';
-import { Artist } from '../resources/generalTypes/artist';
 
 export class GetArtistParser {
 	public static parseArtistURLPage(context: ArtistURLFullResult): ArtistURL {

@@ -1,4 +1,4 @@
-import type {NextContinuationData} from "../common";
+import type { NextContinuationData } from '../common';
 
 export interface GeneralSongFull {
 	responseContext: ResponseContext;

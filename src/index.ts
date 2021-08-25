@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-// no idea how to import these
 import axios0 from 'axios/lib/adapters/http';
 import tough from 'tough-cookie';
 import { Category, CategoryURIBase64, EndPoint } from './enums';
@@ -9,13 +8,13 @@ import { URLSearchParams } from 'url';
 import { GeneralParser } from './parsers/generalParser';
 import { GetPlaylistParser } from './parsers/getPlaylistParser';
 import { GetArtistParser } from './parsers/getArtistParser';
-import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
-import type { SearchSuggestionsFullResult } from './resources/rawResultTypes/rawGetSearchSuggestions';
 import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
 import { GetAlbumParser } from './parsers/getAlbumParser';
+import { AsyncConstructor } from './blocks/asyncConstructor';
+import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
+import type { SearchSuggestionsFullResult } from './resources/rawResultTypes/rawGetSearchSuggestions';
 import type { AlbumURLFullResult } from './resources/rawResultTypes/rawGetAlbumURL';
 import type { GeneralFull } from './resources/rawResultTypes/general/generalFull';
-import { AsyncConstructor } from './blocks/asyncConstructor';
 import type { Result } from './resources/rawResultTypes/common';
 import type { YtCfgMain } from './cfgInterface';
 
@@ -228,7 +227,7 @@ export class MooSick extends AsyncConstructor {
 				params: categoryName ?? '',
 			},
 		);
-		// The switch case will be implemented in parser as the individual stuff that comes out it nearly the same
+		// The cases are probably broken, tests might fail catastrophically
 		return GeneralParser.parseSearchResult(ctx as GeneralFull, categoryName);
 	}
 
@@ -310,5 +309,7 @@ export class MooSick extends AsyncConstructor {
 
 		return GetArtistParser.parseArtistURLPage(ctx as ArtistURLFullResult);
 	}
+
+	// FIXME: there is a method called `getNext` to get continuation, but its undocumented, should we implement it?
 }
 

@@ -1,5 +1,9 @@
-import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL';
 import objectScan from 'object-scan';
+import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL';
+import { ConstantURLs } from '../enums';
+import { ArtistExtended } from '../resources/generalTypes/artist';
+import { Thumbnails } from '../resources/generalTypes/thumbnails';
+import type { ThumbnailElement } from '../resources/rawResultTypes/comfirmedInterfaces';
 import type {
 	MusicAlbumRelease,
 	MusicAlbumReleaseDetail,
@@ -8,10 +12,6 @@ import type {
 	AlbumURLFullResult,
 	ThumbnailDetails,
 } from '../resources/rawResultTypes/rawGetAlbumURL';
-import { ConstantURLs } from '../enums';
-import type { ThumbnailElement } from '../resources/rawResultTypes/comfirmedInterfaces';
-import { Thumbnails } from '../resources/generalTypes/thumbnails';
-import { ArtistExtended } from '../resources/generalTypes/artist';
 
 export class GetAlbumParser {
 	public static parseAlbumURLPage(context: AlbumURLFullResult): AlbumURL {
