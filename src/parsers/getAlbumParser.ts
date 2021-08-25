@@ -3,7 +3,7 @@ import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL.
 import { ConstantURLs } from '../enums.js';
 import { ArtistExtended } from '../resources/generalTypes/artist.js';
 import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
-import type { ThumbnailElement } from '../resources/rawResultTypes/comfirmedInterfaces.js';
+import type { ThumbnailElement } from '../resources/rawResultTypes/common.js';
 import type {
 	MusicAlbumRelease,
 	MusicAlbumReleaseDetail,
@@ -37,10 +37,7 @@ export class GetAlbumParser {
 				name: eachArtist.name,
 				browseId: eachArtist.externalChannelId,
 				url: ConstantURLs.CHANNEL_URL + eachArtist.externalChannelId,
-				thumbnails: this.thumbnailParser(objectScan(['**.thumbnailDetails'], {
-					reverse: false,
-					rtn: 'value',
-				})(eachArtist)),
+				thumbnails: this.thumbnailParser(eachArtist.thumbnailDetails),
 			}));
 		}
 

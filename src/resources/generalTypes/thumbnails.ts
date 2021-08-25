@@ -1,5 +1,5 @@
 import { Item } from '../../blocks/item.js';
-import type { ThumbnailElement } from '../rawResultTypes/comfirmedInterfaces.js';
+import type { ThumbnailElement } from '../rawResultTypes/common.js';
 
 export class Thumbnails extends Item implements ThumbnailElement {
 	public declare url: string;

@@ -10,6 +10,6 @@ export class Album extends Item {
 
 export class AlbumExtended extends Album {
 	public declare thumbnails: Thumbnails[];
-	public declare year: number;
-	public declare artist: Artist[];
+	public year?: number;
+	public artist?: Artist[];
 }

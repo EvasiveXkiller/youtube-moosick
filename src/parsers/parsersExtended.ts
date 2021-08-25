@@ -82,7 +82,9 @@ export class ParsersExtended {
 		return artistRaw.map((artist) => (Artist.from({
 			name: artist.text,
 			browseId: artist.navigationEndpoint?.browseEndpoint?.browseId ?? '',
-			url: ConstantURLs.CHANNEL_URL + String(artist.navigationEndpoint?.browseEndpoint?.browseId ?? ''),
+			url: artist.navigationEndpoint?.browseEndpoint?.browseId === ''
+				? ''
+				: ConstantURLs.CHANNEL_URL + String(artist.navigationEndpoint?.browseEndpoint?.browseId ?? ''),
 		})));
 	}
 

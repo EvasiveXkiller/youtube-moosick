@@ -1,5 +1,5 @@
 import objectScan from 'object-scan';
-import { Category, CategoryURIBase64 } from '../enums.js';
+import { Category, CategoryURIBase64, ConstantURLs } from '../enums.js';
 import { Song } from '../resources/generalTypes/song.js';
 import { Video } from '../resources/generalTypes/video.js';
 import { Playlist } from '../resources/generalTypes/playlist.js';
@@ -7,11 +7,13 @@ import { ArtistExtended } from '../resources/generalTypes/artist.js';
 import { ParsersExtended } from './parsersExtended.js';
 import { Results } from '../resources/resultTypes/results.js';
 import { $$ } from '../resources/utilities/objectScan.utility.js';
-import type { NextContinuationData } from '../resources/rawResultTypes/common.js';
+import type {
+	MusicResponsiveListItemFlexColumnRenderer,
+	NextContinuationData,
+} from '../resources/rawResultTypes/common.js';
 import type { AlbumExtended } from '../resources/generalTypes/album.js';
 import type {
 	GeneralFull,
-	MusicResponsiveListItemFlexColumnRenderer,
 	MusicResponsiveListItemRenderer,
 	MusicShelfRenderer,
 } from '../resources/rawResultTypes/general/generalFull.js';
@@ -19,6 +21,7 @@ import type {
 export class GeneralParser {
 	// Make this one global function and call the other stuff
 	// Probably other methods should be private
+	// eslint-disable-next-line complexity
 	static parseSearchResult(context: GeneralFull, searchType?: CategoryURIBase64): Results {
 		// prep all the parts
 		const albums: AlbumExtended[] = [];
@@ -47,6 +50,9 @@ export class GeneralParser {
 							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.SONG, Boolean(searchType)),
 							...GeneralParser.musicResponsiveListItemRendererParser(item),
 							thumbnails: ParsersExtended.thumbnailParser(item),
+							// Temporary fix
+							playlistId: '',
+							params: '',
 						}));
 						break;
 					case Category.VIDEO:
@@ -72,6 +78,7 @@ export class GeneralParser {
 							name: flexColumnRenderer[0].text.runs[0].text,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
 							thumbnails: ParsersExtended.thumbnailParser(item),
+							url: `${ConstantURLs.CHANNEL_URL}${item.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
 							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.ARTIST, Boolean(searchType)),
 						}));
 					// eslint is drunk here
@@ -83,6 +90,8 @@ export class GeneralParser {
 							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.ARTIST, Boolean(searchType)),
 							name: flexColumnRenderer[0].text.runs[0].text,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
+							url: `${ConstantURLs.CHANNEL_URL}${item.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
+							thumbnails: ParsersExtended.thumbnailParser(item),
 						});
 						break;
 					default:

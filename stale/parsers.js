@@ -621,7 +621,7 @@ exports.parseAlbumPage = context => {
     const albumRelease = utils.fv(
         context, 'musicAlbumRelease'
     )
-    result.title = albumRelease.title
+    result.title = albumRelease.name
     result.trackCount = parseInt(albumRelease.trackCount)
     result.date = albumRelease.releaseDate
     result.duration = parseInt(albumRelease.durationMs)
@@ -658,7 +658,7 @@ exports.parseAlbumPage = context => {
     if (albumTrack instanceof Array) {
         for (let i = 0; i < albumTrack.length; i++) {
             result.tracks.push({
-                name: albumTrack[i].title,
+                name: albumTrack[i].name,
                 videoId: albumTrack[i].videoId,
                 artistNames: albumTrack[i].artistNames,
                 duration: parseInt(albumTrack[i].lengthMs),
@@ -667,7 +667,7 @@ exports.parseAlbumPage = context => {
         }
     } else if (albumTrack instanceof Object) {
         result.tracks.push({
-            name: albumTrack.title,
+            name: albumTrack.name,
             videoId: albumTrack.videoId,
             artistNames: albumTrack.artistNames,
             duration: parseInt(albumTrack.lengthMs),
@@ -689,7 +689,7 @@ exports.parseNextPanel = context => {
     }
 
     const panelContext = utils.fv(context, "playlistPanelRenderer")
-    result.title = panelContext.title
+    result.title = panelContext.name
     result.playlistId = panelContext.playlistId
     result.currentIndex = panelContext.currentIndex
 

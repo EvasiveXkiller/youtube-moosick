@@ -1,5 +1,4 @@
 import type { YtCfgMain } from './cfgInterface.js';
-import { parseInt } from 'lodash';
 
 export class utils {
 	/**
