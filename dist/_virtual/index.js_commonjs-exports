@@ -1,0 +1,4 @@
+var universalify = {};
+
+export { universalify as __exports };
+//# sourceMappingURL=index.js_commonjs-exports.map
