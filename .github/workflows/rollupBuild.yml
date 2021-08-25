@@ -12,7 +12,7 @@ jobs:
   rollup-build:
     name: Builds `dist`
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[Autobuild-skip-ci]')"
+    if: "!contains(github.event.head_commit.message, '[chore:Autobuild]')"
     steps:
       # Gets the latest commit
       - uses: actions/checkout@v1
@@ -21,16 +21,14 @@ jobs:
         with:
           node-version: 16.x
       # npm install stuff
-      - name: npm install
+      - name: npm install and build
         run: |
           npm install
           npm run-script build
       # Commit the stuff?
-      - uses: github-actions-x/commit@v2.8
+      - name: GitHub Commit & Push
+        uses: actions-js/push@v1.3
         with:
-            # Github Token with commit access
-            github-token: ${{ secrets.BUILD_TOKEN }}
-            # Specify commit message
-            commit-message: "AutoBuild-skip-ci"
-            # Files
-            files: .
+          github_token: ${{ secrets.BUILD_TOKEN }}
+          message: `chore:Autobuild`
+
