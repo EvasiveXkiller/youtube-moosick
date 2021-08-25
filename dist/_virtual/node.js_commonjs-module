@@ -1,0 +1,4 @@
+var node = {exports: {}};
+
+export { node as n };
+//# sourceMappingURL=node.js_commonjs-module.map
