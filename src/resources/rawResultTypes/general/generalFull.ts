@@ -1,3 +1,5 @@
+import type { EndpointlessText, FlexColumn } from '../common.js';
+
 export interface GeneralFull {
 	responseContext: ResponseContext;
 	trackingParams: string;
@@ -39,11 +41,11 @@ export interface SectionListRendererContent {
 }
 
 export interface MusicShelfRenderer {
-	title: BottomText;
+	title: EndpointlessText;
 	contents: MusicShelfRendererContent[];
 	trackingParams: string;
 	shelfDivider: ShelfDivider;
-	bottomText?: BottomText;
+	bottomText?: EndpointlessText;
 	bottomEndpoint?: Endpoint;
 }
 
@@ -59,14 +61,6 @@ export interface SearchEndpoint {
 
 export enum Query {
 	DoWhatWeLike = 'do what we like',
-}
-
-export interface BottomText {
-	runs: BottomTextRun[];
-}
-
-export interface BottomTextRun {
-	text: string;
 }
 
 export interface MusicShelfRendererContent {
@@ -106,28 +100,6 @@ export interface AccessibilityData {
 
 export interface Icon {
 	iconType: string;
-}
-
-export interface FlexColumn {
-	musicResponsiveListItemFlexColumnRenderer: MusicResponsiveListItemFlexColumnRenderer;
-}
-
-export interface MusicResponsiveListItemFlexColumnRenderer {
-	text: Text;
-	displayPriority: DisplayPriority;
-}
-
-export enum DisplayPriority {
-	MusicResponsiveListItemColumnDisplayPriorityHigh = 'MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH',
-}
-
-export interface Text {
-	runs: PurpleRun[];
-}
-
-export interface PurpleRun {
-	text: string;
-	navigationEndpoint?: RunNavigationEndpoint;
 }
 
 export interface RunNavigationEndpoint {
@@ -212,7 +184,7 @@ export interface ItemElement {
 }
 
 export interface MenuItemRenderer {
-	text: BottomText;
+	text: EndpointlessText;
 	icon: Icon;
 	navigationEndpoint?: MenuNavigationItemRendererNavigationEndpoint;
 	trackingParams: string;
@@ -237,8 +209,8 @@ export interface Modal {
 }
 
 export interface ModalWithTitleAndButtonRenderer {
-	title: BottomText;
-	content: BottomText;
+	title: EndpointlessText;
+	content: EndpointlessText;
 	button: Button;
 }
 
@@ -249,7 +221,7 @@ export interface Button {
 export interface ButtonRenderer {
 	style: StyleEnum;
 	isDisabled: boolean;
-	text: BottomText;
+	text: EndpointlessText;
 	navigationEndpoint: ButtonRendererNavigationEndpoint;
 	trackingParams: string;
 }
@@ -306,7 +278,7 @@ export interface AddToToastActionItem {
 }
 
 export interface NotificationTextRenderer {
-	successResponseText: BottomText;
+	successResponseText: EndpointlessText;
 	trackingParams: string;
 }
 
@@ -321,10 +293,10 @@ export interface QueueTarget {
 }
 
 export interface ToggleMenuServiceItemRenderer {
-	defaultText: BottomText;
+	defaultText: EndpointlessText;
 	defaultIcon: Icon;
 	defaultServiceEndpoint: DefaultServiceEndpoint;
-	toggledText: BottomText;
+	toggledText: EndpointlessText;
 	toggledIcon: Icon;
 	trackingParams: string;
 	toggledServiceEndpoint?: ToggledServiceEndpoint;
@@ -477,7 +449,7 @@ export interface Chip {
 
 export interface ChipCloudChipRenderer {
 	style: StyleClass;
-	text: BottomText;
+	text: EndpointlessText;
 	navigationEndpoint: Endpoint;
 	trackingParams: string;
 	accessibilityData: Accessibility;

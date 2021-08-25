@@ -1,4 +1,4 @@
-import type { NextContinuationData } from '../common.js';
+import type { BrowseEndpoint, FlexColumn, NextContinuationData, Text, WatchEndpoint } from '../common.js';
 
 export interface GeneralSongFull {
 	responseContext: ResponseContext;
@@ -103,10 +103,6 @@ export enum IconType {
 	VolumeUp = 'VOLUME_UP',
 }
 
-export interface FlexColumn {
-	musicResponsiveListItemFlexColumnRenderer: MusicResponsiveListItemFlexColumnRenderer;
-}
-
 export interface MusicResponsiveListItemFlexColumnRenderer {
 	text: Text;
 	displayPriority: DisplayPriority;
@@ -116,69 +112,10 @@ export enum DisplayPriority {
 	MusicResponsiveListItemColumnDisplayPriorityHigh = 'MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH',
 }
 
-export interface Text {
-	runs: PurpleRun[];
-}
-
-export interface PurpleRun {
-	text: string;
-	navigationEndpoint?: RunNavigationEndpoint;
-}
-
 export interface RunNavigationEndpoint {
 	clickTrackingParams: string;
 	watchEndpoint?: WatchEndpoint;
 	browseEndpoint?: BrowseEndpoint;
-}
-
-export interface BrowseEndpoint {
-	browseId: string;
-	browseEndpointContextSupportedConfigs: BrowseEndpointContextSupportedConfigs;
-}
-
-export interface BrowseEndpointContextSupportedConfigs {
-	browseEndpointContextMusicConfig: BrowseEndpointContextMusicConfig;
-}
-
-export interface BrowseEndpointContextMusicConfig {
-	pageType: PageType;
-}
-
-export enum PageType {
-	MusicPageTypeAlbum = 'MUSIC_PAGE_TYPE_ALBUM',
-	MusicPageTypeArtist = 'MUSIC_PAGE_TYPE_ARTIST',
-}
-
-export interface WatchEndpoint {
-	videoId: string;
-	playlistId: string;
-	loggingContext: LoggingContext;
-	watchEndpointMusicSupportedConfigs: WatchEndpointMusicSupportedConfigs;
-	params?: Params;
-}
-
-export interface LoggingContext {
-	vssLoggingContext: VssLoggingContext;
-}
-
-export interface VssLoggingContext {
-	serializedContextData: string;
-}
-
-export enum Params {
-	WAEB = 'wAEB',
-}
-
-export interface WatchEndpointMusicSupportedConfigs {
-	watchEndpointMusicConfig: WatchEndpointMusicConfig;
-}
-
-export interface WatchEndpointMusicConfig {
-	musicVideoType: MusicVideoType;
-}
-
-export enum MusicVideoType {
-	MusicVideoTypeAtv = 'MUSIC_VIDEO_TYPE_ATV',
 }
 
 export enum ItemHeight {

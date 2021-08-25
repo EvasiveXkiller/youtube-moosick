@@ -1,4 +1,4 @@
-import type { Result } from './common.js';
+import type { DisplayPriority, FlexColumn, Result } from './common.js';
 
 export interface PlaylistURLFullResult extends Result {
 	responseContext: ResponseContext;
@@ -66,16 +66,11 @@ export interface FixedColumn {
 export interface MusicResponsiveListItemFixedColumnRenderer {
 	text: SecondSubtitle;
 	displayPriority: DisplayPriority;
-	size: Size;
+	size: MusicResponsiveListItemFixedColumnRendererSize;
 }
 
-export enum DisplayPriority {
-	MusicResponsiveListItemColumnDisplayPriorityHigh = 'MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH',
-	MusicResponsiveListItemColumnDisplayPriorityMedium = 'MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_MEDIUM',
-}
-
-export enum Size {
-	MusicResponsiveListItemFixedColumnSizeSmall = 'MUSIC_RESPONSIVE_LIST_ITEM_FIXED_COLUMN_SIZE_SMALL',
+export enum MusicResponsiveListItemFixedColumnRendererSize {
+	SMALL = 'MUSIC_RESPONSIVE_LIST_ITEM_FIXED_COLUMN_SIZE_SMALL',
 }
 
 export interface SecondSubtitle {
@@ -84,24 +79,6 @@ export interface SecondSubtitle {
 
 export interface SecondSubtitleRun {
 	text: string;
-}
-
-export interface FlexColumn {
-	musicResponsiveListItemFlexColumnRenderer: MusicResponsiveListItemFlexColumnRenderer;
-}
-
-export interface MusicResponsiveListItemFlexColumnRenderer {
-	text: Text;
-	displayPriority: DisplayPriority;
-}
-
-export interface Text {
-	runs: PurpleRun[];
-}
-
-export interface PurpleRun {
-	text: string;
-	navigationEndpoint: PurpleNavigationEndpoint;
 }
 
 export interface PurpleNavigationEndpoint {

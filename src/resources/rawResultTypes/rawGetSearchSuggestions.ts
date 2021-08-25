@@ -1,4 +1,4 @@
-import type { Result } from './common.js';
+import type { EndpointlessRun, Result } from './common.js';
 
 export interface SearchSuggestionsFullResult extends Result {
 	responseContext: ResponseContext;
@@ -36,11 +36,10 @@ export interface SearchEndpoint {
 }
 
 export interface Suggestion {
-	runs: Run[];
+	runs: BoldableEndpointlessRun[];
 }
 
-export interface Run {
-	text: string;
+export interface BoldableEndpointlessRun extends EndpointlessRun {
 	bold?: boolean;
 }
 

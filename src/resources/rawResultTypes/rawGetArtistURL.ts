@@ -1,4 +1,4 @@
-import type { Result } from './common.js';
+import type { FlexColumn, Result, Run } from './common.js';
 
 export interface ArtistURLFullResult extends Result {
 	responseContext: ResponseContext;
@@ -437,12 +437,7 @@ export enum ThumbnailScale {
 }
 
 export interface MusicTwoRowItemRendererTitle {
-	runs: PurpleRun[];
-}
-
-export interface PurpleRun {
-	text: string;
-	navigationEndpoint?: TentacledNavigationEndpoint;
+	runs: Run[];
 }
 
 export interface TentacledNavigationEndpoint {
@@ -545,29 +540,6 @@ export interface MusicResponsiveListItemRenderer {
 	flexColumns: FlexColumn[];
 	menu: MusicResponsiveListItemRendererMenu;
 	playlistItemData: PlaylistItemData;
-}
-
-export interface FlexColumn {
-	musicResponsiveListItemFlexColumnRenderer: MusicResponsiveListItemFlexColumnRenderer;
-}
-
-export interface MusicResponsiveListItemFlexColumnRenderer {
-	text: Text;
-	displayPriority: DisplayPriority;
-}
-
-export enum DisplayPriority {
-	MusicResponsiveListItemColumnDisplayPriorityHigh = 'MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH',
-	MusicResponsiveListItemColumnDisplayPriorityMedium = 'MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_MEDIUM',
-}
-
-export interface Text {
-	runs: TentacledRun[];
-}
-
-export interface TentacledRun {
-	text: string;
-	navigationEndpoint: StickyNavigationEndpoint;
 }
 
 export interface StickyNavigationEndpoint {
