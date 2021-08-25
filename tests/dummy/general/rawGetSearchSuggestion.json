@@ -1,0 +1,238 @@
+{
+    "responseContext": {
+        "serviceTrackingParams": [
+            {
+                "service": "CSI",
+                "params": [
+                    {
+                        "key": "c",
+                        "value": "WEB_REMIX"
+                    },
+                    {
+                        "key": "cver",
+                        "value": "1.20210818.00.00"
+                    },
+                    {
+                        "key": "yt_li",
+                        "value": "0"
+                    },
+                    {
+                        "key": "GetMusicSearchSuggestions_rid",
+                        "value": "0xf40b1c7c9540bc7c"
+                    }
+                ]
+            },
+            {
+                "service": "GFEEDBACK",
+                "params": [
+                    {
+                        "key": "logged_in",
+                        "value": "0"
+                    },
+                    {
+                        "key": "country-type",
+                        "value": "B"
+                    },
+                    {
+                        "key": "e",
+                        "value": "24077266,24057238,23983296,23884386,23944779,23804281,23882502,24056274,24090770,24002922,24037794,24049820,24036948,24050503,24004644,23968386,23998056,24007246,23975058,24001373,23946420,24079211,24053866,23974595,23934970,24028143,24069650,24002022,23996830,23858057,23918597,24080738,24007790,23857950,23744176,1714249,24002025,24082662,23966208,24086258"
+                    }
+                ]
+            },
+            {
+                "service": "ECATCHER",
+                "params": [
+                    {
+                        "key": "client.version",
+                        "value": "1.20000101"
+                    },
+                    {
+                        "key": "client.name",
+                        "value": "WEB_REMIX"
+                    }
+                ]
+            }
+        ]
+    },
+    "trackingParams": "CAAQi24iEwi9p4DOgcvyAhWhOLcAHY-OB5s=",
+    "contents": [
+        {
+            "searchSuggestionsSectionRenderer": {
+                "contents": [
+                    {
+                        "searchSuggestionRenderer": {
+                            "suggestion": {
+                                "runs": [
+                                    {
+                                        "text": "stay",
+                                        "bold": true
+                                    }
+                                ]
+                            },
+                            "navigationEndpoint": {
+                                "clickTrackingParams": "CAcQpWEYASITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                                "searchEndpoint": {
+                                    "query": "stay"
+                                }
+                            },
+                            "trackingParams": "CAcQpWEYASITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                            "icon": {
+                                "iconType": "SEARCH"
+                            }
+                        }
+                    },
+                    {
+                        "searchSuggestionRenderer": {
+                            "suggestion": {
+                                "runs": [
+                                    {
+                                        "text": "stay",
+                                        "bold": true
+                                    },
+                                    {
+                                        "text": " justin bieber"
+                                    }
+                                ]
+                            },
+                            "navigationEndpoint": {
+                                "clickTrackingParams": "CAYQpWEYAiITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                                "searchEndpoint": {
+                                    "query": "stay justin bieber"
+                                }
+                            },
+                            "trackingParams": "CAYQpWEYAiITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                            "icon": {
+                                "iconType": "SEARCH"
+                            }
+                        }
+                    },
+                    {
+                        "searchSuggestionRenderer": {
+                            "suggestion": {
+                                "runs": [
+                                    {
+                                        "text": "stay",
+                                        "bold": true
+                                    },
+                                    {
+                                        "text": " with me"
+                                    }
+                                ]
+                            },
+                            "navigationEndpoint": {
+                                "clickTrackingParams": "CAUQpWEYAyITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                                "searchEndpoint": {
+                                    "query": "stay with me"
+                                }
+                            },
+                            "trackingParams": "CAUQpWEYAyITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                            "icon": {
+                                "iconType": "SEARCH"
+                            }
+                        }
+                    },
+                    {
+                        "searchSuggestionRenderer": {
+                            "suggestion": {
+                                "runs": [
+                                    {
+                                        "text": "stay",
+                                        "bold": true
+                                    },
+                                    {
+                                        "text": " with me miki matsubara"
+                                    }
+                                ]
+                            },
+                            "navigationEndpoint": {
+                                "clickTrackingParams": "CAQQpWEYBCITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                                "searchEndpoint": {
+                                    "query": "stay with me miki matsubara"
+                                }
+                            },
+                            "trackingParams": "CAQQpWEYBCITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                            "icon": {
+                                "iconType": "SEARCH"
+                            }
+                        }
+                    },
+                    {
+                        "searchSuggestionRenderer": {
+                            "suggestion": {
+                                "runs": [
+                                    {
+                                        "text": "stay",
+                                        "bold": true
+                                    },
+                                    {
+                                        "text": " justin bieber kid laroi"
+                                    }
+                                ]
+                            },
+                            "navigationEndpoint": {
+                                "clickTrackingParams": "CAMQpWEYBSITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                                "searchEndpoint": {
+                                    "query": "stay justin bieber kid laroi"
+                                }
+                            },
+                            "trackingParams": "CAMQpWEYBSITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                            "icon": {
+                                "iconType": "SEARCH"
+                            }
+                        }
+                    },
+                    {
+                        "searchSuggestionRenderer": {
+                            "suggestion": {
+                                "runs": [
+                                    {
+                                        "text": "stay",
+                                        "bold": true
+                                    },
+                                    {
+                                        "text": " with me remix"
+                                    }
+                                ]
+                            },
+                            "navigationEndpoint": {
+                                "clickTrackingParams": "CAIQpWEYBiITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                                "searchEndpoint": {
+                                    "query": "stay with me remix"
+                                }
+                            },
+                            "trackingParams": "CAIQpWEYBiITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                            "icon": {
+                                "iconType": "SEARCH"
+                            }
+                        }
+                    },
+                    {
+                        "searchSuggestionRenderer": {
+                            "suggestion": {
+                                "runs": [
+                                    {
+                                        "text": "stay",
+                                        "bold": true
+                                    },
+                                    {
+                                        "text": " blackpink"
+                                    }
+                                ]
+                            },
+                            "navigationEndpoint": {
+                                "clickTrackingParams": "CAEQpWEYByITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                                "searchEndpoint": {
+                                    "query": "stay blackpink"
+                                }
+                            },
+                            "trackingParams": "CAEQpWEYByITCL2ngM6By_ICFaE4twAdj44Hmw==",
+                            "icon": {
+                                "iconType": "SEARCH"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
