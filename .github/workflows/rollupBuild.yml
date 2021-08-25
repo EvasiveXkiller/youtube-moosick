@@ -1,0 +1,33 @@
+name: rollup-build
+# You may pin to the exact commit or the version.
+# uses: github-actions-x/commit@5cf7985b07155682f82d02b6c2188d90cebeb0c8
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  
+jobs:
+  rollup-build:
+    name: Builds `dist`
+    runs-on: ubuntu-latest
+    steps:
+      # Gets the latest commit
+      - uses: actions/checkout@v1
+      # Setup node env
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      # npm install stuff
+      - name: npm install
+        run: |
+          npm install
+          npm run-script build
+      # Commit the stuff?
+      - uses: github-actions-x/commit@v2.8
+        with:
+            # Github Token with commit access
+            github-token: ${{ secrets.BUILD_TOKEN }}
+            # Specify commit message
+            commit-message: "AutoBuild"
