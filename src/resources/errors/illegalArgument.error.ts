@@ -1,4 +1,4 @@
-import { ClientError } from './client.error';
+import { ClientError } from './client.error.js';
 
 export class IllegalArgumentError extends ClientError {
 	constructor(message: string, paramName?: string) {

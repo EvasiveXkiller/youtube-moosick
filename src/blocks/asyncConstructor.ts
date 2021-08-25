@@ -1,4 +1,4 @@
-import { IllegalInvocationError } from '../resources/errors';
+import { IllegalInvocationError } from '../resources/errors/index.js';
 
 export class AsyncConstructor {
 	private static isBeingInstantiated = false;

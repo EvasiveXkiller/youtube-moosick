@@ -1,5 +1,5 @@
-import { Item } from '../../blocks/item';
-import type { Artist } from './artist';
+import { Item } from '../../blocks/item.js';
+import type { Artist } from './artist.js';
 
 export class Playlist extends Item {
 	public declare name: string;

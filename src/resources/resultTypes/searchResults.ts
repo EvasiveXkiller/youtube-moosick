@@ -1,6 +1,6 @@
-import { Item } from '../../blocks/item';
-import type { Category } from '../../enums';
-import type { Artist } from '../generalTypes/artist';
+import { Item } from '../../blocks/item.js';
+import type { Category } from '../../enums.js';
+import type { Artist } from '../generalTypes/artist.js';
 
 export class AlbumSearchResult {
 

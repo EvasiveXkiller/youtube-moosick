@@ -1,4 +1,4 @@
-import type { Result } from './common';
+import type { Result } from './common.js';
 export interface PlaylistURLFullResult extends Result {
     responseContext: ResponseContext;
     contents: Contents;

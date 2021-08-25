@@ -1,6 +1,6 @@
-import { Item } from '../../blocks/item';
-import type { ArtistExtended } from '../generalTypes/artist';
-import type { Thumbnails } from '../generalTypes/thumbnails';
+import { Item } from '../../blocks/item.js';
+import type { ArtistExtended } from '../generalTypes/artist.js';
+import type { Thumbnails } from '../generalTypes/thumbnails.js';
 
 export class AlbumURL extends Item {
 	public declare title: string;

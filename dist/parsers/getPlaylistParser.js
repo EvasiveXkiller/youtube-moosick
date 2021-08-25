@@ -1,27 +1,26 @@
-import lib from '../node_modules/object-scan/lib/index.js';
+import objectScan from 'object-scan';
 import { ParsersExtended } from './parsersExtended.js';
-import { PlaylistURL, PlaylistHeader } from '../resources/resultTypes/playlistURL.js';
-
+import { PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL.js';
 /**
  * Used for getPlaylistURL function ONLY
  */
-class GetPlaylistParser {
+export class GetPlaylistParser {
     static parsePlaylistURL(context) {
         // Gets the entire flexColumn, and filter those with empty members
-        const flexColumn = lib(['**.musicResponsiveListItemFlexColumnRenderer'], {
+        const flexColumn = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
             rtn: 'value',
             reverse: false,
         })(context)
             .filter((item) => item.text?.runs != null);
-        const unprocessedHeader = lib(['**.musicDetailHeaderRenderer'], {
+        const unprocessedHeader = objectScan(['**.musicDetailHeaderRenderer'], {
             rtn: 'value',
             reverse: false,
         })(context);
-        const allThumbnailRenderers = (lib(['**.musicThumbnailRenderer'], {
+        const allThumbnailRenderers = (objectScan(['**.musicThumbnailRenderer'], {
             rtn: 'value',
             reverse: false,
         })(context));
-        const continuation = (lib(['**.nextContinuationData'], {
+        const continuation = (objectScan(['**.nextContinuationData'], {
             rtn: 'value',
             reverse: false,
         })(context));
@@ -29,8 +28,8 @@ class GetPlaylistParser {
         for (let i = 0; i < Math.floor(flexColumn.length / 2); ++i) {
             const flexColumnPart = flexColumn[i * 2];
             playlistContents.push({
-                trackTitle: lib(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
-                trackId: lib(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
+                trackTitle: objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
+                trackId: objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(flexColumnPart),
                 // FIXME: probably the type here is wrong
                 artist: ParsersExtended.artistParser(flexColumnPart.text.runs),
                 thumbnail: allThumbnailRenderers[i].thumbnail.thumbnails,
@@ -53,6 +52,4 @@ class GetPlaylistParser {
         });
     }
 }
-
-export { GetPlaylistParser };
 //# sourceMappingURL=getPlaylistParser.js.map

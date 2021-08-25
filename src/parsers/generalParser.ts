@@ -1,20 +1,20 @@
 import objectScan from 'object-scan';
-import { Category, CategoryURIBase64 } from '../enums';
-import { Song } from '../resources/generalTypes/song';
-import { Video } from '../resources/generalTypes/video';
-import { Playlist } from '../resources/generalTypes/playlist';
-import { ArtistExtended } from '../resources/generalTypes/artist';
-import { ParsersExtended } from './parsersExtended';
-import { Results } from '../resources/resultTypes/results';
-import { $$ } from '../resources/utilities/objectScan.utility';
-import type { NextContinuationData } from '../resources/rawResultTypes/common';
-import type { AlbumExtended } from '../resources/generalTypes/album';
+import { Category, CategoryURIBase64 } from '../enums.js';
+import { Song } from '../resources/generalTypes/song.js';
+import { Video } from '../resources/generalTypes/video.js';
+import { Playlist } from '../resources/generalTypes/playlist.js';
+import { ArtistExtended } from '../resources/generalTypes/artist.js';
+import { ParsersExtended } from './parsersExtended.js';
+import { Results } from '../resources/resultTypes/results.js';
+import { $$ } from '../resources/utilities/objectScan.utility.js';
+import type { NextContinuationData } from '../resources/rawResultTypes/common.js';
+import type { AlbumExtended } from '../resources/generalTypes/album.js';
 import type {
 	GeneralFull,
 	MusicResponsiveListItemFlexColumnRenderer,
 	MusicResponsiveListItemRenderer,
 	MusicShelfRenderer,
-} from '../resources/rawResultTypes/general/generalFull';
+} from '../resources/rawResultTypes/general/generalFull.js';
 
 export class GeneralParser {
 	// Make this one global function and call the other stuff

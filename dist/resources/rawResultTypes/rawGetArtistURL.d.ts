@@ -1,4 +1,4 @@
-import type { Result } from './common';
+import type { Result } from './common.js';
 export interface ArtistURLFullResult extends Result {
     responseContext: ResponseContext;
     contents: Contents;

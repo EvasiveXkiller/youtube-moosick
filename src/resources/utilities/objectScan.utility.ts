@@ -1,5 +1,4 @@
 import objectScan from 'object-scan';
-import { keys } from 'ts-transformer-keys';
 
 /**
  * @param obj An object to perform the query on
@@ -20,7 +19,7 @@ export class ObjectScanUtility {
 		selector: string,
 		reverse?: boolean,
 	) {
-		return this.#$<T>(selector, true, reverse);
+		return ObjectScanUtility.create$<T>(selector, true, reverse);
 	}
 
 	/**
@@ -33,26 +32,41 @@ export class ObjectScanUtility {
 		selector: string,
 		reverse?: boolean,
 	) {
-		return this.#$<T>(selector, false, reverse);
+		return ObjectScanUtility.create$<T>(selector, false, reverse);
 	}
 
-	static #$<T = unknown>(
+	private static create$<T = unknown>(
 		selector: string,
 		abort: boolean,
 		reverse = false,
 	) {
-		const possibleRtns = keys<{
-			[x in ObjectScan.Rtn]: never;
-		}>();
+		const possibleRtns: ObjectScan.Rtn[] = [
+			'key',
+			'value',
+			'entry',
+			'property',
+			'gproperty',
+			'parent',
+			'gparent',
+			'parents',
+			'isMatch',
+			'matchedBy',
+			'excludedBy',
+			'traversedBy',
+			'isCircular',
+			'isLeaf',
+			'depth',
+			'result',
+			'bool',
+			'count',
+		];
 
 		let rtn: ObjectScan.Rtn = 'value';
 
 		const result = (obj: Record<string | number | symbol, any>) => objectScan(
 			this.adaptCSSSelector(selector),
 			{
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 				get rtn() {
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 					return rtn;
 				},
 				abort,
@@ -63,7 +77,6 @@ export class ObjectScanUtility {
 		possibleRtns.forEach((possibleRtn) => {
 			Object.defineProperty(result, possibleRtn, {
 				get() {
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 					rtn = possibleRtn;
 
 					return result;

@@ -1,6 +1,5 @@
-import lib from '../../node_modules/object-scan/lib/index.js';
-
-class ObjectScanUtility {
+import objectScan from 'object-scan';
+export class ObjectScanUtility {
     /**
      * Queries an object using a selector & returns the first result
      * @param selector A CSS selector string (excluding `+` & `~`)
@@ -8,7 +7,7 @@ class ObjectScanUtility {
      * @returns A function that when called with an object, will perform the search with said object, returning the first result
      */
     static $(selector, reverse) {
-        return this.#$(selector, true, reverse);
+        return ObjectScanUtility.create$(selector, true, reverse);
     }
     /**
      * Queries an object using a selector & returns an array of results
@@ -17,15 +16,32 @@ class ObjectScanUtility {
      * @returns A function that when called with an object, will perform the search with said object, returning an array of results
      */
     static $$(selector, reverse) {
-        return this.#$(selector, false, reverse);
+        return ObjectScanUtility.create$(selector, false, reverse);
     }
-    static #$(selector, abort, reverse = false) {
-        const possibleRtns = [];
+    static create$(selector, abort, reverse = false) {
+        const possibleRtns = [
+            'key',
+            'value',
+            'entry',
+            'property',
+            'gproperty',
+            'parent',
+            'gparent',
+            'parents',
+            'isMatch',
+            'matchedBy',
+            'excludedBy',
+            'traversedBy',
+            'isCircular',
+            'isLeaf',
+            'depth',
+            'result',
+            'bool',
+            'count',
+        ];
         let rtn = 'value';
-        const result = (obj) => lib(this.adaptCSSSelector(selector), {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const result = (obj) => objectScan(this.adaptCSSSelector(selector), {
             get rtn() {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-return
                 return rtn;
             },
             abort,
@@ -34,7 +50,6 @@ class ObjectScanUtility {
         possibleRtns.forEach((possibleRtn) => {
             Object.defineProperty(result, possibleRtn, {
                 get() {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                     rtn = possibleRtn;
                     return result;
                 },
@@ -62,7 +77,5 @@ class ObjectScanUtility {
         });
     }
 }
-const { $, $$, } = ObjectScanUtility;
-
-export { $, $$, ObjectScanUtility };
+export const { $, $$, } = ObjectScanUtility;
 //# sourceMappingURL=objectScan.utility.js.map

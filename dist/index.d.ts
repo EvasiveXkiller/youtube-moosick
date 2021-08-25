@@ -1,6 +1,6 @@
-import { CategoryURIBase64 } from './enums';
-import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
-import { AsyncConstructor } from './blocks/asyncConstructor';
+import { CategoryURIBase64 } from './enums.js';
+import { SearchSuggestions } from './resources/resultTypes/searchSuggestions.js';
+import { AsyncConstructor } from './blocks/asyncConstructor.js';
 export declare class MooSick extends AsyncConstructor {
     #private;
     private client;
@@ -26,18 +26,18 @@ export declare class MooSick extends AsyncConstructor {
      * Gets the album details
      * @param browseId The Id of the album, without the https nonsense
      */
-    getAlbum(browseId: string): Promise<import("./resources/resultTypes/albumURL").AlbumURL>;
+    getAlbum(browseId: string): Promise<import("./resources/resultTypes/albumURL.js").AlbumURL>;
     /**
      * Gets the playlist using the Youtube Music API
      * @param browseId The playlist ID, sanitized
      * @param contentLimit Maximum content to get
      * @returns An object formatted by the parser
      */
-    getPlaylist(browseId: string, contentLimit?: number): Promise<import("./resources/resultTypes/playlistURL").PlaylistURL>;
+    getPlaylist(browseId: string, contentLimit?: number): Promise<import("./resources/resultTypes/playlistURL.js").PlaylistURL>;
     /**
      * Gets the artist details from Youtube Music
      * @param browseId The artist ID, sanitized
      * @returns An object formatted by the artist page
      */
-    getArtist(browseId: string): Promise<import("./resources/resultTypes/artistURL").ArtistURL>;
+    getArtist(browseId: string): Promise<import("./resources/resultTypes/artistURL.js").ArtistURL>;
 }

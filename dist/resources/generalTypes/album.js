@@ -1,7 +1,6 @@
 import { Item } from '../../blocks/item.js';
-
-class Album extends Item {
+export class Album extends Item {
 }
-
-export { Album };
+export class AlbumExtended extends Album {
+}
 //# sourceMappingURL=album.js.map

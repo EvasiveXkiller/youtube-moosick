@@ -1,22 +1,20 @@
 import objectScan from 'object-scan';
-import { Thumbnails } from '../resources/generalTypes/thumbnails';
-import { Artist } from '../resources/generalTypes/artist';
-import { ConstantURLs } from '../enums';
-import { Albums, ArtistContent, ArtistHeader, ArtistURL, Single, Videos } from '../resources/resultTypes/artistURL';
-import type { MusicThumbnailRenderer } from '../resources/rawResultTypes/comfirmedInterfaces';
+import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
+import { Artist } from '../resources/generalTypes/artist.js';
+import { ConstantURLs } from '../enums.js';
+import { Albums, ArtistContent, ArtistHeader, ArtistURL, Single, Videos } from '../resources/resultTypes/artistURL.js';
+import type { MusicThumbnailRenderer } from '../resources/rawResultTypes/common.js';
 import type {
 	ArtistURLFullResult,
 	MusicDescriptionShelfRenderer,
 	MusicTwoRowItemRenderer,
 	MusicCarouselShelfRenderer, SubtitleRun,
-} from '../resources/rawResultTypes/rawGetArtistURL';
+} from '../resources/rawResultTypes/rawGetArtistURL.js';
+import { $, $$ } from '../resources/utilities/objectScan.utility.js';
 
 export class GetArtistParser {
 	public static parseArtistURLPage(context: ArtistURLFullResult): ArtistURL {
-		const subHeader = (objectScan(['**.musicDescriptionShelfRenderer'], {
-			rtn: 'value',
-			reverse: false,
-		})(context) as MusicDescriptionShelfRenderer[])[0];
+		const subHeader = $('.musicDescriptionShelfRenderer')(context) as MusicDescriptionShelfRenderer;
 
 		// Builds the header
 		const header = ArtistHeader.from({
@@ -24,19 +22,13 @@ export class GetArtistParser {
 			description: subHeader.description.runs[0].text,
 			// probably reduce the length of this access
 			totalSubscribers: context.header.musicImmersiveHeaderRenderer.subscriptionButton.subscribeButtonRenderer.subscriberCountWithSubscribeText.runs[0].text,
-			thumbnails: this.parseMusicThumbnailRenderer(objectScan(['**.musicThumbnailRenderer'], {
-				rtn: 'value',
-				reverse: false,
-			})(subHeader) as MusicThumbnailRenderer),
+			thumbnails: this.parseMusicThumbnailRenderer($('.musicThumbnailRenderer')(context) as MusicThumbnailRenderer),
 		});
 		const albums: Albums[] = [];
 		const singles: Single[] = [];
 		const videos: Videos[] = [];
 		// Gets the carousel, there should be 5 of them
-		const twoRowRenderer = (objectScan(['**.musicCarouselShelfRenderer'], {
-			rtn: 'value',
-			reverse: false,
-		})(context)) as MusicCarouselShelfRenderer[];
+		const twoRowRenderer = $$('.musicCarouselShelfRenderer')(context) as MusicCarouselShelfRenderer[];
 
 		for (const itemRenderer of twoRowRenderer) {
 			// Gets the row name type
@@ -55,7 +47,7 @@ export class GetArtistParser {
 				rtn: 'value',
 				reverse: false,
 			})(itemRenderer) as MusicTwoRowItemRenderer[]);
-			console.log(musicItemRenderer);
+
 			for (const blockRenderer of musicItemRenderer) {
 				const runsInternal = blockRenderer.title.runs[0].text;
 

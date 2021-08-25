@@ -1,6 +1,6 @@
-import { Item } from '../../blocks/item';
-import type { Artist } from '../generalTypes/artist';
-import type { Thumbnails } from '../generalTypes/thumbnails';
+import { Item } from '../../blocks/item.js';
+import type { Artist } from '../generalTypes/artist.js';
+import type { Thumbnails } from '../generalTypes/thumbnails.js';
 export declare class PlaylistURL extends Item {
     headers: PlaylistHeader;
     playlistContents: PlaylistContent[];

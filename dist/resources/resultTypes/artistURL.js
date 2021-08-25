@@ -1,17 +1,14 @@
 import { Item } from '../../blocks/item.js';
-
-class ArtistURL extends Item {
+export class ArtistURL extends Item {
 }
-class ArtistContent extends Item {
+export class ArtistContent extends Item {
 }
-class ArtistHeader extends Item {
+export class ArtistHeader extends Item {
 }
-class Albums extends Item {
+export class Albums extends Item {
 }
-class Single extends Item {
+export class Single extends Item {
 }
-class Videos extends Item {
+export class Videos extends Item {
 }
-
-export { Albums, ArtistContent, ArtistHeader, ArtistURL, Single, Videos };
 //# sourceMappingURL=artistURL.js.map

@@ -1,4 +1,0 @@
-var wildcard = {};
-
-export { wildcard as __exports };
-//# sourceMappingURL=wildcard.js_commonjs-exports.map

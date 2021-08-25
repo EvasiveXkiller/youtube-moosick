@@ -1,8 +1,8 @@
 import objectScan from 'object-scan';
-import { ParsersExtended } from './parsersExtended';
-import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL';
-import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/rawResultTypes/rawGetSongURL';
-import type { MusicDetailHeaderRenderer } from '../resources/rawResultTypes/rawGetPlaylistURL';
+import { ParsersExtended } from './parsersExtended.js';
+import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL.js';
+import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/rawResultTypes/rawGetSongURL.js';
+import type { MusicDetailHeaderRenderer } from '../resources/rawResultTypes/rawGetPlaylistURL.js';
 
 /**
  * Used for getPlaylistURL function ONLY

@@ -35,5 +35,7 @@
 		"importsNotUsedAsValues": "error",
 		"experimentalDecorators": true,
 		"noImplicitOverride": true,
+		"outDir": "dist",
+		"declaration": true,
 	}
 }

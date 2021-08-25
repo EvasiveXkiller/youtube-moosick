@@ -1,5 +1,5 @@
-import { Item } from '../../blocks/item';
-import type { Thumbnails } from './thumbnails';
+import { Item } from '../../blocks/item.js';
+import type { Thumbnails } from './thumbnails.js';
 export declare class Artist extends Item {
     name: string;
     browseId: string;

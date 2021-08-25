@@ -1,23 +1,22 @@
-import lib from '../node_modules/object-scan/lib/index.js';
+import objectScan from 'object-scan';
 import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL.js';
 import { ConstantURLs } from '../enums.js';
 import { ArtistExtended } from '../resources/generalTypes/artist.js';
 import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
-
-class GetAlbumParser {
+export class GetAlbumParser {
     static parseAlbumURLPage(context) {
         // Overview of the albums
-        const albumOverview = lib(['**.musicAlbumRelease'], {
+        const albumOverview = objectScan(['**.musicAlbumRelease'], {
             rtn: 'value',
             reverse: false,
         })(context)[0];
         // For description
-        const { description } = lib(['**.musicAlbumReleaseDetail'], {
+        const { description } = objectScan(['**.musicAlbumReleaseDetail'], {
             rtn: 'value',
             reverse: false,
         })(context)[0];
         // Gets the artist, if there is multiple
-        const musicArtist = lib(['**.musicArtist'], {
+        const musicArtist = objectScan(['**.musicArtist'], {
             rtn: 'value',
             reverse: false,
         })(context);
@@ -27,14 +26,14 @@ class GetAlbumParser {
                 name: eachArtist.name,
                 browseId: eachArtist.externalChannelId,
                 url: ConstantURLs.CHANNEL_URL + eachArtist.externalChannelId,
-                thumbnails: this.thumbnailParser(lib(['**.thumbnailDetails'], {
+                thumbnails: this.thumbnailParser(objectScan(['**.thumbnailDetails'], {
                     reverse: false,
                     rtn: 'value',
                 })(eachArtist)),
             }));
         }
         // Gets the tracks
-        const musicTracks = lib(['**.musicTrack'], {
+        const musicTracks = objectScan(['**.musicTrack'], {
             rtn: 'value',
             reverse: false,
         })(context);
@@ -72,6 +71,4 @@ class GetAlbumParser {
         return thumbnails;
     }
 }
-
-export { GetAlbumParser };
 //# sourceMappingURL=getAlbumParser.js.map

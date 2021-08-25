@@ -4,7 +4,7 @@
         @typescript-eslint/no-unsafe-return,
         @typescript-eslint/no-unsafe-member-access
 */
-class WalkUtility {
+export class WalkUtility {
     static walkAlongChildren(object, childKey, callback) {
         if (typeof object[childKey] !== 'object') {
             return;
@@ -69,6 +69,4 @@ class WalkUtility {
         }
     }
 }
-
-export { WalkUtility };
 //# sourceMappingURL=walk.utility.js.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"albumURL.js","sources":["../../../src/resources/resultTypes/albumURL.ts"],"sourcesContent":[null],"names":[],"mappings":";;MAIa,QAAS,SAAQ,IAAI;CASjC;MAEY,WAAY,SAAQ,IAAI;CAIpC;MAEY,KAAM,SAAQ,IAAI;;;;;"}
+{"version":3,"file":"albumURL.js","sourceRoot":"","sources":["../../../src/resources/resultTypes/albumURL.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,IAAI,EAAE,MAAM,sBAAsB,CAAC;AAI5C,MAAM,OAAO,QAAS,SAAQ,IAAI;CASjC;AAED,MAAM,OAAO,WAAY,SAAQ,IAAI;CAIpC;AAED,MAAM,OAAO,KAAM,SAAQ,IAAI;CAK9B"}

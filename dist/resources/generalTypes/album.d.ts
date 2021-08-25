@@ -1,6 +1,6 @@
-import { Item } from '../../blocks/item';
-import type { Thumbnails } from './thumbnails';
-import type { Artist } from './artist';
+import { Item } from '../../blocks/item.js';
+import type { Thumbnails } from './thumbnails.js';
+import type { Artist } from './artist.js';
 export declare class Album extends Item {
     name: string;
     browseId: string;

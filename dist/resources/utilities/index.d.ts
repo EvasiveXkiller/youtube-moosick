@@ -1,1 +1,1 @@
-export * from './walk.utility';
+export * from './walk.utility.js';

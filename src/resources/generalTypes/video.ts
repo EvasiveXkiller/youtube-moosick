@@ -1,5 +1,5 @@
-import { Item } from '../../blocks/item';
-import type { Artist } from './artist';
+import { Item } from '../../blocks/item.js';
+import type { Artist } from './artist.js';
 
 export class Video extends Item {
 	public declare title: string;

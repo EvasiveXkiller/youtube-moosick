@@ -1,6 +1,5 @@
-import { WalkUtility } from '../resources/utilities/walk.utility.js';
-
-class Item {
+import { WalkUtility } from '../resources/utilities/index.js';
+export class Item {
     /** @deprecated You're probably looking for `Item.from()` */
     constructor() { }
     static from(
@@ -12,6 +11,6 @@ class Item {
         return instance;
     }
 }
-
-export { Item };
+export class Factory {
+}
 //# sourceMappingURL=item.js.map

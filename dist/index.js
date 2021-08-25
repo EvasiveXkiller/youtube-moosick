@@ -1,10 +1,9 @@
-import axios from './node_modules/axios/index.js';
-import http_1 from './node_modules/axios/lib/adapters/http.js';
-import './node_modules/tough-cookie/lib/cookie.js';
-import { EndPoint, Category } from './enums.js';
+import axios from 'axios';
+import axios0 from 'axios/lib/adapters/http';
+import tough from 'tough-cookie';
+import { Category, EndPoint } from './enums.js';
 import { utils } from './utils.js';
-import { IllegalArgumentError } from './resources/errors/illegalArgument.error.js';
-import { IllegalStateError } from './resources/errors/illegalState.error.js';
+import { IllegalArgumentError, IllegalStateError } from './resources/errors/index.js';
 import { URLSearchParams } from 'url';
 import { GeneralParser } from './parsers/generalParser.js';
 import { GetPlaylistParser } from './parsers/getPlaylistParser.js';
@@ -12,9 +11,7 @@ import { GetArtistParser } from './parsers/getArtistParser.js';
 import { SearchSuggestions } from './resources/resultTypes/searchSuggestions.js';
 import { GetAlbumParser } from './parsers/getAlbumParser.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
-import { __exports as cookie } from './_virtual/cookie.js_commonjs-exports';
-
-axios.defaults.adapter = http_1;
+axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
 // Binding for functions later on
 // Probably wont work but see how
@@ -28,12 +25,12 @@ axios.defaults.adapter = http_1;
 // 		}
 // 	});
 // };
-class MooSick extends AsyncConstructor {
+export class MooSick extends AsyncConstructor {
     client;
     cookies;
     config;
     async #new() {
-        this.cookies = new cookie.CookieJar();
+        this.cookies = new tough.CookieJar();
         this.client = axios.create({
             baseURL: 'https://music.youtube.com/',
             headers: {
@@ -100,11 +97,11 @@ class MooSick extends AsyncConstructor {
         return new MooSick().#new();
     }
     parseAndSetCookie(cookieString, baseURL) {
-        const cookie$1 = cookie.Cookie.parse(cookieString);
-        if (cookie$1 == null) {
+        const cookie = tough.Cookie.parse(cookieString);
+        if (cookie == null) {
             throw new IllegalArgumentError(`"${String(cookieString)}" is not a cookie`, 'cookieString');
         }
-        this.cookies.setCookieSync(cookie$1, baseURL);
+        this.cookies.setCookieSync(cookie, baseURL);
     }
     // Soonner or later destructure functions into individual files
     // TODO: probably define each api req's input vars & input queries,
@@ -239,6 +236,4 @@ class MooSick extends AsyncConstructor {
         return GetArtistParser.parseArtistURLPage(ctx);
     }
 }
-
-export { MooSick };
 //# sourceMappingURL=index.js.map

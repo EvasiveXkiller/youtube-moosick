@@ -1,37 +1,28 @@
-import lib from '../node_modules/object-scan/lib/index.js';
+import objectScan from 'object-scan';
 import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
 import { Artist } from '../resources/generalTypes/artist.js';
 import { ConstantURLs } from '../enums.js';
-import { ArtistURL, ArtistHeader, Videos, Single, Albums, ArtistContent } from '../resources/resultTypes/artistURL.js';
-
-class GetArtistParser {
+import { Albums, ArtistContent, ArtistHeader, ArtistURL, Single, Videos } from '../resources/resultTypes/artistURL.js';
+import { $, $$ } from '../resources/utilities/objectScan.utility.js';
+export class GetArtistParser {
     static parseArtistURLPage(context) {
-        const subHeader = lib(['**.musicDescriptionShelfRenderer'], {
-            rtn: 'value',
-            reverse: false,
-        })(context)[0];
+        const subHeader = $('.musicDescriptionShelfRenderer')(context);
         // Builds the header
         const header = ArtistHeader.from({
             artistName: context.header.musicImmersiveHeaderRenderer.title.runs[0].text,
             description: subHeader.description.runs[0].text,
             // probably reduce the length of this access
             totalSubscribers: context.header.musicImmersiveHeaderRenderer.subscriptionButton.subscribeButtonRenderer.subscriberCountWithSubscribeText.runs[0].text,
-            thumbnails: this.parseMusicThumbnailRenderer(lib(['**.musicThumbnailRenderer'], {
-                rtn: 'value',
-                reverse: false,
-            })(subHeader)),
+            thumbnails: this.parseMusicThumbnailRenderer($('.musicThumbnailRenderer')(context)),
         });
         const albums = [];
         const singles = [];
         const videos = [];
         // Gets the carousel, there should be 5 of them
-        const twoRowRenderer = (lib(['**.musicCarouselShelfRenderer'], {
-            rtn: 'value',
-            reverse: false,
-        })(context));
+        const twoRowRenderer = $$('.musicCarouselShelfRenderer')(context);
         for (const itemRenderer of twoRowRenderer) {
             // Gets the row name type
-            const rowName = lib(['header.**.title.**.text'], {
+            const rowName = objectScan(['header.**.title.**.text'], {
                 rtn: 'value',
                 reverse: false,
             })(itemRenderer)[0].toLowerCase();
@@ -41,11 +32,10 @@ class GetArtistParser {
                 break;
             }
             // Gets the items in the carousel
-            const musicItemRenderer = lib(['**.musicTwoRowItemRenderer'], {
+            const musicItemRenderer = objectScan(['**.musicTwoRowItemRenderer'], {
                 rtn: 'value',
                 reverse: false,
             })(itemRenderer);
-            console.log(musicItemRenderer);
             for (const blockRenderer of musicItemRenderer) {
                 const runsInternal = blockRenderer.title.runs[0].text;
                 // eslint-disable-next-line default-case
@@ -119,6 +109,4 @@ class GetArtistParser {
         })));
     }
 }
-
-export { GetArtistParser };
 //# sourceMappingURL=getArtistParser.js.map

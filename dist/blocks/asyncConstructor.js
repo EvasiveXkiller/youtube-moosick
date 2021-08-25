@@ -1,6 +1,5 @@
-import { IllegalInvocationError } from '../resources/errors/illegalInvocation.error.js';
-
-class AsyncConstructor {
+import { IllegalInvocationError } from '../resources/errors/index.js';
+export class AsyncConstructor {
     static isBeingInstantiated = false;
     constructor() {
         if (!this.constructor.isBeingInstantiated) {
@@ -16,6 +15,4 @@ class AsyncConstructor {
         this.isBeingInstantiated = true;
     }
 }
-
-export { AsyncConstructor };
 //# sourceMappingURL=asyncConstructor.js.map

@@ -1,4 +1,0 @@
-var store = {};
-
-export { store as __exports };
-//# sourceMappingURL=store.js_commonjs-exports.map

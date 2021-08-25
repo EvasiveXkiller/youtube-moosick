@@ -1,4 +1,4 @@
-import lib from '../node_modules/object-scan/lib/index.js';
+import objectScan from 'object-scan';
 import { Category, CategoryURIBase64 } from '../enums.js';
 import { Song } from '../resources/generalTypes/song.js';
 import { Video } from '../resources/generalTypes/video.js';
@@ -7,8 +7,7 @@ import { ArtistExtended } from '../resources/generalTypes/artist.js';
 import { ParsersExtended } from './parsersExtended.js';
 import { Results } from '../resources/resultTypes/results.js';
 import { $$ } from '../resources/utilities/objectScan.utility.js';
-
-class GeneralParser {
+export class GeneralParser {
     // Make this one global function and call the other stuff
     // Probably other methods should be private
     static parseSearchResult(context, searchType) {
@@ -18,13 +17,13 @@ class GeneralParser {
         const playlists = [];
         const artist = [];
         const songs = [];
-        const continuation = searchType ? lib(['**.nextContinuationData'], { rtn: 'value', reverse: false })(context)[0] : undefined;
-        const musicShelf = lib(['**.musicShelfRenderer'], {
+        const continuation = searchType ? objectScan(['**.nextContinuationData'], { rtn: 'value', reverse: false })(context)[0] : undefined;
+        const musicShelf = objectScan(['**.musicShelfRenderer'], {
             rtn: 'value',
             reverse: false,
         })(context);
         for (const shelfItem of musicShelf) {
-            const shelfContent = lib(['**.musicResponsiveListItemRenderer'], {
+            const shelfContent = objectScan(['**.musicResponsiveListItemRenderer'], {
                 rtn: 'value',
                 reverse: false,
             })(shelfItem);
@@ -49,7 +48,7 @@ class GeneralParser {
                         break;
                     case Category.PLAYLISTS:
                         playlists.push(Playlist.from({
-                            name: lib(['**.text'], {
+                            name: objectScan(['**.text'], {
                                 rtn: 'value',
                                 reverse: false,
                                 abort: true,
@@ -76,6 +75,7 @@ class GeneralParser {
                             browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
                         });
                         break;
+                    default:
                 }
             }
         }
@@ -131,16 +131,14 @@ class GeneralParser {
      * @param musicResponsiveListItemRenderer
      */
     static musicResponsiveListItemRendererParser(musicResponsiveListItemRenderer) {
-        const display = lib(['**.musicResponsiveListItemFlexColumnRenderer'], {
+        const display = objectScan(['**.musicResponsiveListItemFlexColumnRenderer'], {
             rtn: 'value',
             reverse: false,
         })(musicResponsiveListItemRenderer);
-        const name = lib(['**.text'], { rtn: 'value', reverse: false, abort: true })(display);
-        const id = lib(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(display);
+        const name = objectScan(['**.text'], { rtn: 'value', reverse: false, abort: true })(display);
+        const id = objectScan(['**.videoId'], { rtn: 'value', reverse: false, abort: true })(display);
         const url = `https://www.youtube.com/watch?v=${id}`;
         return { name, url, videoId: id };
     }
 }
-
-export { GeneralParser };
 //# sourceMappingURL=generalParser.js.map

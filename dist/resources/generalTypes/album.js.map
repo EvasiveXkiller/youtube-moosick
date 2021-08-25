@@ -1,1 +1,1 @@
-{"version":3,"file":"album.js","sources":["../../../src/resources/generalTypes/album.ts"],"sourcesContent":[null],"names":[],"mappings":";;MAIa,KAAM,SAAQ,IAAI;;;;;"}
+{"version":3,"file":"album.js","sourceRoot":"","sources":["../../../src/resources/generalTypes/album.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,IAAI,EAAE,MAAM,sBAAsB,CAAC;AAI5C,MAAM,OAAO,KAAM,SAAQ,IAAI;CAI9B;AAED,MAAM,OAAO,aAAc,SAAQ,KAAK;CAIvC"}

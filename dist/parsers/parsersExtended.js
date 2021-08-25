@@ -1,11 +1,10 @@
-import lib from '../node_modules/object-scan/lib/index.js';
+import objectScan from 'object-scan';
 import { Album } from '../resources/generalTypes/album.js';
-import { ConstantURLs, Category } from '../enums.js';
+import { Category, ConstantURLs } from '../enums.js';
 import { Artist } from '../resources/generalTypes/artist.js';
 import { utils } from '../utils.js';
-import { IllegalArgumentError } from '../resources/errors/illegalArgument.error.js';
-
-class ParsersExtended {
+import { IllegalArgumentError } from '../resources/errors/index.js';
+export class ParsersExtended {
     static flexSecondRowComplexParser(runsArray, categoryType, trim) {
         const delimiter = ' • ';
         const type = categoryType ?? runsArray[0].text;
@@ -54,7 +53,7 @@ class ParsersExtended {
      * @param sectionContext
      */
     static thumbnailParser(sectionContext) {
-        return lib(['**.musicThumbnailRenderer.**.thumbnails'], {
+        return objectScan(['**.musicThumbnailRenderer.**.thumbnails'], {
             rtn: 'value',
             reverse: false,
         })(sectionContext);
@@ -82,6 +81,4 @@ class ParsersExtended {
         })));
     }
 }
-
-export { ParsersExtended };
 //# sourceMappingURL=parsersExtended.js.map

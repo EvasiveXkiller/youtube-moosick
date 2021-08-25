@@ -1,9 +1,8 @@
 import { Item } from '../../blocks/item.js';
-
-class PlaylistURL extends Item {
+export class PlaylistURL extends Item {
 }
-class PlaylistHeader extends Item {
+export class PlaylistContent extends Item {
 }
-
-export { PlaylistHeader, PlaylistURL };
+export class PlaylistHeader extends Item {
+}
 //# sourceMappingURL=playlistURL.js.map

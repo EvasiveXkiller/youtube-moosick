@@ -1,7 +1,6 @@
 import { Item } from '../../blocks/item.js';
-
-class Results extends Item {
+export class Results extends Item {
 }
-
-export { Results };
+export class Unsorted extends Item {
+}
 //# sourceMappingURL=results.js.map

@@ -1,8 +1,8 @@
-import { Category } from '../../enums';
-import { Item } from '../../blocks/item';
-import type { Thumbnails } from './thumbnails';
-import type { Artist } from './artist';
-import type { Album } from './album';
+import { Category } from '../../enums.js';
+import { Item } from '../../blocks/item.js';
+import type { Thumbnails } from './thumbnails.js';
+import type { Artist } from './artist.js';
+import type { Album } from './album.js';
 
 export class Song extends Item {
 	public type?: Category = Category.SONG;

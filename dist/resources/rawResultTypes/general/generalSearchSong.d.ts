@@ -1,4 +1,4 @@
-import type { NextContinuationData } from '../common';
+import type { NextContinuationData } from '../common.js';
 export interface GeneralSongFull {
     responseContext: ResponseContext;
     trackingParams: string;

@@ -1,22 +1,22 @@
 import objectScan from 'object-scan';
-import { Album, AlbumExtended } from '../resources/generalTypes/album';
-import { Category, ConstantURLs } from '../enums';
-import { Artist, ArtistExtended } from '../resources/generalTypes/artist';
-import { utils } from '../utils';
-import { IllegalArgumentError } from '../resources/errors';
-import type { Video } from '../resources/generalTypes/video';
-import type { Song } from '../resources/generalTypes/song';
-import type { PurpleRun } from '../resources/rawResultTypes/comfirmedInterfaces';
-import type { Playlist } from '../resources/generalTypes/playlist';
-import type { Thumbnails } from '../resources/generalTypes/thumbnails';
+import { Album, AlbumExtended } from '../resources/generalTypes/album.js';
+import { Category, ConstantURLs } from '../enums.js';
+import { Artist, ArtistExtended } from '../resources/generalTypes/artist.js';
+import { utils } from '../utils.js';
+import { IllegalArgumentError } from '../resources/errors/index.js';
+import type { Video } from '../resources/generalTypes/video.js';
+import type { Song } from '../resources/generalTypes/song.js';
+import type { Run } from '../resources/rawResultTypes/common.js';
+import type { Playlist } from '../resources/generalTypes/playlist.js';
+import type { Thumbnails } from '../resources/generalTypes/thumbnails.js';
 
 export class ParsersExtended {
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.ARTIST, trim: boolean): Pick<ArtistExtended, 'subs'>
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.VIDEO, trim: boolean): Pick<Video, 'author' | 'views' | 'length'>
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.SONG, trim: boolean): Pick<Song, 'artist' | 'album' | 'duration'>
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.ALBUM | Category.SINGLE | Category.EP, trim: boolean): Pick<AlbumExtended, 'year'>
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category.PLAYLISTS, trim: boolean): Pick<Playlist, 'trackCount' | 'author'>
-	static flexSecondRowComplexParser(runsArray: PurpleRun[], categoryType: Category, trim: boolean): any { // return array of capable stuff
+	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.ARTIST, trim: boolean): Pick<ArtistExtended, 'subs'>
+	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.VIDEO, trim: boolean): Pick<Video, 'author' | 'views' | 'length'>
+	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.SONG, trim: boolean): Pick<Song, 'artist' | 'album' | 'duration'>
+	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.ALBUM | Category.SINGLE | Category.EP, trim: boolean): Pick<AlbumExtended, 'year'>
+	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.PLAYLISTS, trim: boolean): Pick<Playlist, 'trackCount' | 'author'>
+	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category, trim: boolean): any { // return array of capable stuff
 		const delimiter = ' • ';
 		const type = categoryType ?? runsArray[0].text as Category;
 		let artist: Artist[] = [];
@@ -78,7 +78,7 @@ export class ParsersExtended {
 	 * Parses the artist from the Artist array
 	 * @param artistRaw
 	 */
-	static artistParser(artistRaw: PurpleRun[]): Artist[] {
+	static artistParser(artistRaw: Run[]): Artist[] {
 		return artistRaw.map((artist) => (Artist.from({
 			name: artist.text,
 			browseId: artist.navigationEndpoint?.browseEndpoint?.browseId ?? '',
@@ -90,7 +90,7 @@ export class ParsersExtended {
 	 * Parses the album from the Album Array
 	 * @param albumRaw
 	 */
-	static albumParser(albumRaw: PurpleRun[]): Album[] { // return the albumObject only
+	static albumParser(albumRaw: Run[]): Album[] { // return the albumObject only
 		return albumRaw.map((album) => (Album.from({
 			name: album.text,
 			browseId: album.navigationEndpoint?.browseEndpoint?.browseId ?? '',

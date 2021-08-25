@@ -1,7 +1,5 @@
-import './node_modules/lodash/lodash.js';
-import { l as lodash } from './_virtual/lodash.js_commonjs-module';
-
-class utils {
+import { parseInt } from 'lodash';
+export class utils {
     /**
      * fv (FieldVisitor)
      * Traverses an object through a colon-delimited query path & returns the values of its prop/field
@@ -43,7 +41,7 @@ class utils {
         const splitDigits = input.split(':');
         return (splitDigits.reduceRight((prev, curr, i, arr) => 
         // eslint-disable-next-line no-mixed-operators
-        prev + lodash.exports.parseInt(curr, 10) * 60 ** (arr.length - 1 - i), 0) * 1000);
+        prev + parseInt(curr, 10) * 60 ** (arr.length - 1 - i), 0) * 1000);
     }
     static createApiContext(ytcfg) {
         return {
@@ -100,6 +98,4 @@ class utils {
         };
     }
 }
-
-export { utils };
 //# sourceMappingURL=utils.js.map

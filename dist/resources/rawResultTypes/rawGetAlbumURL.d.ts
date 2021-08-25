@@ -1,4 +1,4 @@
-import type { Result } from './common';
+import type { Result, EndpointlessText } from './common.js';
 export interface AlbumURLFullResult extends Result {
     responseContext: ResponseContext;
     contents: Contents;
@@ -80,8 +80,8 @@ export interface Modal {
     modalWithTitleAndButtonRenderer: ModalWithTitleAndButtonRenderer;
 }
 export interface ModalWithTitleAndButtonRenderer {
-    title: DefaultText;
-    content: DefaultText;
+    title: EndpointlessText;
+    content: EndpointlessText;
     button: Button;
 }
 export interface Button {
@@ -90,7 +90,7 @@ export interface Button {
 export interface ButtonButtonRenderer {
     style: string;
     isDisabled: boolean;
-    text: DefaultText;
+    text: EndpointlessText;
     navigationEndpoint: NavigationEndpoint;
     trackingParams: string;
 }
@@ -100,12 +100,6 @@ export interface NavigationEndpoint {
 }
 export interface MusicDataBoundAlbumReleaseArtistRenderer {
     hack: boolean;
-}
-export interface DefaultText {
-    runs: Run[];
-}
-export interface Run {
-    text: string;
 }
 export interface QueueAddEndpoint {
     queueInsertPosition: string;
@@ -122,7 +116,7 @@ export interface Item {
     notificationTextRenderer: NotificationTextRenderer;
 }
 export interface NotificationTextRenderer {
-    successResponseText: DefaultText;
+    successResponseText: EndpointlessText;
     trackingParams: string;
 }
 export interface WatchEndpoint {
@@ -133,7 +127,7 @@ export interface MenuItemRendererMold {
     menuServiceItemRenderer?: MenuItemRenderer;
 }
 export interface MenuItemRenderer {
-    text: DefaultText;
+    text: EndpointlessText;
     icon: Icon;
     trackingParams: string;
 }
@@ -385,7 +379,7 @@ export interface FluffyMenuTopLevelItemRendererMold {
 export interface MenuTopLevelItemRendererMoldButtonRenderer {
     size: string;
     isDisabled: boolean;
-    text: DefaultText;
+    text: EndpointlessText;
     icon: Icon;
     accessibility: AccessibilityDataAccessibility;
     trackingParams: string;
@@ -408,7 +402,7 @@ export interface ResultTemplateRenderer {
     buttonRenderer: ResultTemplateRendererButtonRenderer;
 }
 export interface ResultTemplateRendererButtonRenderer {
-    text: Text;
+    text: AccessibilityEndpointlessText;
     serviceEndpoint: ServiceEndpoint;
     icon: Icon;
     accessibility: AccessibilityDataAccessibility;
@@ -428,8 +422,7 @@ export interface Action {
 export interface MusicLibraryStatusUpdateCommand {
     libraryStatus: string;
 }
-export interface Text {
-    runs: Run[];
+export interface AccessibilityEndpointlessText extends EndpointlessText {
     accessibility: AccessibilityPauseDataClass;
 }
 export interface MoreButton {
@@ -439,9 +432,9 @@ export interface ToggleButtonRenderer {
     isToggled: boolean;
     isDisabled: boolean;
     defaultIcon: Icon;
-    defaultText: DefaultText;
+    defaultText: EndpointlessText;
     toggledIcon: Icon;
-    toggledText: DefaultText;
+    toggledText: EndpointlessText;
     trackingParams: string;
 }
 export interface ResponseContext {

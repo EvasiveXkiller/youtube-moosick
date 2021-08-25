@@ -1,22 +1,22 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import axios0 from 'axios/lib/adapters/http';
 import tough from 'tough-cookie';
-import { Category, CategoryURIBase64, EndPoint } from './enums';
-import { utils } from './utils';
-import { IllegalArgumentError, IllegalStateError } from './resources/errors';
+import { Category, CategoryURIBase64, EndPoint } from './enums.js';
+import { utils } from './utils.js';
+import { IllegalArgumentError, IllegalStateError } from './resources/errors/index.js';
 import { URLSearchParams } from 'url';
-import { GeneralParser } from './parsers/generalParser';
-import { GetPlaylistParser } from './parsers/getPlaylistParser';
-import { GetArtistParser } from './parsers/getArtistParser';
-import { SearchSuggestions } from './resources/resultTypes/searchSuggestions';
-import { GetAlbumParser } from './parsers/getAlbumParser';
-import { AsyncConstructor } from './blocks/asyncConstructor';
-import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL';
-import type { SearchSuggestionsFullResult } from './resources/rawResultTypes/rawGetSearchSuggestions';
-import type { AlbumURLFullResult } from './resources/rawResultTypes/rawGetAlbumURL';
-import type { GeneralFull } from './resources/rawResultTypes/general/generalFull';
-import type { Result } from './resources/rawResultTypes/common';
-import type { YtCfgMain } from './cfgInterface';
+import { GeneralParser } from './parsers/generalParser.js';
+import { GetPlaylistParser } from './parsers/getPlaylistParser.js';
+import { GetArtistParser } from './parsers/getArtistParser.js';
+import { SearchSuggestions } from './resources/resultTypes/searchSuggestions.js';
+import { GetAlbumParser } from './parsers/getAlbumParser.js';
+import { AsyncConstructor } from './blocks/asyncConstructor.js';
+import type { ArtistURLFullResult } from './resources/rawResultTypes/rawGetArtistURL.js';
+import type { SearchSuggestionsFullResult } from './resources/rawResultTypes/rawGetSearchSuggestions.js';
+import type { AlbumURLFullResult } from './resources/rawResultTypes/rawGetAlbumURL.js';
+import type { GeneralFull } from './resources/rawResultTypes/general/generalFull.js';
+import type { Result } from './resources/rawResultTypes/common.js';
+import type { YtCfgMain } from './cfgInterface.js';
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it

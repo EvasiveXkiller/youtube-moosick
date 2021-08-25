@@ -1,4 +1,0 @@
-var pathMatch = {};
-
-export { pathMatch as __exports };
-//# sourceMappingURL=pathMatch.js_commonjs-exports.map

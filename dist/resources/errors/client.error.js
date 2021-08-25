@@ -1,4 +1,4 @@
-class ClientError extends Error {
+export class ClientError extends Error {
     constructor(message = 'No message provided, an error with errors?') {
         super(message);
         this.name = this.constructor.name;
@@ -21,6 +21,4 @@ class ClientError extends Error {
         };
     }
 }
-
-export { ClientError };
 //# sourceMappingURL=client.error.js.map

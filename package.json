@@ -5,10 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tape": "node tests/test.mjs",
-    "dev": "rollup -c -w",
-    "build": "rollup -c"
+    "test": "node --require @nextools/suppress-experimental-warnings --experimental-json-modules dist/test/index",
+    "dev": "tsc --watch",
+    "build": "tsc --build --clean && tsc"
   },
   "repository": {
     "type": "git",
@@ -27,21 +26,25 @@
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/eslint-parser": "^7.15.0",
+    "@nextools/suppress-experimental-warnings": "^0.1.0",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-run": "^2.1.0",
     "@rollup/plugin-typescript": "^8.2.5",
+    "@types/tape": "^4.13.2",
     "@types/tough-cookie": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
     "eslint": "^7.32.0",
     "eslint-config-xo": "^0.38.0",
     "eslint-config-xo-typescript": "^0.44.0",
+    "glob": "^7.1.7",
     "rollup": "^2.56.3",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-execute": "^1.1.1",
     "tape": "^5.3.1",
+    "ts-node": "^10.2.1",
     "typescript": "^4.3.5"
   },
   "dependencies": {
@@ -51,7 +54,6 @@
     "lodash": "^4.17.21",
     "object-scan": "^17.0.0",
     "readdir-enhanced": "^6.0.4",
-    "tough-cookie": "^4.0.0",
-    "ts-transformer-keys": "^0.4.3"
+    "tough-cookie": "^4.0.0"
   }
 }

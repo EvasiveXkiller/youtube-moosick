@@ -1,4 +1,4 @@
-import { PlaylistURL } from '../resources/resultTypes/playlistURL';
+import { PlaylistURL } from '../resources/resultTypes/playlistURL.js';
 /**
  * Used for getPlaylistURL function ONLY
  */

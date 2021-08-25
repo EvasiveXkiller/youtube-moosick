@@ -1,4 +1,0 @@
-var cookie = {};
-
-export { cookie as __exports };
-//# sourceMappingURL=cookie.js_commonjs-exports.map

@@ -1,4 +1,4 @@
-import { Item } from '../../blocks/item';
+import { Item } from '../../blocks/item.js';
 export declare class SearchSuggestions extends Item {
     title: string;
     artist?: string;
