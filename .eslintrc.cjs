@@ -1,5 +1,7 @@
 module.exports = {
 	extends: [
+		'plugin:import/recommended',
+		'plugin:import/typescript',
 		'xo',
 		'xo-typescript',
 	],
@@ -30,5 +32,13 @@ module.exports = {
 			ignoredNodes: ['TSTypeParameterInstantiation'],
 		}],
 		'@typescript-eslint/no-useless-constructor': ['off'],
+		'import/no-unresolved': ['off'],
+		'import/extensions': [
+			'error',
+			'always',
+			{
+				ignorePackages: true,
+			}
+		],
 	},
 };
