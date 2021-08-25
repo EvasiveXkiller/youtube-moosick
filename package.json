@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tape": "node tests/test.cjs",
+    "tape": "node tests/test.mjs",
     "dev": "rollup -c -w",
     "build": "rollup -c"
   },
