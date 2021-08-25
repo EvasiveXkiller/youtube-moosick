@@ -1,6 +1,6 @@
 import { CategoryURIBase64 } from '../enums';
-import type { GeneralFull, MusicResponsiveListItemRenderer } from '../resources/rawResultTypes/general/generalFull';
 import { Results } from '../resources/resultTypes/results';
+import type { GeneralFull, MusicResponsiveListItemRenderer } from '../resources/rawResultTypes/general/generalFull';
 export declare class GeneralParser {
     static parseSearchResult(context: GeneralFull, searchType?: CategoryURIBase64): Results;
     /**

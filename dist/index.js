@@ -176,7 +176,7 @@ class MooSick extends AsyncConstructor {
             query,
             params: categoryName ?? '',
         });
-        // The switch case will be implemented in parser as the individual stuff that comes out it nearly the same
+        // The cases are probably broken, tests might fail catastrophically
         return GeneralParser.parseSearchResult(ctx, categoryName);
     }
     /**

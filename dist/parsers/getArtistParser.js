@@ -1,8 +1,8 @@
 import lib from '../node_modules/object-scan/lib/index.js';
 import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
-import { ArtistURL, ArtistHeader, Videos, Single, Albums, ArtistContent } from '../resources/resultTypes/artistURL.js';
-import { ConstantURLs } from '../enums.js';
 import { Artist } from '../resources/generalTypes/artist.js';
+import { ConstantURLs } from '../enums.js';
+import { ArtistURL, ArtistHeader, Videos, Single, Albums, ArtistContent } from '../resources/resultTypes/artistURL.js';
 
 class GetArtistParser {
     static parseArtistURLPage(context) {

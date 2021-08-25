@@ -1,6 +1,6 @@
-import { PlaylistURL, PlaylistHeader } from '../resources/resultTypes/playlistURL.js';
 import lib from '../node_modules/object-scan/lib/index.js';
 import { ParsersExtended } from './parsersExtended.js';
+import { PlaylistURL, PlaylistHeader } from '../resources/resultTypes/playlistURL.js';
 
 /**
  * Used for getPlaylistURL function ONLY

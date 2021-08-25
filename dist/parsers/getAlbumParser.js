@@ -1,8 +1,8 @@
-import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL.js';
 import lib from '../node_modules/object-scan/lib/index.js';
+import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL.js';
 import { ConstantURLs } from '../enums.js';
-import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
 import { ArtistExtended } from '../resources/generalTypes/artist.js';
+import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
 
 class GetAlbumParser {
     static parseAlbumURLPage(context) {

@@ -1,5 +1,5 @@
-import { Category, CategoryURIBase64 } from '../enums.js';
 import lib from '../node_modules/object-scan/lib/index.js';
+import { Category, CategoryURIBase64 } from '../enums.js';
 import { Song } from '../resources/generalTypes/song.js';
 import { Video } from '../resources/generalTypes/video.js';
 import { Playlist } from '../resources/generalTypes/playlist.js';
@@ -18,7 +18,6 @@ class GeneralParser {
         const playlists = [];
         const artist = [];
         const songs = [];
-        // FIXME : tf
         const continuation = searchType ? lib(['**.nextContinuationData'], { rtn: 'value', reverse: false })(context)[0] : undefined;
         const musicShelf = lib(['**.musicShelfRenderer'], {
             rtn: 'value',

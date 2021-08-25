@@ -1,9 +1,9 @@
-import type { PurpleRun } from '../resources/rawResultTypes/comfirmedInterfaces';
+import { Album, AlbumExtended } from '../resources/generalTypes/album';
 import { Category } from '../enums';
 import { Artist, ArtistExtended } from '../resources/generalTypes/artist';
 import type { Video } from '../resources/generalTypes/video';
 import type { Song } from '../resources/generalTypes/song';
-import { Album, AlbumExtended } from '../resources/generalTypes/album';
+import type { PurpleRun } from '../resources/rawResultTypes/comfirmedInterfaces';
 import type { Playlist } from '../resources/generalTypes/playlist';
 import type { Thumbnails } from '../resources/generalTypes/thumbnails';
 export declare class ParsersExtended {
