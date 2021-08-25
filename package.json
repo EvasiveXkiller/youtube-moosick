@@ -24,14 +24,7 @@
   },
   "homepage": "https://github.com/EvasiveXkiller/youtube-moosick#readme",
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/eslint-parser": "^7.15.0",
     "@nextools/suppress-experimental-warnings": "^0.1.0",
-    "@rollup/plugin-commonjs": "^20.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.4",
-    "@rollup/plugin-run": "^2.1.0",
-    "@rollup/plugin-typescript": "^8.2.5",
     "@types/tape": "^4.13.2",
     "@types/tough-cookie": "^4.0.1",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
@@ -41,11 +34,7 @@
     "eslint-config-xo-typescript": "^0.44.0",
     "eslint-plugin-import": "^2.24.2",
     "glob": "^7.1.7",
-    "rollup": "^2.56.3",
-    "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-execute": "^1.1.1",
     "tape": "^5.3.1",
-    "ts-node": "^10.2.1",
     "typescript": "^4.3.5"
   },
   "dependencies": {
