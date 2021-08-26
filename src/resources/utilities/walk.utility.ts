@@ -93,4 +93,35 @@ export class WalkUtility {
 			this.mirror(fromValue, to[key]);
 		}
 	}
+
+	public static walkAndCompare<
+		T1 extends Record<string, any>,
+		T2 extends Record<string, any>,
+	>(
+		obj1: T1,
+		obj2: T2,
+		comparator: (v1: T1[keyof T1], v2: T2[keyof T2], key: keyof T1) => boolean,
+	): boolean {
+		for (const key in obj1) {
+			if (!Object.prototype.hasOwnProperty.call(obj1, key)) {
+				continue;
+			}
+
+			// is leaf node
+			if (obj1[key] === null || typeof obj1[key] !== 'object') {
+				if (!comparator(obj1[key], obj2[key], key)) {
+					return false;
+				}
+
+				continue;
+			}
+
+			// if false return false, else continue onto next loop iteration
+			if (!this.walkAndCompare(obj1[key], obj2[key], comparator)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }
