@@ -12,8 +12,6 @@ jobs:
   rollup-build:
     name: Builds `dist`
     runs-on: ubuntu-latest
-    env:
-      now: $(date +"%m-%d-%Y %T")
     if: "!contains(github.event.head_commit.message, '🔨 @')"
     steps:
       # Gets the latest commit
@@ -27,10 +25,12 @@ jobs:
         run: |
           npm install
           npm run-script build
+      # Set date and time of builds
+      - name: echo "🔨 @ $(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
       # Commit the stuff?
       - name: GitHub Commit & Push
         uses: actions-js/push@v1.3
         with:
           github_token: ${{ secrets.BUILD_TOKEN }}
-          message: "🔨 @ $now"
+          message: $NOW
 
