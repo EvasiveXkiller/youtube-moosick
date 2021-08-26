@@ -6,7 +6,7 @@ import type { ArtistURLFullResult } from '../../resources/rawResultTypes/rawGetA
 test('getArtistPlaylistParser', (t) => {
 	const result = GetArtistParser.parseArtistURLPage(rawGetArtistURL as ArtistURLFullResult);
 
-	// console.log(result);
+	console.log(result);
 
 	t.end();
 });
