@@ -97,25 +97,7 @@ export class MooSick extends AsyncConstructor {
 			throw new IllegalStateError('API initialization returned a nullish value');
 		}
 
-		const dataJSON = JSON.parse(dataString) as Record<string, unknown>;
-
-		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-		this.config = {} as YtCfgMain;
-
-		// eslint-disable-next-line guard-for-in
-		for (const dataJSONPart in dataJSON) {
-			if (typeof dataJSONPart !== 'object') {
-				return;
-			}
-
-			Object
-				.entries(dataJSONPart)
-				.forEach(([key, value]) => {
-					// @ts-expect-error obj[string]
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-					this.config[key] = value as any;
-				});
-		}
+		this.config = JSON.parse(dataString) as YtCfgMain;
 
 		return this;
 	}
