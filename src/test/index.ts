@@ -15,7 +15,7 @@ tests.forEach((test) => {
 	import(test);
 });
 
-// * keeps the scripts alive
+// FOR DEBUGGER TO NOT QUIT
 setInterval(() => {
 	console.log('timer that keeps nodejs processing running');
 }, 1000 * 60 * 60);
