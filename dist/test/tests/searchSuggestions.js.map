@@ -1,0 +1,1 @@
+{"version":3,"file":"searchSuggestions.js","sourceRoot":"","sources":["../../../src/test/tests/searchSuggestions.ts"],"names":[],"mappings":"AAAA,OAAO,IAAI,MAAM,MAAM,CAAC;AACxB,OAAwB,gBAAgB,CAAC;AAEzC,IAAI,CAAC,mBAAmB,EAAE,KAAK,EAAE,CAAC,EAAE,EAAE;IACrC,CAAC,CAAC,IAAI,CAAC,0DAA0D,CAAC,CAAC;IACnE,mCAAmC;IACnC,iEAAiE;IAEjE,CAAC,CAAC,GAAG,EAAE,CAAC;AACT,CAAC,CAAC,CAAC"}
