@@ -26,12 +26,13 @@ jobs:
           npm install
           npm run-script build
       # Set date and time of builds
-      - name: Sets the date and time and puts it as an env
-        run: echo "Autobuild @ $(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      - name: Get current date and time
+        id: date
+        run: echo "::set-output name=date::Autobuild @ $(date +'%Y-%m-%dT%H:%M:%S')"
       # Commit the stuff?
       - name: GitHub Commit & Push
         uses: actions-js/push@v1.3
         with:
           github_token: ${{ secrets.BUILD_TOKEN }}
-          message: $NOW
+          message: ${{ steps.date.outputs.date }}
 
