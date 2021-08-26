@@ -29,7 +29,7 @@ export class MooSick extends AsyncConstructor {
     client;
     cookies;
     config;
-    async #new() {
+    async new() {
         this.cookies = new tough.CookieJar();
         this.client = axios.create({
             baseURL: 'https://music.youtube.com/',
@@ -94,7 +94,7 @@ export class MooSick extends AsyncConstructor {
     }
     static async new() {
         void super.new();
-        return new MooSick().#new();
+        return new MooSick().new();
     }
     parseAndSetCookie(cookieString, baseURL) {
         const cookie = tough.Cookie.parse(cookieString);
