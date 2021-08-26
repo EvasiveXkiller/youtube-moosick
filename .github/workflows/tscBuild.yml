@@ -26,7 +26,8 @@ jobs:
           npm install
           npm run-script build
       # Set date and time of builds
-      - name: echo "🔨 @ $(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      - name: Sets the date and time and puts it as an env
+        run: echo "🔨 @ $(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
       # Commit the stuff?
       - name: GitHub Commit & Push
         uses: actions-js/push@v1.3
