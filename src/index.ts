@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import axios0 from 'axios/lib/adapters/http';
+import axios0 from 'axios/lib/adapters/http.js';
 import tough from 'tough-cookie';
 import { Category, CategoryURIBase64, EndPoint } from './enums.js';
 import { utils } from './utils.js';
@@ -97,12 +97,13 @@ export class MooSick extends AsyncConstructor {
 			throw new IllegalStateError('API initialization returned a nullish value');
 		}
 
-		const dataJSON = JSON.parse(dataString) as Record<string, unknown>[];
+		const dataJSON = JSON.parse(dataString) as Record<string, unknown>;
 
 		// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 		this.config = {} as YtCfgMain;
 
-		dataJSON.forEach((dataJSONPart) => {
+		// eslint-disable-next-line guard-for-in
+		for (const dataJSONPart in dataJSON) {
 			if (typeof dataJSONPart !== 'object') {
 				return;
 			}
@@ -114,7 +115,7 @@ export class MooSick extends AsyncConstructor {
 					// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 					this.config[key] = value as any;
 				});
-		});
+		}
 
 		return this;
 	}
@@ -264,7 +265,7 @@ export class MooSick extends AsyncConstructor {
 			browseId = 'VL' + browseId;
 		}
 
-		const ctx = this.#createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLISTS, browseId));
+		const ctx = this.#createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLIST, browseId));
 		const result = GetPlaylistParser.parsePlaylistURL(ctx);
 
 		while (contentLimit > result.playlistContents.length

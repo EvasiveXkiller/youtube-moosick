@@ -15,7 +15,7 @@ export class ParsersExtended {
 	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.VIDEO, trim: boolean): Pick<Video, 'author' | 'views' | 'length'>
 	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.SONG, trim: boolean): Pick<Song, 'artist' | 'album' | 'duration'>
 	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.ALBUM | Category.SINGLE | Category.EP, trim: boolean): Pick<AlbumExtended, 'year'>
-	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.PLAYLISTS, trim: boolean): Pick<Playlist, 'trackCount' | 'author'>
+	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.PLAYLIST, trim: boolean): Pick<Playlist, 'trackCount' | 'author'>
 	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category, trim: boolean): any { // return array of capable stuff
 		const delimiter = ' • ';
 		const type = categoryType ?? runsArray[0].text as Category;
@@ -49,7 +49,7 @@ export class ParsersExtended {
 				return {
 					year: Number(runsArray[runsArray.length - 1].text),
 				};
-			case Category.PLAYLISTS:
+			case Category.PLAYLIST:
 				return {
 					trackCount: Number(runsArray[runsArray.length - 1].text),
 					author: artist,

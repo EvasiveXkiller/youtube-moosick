@@ -6,7 +6,7 @@ import { GetAlbumParser } from '../../parsers/getAlbumParser.js';
 test('getAlbumURLParser', (t) => {
 	const result = GetAlbumParser.parseAlbumURLPage(rawGetAlbumURL as AlbumURLFullResult);
 
-	console.log(result);
+	// console.log(result);
 
 	t.end();
 });

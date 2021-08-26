@@ -39,10 +39,8 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.172",
     "@types/node": "^16.7.1",
     "axios": "^0.21.1",
-    "lodash": "^4.17.21",
     "object-scan": "^17.0.0",
     "readdir-enhanced": "^6.0.4",
     "tough-cookie": "^4.0.0"
