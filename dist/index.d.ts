@@ -7,7 +7,7 @@ export declare class MooSick extends AsyncConstructor {
     private cookies;
     private config;
     private new;
-    static new<T = AsyncConstructor>(): Promise<T>;
+    static new<T = MooSick>(): Promise<T>;
     private parseAndSetCookie;
     /**
      * Get search suggestions from Youtube Music
