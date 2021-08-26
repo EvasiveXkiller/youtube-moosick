@@ -119,7 +119,7 @@ export class MooSick extends AsyncConstructor {
 		return this;
 	}
 
-	public static override async new<T = AsyncConstructor>(): Promise<T> {
+	public static override async new<T = MooSick>(): Promise<T> {
 		void super.new();
 
 		return new MooSick().new() as unknown as Promise<T>;
