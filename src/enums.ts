@@ -20,7 +20,7 @@ export enum CategoryURIBase64 {
 	VIDEO = 'BABGAAgACgA',
 	ALBUM = 'BAAGAEgACgA',
 	ARTIST = 'BAAGAAgASgA',
-	PLAYLISTS = 'BAAGAAgACgB',
+	PLAYLIST = 'BAAGAAgACgB',
 }
 
 export enum ConstantURLs {
