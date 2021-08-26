@@ -6,6 +6,7 @@ export declare class MooSick extends AsyncConstructor {
     private client;
     private cookies;
     private config;
+    private new;
     static new<T = AsyncConstructor>(): Promise<T>;
     private parseAndSetCookie;
     /**
