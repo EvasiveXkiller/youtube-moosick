@@ -6,7 +6,7 @@ import { Category } from '../../enums.js';
 test('GeneralParserSong', async (t) => {
 	const results = GeneralParser.parseSearchResult(generalSearchSong as any, Category.SONG);
 
-	// console.log(results);
+	console.log(results);
 
 	t.end();
 });

@@ -45,15 +45,15 @@ test('searchGeneral', async (t) => {
 
 	t.true(result.result instanceof Array, 'is array');
 
-	t.true(
-		WalkUtility
-			.walkAndCompare(
-				result,
-				expected,
-				(v1, v2) => typeof v1 === typeof v2,
-			),
-		'has expected shape',
-	);
+	// t.true(
+	// 	WalkUtility
+	// 		.walkAndCompare(
+	// 			result,
+	// 			expected,
+	// 			(v1, v2) => typeof v1 === typeof v2,
+	// 		),
+	// 	'has expected shape',
+	// );
 
 	t.end();
 });
