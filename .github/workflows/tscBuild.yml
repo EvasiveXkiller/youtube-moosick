@@ -12,7 +12,7 @@ jobs:
   rollup-build:
     name: Builds `dist`
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '🔨 @')"
+    if: "!contains(github.event.head_commit.message, 'Autobuild @')"
     steps:
       # Gets the latest commit
       - uses: actions/checkout@v1
@@ -27,7 +27,7 @@ jobs:
           npm run-script build
       # Set date and time of builds
       - name: Sets the date and time and puts it as an env
-        run: echo "🔨 @ $(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+        run: echo "Autobuild @ $(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
       # Commit the stuff?
       - name: GitHub Commit & Push
         uses: actions-js/push@v1.3
