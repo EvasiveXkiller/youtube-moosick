@@ -170,9 +170,10 @@ export class MooSick extends AsyncConstructor {
      * @returns An object formatted by parsers.js
      */
     async search(query, categoryName, _pageLimit = 1) {
+        const URI = categoryName ? utils.mapCategoryToURL(categoryName) : '';
         const ctx = await this.#createApiRequest(EndPoint.SEARCH, {
             query,
-            params: categoryName ?? '',
+            params: URI,
         });
         // The cases are probably broken, tests might fail catastrophically
         return GeneralParser.parseSearchResult(ctx, categoryName);

@@ -1,4 +1,5 @@
 import type { YtCfgMain } from './cfgInterface.js';
+import { Category, CategoryURIBase64 } from './enums.js';
 export declare class utils {
     /**
      * fv (FieldVisitor)
@@ -55,4 +56,5 @@ export declare class utils {
         };
         browseId: string;
     };
+    static mapCategoryToURL(category: Category): CategoryURIBase64;
 }

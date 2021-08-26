@@ -7,5 +7,5 @@ export declare class Artist extends Item {
 }
 export declare class ArtistExtended extends Artist {
     thumbnails: Thumbnails[];
-    subs?: number;
+    subs?: string;
 }
