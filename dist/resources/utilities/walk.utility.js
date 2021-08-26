@@ -68,5 +68,24 @@ export class WalkUtility {
             this.mirror(fromValue, to[key]);
         }
     }
+    static walkAndCompare(obj1, obj2, comparator) {
+        for (const key in obj1) {
+            if (!Object.prototype.hasOwnProperty.call(obj1, key)) {
+                continue;
+            }
+            // is leaf node
+            if (obj1[key] === null || typeof obj1[key] !== 'object') {
+                if (!comparator(obj1[key], obj2[key], key)) {
+                    return false;
+                }
+                continue;
+            }
+            // if false return false, else continue onto next loop iteration
+            if (!this.walkAndCompare(obj1[key], obj2[key], comparator)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 //# sourceMappingURL=walk.utility.js.map
