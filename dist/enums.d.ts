@@ -18,7 +18,7 @@ export declare enum CategoryURIBase64 {
     VIDEO = "BABGAAgACgA",
     ALBUM = "BAAGAEgACgA",
     ARTIST = "BAAGAAgASgA",
-    PLAYLISTS = "BAAGAAgACgB"
+    PLAYLIST = "BAAGAAgACgB"
 }
 export declare enum ConstantURLs {
     VIDEOLINK = "https://www.youtube.com/watch?v=",

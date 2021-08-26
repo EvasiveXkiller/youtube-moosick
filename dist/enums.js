@@ -21,7 +21,7 @@ export var CategoryURIBase64;
     CategoryURIBase64["VIDEO"] = "BABGAAgACgA";
     CategoryURIBase64["ALBUM"] = "BAAGAEgACgA";
     CategoryURIBase64["ARTIST"] = "BAAGAAgASgA";
-    CategoryURIBase64["PLAYLISTS"] = "BAAGAAgACgB";
+    CategoryURIBase64["PLAYLIST"] = "BAAGAAgACgB";
 })(CategoryURIBase64 || (CategoryURIBase64 = {}));
 export var ConstantURLs;
 (function (ConstantURLs) {

@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import axios0 from 'axios/lib/adapters/http.js';
 import tough from 'tough-cookie';
-import { Category, CategoryURIBase64, EndPoint } from './enums.js';
+import { Category, EndPoint } from './enums.js';
 import { utils } from './utils.js';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors/index.js';
 import { URLSearchParams } from 'url';
@@ -202,12 +202,13 @@ export class MooSick extends AsyncConstructor {
      * @param _pageLimit Max pages to obtain
      * @returns An object formatted by parsers.js
      */
-	async search(query: string, categoryName?: CategoryURIBase64, _pageLimit = 1): Promise<unknown> {
+	async search(query: string, categoryName?: Category, _pageLimit = 1): Promise<unknown> {
+		const URI = categoryName ? utils.mapCategoryToURL(categoryName) : '';
 		const ctx = await this.#createApiRequest(
 			EndPoint.SEARCH,
 			{
 				query,
-				params: categoryName ?? '',
+				params: URI,
 			},
 		);
 		// The cases are probably broken, tests might fail catastrophically

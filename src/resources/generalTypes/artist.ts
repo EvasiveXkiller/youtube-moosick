@@ -9,5 +9,5 @@ export class Artist extends Item {
 
 export class ArtistExtended extends Artist {
 	public declare thumbnails: Thumbnails[];
-	public subs?: number;
+	public subs?: string;
 }

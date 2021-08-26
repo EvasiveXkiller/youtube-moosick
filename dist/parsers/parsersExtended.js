@@ -9,7 +9,7 @@ export class ParsersExtended {
         const delimiter = ' • ';
         const type = categoryType ?? runsArray[0].text;
         let artist = [];
-        if (trim) {
+        if (!trim) {
             runsArray.splice(0, 2);
         }
         const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
@@ -37,12 +37,12 @@ export class ParsersExtended {
                 };
             case Category.PLAYLIST:
                 return {
-                    trackCount: Number(runsArray[runsArray.length - 1].text),
+                    trackCount: parseInt(runsArray[runsArray.length - 1].text, 10),
                     author: artist,
                 };
             case Category.ARTIST:
                 return {
-                    subs: Number(runsArray[runsArray.length - 1].text),
+                    subs: runsArray[runsArray.length - 1].text,
                 };
             default:
                 throw new IllegalArgumentError('Unrecognized category', 'categoryType');

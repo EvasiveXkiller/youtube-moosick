@@ -21,7 +21,7 @@ export class ParsersExtended {
 		const type = categoryType ?? runsArray[0].text as Category;
 		let artist: Artist[] = [];
 
-		if (trim) {
+		if (!trim) {
 			runsArray.splice(0, 2);
 		}
 
@@ -51,12 +51,12 @@ export class ParsersExtended {
 				};
 			case Category.PLAYLIST:
 				return {
-					trackCount: Number(runsArray[runsArray.length - 1].text),
+					trackCount: parseInt(runsArray[runsArray.length - 1].text, 10),
 					author: artist,
 				};
 			case Category.ARTIST:
 				return {
-					subs: Number(runsArray[runsArray.length - 1].text),
+					subs: runsArray[runsArray.length - 1].text,
 				};
 			default:
 				throw new IllegalArgumentError('Unrecognized category', 'categoryType');

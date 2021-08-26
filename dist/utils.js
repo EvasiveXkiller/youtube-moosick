@@ -1,3 +1,4 @@
+import { Category, CategoryURIBase64 } from './enums.js';
 export class utils {
     /**
      * fv (FieldVisitor)
@@ -95,6 +96,31 @@ export class utils {
             },
             browseId,
         };
+    }
+    static mapCategoryToURL(category) {
+        let categoryURL = CategoryURIBase64.SONG;
+        switch (category) {
+            case Category.SONG:
+                categoryURL = CategoryURIBase64.SONG;
+                break;
+            case Category.VIDEO:
+                categoryURL = CategoryURIBase64.VIDEO;
+                break;
+            case Category.ALBUM:
+            case Category.EP:
+            case Category.SINGLE:
+                categoryURL = CategoryURIBase64.ALBUM;
+                break;
+            case Category.ARTIST:
+                categoryURL = CategoryURIBase64.ARTIST;
+                break;
+            case Category.PLAYLIST:
+                categoryURL = CategoryURIBase64.PLAYLIST;
+                break;
+            default:
+                break;
+        }
+        return categoryURL;
     }
 }
 //# sourceMappingURL=utils.js.map

@@ -1,4 +1,4 @@
-import { CategoryURIBase64 } from './enums.js';
+import { Category } from './enums.js';
 import { SearchSuggestions } from './resources/resultTypes/searchSuggestions.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
 export declare class MooSick extends AsyncConstructor {
@@ -22,7 +22,7 @@ export declare class MooSick extends AsyncConstructor {
      * @param _pageLimit Max pages to obtain
      * @returns An object formatted by parsers.js
      */
-    search(query: string, categoryName?: CategoryURIBase64, _pageLimit?: number): Promise<unknown>;
+    search(query: string, categoryName?: Category, _pageLimit?: number): Promise<unknown>;
     /**
      * Gets the album details
      * @param browseId The Id of the album, without the https nonsense
