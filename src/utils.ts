@@ -2,6 +2,7 @@ import type { YtCfgMain } from './cfgInterface.js';
 import { Category, CategoryURIBase64 } from './enums.js';
 
 export class utils {
+	// FIXME: Should we deprecate this function?
 	/**
 	 * fv (FieldVisitor)
 	 * Traverses an object through a colon-delimited query path & returns the values of its prop/field
