@@ -28,37 +28,14 @@ export enum ConstantURLs {
 	CHANNEL_URL = 'https://music.youtube.com/channel/',
 }
 
-export enum SongFlexColumnOffset {
-	TITLE,
-	ARTIST_ALBUM,
-	SUPPLEMENT,
+export enum flexColumnType {
+	MAIN = 0,
+	ALT = 1,
+	ONLYRUN = 0,
 }
 
-// constant delimters for types, probably can do better
-
-export enum SongOffset {
-	ARTIST,
-	ALBUM,
-	DURATION,
+export enum flexSecondRowOffset {
+	ARTIST = 0,
+	OTHERS = 1,
 }
 
-export enum VideoOffset {
-	ARTIST,
-	VIEWS,
-	DURATION,
-}
-
-export enum SingleOffset {
-	ARTIST,
-	VIEWS,
-	DURATION,
-}
-
-export enum PlaylistOffset {
-	AUTHOR,
-	SONGCOUNT,
-}
-
-export enum ArtistOffset {
-	SUBSCRIBERS,
-}

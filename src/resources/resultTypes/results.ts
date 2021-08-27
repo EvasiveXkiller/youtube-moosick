@@ -14,6 +14,5 @@ export class Results extends Item {
 }
 
 export class Unsorted extends Item {
-	// Make this only accept the stuff above
 	public declare content: any[];
 }

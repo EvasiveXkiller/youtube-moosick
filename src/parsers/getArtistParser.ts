@@ -1,7 +1,7 @@
 import objectScan from 'object-scan';
 import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
 import { Artist } from '../resources/generalTypes/artist.js';
-import { ConstantURLs } from '../enums.js';
+import {ConstantURLs, flexColumnType, flexSecondRowOffset} from '../enums.js';
 import { Albums, ArtistContent, ArtistHeader, ArtistURL, Single, Videos } from '../resources/resultTypes/artistURL.js';
 import type { MusicThumbnailRenderer } from '../resources/rawResultTypes/common.js';
 import type {
@@ -18,10 +18,10 @@ export class GetArtistParser {
 
 		// Builds the header
 		const header = ArtistHeader.from({
-			artistName: context.header.musicImmersiveHeaderRenderer.title.runs[0].text,
-			description: subHeader.description.runs[0].text,
+			artistName: context.header.musicImmersiveHeaderRenderer.title.runs[flexColumnType.ONLYRUN].text,
+			description: subHeader.description.runs[flexColumnType.ONLYRUN].text,
 			// probably reduce the length of this access
-			totalSubscribers: context.header.musicImmersiveHeaderRenderer.subscriptionButton.subscribeButtonRenderer.subscriberCountWithSubscribeText.runs[0].text,
+			totalSubscribers: context.header.musicImmersiveHeaderRenderer.subscriptionButton.subscribeButtonRenderer.subscriberCountWithSubscribeText.runs[flexColumnType.ONLYRUN].text,
 			thumbnails: this.parseMusicThumbnailRenderer($('.musicThumbnailRenderer')(context) as MusicThumbnailRenderer),
 		});
 		const albums: Albums[] = [];
@@ -49,7 +49,7 @@ export class GetArtistParser {
 			})(itemRenderer) as MusicTwoRowItemRenderer[]);
 
 			for (const blockRenderer of musicItemRenderer) {
-				const runsInternal = blockRenderer.title.runs[0].text;
+				const runsInternal = blockRenderer.title.runs[flexColumnType.ONLYRUN].text;
 
 				// eslint-disable-next-line default-case
 				switch (rowName) {
@@ -91,7 +91,6 @@ export class GetArtistParser {
 			}
 		}
 
-		// wtf is not used here
 		const artistContent = ArtistContent.from({
 			albums,
 			single: singles,
@@ -112,14 +111,13 @@ export class GetArtistParser {
 				height: item.height,
 			}));
 		});
-		// har?
 		return thumbnailsProcessed;
 	}
 
 	private static parseArtistFromVideos(subtitleRenderer: SubtitleRun[]): Artist[] {
 		const delimiter = ' • ';
 		const positions = subtitleRenderer.flatMap((text, i) => text.text === delimiter ? i : []);
-		const artistOnly = subtitleRenderer.slice(0, positions[0]);
+		const artistOnly = subtitleRenderer.slice(0, positions[flexSecondRowOffset.ARTIST]);
 		return artistOnly.map((element) => (Artist.from({
 			name: element.text,
 			browseId: element.navigationEndpoint?.browseEndpoint?.browseId ?? '',

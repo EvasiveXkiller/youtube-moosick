@@ -4,6 +4,7 @@ import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../r
 import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/rawResultTypes/rawGetSongURL.js';
 import type { MusicDetailHeaderRenderer } from '../resources/rawResultTypes/rawGetPlaylistURL.js';
 import type { Run } from '../resources/rawResultTypes/common.js';
+import { flexColumnType } from '../enums.js';
 
 /**
  * Used for getPlaylistURL function ONLY
@@ -51,11 +52,11 @@ export class GetPlaylistParser {
 
 	private static playlistURLHeaderParser(header: MusicDetailHeaderRenderer[]): PlaylistHeader {
 		return PlaylistHeader.from({
-			playlistName: header[0].title.runs[0].text,
+			playlistName: header[0].title.runs[flexColumnType.ONLYRUN].text,
 			owner: header[0].subtitle.runs[2].text,
 			createdYear: parseInt(header[0].subtitle.runs[4].text, 10)!,
 			thumbnail: header[0].thumbnail.croppedSquareThumbnailRenderer.thumbnail.thumbnails as Thumbnail[],
-			songCount: parseInt(header[0].secondSubtitle.runs[0].text, 10),
+			songCount: parseInt(header[0].secondSubtitle.runs[flexColumnType.ONLYRUN].text, 10),
 			approxRunTime: header[0].secondSubtitle.runs[2].text,
 		});
 	}

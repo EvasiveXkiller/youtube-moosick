@@ -60,7 +60,7 @@ export interface SearchEndpoint {
 }
 
 export enum Query {
-	DoWhatWeLike = 'do what we like',
+	Query = '',
 }
 
 export interface MusicShelfRendererContent {

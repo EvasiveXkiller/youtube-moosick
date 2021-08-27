@@ -1,5 +1,5 @@
 import objectScan from 'object-scan';
-import { Category, ConstantURLs } from '../enums.js';
+import { Category, ConstantURLs, flexColumnType } from '../enums.js';
 import { Song } from '../resources/generalTypes/song.js';
 import { Video } from '../resources/generalTypes/video.js';
 import { Playlist } from '../resources/generalTypes/playlist.js';
@@ -17,6 +17,7 @@ import type {
 	MusicResponsiveListItemRenderer,
 	MusicShelfRenderer,
 } from '../resources/rawResultTypes/general/generalFull.js';
+import { WatchEndpointParams } from '../resources/rawResultTypes/common.js';
 
 export class GeneralParser {
 	// Make this one global function and call the other stuff
@@ -45,7 +46,7 @@ export class GeneralParser {
 			})(shelfItem) as MusicResponsiveListItemRenderer[];
 			for (const item of shelfContent) {
 				const flexColumnRenderer = $$('.musicResponsiveListItemFlexColumnRenderer')(item) as MusicResponsiveListItemFlexColumnRenderer[];
-				const category = searchType ?? (flexColumnRenderer[1].text.runs[0].text).toUpperCase();
+				const category = searchType ?? (flexColumnRenderer[flexColumnType.ALT].text.runs[0].text).toUpperCase();
 				switch (category) {
 					// FIXME: probably there is a better way to reconstruct the thing
 					case 'SONG': {
@@ -54,11 +55,11 @@ export class GeneralParser {
 							reverse: false,
 						})(item) as MusicResponsiveListItemFlexColumnRenderer;
 						songs.push(Song.from({
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.SONG, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.SONG, Boolean(searchType)),
 							...GeneralParser.musicResponsiveListItemRendererParser(item),
 							thumbnails: ParsersExtended.thumbnailParser(item),
 							playlistId: objectScan(['**.playlistId'], { rtn: 'value', reverse: false, abort: true })(display) as string,
-							params: 'what should be do here',
+							params: WatchEndpointParams.WAEB,
 						}));
 						break;
 					}
@@ -66,7 +67,7 @@ export class GeneralParser {
 					case 'VIDEO': {
 						videos.push(Video.from({
 							...GeneralParser.musicResponsiveListItemRendererParser(item),
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.VIDEO, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.VIDEO, Boolean(searchType)),
 							thumbnails: ParsersExtended.thumbnailParser(item),
 						}));
 						break;
@@ -80,18 +81,18 @@ export class GeneralParser {
 								abort: true,
 							})(flexColumnRenderer) as string,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.PLAYLIST, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.PLAYLIST, Boolean(searchType)),
 						}));
 						break;
 					}
 
 					case 'ARTIST': {
 						artist.push(ArtistExtended.from({
-							name: flexColumnRenderer[0].text.runs[0].text,
+							name: flexColumnRenderer[flexColumnType.MAIN].text.runs[flexColumnType.ONLYRUN].text,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
 							thumbnails: ParsersExtended.thumbnailParser(item),
 							url: `${ConstantURLs.CHANNEL_URL}${item.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.ARTIST, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.ARTIST, Boolean(searchType)),
 						}));
 						break;
 					}
@@ -100,8 +101,8 @@ export class GeneralParser {
 					case 'SINGLE':
 					case 'EP': {
 						albums.push({
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[1].text.runs, Category.ARTIST, Boolean(searchType)),
-							name: flexColumnRenderer[0].text.runs[0].text,
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.ARTIST, Boolean(searchType)),
+							name: flexColumnRenderer[flexColumnType.MAIN].text.runs[flexColumnType.ONLYRUN].text,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
 							url: `${ConstantURLs.CHANNEL_URL}${item.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
 							thumbnails: ParsersExtended.thumbnailParser(item),
