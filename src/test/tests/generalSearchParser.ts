@@ -5,7 +5,7 @@ import generalSearchFull from '../dummy/general/generalSearchFull.json';
 test('GeneralParser', async (t) => {
 	const results = GeneralParser.parseSearchResult(generalSearchFull as any);
 
-	console.log(results);
+	// console.log(results);
 
 	t.end();
 });

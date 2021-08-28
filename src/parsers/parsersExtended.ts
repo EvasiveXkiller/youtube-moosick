@@ -1,4 +1,4 @@
-import objectScan from 'object-scan';
+import { $ } from '../resources/utilities/objectScan.utility.js';
 import { Album, AlbumExtended } from '../resources/generalTypes/album.js';
 import { Category, ConstantURLs, FlexColumnOffset, FlexSecondRowOffset } from '../enums.js';
 import { Artist, ArtistExtended } from '../resources/generalTypes/artist.js';
@@ -68,10 +68,7 @@ export class ParsersExtended {
 	 * @param sectionContext
 	 */
 	static thumbnailParser(sectionContext: any): Thumbnails[] {
-		return objectScan(['**.musicThumbnailRenderer.**.thumbnails'], {
-			rtn: 'value',
-			reverse: false,
-		})(sectionContext) as Thumbnails[];
+		return ($('.musicThumbnailRenderer .thumbnails')(sectionContext) as Thumbnails[]);
 	}
 
 	/**

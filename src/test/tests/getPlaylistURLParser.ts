@@ -6,7 +6,7 @@ import type { PlaylistURLFullResult } from '../../resources/rawResultTypes/rawGe
 test('getAlbumURLParser', (t) => {
 	const result = GetPlaylistParser.parsePlaylistURL(rawGetPlaylistURL as unknown as PlaylistURLFullResult);
 
-	console.log(result);
+	// console.log(result);
 
 	t.end();
 });

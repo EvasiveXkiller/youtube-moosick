@@ -1,4 +1,4 @@
-import objectScan from 'object-scan';
+import { $$ } from '../resources/utilities/objectScan.utility.js';
 import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL.js';
 import { ConstantURLs } from '../enums.js';
 import { ArtistExtended } from '../resources/generalTypes/artist.js';
@@ -16,21 +16,11 @@ import type {
 export class GetAlbumParser {
 	public static parseAlbumURLPage(context: AlbumURLFullResult): AlbumURL {
 		// Overview of the albums
-		const albumOverview = (objectScan(['**.musicAlbumRelease'], {
-			rtn: 'value',
-			reverse: false,
-		})(context) as MusicAlbumRelease[])[0]!;
+		const albumOverview = ($$('.musicAlbumRelease')(context) as MusicAlbumRelease[])[0]!;
 		// For description
-		const { description } = (objectScan(['**.musicAlbumReleaseDetail'], {
-			rtn: 'value',
-			reverse: false,
-		})(context) as MusicAlbumReleaseDetail[])[0];
-
+		const { description } = ($$('.musicAlbumReleaseDetail')(context) as MusicAlbumReleaseDetail[])[0];
 		// Gets the artist, if there is multiple
-		const musicArtist = (objectScan(['**.musicArtist'], {
-			rtn: 'value',
-			reverse: false,
-		})(context) as MusicArtist[]);
+		const musicArtist = ($$('.musicArtist')(context) as MusicArtist[]);
 		const artist: ArtistExtended[] = [];
 		for (const eachArtist of musicArtist) {
 			artist.push(ArtistExtended.from({
@@ -42,10 +32,7 @@ export class GetAlbumParser {
 		}
 
 		// Gets the tracks
-		const musicTracks = (objectScan(['**.musicTrack'], {
-			rtn: 'value',
-			reverse: false,
-		})(context) as MusicTrack[]);
+		const musicTracks = ($$('.musicTrack')(context) as MusicTrack[]);
 		const tracks: Track[] = [];
 		for (const track of musicTracks) {
 			tracks.push(Track.from({

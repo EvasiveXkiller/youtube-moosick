@@ -7,7 +7,7 @@ import { WalkUtility } from '../../resources/utilities/walk.utility.js';
 test('GeneralParserAlbum', async (t) => {
 	const results = GeneralParser.parseSearchResult(generalSearchAlbum as any, Category.ALBUM);
 
-	console.log(results);
+	// console.log(results);
 	// t.true(
 	// 	WalkUtility
 	// 		.walkAndCompare(

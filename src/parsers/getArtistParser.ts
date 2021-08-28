@@ -1,4 +1,4 @@
-import objectScan from 'object-scan';
+import { $, $$ } from '../resources/utilities/objectScan.utility.js';
 import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
 import { Artist } from '../resources/generalTypes/artist.js';
 import { ConstantURLs, FlexColumnOffset, FlexSecondRowOffset } from '../enums.js';
@@ -10,7 +10,7 @@ import type {
 	MusicTwoRowItemRenderer,
 	MusicCarouselShelfRenderer, SubtitleRun,
 } from '../resources/rawResultTypes/rawGetArtistURL.js';
-import { $, $$ } from '../resources/utilities/objectScan.utility.js';
+
 
 export class GetArtistParser {
 	public static parseArtistURLPage(context: ArtistURLFullResult): ArtistURL {
@@ -32,10 +32,7 @@ export class GetArtistParser {
 
 		for (const itemRenderer of twoRowRenderer) {
 			// Gets the row name type
-			const rowName = (objectScan(['header.**.title.**.text'], {
-				rtn: 'value',
-				reverse: false,
-			})(itemRenderer) as string[])[0].toLowerCase()!;
+			const rowName = ($$('.header .title .text')(itemRenderer) as string[])[0].toLowerCase()!;
 			// Only parse the following, the others are not useful
 			const validRows = ['albums', 'singles', 'videos'];
 			if (!(validRows.includes(rowName))) {
@@ -43,11 +40,7 @@ export class GetArtistParser {
 			}
 
 			// Gets the items in the carousel
-			const musicItemRenderer = (objectScan(['**.musicTwoRowItemRenderer'], {
-				rtn: 'value',
-				reverse: false,
-			})(itemRenderer) as MusicTwoRowItemRenderer[]);
-
+			const musicItemRenderer = ($$('.musicTwoRowItemRenderer')(itemRenderer) as MusicTwoRowItemRenderer[]);
 			for (const blockRenderer of musicItemRenderer) {
 				const runsInternal = blockRenderer.title.runs[FlexColumnOffset.ONLYRUN].text;
 

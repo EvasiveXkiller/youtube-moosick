@@ -1,11 +1,12 @@
+import { $$, $ } from '../resources/utilities/objectScan.utility.js';
 import { Category, ConstantURLs, FlexColumnOffset } from '../enums.js';
 import { Song } from '../resources/generalTypes/song.js';
 import { Video } from '../resources/generalTypes/video.js';
 import { Playlist } from '../resources/generalTypes/playlist.js';
 import { ArtistExtended } from '../resources/generalTypes/artist.js';
 import { ParsersExtended } from './parsersExtended.js';
-import { Results } from '../resources/resultTypes/results.js';
-import { $$, $ } from '../resources/utilities/objectScan.utility.js';
+import { Results, Unsorted } from '../resources/resultTypes/results.js';
+import { WatchEndpointParams } from '../resources/rawResultTypes/common.js';
 import type {
 	MusicResponsiveListItemFlexColumnRenderer,
 	NextContinuationData,
@@ -16,7 +17,6 @@ import type {
 	MusicResponsiveListItemRenderer,
 	MusicShelfRenderer,
 } from '../resources/rawResultTypes/general/generalFull.js';
-import { WatchEndpointParams } from '../resources/rawResultTypes/common.js';
 
 export class GeneralParser {
 	// eslint-disable-next-line complexity
@@ -35,7 +35,6 @@ export class GeneralParser {
 				const flexColumnRenderer = $$('.musicResponsiveListItemFlexColumnRenderer')(item) as MusicResponsiveListItemFlexColumnRenderer[];
 				const category = searchType ?? (flexColumnRenderer[FlexColumnOffset.ALT].text.runs[0].text).toUpperCase();
 				switch (category) {
-					// FIXME: probably there is a better way to reconstruct the thing
 					case 'SONG': {
 						const display = $('.musicResponsiveListItemFlexColumnRenderer')(item) as MusicResponsiveListItemFlexColumnRenderer;
 						songs.push(Song.from({
@@ -107,7 +106,7 @@ export class GeneralParser {
 				};
 
 				return Results.from({
-					result: unsorted,
+					result: unsorted as unknown as Unsorted[],
 				});
 			}
 
@@ -155,7 +154,7 @@ export class GeneralParser {
 				};
 
 				return Results.from({
-					result: unsorted,
+					result: unsorted as unknown as Unsorted[],
 				});
 			}
 		}
