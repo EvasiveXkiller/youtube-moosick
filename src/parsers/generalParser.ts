@@ -1,4 +1,4 @@
-import { Category, ConstantURLs, flexColumnType } from '../enums.js';
+import { Category, ConstantURLs, FlexColumnOffset } from '../enums.js';
 import { Song } from '../resources/generalTypes/song.js';
 import { Video } from '../resources/generalTypes/video.js';
 import { Playlist } from '../resources/generalTypes/playlist.js';
@@ -33,17 +33,16 @@ export class GeneralParser {
 			const shelfContent = $$('.musicResponsiveListItemRenderer')(shelfItem) as MusicResponsiveListItemRenderer[];
 			for (const item of shelfContent) {
 				const flexColumnRenderer = $$('.musicResponsiveListItemFlexColumnRenderer')(item) as MusicResponsiveListItemFlexColumnRenderer[];
-				const category = searchType ?? (flexColumnRenderer[flexColumnType.ALT].text.runs[0].text).toUpperCase();
+				const category = searchType ?? (flexColumnRenderer[FlexColumnOffset.ALT].text.runs[0].text).toUpperCase();
 				switch (category) {
 					// FIXME: probably there is a better way to reconstruct the thing
 					case 'SONG': {
-						// FIXME: is this behaviour intended? There is another instance below where this occurs
-						const display = $$('.musicResponsiveListItemFlexColumnRenderer')(item) as MusicResponsiveListItemFlexColumnRenderer;
+						const display = $('.musicResponsiveListItemFlexColumnRenderer')(item) as MusicResponsiveListItemFlexColumnRenderer;
 						songs.push(Song.from({
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.SONG, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.SONG, Boolean(searchType)),
 							...GeneralParser.musicResponsiveListItemRendererParser(item),
 							thumbnails: ParsersExtended.thumbnailParser(item),
-							playlistId: $('**.playlistId')(display) as string,
+							playlistId: $('.playlistId')(display) as string,
 							params: WatchEndpointParams.WAEB,
 						}));
 						break;
@@ -52,7 +51,7 @@ export class GeneralParser {
 					case 'VIDEO': {
 						videos.push(Video.from({
 							...GeneralParser.musicResponsiveListItemRendererParser(item),
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.VIDEO, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.VIDEO, Boolean(searchType)),
 							thumbnails: ParsersExtended.thumbnailParser(item),
 						}));
 						break;
@@ -60,20 +59,20 @@ export class GeneralParser {
 
 					case 'PLAYLIST': {
 						playlists.push(Playlist.from({
-							name: $('**.text')(flexColumnRenderer) as string,
+							name: $('.text')(flexColumnRenderer) as string,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.PLAYLIST, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.PLAYLIST, Boolean(searchType)),
 						}));
 						break;
 					}
 
 					case 'ARTIST': {
 						artist.push(ArtistExtended.from({
-							name: flexColumnRenderer[flexColumnType.MAIN].text.runs[flexColumnType.ONLYRUN].text,
+							name: flexColumnRenderer[FlexColumnOffset.MAIN].text.runs[FlexColumnOffset.ONLYRUN].text,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
 							thumbnails: ParsersExtended.thumbnailParser(item),
 							url: `${ConstantURLs.CHANNEL_URL}${item.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.ARTIST, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.ARTIST, Boolean(searchType)),
 						}));
 						break;
 					}
@@ -82,8 +81,8 @@ export class GeneralParser {
 					case 'SINGLE':
 					case 'EP': {
 						albums.push({
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[flexColumnType.ALT].text.runs, Category.ARTIST, Boolean(searchType)),
-							name: flexColumnRenderer[flexColumnType.MAIN].text.runs[flexColumnType.ONLYRUN].text,
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.ARTIST, Boolean(searchType)),
+							name: flexColumnRenderer[FlexColumnOffset.MAIN].text.runs[FlexColumnOffset.ONLYRUN].text,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
 							url: `${ConstantURLs.CHANNEL_URL}${item.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
 							thumbnails: ParsersExtended.thumbnailParser(item),
@@ -167,9 +166,9 @@ export class GeneralParser {
 	 * @param musicResponsiveListItemRenderer
 	 */
 	static musicResponsiveListItemRendererParser(musicResponsiveListItemRenderer: MusicResponsiveListItemRenderer) {
-		const display = $$('.musicResponsiveListItemFlexColumnRenderer')(musicResponsiveListItemRenderer) as MusicResponsiveListItemFlexColumnRenderer;
-		const name = $('**.text')(display) as string;
-		const id = $('**.videoId')(display) as string;
+		const display = $('.musicResponsiveListItemFlexColumnRenderer')(musicResponsiveListItemRenderer) as MusicResponsiveListItemFlexColumnRenderer;
+		const name = $('.text')(display) as string;
+		const id = $('.videoId')(display) as string;
 		const url = `https://www.youtube.com/watch?v=${id}`;
 		return { name, url, videoId: id };
 	}
