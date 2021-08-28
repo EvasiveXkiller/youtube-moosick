@@ -1,6 +1,7 @@
 {
     "include": [
-		"src/**/*", 
+		"src/**/*",
+		"test/**/*",
 		"types/**/*", 
 		".eslintrc.cjs",
 		"*.config.js",
