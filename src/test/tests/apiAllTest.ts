@@ -31,6 +31,11 @@ test('searchSong', async (t) => {
 					url: '',
 					width: 0,
 				}),
+				Thumbnails.from({
+					height: 0,
+					url: '',
+					width: 0,
+				}),
 			],
 			videoId: '',
 			url: '',
@@ -73,6 +78,8 @@ test('searchSong', async (t) => {
 			),
 		'Search result\'s thumbnails has expected shape',
 	);
+	console.log((result![0]! as Song).thumbnails);
+	console.log(expected[0].thumbnails);
 
 	t.true(
 		WalkUtility
@@ -86,21 +93,21 @@ test('searchSong', async (t) => {
 	t.end();
 });
 
-test('searchGeneral', async (t) => {
-	const api = await MooSick.new();
-	const result = await api.search('do what we like') as Results;
-
-	t.true(result.result instanceof Array, 'is array');
-
-	// t.true(
-	// 	WalkUtility
-	// 		.walkAndCompare(
-	// 			result,
-	// 			expected,
-	// 			(v1, v2) => typeof v1 === typeof v2,
-	// 		),
-	// 	'has expected shape',
-	// );
-
-	t.end();
-});
+// test('searchGeneral', async (t) => {
+// 	const api = await MooSick.new();
+// 	const result = await api.search('do what we like') as Results;
+//
+// 	t.true(result.result instanceof Array, 'is array');
+//
+// 	// t.true(
+// 	// 	WalkUtility
+// 	// 		.walkAndCompare(
+// 	// 			result,
+// 	// 			expected,
+// 	// 			(v1, v2) => typeof v1 === typeof v2,
+// 	// 		),
+// 	// 	'has expected shape',
+// 	// );
+//
+// 	t.end();
+// });

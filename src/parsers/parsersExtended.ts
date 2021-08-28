@@ -76,7 +76,8 @@ export class ParsersExtended {
 	 * @param artistRaw
 	 */
 	static artistParser(artistRaw: Run[]): Artist[] {
-		return artistRaw.map((artist) => (Artist.from({
+		const artistFiltered = artistRaw.filter((artist) => artist.navigationEndpoint !== undefined);
+		return artistFiltered.map((artist) => (Artist.from({
 			name: artist.text,
 			browseId: artist.navigationEndpoint?.browseEndpoint?.browseId ?? '',
 			url: artist.navigationEndpoint?.browseEndpoint?.browseId === ''
