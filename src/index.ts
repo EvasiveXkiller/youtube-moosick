@@ -17,22 +17,10 @@ import type { AlbumURLFullResult } from './resources/rawResultTypes/rawGetAlbumU
 import type { GeneralFull } from './resources/rawResultTypes/general/generalFull.js';
 import type { Result } from './resources/rawResultTypes/common.js';
 import type { YtCfgMain } from './cfgInterface.js';
+import type { AlbumURL } from './resources/resultTypes/albumURL.js';
 
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
-
-// Binding for functions later on
-// Probably wont work but see how
-// const bindAndCloneToContext = (
-// 	from: Record<string | number | symbol, any>,
-// 	ctx: Record<string | number | symbol, any>,
-// ) => {
-// 	Object.entries(from).forEach(([key, value]) => {
-// 		if (typeof value === 'function') {
-// 			ctx[key] = (value as (...args: any[]) => any).bind(ctx);
-// 		}
-// 	});
-// };
 
 export class MooSick extends AsyncConstructor {
 	private client!: AxiosInstance;
@@ -171,7 +159,7 @@ export class MooSick extends AsyncConstructor {
      * @param query String query text to search
      * @returns An object formatted with utils class
      */
-	public async getSearchSuggestions(query: string) {
+	public async getSearchSuggestions(query: string): Promise<SearchSuggestions[]> {
 		const res = await this.#createApiRequest(EndPoint.SUGGESTIONS, {
 			input: query,
 		}) as SearchSuggestionsFullResult;
@@ -219,7 +207,7 @@ export class MooSick extends AsyncConstructor {
 	 * Gets the album details
 	 * @param browseId The Id of the album, without the https nonsense
 	 */
-	async getAlbum(browseId: string) {
+	async getAlbum(browseId: string): Promise<AlbumURL> {
 		if (!browseId.startsWith('MPREb')) {
 			throw new IllegalArgumentError('Album browse IDs must start with "MPREb"', 'browseId');
 		}

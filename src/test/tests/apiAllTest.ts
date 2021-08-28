@@ -78,8 +78,6 @@ test('searchSong', async (t) => {
 			),
 		'Search result\'s thumbnails has expected shape',
 	);
-	console.log((result![0]! as Song).thumbnails);
-	console.log(expected[0].thumbnails);
 
 	t.true(
 		WalkUtility

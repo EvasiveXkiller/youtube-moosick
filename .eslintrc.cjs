@@ -2,11 +2,13 @@ module.exports = {
 	extends: [
 		'plugin:import/recommended',
 		'plugin:import/typescript',
+		'plugin:@typescript-eslint/recommended',
 		'xo',
 		'xo-typescript',
 	],
 	plugins: [
 		'@typescript-eslint',
+		'eslint-plugin-tsdoc',
 	],
 	overrides: [],
 	rules: {
@@ -40,5 +42,6 @@ module.exports = {
 				ignorePackages: true,
 			}
 		],
+		'tsdoc/syntax': 'warn'
 	},
 };
