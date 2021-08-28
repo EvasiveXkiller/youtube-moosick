@@ -28,13 +28,13 @@ export enum ConstantURLs {
 	CHANNEL_URL = 'https://music.youtube.com/channel/',
 }
 
-export enum flexColumnType {
+export enum FlexColumnOffset {
 	MAIN = 0,
 	ALT = 1,
 	ONLYRUN = 0,
 }
 
-export enum flexSecondRowOffset {
+export enum FlexSecondRowOffset {
 	ARTIST = 0,
 	OTHERS = 1,
 }

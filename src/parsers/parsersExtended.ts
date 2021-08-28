@@ -1,6 +1,6 @@
 import objectScan from 'object-scan';
 import { Album, AlbumExtended } from '../resources/generalTypes/album.js';
-import { Category, ConstantURLs, flexColumnType, flexSecondRowOffset } from '../enums.js';
+import { Category, ConstantURLs, FlexColumnOffset, FlexSecondRowOffset } from '../enums.js';
 import { Artist, ArtistExtended } from '../resources/generalTypes/artist.js';
 import { utils } from '../utils.js';
 import { IllegalArgumentError } from '../resources/errors/index.js';
@@ -18,7 +18,7 @@ export class ParsersExtended {
 	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category.PLAYLIST, trim: boolean): Pick<Playlist, 'trackCount' | 'author'>
 	static flexSecondRowComplexParser(runsArray: Run[], categoryType: Category, trim: boolean): any { // return array of capable stuff
 		const delimiter = ' • ';
-		const type = categoryType ?? runsArray[flexColumnType.MAIN].text as Category;
+		const type = categoryType ?? runsArray[FlexColumnOffset.MAIN].text as Category;
 		let artist: Artist[] = [];
 
 		if (!trim) {
@@ -27,14 +27,14 @@ export class ParsersExtended {
 
 		const positions = runsArray.flatMap((text, i) => text.text === delimiter ? i : []);
 		if (positions.length !== 0) {
-			artist = this.artistParser(runsArray.slice(0, positions[flexSecondRowOffset.ARTIST]));
+			artist = this.artistParser(runsArray.slice(0, positions[FlexSecondRowOffset.ARTIST]));
 		}
 
 		switch (type) {
 			case Category.SONG:
 				return {
 					artist,
-					album: this.albumParser(runsArray.slice(positions[flexSecondRowOffset.ARTIST] + 1, positions[flexSecondRowOffset.OTHERS])),
+					album: this.albumParser(runsArray.slice(positions[FlexSecondRowOffset.ARTIST] + 1, positions[FlexSecondRowOffset.OTHERS])),
 					duration: utils.hms2ms(runsArray[runsArray.length - 1].text),
 				};
 			case Category.VIDEO:
