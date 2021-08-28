@@ -4,10 +4,10 @@ import type { NextContinuationData } from '../rawResultTypes/common.js';
 
 export class Results extends Item {
 	public declare result?:
-	| VideoSearchResult
-	| AlbumSearchResult
-	| ArtistSearchResult
-	| PlaylistSearchResult
+	| VideoSearchResult[]
+	| AlbumSearchResult[]
+	| ArtistSearchResult[]
+	| PlaylistSearchResult[]
 	| (Unsorted | null)[];
 
 	public declare continuation?: NextContinuationData;
