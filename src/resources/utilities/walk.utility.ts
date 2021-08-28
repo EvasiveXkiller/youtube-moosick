@@ -124,4 +124,50 @@ export class WalkUtility {
 
 		return true;
 	}
+
+	public static walkAndCompareShape<
+		T1 extends Record<string, any>,
+		T2 extends Record<string, any>,
+	>(
+		obj1: T1,
+		obj2: T2,
+	): boolean {
+		for (const key in obj1) {
+			if (!Object.prototype.hasOwnProperty.call(obj1, key)) {
+				continue;
+			}
+
+			// skip into objects inside array, as lengths may be different
+			if (obj1?.[key] as any instanceof Array) {
+				if (!(obj2[key] as any instanceof Array)) {
+					return false;
+				}
+
+				if (!this.walkAndCompareShape(obj1[key][0], obj2[key]?.[0])) {
+					return false;
+				}
+
+				continue;
+			}
+
+			// is leaf node
+			if (obj1[key] === null
+				|| typeof obj1[key] !== 'object'
+				|| obj2[key] === null
+				|| typeof obj2[key] !== 'object') {
+				if (typeof obj1[key] !== typeof obj2[key]) {
+					return false;
+				}
+
+				continue;
+			}
+
+			// if false return false, else continue onto next loop iteration
+			if (!this.walkAndCompareShape(obj1[key], obj2[key])) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }
