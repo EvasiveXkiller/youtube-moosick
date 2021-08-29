@@ -1,4 +1,4 @@
-import type { YtCfgMain } from './cfgInterface.js';
+import type { YtCfgMain } from './resources/etc/cfgInterface.js';
 import { Category, CategoryURIBase64 } from './enums.js';
 
 export class utils {
