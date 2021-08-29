@@ -1,3 +1,13 @@
+import { AssertionError } from '../errors/index.js';
+
+export abstract class Shape {}
+
+export class EitherShape extends Shape {
+	constructor(public shapes: any[]) {
+		super();
+	}
+}
+
 /*
 	eslint-disable
 		@typescript-eslint/no-unsafe-assignment,
@@ -94,6 +104,7 @@ export class WalkUtility {
 		}
 	}
 
+	// TODO: separate this into another utility
 	public static walkAndCompare<
 		T1 extends Record<string, any>,
 		T2 extends Record<string, any>,
@@ -125,49 +136,71 @@ export class WalkUtility {
 		return true;
 	}
 
-	public static walkAndCompareShape<
+	public static walkAndAssertShape<
 		T1 extends Record<string, any>,
-		T2 extends Record<string, any>,
+		T2 extends T1,
 	>(
 		obj1: T1,
 		obj2: T2,
-	): boolean {
+		key = '(root)',
+	): true | never {
+		// skip into objects inside array, as lengths may be different
+		if (obj1 as any instanceof Array) {
+			if (!(obj2 as any instanceof Array)) {
+				throw new AssertionError(`Value in "${key}" is of different shape`, obj1, obj2);
+			}
+
+			(obj1 as unknown as any[]).forEach((obj1Part) => {
+				this.walkAndAssertShape(obj1Part, obj2[0], `${key}[(index)]`);
+			});
+
+			return true;
+		}
+
+		// is leaf node
+		if (obj1 === null
+			|| typeof obj1 !== 'object'
+			|| obj2 === null
+			|| typeof obj2 !== 'object') {
+			if (obj2 instanceof EitherShape) {
+				if (!obj2.shapes.some((shape) => typeof obj1 === typeof shape)) {
+					throw new AssertionError(`Value in "${key}" is not one of shape "${
+						obj2.shapes.map((shape) => typeof shape).join(' | ')
+					}"`, obj1, obj2);
+				}
+
+				return true;
+			}
+
+			if (typeof obj1 !== typeof obj2) {
+				throw new AssertionError(`Value in "${key}" is of different shape`, obj1, obj2);
+			}
+
+			return true;
+		}
+
 		for (const key in obj1) {
 			if (!Object.prototype.hasOwnProperty.call(obj1, key)) {
 				continue;
 			}
 
-			// skip into objects inside array, as lengths may be different
-			if (obj1?.[key] as any instanceof Array) {
-				if (!(obj2[key] as any instanceof Array)) {
-					return false;
-				}
-
-				if (!this.walkAndCompareShape(obj1[key][0], obj2[key]?.[0])) {
-					return false;
-				}
-
-				continue;
-			}
-
-			// is leaf node
-			if (obj1[key] === null
-				|| typeof obj1[key] !== 'object'
-				|| obj2[key] === null
-				|| typeof obj2[key] !== 'object') {
-				if (typeof obj1[key] !== typeof obj2[key]) {
-					return false;
-				}
-
-				continue;
-			}
-
-			// if false return false, else continue onto next loop iteration
-			if (!this.walkAndCompareShape(obj1[key], obj2[key])) {
-				return false;
-			}
+			this.walkAndAssertShape(obj1[key], obj2[key], key);
 		}
 
 		return true;
+	}
+
+	public static walkAndCompareShape<
+		T1 extends Record<string, any>,
+		T2 extends T1,
+	>(
+		obj1: T1,
+		obj2: T2,
+	): boolean {
+		try {
+			return this.walkAndAssertShape(obj1, obj2);
+		} catch (_: unknown) {
+			return false;
+		}
 	}
 }
