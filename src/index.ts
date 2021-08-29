@@ -37,11 +37,9 @@ export class MooSick extends AsyncConstructor {
 
 	/**
 	 * Creates a new instance of the searcher.
-	 *
-	 * @remarks
-	 * Required to construct along with the class.
 	 * @returns Adds with the original constructor
-	 *
+	 * @remarks Required to construct along with the class.
+	 * @internal
 	 * @beta
 	 */
 	private async new() {
@@ -142,8 +140,7 @@ export class MooSick extends AsyncConstructor {
 	 * @param inputVariables - Any variable?
 	 * @param inputQuery - Any queries?
 	 * @returns The result of the endpoint reply
-	 * @remarks
-	 * 	Soonner or later destructure functions into individual files
+	 * @remarks Soonner or later destructure functions into individual files
 	 *
 	 *	TODO: probably define each api req's input vars & input queries,
 	 *  then make this func generic so it's type safe
@@ -223,6 +220,19 @@ export class MooSick extends AsyncConstructor {
 	 * @param categoryName - Type of category to search
 	 * @param _pageLimit - Max pages to obtain
 	 * @returns An object formatted by parsers.js
+	 *
+	 * Example
+	 * ```typescript
+	 * const api = await MooSick.new();
+	 *
+	 * // Get the general search results.
+	 * const resultsGeneral = await api.search('Never gonna give you up');
+	 * console.log(resultsGeneral)
+	 *
+	 * // Gets a specific category
+	 * const resultsSong = await api.search('Never gonna give you up', Category.SONG);
+	 * console.log(resultsSong)
+	 * ```
 	 */
 	async search(query: string, categoryName?: Category, _pageLimit = 1): Promise<unknown> {
 		const URI = categoryName ? utils.mapCategoryToURL(categoryName) : '';
@@ -233,7 +243,6 @@ export class MooSick extends AsyncConstructor {
 				params: URI,
 			},
 		);
-		// The cases are probably broken, tests might fail catastrophically
 		return GeneralParser.parseSearchResult(ctx as GeneralFull, categoryName);
 	}
 
@@ -241,6 +250,15 @@ export class MooSick extends AsyncConstructor {
 	 * Gets the album details
 	 * @param browseId - The ID of the album, without `https` infront
 	 * @returns Album URL object
+	 *
+	 * Example:
+	 * ```typescript
+	 * const api = await MooSick.new();
+	 * const results = await api.getAlbum('MPREb_REsMMqBZjZB');
+	 *
+	 * console.log(results)
+	 * ```
+	 *
 	 */
 	async getAlbum(browseId: string): Promise<AlbumURL> {
 		if (!browseId.startsWith('MPREb')) {
@@ -260,6 +278,14 @@ export class MooSick extends AsyncConstructor {
 	 * @param browseId - The playlist ID, sanitized
 	 * @param contentLimit - Maximum content to get
 	 * @returns An object formatted by the parser
+	 *
+	 * Example:
+	 * ```typescript
+	 * const api = await MooSick.new();
+	 * const results = const results = await api.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
+	 *
+	 * console.log(results);
+	 * ```
 	 *
 	 * @remarks
 	 * FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
@@ -305,6 +331,14 @@ export class MooSick extends AsyncConstructor {
 	 * Gets the artist details from Youtube Music
 	 * @param browseId - The artist ID, sanitized
 	 * @returns An object formatted by the artist page
+	 *
+	 * Example:
+	 * ```typescript
+	 * const api = await MooSick.new();
+	 * const results = const results = await api.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
+	 *
+	 * console.log(results);
+	 * ```
 	 */
 	public async getArtist(browseId: string): Promise<ArtistURL> {
 		if (!browseId.startsWith('UC')) {
