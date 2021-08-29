@@ -10,7 +10,8 @@
         "dev": "tsc --watch",
         "build": "tsc --build --clean && tsc",
         "lint": "eslint \"**/*.ts\" --quiet",
-        "doc": "npm run build && typedoc.cmd"
+        "doc": "typedoc.cmd",
+        "docbuild": "npm run build && npm run doc"
     },
     "repository": {
         "type": "git",
