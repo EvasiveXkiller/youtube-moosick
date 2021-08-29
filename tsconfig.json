@@ -45,7 +45,7 @@
 			"src/index.ts",
 			"src/enums.ts",
 			"src/parsers/index.ts",
-			"src/resources/generalTypes",
+			"src/resources/generalTypes/index.ts",
 		],
 		"out": "docs"
 	}
