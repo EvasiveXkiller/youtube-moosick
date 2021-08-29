@@ -183,6 +183,12 @@ export class MooSick extends AsyncConstructor {
 	 * Get search suggestions from Youtube Music
 	 * @param query - query String query text to search
 	 * @returns An object formatted with utils class
+	 *
+	 * Example
+	 * ```typescript
+	 * const suggestions = api.getSearchSuggestions("All We know");
+	 * console.log(suggestions);
+	 * ```
 	 */
 	public async getSearchSuggestions(query: string): Promise<SearchSuggestions[]> {
 		const res = await this.#createApiRequest(EndPoint.SUGGESTIONS, {
@@ -276,7 +282,7 @@ export class MooSick extends AsyncConstructor {
 	 * Example:
 	 * ```typescript
 	 * const api = await MooSick.new();
-	 * const results = const results = await api.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
+	 * const results = await api.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
 	 *
 	 * console.log(results);
 	 * ```
@@ -329,7 +335,7 @@ export class MooSick extends AsyncConstructor {
 	 * Example:
 	 * ```typescript
 	 * const api = await MooSick.new();
-	 * const results = const results = await api.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
+	 * const results = await api.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
 	 *
 	 * console.log(results);
 	 * ```

@@ -6,8 +6,8 @@ import { Album, Thumbnails, Artist, Song } from '../../resources/generalTypes/in
 import type { Results } from '../../resources/resultTypes/results.js';
 
 test('searchSong', async (t) => {
-	const api = await MooSick.new();
-	const { result } = await api.search('do what we like', Category.SONG) as Results;
+	const ytms = await MooSick.new();
+	const { result } = await ytms.search('do what we like', Category.SONG) as Results;
 
 	t.true(result instanceof Array, 'is array');
 

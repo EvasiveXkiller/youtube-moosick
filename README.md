@@ -1,35 +1,174 @@
 # Youtube-MooSick
 
-<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/EvasiveXkiller/youtube-moosick/rollup-build">
+<img alt="TypeScript Build Status" src="https://img.shields.io/github/workflow/status/EvasiveXkiller/youtube-moosick/tscBuild">
+<img alt="Latest Tag" src="https://img.shields.io/github/v/tag/EvasiveXkiller/youtube-moosick?label=Latest">
 
-> API? ¯\_(ツ)_/¯
+Unofficial YouTube Music Library, written in TypeScript.
 
 ```typescript
 import { MooSick } from "MooSick";
 
-const api = new MooSick.new();
+const ytmc = new MooSick.new();
 
 // Using Callbacks
-api.search("Never gonna give you up").then((results) => {
+ytmc.search("Never gonna give you up").then((results) => {
 	console.log(results);
 })
 
 // Using Async await 
-const results = await api.search("Never gonna give you up");
+const results = await ytmc.search("Never gonna give you up");
+console.log(results);
+```
+## Installation
+```shell
+npm install youtube-moosick
+```
+
+## API
+### ytmc.search(query, categoryName?, _pageLimit?)
+
+▸ **search**(`query`, `categoryName?`, `_pageLimit?`): `Promise`<`unknown`\>
+
+Searches for songs using the Youtube Music API
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `query` | `string` | `undefined` | String query text to search |
+| `categoryName?` | [`Category`](./docs/enums/enums.Category.md) | `undefined` | Type of category to search |
+| `_pageLimit` | `number` | `1` | Max pages to obtain |
+
+#### Returns
+
+`Promise`<`unknown`\>
+
+An object formatted by parsers.js
+
+See all available [return types](./docs/modules/resources_resultTypes.md)
+
+Example
+```typescript
+const api = await MooSick.new();
+
+// Get the general search results.
+const resultsGeneral = await api.search('Never gonna give you up');
+console.log(resultsGeneral)
+
+// Gets a specific category
+const resultsSong = await api.search('Never gonna give you up', Category.SONG);
+console.log(resultsSong)
+```
+
+### ytmc.getSearchSuggestions(query);
+
+▸ **getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](resources_resultTypes.SearchSuggestions.md)[]\>
+
+Get search suggestions from Youtube Music
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `query` | `string` | query String query text to search |
+
+#### Returns
+
+`Promise`<[`SearchSuggestions`](resources_resultTypes.SearchSuggestions.md)[]\>
+
+An object formatted with utils class
+
+Example
+```typescript
+const suggestions = ytmc.getSearchSuggestions("All We know");
+console.log(suggestions);
+```
+
+### ytmc.getAlbum(browseId)
+
+▸ **getAlbum**(`browseId`): `Promise`<[`AlbumURL`](resources_resultTypes.AlbumURL.md)\>
+
+Gets the album details
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `browseId` | `string` | The ID of the album, without `https` infront |
+
+#### Returns
+
+`Promise`<[`AlbumURL`](resources_resultTypes.AlbumURL.md)\>
+
+Album URL object
+
+Example:
+```typescript
+const ytmc = await MooSick.new();
+const results = await ytmc.getAlbum('MPREb_REsMMqBZjZB');
+
+console.log(results)
+```
+
+### ytmc.getArtist(browseId)
+
+▸ **getArtist**(`browseId`): `Promise`<[`ArtistURL`](resources_resultTypes.ArtistURL.md)\>
+
+Gets the artist details from Youtube Music
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `browseId` | `string` | The artist ID, sanitized |
+
+#### Returns
+
+`Promise`<[`ArtistURL`](resources_resultTypes.ArtistURL.md)\>
+
+An object formatted by the artist page
+
+Example:
+```typescript
+const ytmc = await MooSick.new();
+const results = await ytmc.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
+
 console.log(results);
 ```
 
+### ytmc.getPlaylist(browseId)
 
-## Information
-That's all we have for now...
+▸ **getPlaylist**(`browseId`, `contentLimit?`): `Promise`<[`PlaylistURL`](resources_resultTypes.PlaylistURL.md)\>
 
-Star the repo to stay in the loop
+Gets the playlist using the Youtube Music API
 
-## Docs
-Wait [docs](./docs/generated/index.md)?
+**`remarks`**
+FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
+I think i forgotten to change it, but i dont have faith on this system working,
+it relies on the old structure which i have modified
 
-## Contributors
+#### Parameters
 
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `browseId` | `string` | `undefined` | The playlist ID, sanitized |
+| `contentLimit` | `number` | `100` | Maximum content to get |
+
+#### Returns
+
+`Promise`<[`PlaylistURL`](resources_resultTypes.PlaylistURL.md)\>
+
+An object formatted by the parser
+
+Example:
+```typescript
+const api = await MooSick.new();
+const results = await api.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
+
+console.log(results);
+```
+
+## Authors
 - [EvasiveXkiller](https://github.com/EvasiveXkiller)
 
 - [Sxxov](https://github.com/Sxxov)
