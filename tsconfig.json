@@ -39,5 +39,14 @@
 		"outDir": "dist",
 		"declaration": true,
 		"declarationMap": true
+	},
+	"typedocOptions": {
+		"entryPoints": [
+			"src/index.ts",
+			"src/enums.ts",
+			"src/parsers/index.ts",
+			"src/resources/generalTypes",
+		],
+		"out": "docs"
 	}
 }
