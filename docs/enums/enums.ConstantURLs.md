@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[enums.ts:64](https://github.com/EvasiveXkiller/youtube-moosick/blob/7a28efb/src/enums.ts#L64)
+[enums.ts:64](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/enums.ts#L64)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[enums.ts:63](https://github.com/EvasiveXkiller/youtube-moosick/blob/7a28efb/src/enums.ts#L63)
+[enums.ts:63](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/enums.ts#L63)

@@ -38,7 +38,7 @@ Item.constructor
 
 #### Defined in
 
-[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/7a28efb/src/blocks/item.ts#L20)
+[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -48,7 +48,7 @@ Item.constructor
 
 #### Defined in
 
-[resources/resultTypes/results.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/7a28efb/src/resources/resultTypes/results.ts#L17)
+[resources/resultTypes/results.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/resources/resultTypes/results.ts#L17)
 
 ## Methods
 
@@ -78,4 +78,4 @@ Item.from
 
 #### Defined in
 
-[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/7a28efb/src/blocks/item.ts#L22)
+[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/blocks/item.ts#L22)

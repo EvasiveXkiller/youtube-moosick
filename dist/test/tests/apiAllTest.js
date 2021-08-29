@@ -1,57 +1,52 @@
 import test from 'tape';
 import { MooSick } from '../../index.js';
-import { WalkUtility } from '../../resources/utilities/walk.utility.js';
+import { EitherShape, WalkUtility } from '../../resources/utilities/walk.utility.js';
 import { Category } from '../../enums.js';
 import { Album, Thumbnails, Artist, Song } from '../../resources/generalTypes/index.js';
 test('searchSong', async (t) => {
     const ytms = await MooSick.new();
     const { result } = await ytms.search('do what we like', Category.SONG);
-    t.true(result instanceof Array, 'is array');
+    t.true(result instanceof Array, 'result is array');
     const expected = [
         Song.from({
-            name: '',
+            name: String(),
             artist: [
                 Artist.from({
-                    browseId: '',
-                    name: '',
-                    url: '',
+                    browseId: String(),
+                    name: String(),
+                    url: String(),
                 }),
             ],
-            playlistId: '',
+            playlistId: new EitherShape(['', undefined]),
             thumbnails: [
                 Thumbnails.from({
-                    height: 0,
-                    url: '',
-                    width: 0,
-                }),
-                Thumbnails.from({
-                    height: 0,
-                    url: '',
-                    width: 0,
+                    height: Number(),
+                    url: String(),
+                    width: Number(),
                 }),
             ],
-            videoId: '',
-            url: '',
-            duration: 0,
+            videoId: new EitherShape(['', undefined]),
+            url: String(),
+            duration: Number(),
             album: [
                 Album.from({
-                    browseId: '',
-                    name: '',
-                    url: '',
+                    browseId: String(),
+                    name: String(),
+                    url: String(),
                 }),
             ],
-            params: '',
+            params: String(),
             type: Category.SONG,
         }),
     ];
     t.true(WalkUtility
-        .walkAndCompareShape(result, expected), 'Search result has expected shape');
+        .walkAndAssertShape(result, expected), 'result has expected shape');
     t.true(WalkUtility
-        .walkAndCompareShape(result[0].artist, expected[0].artist), 'Search result\'s artist has expected shape');
+        .walkAndAssertShape(result[0].artist, expected[0].artist), 'result.artist has expected shape');
     t.true(WalkUtility
-        .walkAndCompareShape(result[0].thumbnails, expected[0].thumbnails), 'Search result\'s thumbnails has expected shape');
+        .walkAndAssertShape(result[0].thumbnails, expected[0].thumbnails), 'result.thumbnails has expected shape');
     t.true(WalkUtility
-        .walkAndCompareShape(result[0].album, expected[0].album), 'Search result\'s album has expected shape');
+        .walkAndAssertShape(result[0].album, expected[0].album), 'result.album has expected shape');
     t.end();
 });
 // test('searchGeneral', async (t) => {
