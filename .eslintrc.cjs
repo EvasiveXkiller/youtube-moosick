@@ -2,7 +2,6 @@ module.exports = {
 	extends: [
 		'plugin:import/recommended',
 		'plugin:import/typescript',
-		'plugin:@typescript-eslint/recommended',
 		'xo',
 		'xo-typescript',
 	],
