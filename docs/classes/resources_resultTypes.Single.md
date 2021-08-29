@@ -42,7 +42,7 @@ Item.constructor
 
 #### Defined in
 
-[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/blocks/item.ts#L20)
+[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -52,7 +52,7 @@ Item.constructor
 
 #### Defined in
 
-[resources/resultTypes/artistURL.ts:34](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/resources/resultTypes/artistURL.ts#L34)
+[resources/resultTypes/artistURL.ts:34](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/artistURL.ts#L34)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/artistURL.ts:33](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/resources/resultTypes/artistURL.ts#L33)
+[resources/resultTypes/artistURL.ts:33](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/artistURL.ts#L33)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/artistURL.ts:36](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/resources/resultTypes/artistURL.ts#L36)
+[resources/resultTypes/artistURL.ts:36](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/artistURL.ts#L36)
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/artistURL.ts:32](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/resources/resultTypes/artistURL.ts#L32)
+[resources/resultTypes/artistURL.ts:32](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/artistURL.ts#L32)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/artistURL.ts:35](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/resources/resultTypes/artistURL.ts#L35)
+[resources/resultTypes/artistURL.ts:35](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/artistURL.ts#L35)
 
 ## Methods
 
@@ -122,4 +122,4 @@ Item.from
 
 #### Defined in
 
-[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/blocks/item.ts#L22)
+[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/blocks/item.ts#L22)

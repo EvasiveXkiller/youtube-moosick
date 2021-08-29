@@ -44,7 +44,7 @@ Item.constructor
 
 #### Defined in
 
-[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/blocks/item.ts#L20)
+[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -58,7 +58,7 @@ ThumbnailElement.height
 
 #### Defined in
 
-[resources/generalTypes/thumbnails.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/resources/generalTypes/thumbnails.ts#L7)
+[resources/generalTypes/thumbnails.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/generalTypes/thumbnails.ts#L7)
 
 ___
 
@@ -72,7 +72,7 @@ ThumbnailElement.url
 
 #### Defined in
 
-[resources/generalTypes/thumbnails.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/resources/generalTypes/thumbnails.ts#L5)
+[resources/generalTypes/thumbnails.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/generalTypes/thumbnails.ts#L5)
 
 ___
 
@@ -86,7 +86,7 @@ ThumbnailElement.width
 
 #### Defined in
 
-[resources/generalTypes/thumbnails.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/resources/generalTypes/thumbnails.ts#L6)
+[resources/generalTypes/thumbnails.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/generalTypes/thumbnails.ts#L6)
 
 ## Methods
 
@@ -116,4 +116,4 @@ Item.from
 
 #### Defined in
 
-[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/blocks/item.ts#L22)
+[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/blocks/item.ts#L22)
