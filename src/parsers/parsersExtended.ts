@@ -6,7 +6,7 @@ import { utils } from '../utils.js';
 import { IllegalArgumentError } from '../resources/errors/index.js';
 import type { Video } from '../resources/generalTypes/video.js';
 import type { Song } from '../resources/generalTypes/song.js';
-import type { Run } from '../resources/rawResultTypes/common.js';
+import type { Run } from '../resources/etc/rawResultTypes/common.js';
 import type { Playlist } from '../resources/generalTypes/playlist.js';
 import type { Thumbnails } from '../resources/generalTypes/thumbnails.js';
 

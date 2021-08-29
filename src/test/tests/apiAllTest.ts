@@ -2,11 +2,8 @@ import test from 'tape';
 import { MooSick } from '../../index.js';
 import { WalkUtility } from '../../resources/utilities/walk.utility.js';
 import { Category } from '../../enums.js';
-import { Song } from '../../resources/generalTypes/song.js';
+import { Album, Thumbnails, Artist, Song } from '../../resources/generalTypes/index.js';
 import type { Results } from '../../resources/resultTypes/results.js';
-import { Artist } from '../../resources/generalTypes/artist.js';
-import { Thumbnails } from '../../resources/generalTypes/thumbnails.js';
-import { Album } from '../../resources/generalTypes/album.js';
 
 test('searchSong', async (t) => {
 	const api = await MooSick.new();

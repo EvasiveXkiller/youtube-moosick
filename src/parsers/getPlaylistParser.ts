@@ -1,9 +1,9 @@
 import { $, $$ } from '../resources/utilities/objectScan.utility.js';
 import { ParsersExtended } from './parsersExtended.js';
 import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL.js';
-import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/rawResultTypes/rawGetSongURL.js';
-import type { MusicDetailHeaderRenderer } from '../resources/rawResultTypes/rawGetPlaylistURL.js';
-import type { Run } from '../resources/rawResultTypes/common.js';
+import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/etc/rawResultTypes/rawGetSongURL.js';
+import type { MusicDetailHeaderRenderer } from '../resources/etc/rawResultTypes/rawGetPlaylistURL.js';
+import type { Run } from '../resources/etc/rawResultTypes/common.js';
 import { FlexColumnOffset } from '../enums.js';
 
 /**

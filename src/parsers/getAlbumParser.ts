@@ -3,7 +3,7 @@ import { AlbumURL, ReleaseDate, Track } from '../resources/resultTypes/albumURL.
 import { ConstantURLs } from '../enums.js';
 import { ArtistExtended } from '../resources/generalTypes/artist.js';
 import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
-import type { ThumbnailElement } from '../resources/rawResultTypes/common.js';
+import type { ThumbnailElement } from '../resources/etc/rawResultTypes/common.js';
 import type {
 	MusicAlbumRelease,
 	MusicAlbumReleaseDetail,
@@ -11,7 +11,7 @@ import type {
 	MusicTrack,
 	AlbumURLFullResult,
 	ThumbnailDetails,
-} from '../resources/rawResultTypes/rawGetAlbumURL.js';
+} from '../resources/etc/rawResultTypes/rawGetAlbumURL.js';
 
 export class GetAlbumParser {
 	public static parseAlbumURLPage(context: AlbumURLFullResult): AlbumURL {

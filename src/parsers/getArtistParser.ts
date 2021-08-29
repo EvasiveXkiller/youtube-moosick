@@ -3,14 +3,13 @@ import { Thumbnails } from '../resources/generalTypes/thumbnails.js';
 import { Artist } from '../resources/generalTypes/artist.js';
 import { ConstantURLs, FlexColumnOffset, FlexSecondRowOffset } from '../enums.js';
 import { Albums, ArtistContent, ArtistHeader, ArtistURL, Single, Videos } from '../resources/resultTypes/artistURL.js';
-import type { MusicThumbnailRenderer } from '../resources/rawResultTypes/common.js';
+import type { MusicThumbnailRenderer } from '../resources/etc/rawResultTypes/common.js';
 import type {
 	ArtistURLFullResult,
 	MusicDescriptionShelfRenderer,
 	MusicTwoRowItemRenderer,
 	MusicCarouselShelfRenderer, SubtitleRun,
-} from '../resources/rawResultTypes/rawGetArtistURL.js';
-
+} from '../resources/etc/rawResultTypes/rawGetArtistURL.js';
 
 export class GetArtistParser {
 	public static parseArtistURLPage(context: ArtistURLFullResult): ArtistURL {
