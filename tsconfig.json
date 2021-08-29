@@ -44,10 +44,8 @@
 		"entryPoints": [
 			"src/index.ts",
 			"src/enums.ts",
-			"src/parsers/index.ts",
 			"src/resources/resultTypes/index.ts",
 			"src/resources/generalTypes/index.ts",
-			"src/resources/errors/index.ts",
 		],
 		"out": "docs"
 	}
