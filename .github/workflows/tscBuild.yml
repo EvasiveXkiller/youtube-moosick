@@ -10,7 +10,7 @@ on:
   
 jobs:
   rollup-build:
-    name: Builds `dist`
+    name: Builds `dist` and generate `docs`
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '🔨 @ ')"
     steps:
@@ -21,16 +21,23 @@ jobs:
         with:
           node-version: 16.x
       # npm install stuff
-      - name: npm install and build
+      - name: Install all dependencies
         run: |
           npm install
+      # TypeScript Build
+      - name : TypeScript Build
+        run: |
           npm run-script build
+      # TypeScript Build
+      - name : Generate Docs
+        run: |
+          npm run-script doc
       # Set date and time of builds
       - name: Get current date and time
         id: date
         run: echo "::set-output name=date::🔨 @ $(date +'%Y-%m-%dT%H:%M:%S')"
       # Commit the stuff?
-      - name: GitHub Commit & Push
+      - name: GitHub Commit & Push, If there is stuff to commit
         uses: actions-js/push@v1.3
         with:
           github_token: ${{ secrets.BUILD_TOKEN }}
