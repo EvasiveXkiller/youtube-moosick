@@ -3,12 +3,14 @@
     "version": "0.0.1",
     "description": "Unofficial Youtube music API, fully written in TypeScript",
     "main": "./dist/index.js",
+    "typings": "./dist/index.d.ts",
     "type": "module",
     "scripts": {
         "test": "node --require @nextools/suppress-experimental-warnings --experimental-json-modules dist/test/index",
         "dev": "tsc --watch",
         "build": "tsc --build --clean && tsc",
-        "lint": "eslint \"**/*.ts\" --quiet"
+        "lint": "eslint \"**/*.ts\" --quiet",
+        "doc": "npm run build && typedoc.cmd --out .\\docs\\ --entryPoints .\\src\\index.ts"
     },
     "repository": {
         "type": "git",
@@ -38,7 +40,6 @@
     },
     "homepage": "https://github.com/EvasiveXkiller/youtube-moosick#readme",
     "devDependencies": {
-        "@microsoft/api-extractor": "^7.18.7",
         "@nextools/suppress-experimental-warnings": "^0.1.0",
         "@types/glob": "^7.1.4",
         "@types/tape": "^4.13.2",
@@ -52,6 +53,8 @@
         "eslint-plugin-tsdoc": "^0.2.14",
         "glob": "^7.1.7",
         "tape": "^5.3.1",
+        "typedoc": "^0.21.8",
+        "typedoc-plugin-markdown": "^3.10.4",
         "typescript": "^4.3.5"
     },
     "dependencies": {

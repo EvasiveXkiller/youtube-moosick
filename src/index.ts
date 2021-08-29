@@ -18,16 +18,32 @@ import type { GeneralFull } from './resources/rawResultTypes/general/generalFull
 import type { Result } from './resources/rawResultTypes/common.js';
 import type { YtCfgMain } from './cfgInterface.js';
 import type { AlbumURL } from './resources/resultTypes/albumURL.js';
+import type { PlaylistURL } from './resources/resultTypes/playlistURL.js';
+import type { ArtistURL } from './resources/resultTypes/artistURL.js';
 
 axios.defaults.adapter = axios0;
+
 // you found a kitten, please collect it
 
+/**
+ * Main class to interact with methods
+ *
+ * @public
+ */
 export class MooSick extends AsyncConstructor {
 	private client!: AxiosInstance;
 	private cookies!: tough.CookieJar;
-
 	private config!: YtCfgMain;
 
+	/**
+	 * Creates a new instance of the searcher.
+	 *
+	 * @remarks
+	 * Required to construct along with the class.
+	 * @returns Adds with the original constructor
+	 *
+	 * @beta
+	 */
 	private async new() {
 		this.cookies = new tough.CookieJar();
 		this.client = axios.create({
@@ -41,7 +57,7 @@ export class MooSick extends AsyncConstructor {
 
 		this.client.interceptors.request.use((req) => {
 			if (!req.baseURL
-                || !req.headers) {
+				|| !req.headers) {
 				throw new IllegalStateError('Incomplete `req`');
 			}
 
@@ -56,7 +72,7 @@ export class MooSick extends AsyncConstructor {
 
 		this.client.interceptors.response.use((res) => {
 			if (!res.config?.baseURL
-                || (typeof res.headers !== 'object')) {
+				|| (typeof res.headers !== 'object')) {
 				throw new IllegalStateError('Incomplete `req`');
 			}
 
@@ -90,12 +106,23 @@ export class MooSick extends AsyncConstructor {
 		return this;
 	}
 
+	/**
+	 * I have no idea what this method is supposed to do
+	 * @returns something?
+	 * @internal
+	 */
 	public static override async new<T = MooSick>(): Promise<T> {
 		void super.new();
 
 		return new MooSick().new() as unknown as Promise<T>;
 	}
 
+	/**
+	 * Sets the cookie that is called from the new method
+	 * @param cookieString - Cookie string
+	 * @param baseURL - The base URL of that the cookie should be applied
+	 * @internal
+	 */
 	private parseAndSetCookie(cookieString: string, baseURL: string) {
 		const cookie = tough.Cookie.parse(cookieString);
 
@@ -109,20 +136,27 @@ export class MooSick extends AsyncConstructor {
 		);
 	}
 
-	// Soonner or later destructure functions into individual files
-
-	// TODO: probably define each api req's input vars & input queries,
-	// then make this func generic so it's type safe
-	async #createApiRequest(endpointName: EndPoint, inputVariables = {}, inputQuery = {}) {
+	/**
+	 * Creates a new api request to the specified endpoint.
+	 * @param endpointName - The endpoint name?
+	 * @param inputVariables - Any variable?
+	 * @param inputQuery - Any queries?
+	 * @returns The result of the endpoint reply
+	 * @remarks
+	 * 	Soonner or later destructure functions into individual files
+	 *
+	 *	TODO: probably define each api req's input vars & input queries,
+	 *  then make this func generic so it's type safe
+	 * @internal
+	 */
+	async #createApiRequest(endpointName: EndPoint, inputVariables = {}, inputQuery = {}): Promise<Result> {
 		const res = await this.client.post<any, AxiosResponse<Result>>(
 			`youtubei/${
 				this.config.INNERTUBE_API_VERSION
 			}/${
 				endpointName
 			}?${
-				// eslint is drunk
-				// eslint-disable-next-line
-                new URLSearchParams({
+				new URLSearchParams({
 					alt: 'json',
 					key: this.config.INNERTUBE_API_KEY,
 					...inputQuery,
@@ -155,10 +189,10 @@ export class MooSick extends AsyncConstructor {
 	}
 
 	/**
-     * Get search suggestions from Youtube Music
-     * @param query String query text to search
-     * @returns An object formatted with utils class
-     */
+	 * Get search suggestions from Youtube Music
+	 * @param query - query String query text to search
+	 * @returns An object formatted with utils class
+	 */
 	public async getSearchSuggestions(query: string): Promise<SearchSuggestions[]> {
 		const res = await this.#createApiRequest(EndPoint.SUGGESTIONS, {
 			input: query,
@@ -184,12 +218,12 @@ export class MooSick extends AsyncConstructor {
 	}
 
 	/**
-     * Searches for songs using the Youtube Music API
-     * @param query String query text to search
-     * @param categoryName Type of category to search
-     * @param _pageLimit Max pages to obtain
-     * @returns An object formatted by parsers.js
-     */
+	 * Searches for songs using the Youtube Music API
+	 * @param query - String query text to search
+	 * @param categoryName - Type of category to search
+	 * @param _pageLimit - Max pages to obtain
+	 * @returns An object formatted by parsers.js
+	 */
 	async search(query: string, categoryName?: Category, _pageLimit = 1): Promise<unknown> {
 		const URI = categoryName ? utils.mapCategoryToURL(categoryName) : '';
 		const ctx = await this.#createApiRequest(
@@ -205,7 +239,8 @@ export class MooSick extends AsyncConstructor {
 
 	/**
 	 * Gets the album details
-	 * @param browseId The Id of the album, without the https nonsense
+	 * @param browseId - The ID of the album, without `https` infront
+	 * @returns Album URL object
 	 */
 	async getAlbum(browseId: string): Promise<AlbumURL> {
 		if (!browseId.startsWith('MPREb')) {
@@ -221,12 +256,17 @@ export class MooSick extends AsyncConstructor {
 	}
 
 	/**
-     * Gets the playlist using the Youtube Music API
-     * @param browseId The playlist ID, sanitized
-     * @param contentLimit Maximum content to get
-     * @returns An object formatted by the parser
-     */
-	public async getPlaylist(browseId: string, contentLimit = 100) {
+	 * Gets the playlist using the Youtube Music API
+	 * @param browseId - The playlist ID, sanitized
+	 * @param contentLimit - Maximum content to get
+	 * @returns An object formatted by the parser
+	 *
+	 * @remarks
+	 * FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
+	 * I think i forgotten to change it, but i dont have faith on this system working,
+	 * it relies on the old structure which i have modified
+	 */
+	public async getPlaylist(browseId: string, contentLimit = 100): Promise<PlaylistURL> {
 		if (!browseId.startsWith('VL')
 			&& !browseId.startsWith('PL')) {
 			throw new IllegalArgumentError('Playlist browse IDs must start with "VL" or "PL"', 'browseId');
@@ -240,7 +280,7 @@ export class MooSick extends AsyncConstructor {
 		const result = GetPlaylistParser.parsePlaylistURL(ctx);
 
 		while (contentLimit > result.playlistContents.length
-				&& result.continuation) {
+		&& result.continuation) {
 			const { continuation, clickTrackingParams } = result.continuation;
 
 			const ctx = this.#createApiRequest(EndPoint.BROWSE, {}, {
@@ -250,9 +290,6 @@ export class MooSick extends AsyncConstructor {
 			});
 			const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
 
-			// FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
-			// I think i forgotten to change it, but i dont have faith on this system working,
-			// it relies on the old structure which i have modified
 			if (!Array.isArray(continuationResult.playlistContents)) {
 				throw new IllegalStateError('Browse API responded with non-array `playlistContents`');
 			}
@@ -265,11 +302,11 @@ export class MooSick extends AsyncConstructor {
 	}
 
 	/**
-     * Gets the artist details from Youtube Music
-     * @param browseId The artist ID, sanitized
-     * @returns An object formatted by the artist page
-     */
-	public async getArtist(browseId: string) {
+	 * Gets the artist details from Youtube Music
+	 * @param browseId - The artist ID, sanitized
+	 * @returns An object formatted by the artist page
+	 */
+	public async getArtist(browseId: string): Promise<ArtistURL> {
 		if (!browseId.startsWith('UC')) {
 			throw new IllegalArgumentError('Artist browse IDs must start with "UC"', 'browseId');
 		}

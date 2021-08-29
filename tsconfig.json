@@ -38,5 +38,6 @@
 		"noImplicitOverride": true,
 		"outDir": "dist",
 		"declaration": true,
+		"declarationMap": true
 	}
 }

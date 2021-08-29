@@ -1,3 +1,5 @@
+youtube-moosick / [Exports](modules.md)
+
 # Youtube-MooSick
 
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/EvasiveXkiller/youtube-moosick/rollup-build">
@@ -18,7 +20,6 @@ api.search("Never gonna give you up").then((results) => {
 const results = await api.search("Never gonna give you up");
 console.log(results);
 ```
-
 
 ## Information
 That's all we have for now...
