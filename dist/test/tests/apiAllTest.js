@@ -17,7 +17,7 @@ test('searchSong', async (t) => {
                     url: String(),
                 }),
             ],
-            playlistId: new EitherShape(['', undefined]),
+            playlistId: new EitherShape([String(), undefined]),
             thumbnails: [
                 Thumbnails.from({
                     height: Number(),
@@ -25,7 +25,7 @@ test('searchSong', async (t) => {
                     width: Number(),
                 }),
             ],
-            videoId: new EitherShape(['', undefined]),
+            videoId: new EitherShape([String(), undefined]),
             url: String(),
             duration: Number(),
             album: [

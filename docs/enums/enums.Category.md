@@ -26,7 +26,7 @@ Category Album
 
 #### Defined in
 
-[enums.ts:35](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/enums.ts#L35)
+[enums.ts:35](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/enums.ts#L35)
 
 ___
 
@@ -38,7 +38,7 @@ Category Artist
 
 #### Defined in
 
-[enums.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/enums.ts#L39)
+[enums.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/enums.ts#L39)
 
 ___
 
@@ -50,7 +50,7 @@ Category Ep
 
 #### Defined in
 
-[enums.ts:47](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/enums.ts#L47)
+[enums.ts:47](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/enums.ts#L47)
 
 ___
 
@@ -62,7 +62,7 @@ Category Playlist
 
 #### Defined in
 
-[enums.ts:43](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/enums.ts#L43)
+[enums.ts:43](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/enums.ts#L43)
 
 ___
 
@@ -74,7 +74,7 @@ Category Single
 
 #### Defined in
 
-[enums.ts:51](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/enums.ts#L51)
+[enums.ts:51](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/enums.ts#L51)
 
 ___
 
@@ -86,7 +86,7 @@ Category Song
 
 #### Defined in
 
-[enums.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/enums.ts#L27)
+[enums.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/enums.ts#L27)
 
 ___
 
@@ -98,4 +98,4 @@ Category Video
 
 #### Defined in
 
-[enums.ts:31](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f2abd0/src/enums.ts#L31)
+[enums.ts:31](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/enums.ts#L31)
