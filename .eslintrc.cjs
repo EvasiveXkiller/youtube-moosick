@@ -41,6 +41,11 @@ module.exports = {
 				ignorePackages: true,
 			}
 		],
-		'tsdoc/syntax': 'warn'
+		'tsdoc/syntax': ['warn'],
+		'@typescript-eslint/dot-notation': ['error', {
+			allowPrivateClassPropertyAccess: true,
+			allowProtectedClassPropertyAccess: true,
+			allowIndexSignaturePropertyAccess: true,
+		}],
 	},
 };
