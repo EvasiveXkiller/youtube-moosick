@@ -12,6 +12,7 @@ for (let i = 2, l = process.argv.length; i < l; ++i) {
         case arg.startsWith('--'):
             unprefixedArg = arg.substr(2);
             break;
+        case arg.length === 2 && arg.startsWith('-'):
         case arg.startsWith('/'):
             unprefixedArg = arg.substr(1);
             break;

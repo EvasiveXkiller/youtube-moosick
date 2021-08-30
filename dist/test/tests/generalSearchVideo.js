@@ -7,4 +7,4 @@ test('GeneralParserVideo', async (t) => {
     // console.log(results);
     t.end();
 });
-//# sourceMappingURL=generalSearchArtistVideo.js.map
+//# sourceMappingURL=generalSearchVideo.js.map

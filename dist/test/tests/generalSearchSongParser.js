@@ -4,7 +4,7 @@ import generalSearchSong from '../dummy/general/generalSearchSong.json';
 import { Category } from '../../enums.js';
 test('GeneralParserSong', async (t) => {
     const results = GeneralParser.parseSearchResult(generalSearchSong, Category.SONG);
-    console.log(results);
+    // console.log(results);
     t.end();
 });
 //# sourceMappingURL=generalSearchSongParser.js.map

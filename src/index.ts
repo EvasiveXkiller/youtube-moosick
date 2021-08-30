@@ -235,7 +235,7 @@ export class MooSick extends AsyncConstructor {
 	 * ```
 	 */
 	async search(query: string, categoryName?: Category, _pageLimit = 1): Promise<unknown> {
-		const URI = categoryName ? utils.mapCategoryToURL(categoryName) : '';
+		const URI = categoryName ? `Eg-KAQwIA${utils.mapCategoryToURL(categoryName)}MABqChAEEAMQCRAFEAo%3D` : '';
 		const ctx = await this.#createApiRequest(
 			EndPoint.SEARCH,
 			{

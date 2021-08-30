@@ -1,6 +1,6 @@
 import test from 'tape';
 import { MooSick } from '../../index.js';
-import { EitherShape, WalkUtility } from '../../resources/utilities/walk.utility.js';
+import { WalkUtility } from '../../resources/utilities/walk.utility.js';
 import { Category } from '../../enums.js';
 import { Album, Thumbnails, Artist, Song } from '../../resources/generalTypes/index.js';
 test('searchSong', async (t) => {
@@ -17,7 +17,7 @@ test('searchSong', async (t) => {
                     url: String(),
                 }),
             ],
-            playlistId: new EitherShape([String(), undefined]),
+            playlistId: String(),
             thumbnails: [
                 Thumbnails.from({
                     height: Number(),
@@ -25,7 +25,7 @@ test('searchSong', async (t) => {
                     width: Number(),
                 }),
             ],
-            videoId: new EitherShape([String(), undefined]),
+            videoId: String(),
             url: String(),
             duration: Number(),
             album: [

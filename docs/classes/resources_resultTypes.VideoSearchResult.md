@@ -44,7 +44,7 @@ Item.constructor
 
 #### Defined in
 
-[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/blocks/item.ts#L20)
+[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/31f8a35/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -54,7 +54,7 @@ Item.constructor
 
 #### Defined in
 
-[resources/resultTypes/searchResults.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/searchResults.ts#L27)
+[resources/resultTypes/searchResults.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/31f8a35/src/resources/resultTypes/searchResults.ts#L27)
 
 ___
 
@@ -64,7 +64,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/searchResults.ts:29](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/searchResults.ts#L29)
+[resources/resultTypes/searchResults.ts:29](https://github.com/EvasiveXkiller/youtube-moosick/blob/31f8a35/src/resources/resultTypes/searchResults.ts#L29)
 
 ___
 
@@ -74,7 +74,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/searchResults.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/searchResults.ts#L24)
+[resources/resultTypes/searchResults.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/31f8a35/src/resources/resultTypes/searchResults.ts#L24)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/searchResults.ts:23](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/searchResults.ts#L23)
+[resources/resultTypes/searchResults.ts:23](https://github.com/EvasiveXkiller/youtube-moosick/blob/31f8a35/src/resources/resultTypes/searchResults.ts#L23)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/searchResults.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/searchResults.ts#L26)
+[resources/resultTypes/searchResults.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/31f8a35/src/resources/resultTypes/searchResults.ts#L26)
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/searchResults.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/searchResults.ts#L25)
+[resources/resultTypes/searchResults.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/31f8a35/src/resources/resultTypes/searchResults.ts#L25)
 
 ___
 
@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-[resources/resultTypes/searchResults.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/resources/resultTypes/searchResults.ts#L28)
+[resources/resultTypes/searchResults.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/31f8a35/src/resources/resultTypes/searchResults.ts#L28)
 
 ## Methods
 
@@ -144,4 +144,4 @@ Item.from
 
 #### Defined in
 
-[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/blocks/item.ts#L22)
+[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/31f8a35/src/blocks/item.ts#L22)
