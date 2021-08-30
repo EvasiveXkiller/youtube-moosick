@@ -11,7 +11,6 @@ import {
 	AlbumExtended,
 	ArtistExtended, Video,
 } from '../../resources/generalTypes/index.js';
-import type { Results } from '../../resources/resultTypes/results.js';
 
 // FIXME: What is the best way to do this, i have no idea how to write like tests for this
 // test('searchGeneral', async (t) => {
@@ -112,7 +111,7 @@ import type { Results } from '../../resources/resultTypes/results.js';
 
 test('searchSong', async (t) => {
 	const ytms = await MooSick.new();
-	const { result } = await ytms.search('do what we like', Category.SONG) as Results;
+	const result = await ytms.search<Category.SONG>('do what we like', Category.SONG);
 
 	t.true(result instanceof Array, 'search Song result is array');
 
@@ -152,45 +151,21 @@ test('searchSong', async (t) => {
 	t.true(
 		WalkUtility
 			.walkAndAssertShape(
-				result!,
+				result as Song[],
 				expected,
 			),
-		'SongSearchresult has expected shape',
+		'result has expected shape',
 	);
 
-	t.true(
-		WalkUtility
-			.walkAndAssertShape(
-				(result![0]! as Song).artist,
-				expected[0].artist,
-			),
-		'SongSearchresult artist has expected shape',
-	);
-
-	t.true(
-		WalkUtility
-			.walkAndAssertShape(
-				(result![0]! as Song).thumbnails,
-				expected[0].thumbnails,
-			),
-		'SongSearchresult thumbnails has expected shape',
-	);
-
-	t.true(
-		WalkUtility
-			.walkAndAssertShape(
-				(result![0]! as Song).album,
-				expected[0].album,
-			),
-		'SongSearchresult album has expected shape',
-	);
+	const loaded = await result.loadUntil();
+	console.log(loaded);
 
 	t.end();
 });
 
 test('searchAlbum', async (t) => {
 	const ytms = await MooSick.new();
-	const { result } = await ytms.search('All We Know', Category.ALBUM) as Results;
+	const result = await ytms.search('All We Know', Category.ALBUM);
 
 	t.true(result instanceof Array, 'searchAlbumResult is array');
 
@@ -221,37 +196,21 @@ test('searchAlbum', async (t) => {
 	t.true(
 		WalkUtility
 			.walkAndAssertShape(
-				result!,
+				result as Album[],
 				expected,
 			),
-		'SearchAlbumResult has expected shape',
+		'result has expected shape',
 	);
 
-	t.true(
-		WalkUtility
-			.walkAndAssertShape(
-				(result![0]! as AlbumExtended).thumbnails,
-				expected[0].thumbnails,
-			),
-		'SearchAlbumResult thumbnails has expected shape',
-	);
-
-	// FIXME: I HAVE NO IDEA WHAT TO DO HERE
-	// t.true(
-	// 	WalkUtility
-	// 		.walkAndAssertShape(
-	// 			(result![0]! as AlbumExtended).artist,
-	// 			expected[0].artist,
-	// 		),
-	// 	'result.artist has expected shape',
-	// );
+	const loaded = await result.loadUntil();
+	console.log(loaded);
 
 	t.end();
 });
 
 test('searchArtist', async (t) => {
 	const ytms = await MooSick.new();
-	const { result } = await ytms.search('All We Know', Category.ARTIST) as Results;
+	const result = await ytms.search('All We Know', Category.ARTIST);
 
 	t.true(result instanceof Array, 'result is array');
 
@@ -274,27 +233,21 @@ test('searchArtist', async (t) => {
 	t.true(
 		WalkUtility
 			.walkAndAssertShape(
-				result!,
+				result as ArtistExtended[],
 				expected,
 			),
 		'result has expected shape',
 	);
 
-	t.true(
-		WalkUtility
-			.walkAndAssertShape(
-				(result![0]! as AlbumExtended).thumbnails,
-				expected[0].thumbnails,
-			),
-		'result.thumbnails has expected shape',
-	);
+	const loaded = await result.loadUntil();
+	console.log(loaded);
 
 	t.end();
 });
 
 test('searchPlaylist', async (t) => {
 	const ytms = await MooSick.new();
-	const { result } = await ytms.search('All We Know', Category.PLAYLIST) as Results;
+	const result = await ytms.search('All We Know', Category.PLAYLIST);
 
 	t.true(result instanceof Array, 'searchPlaylist is array');
 
@@ -316,27 +269,21 @@ test('searchPlaylist', async (t) => {
 	t.true(
 		WalkUtility
 			.walkAndAssertShape(
-				result!,
+				result as Playlist[],
 				expected,
 			),
-		'searchPlaylist has expected shape',
+		'result has expected shape',
 	);
 
-	t.true(
-		WalkUtility
-			.walkAndAssertShape(
-				(result![0]! as Playlist).author,
-				expected[0].author,
-			),
-		'searchPlaylist result.author has expected shape',
-	);
+	const loaded = await result.loadUntil();
+	console.log(loaded);
 
 	t.end();
 });
 
 test('searchVideo', async (t) => {
 	const ytms = await MooSick.new();
-	const { result } = await ytms.search('All We Know', Category.VIDEO) as Results;
+	const result = await ytms.search('All We Know', Category.VIDEO);
 
 	t.true(result instanceof Array, 'searchVideo is array');
 
@@ -367,29 +314,14 @@ test('searchVideo', async (t) => {
 	t.true(
 		WalkUtility
 			.walkAndAssertShape(
-				result!,
+				result as Video[],
 				expected,
 			),
 		'searchVideo has expected shape',
 	);
 
-	t.true(
-		WalkUtility
-			.walkAndAssertShape(
-				(result![0]! as Video).author,
-				expected[0].author,
-			),
-		'searchVideo result.author has expected shape',
-	);
-
-	// t.true(
-	// 	WalkUtility
-	// 		.walkAndAssertShape(
-	// 			(result![0]! as Video).thumbnails,
-	// 			expected[0].thumbnails,
-	// 		),
-	// 	'searchVideo result.thumbnails has expected shape',
-	// );
+	const loaded = await result.loadUntil();
+	console.log(loaded);
 
 	t.end();
 });
