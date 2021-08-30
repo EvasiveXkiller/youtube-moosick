@@ -60,9 +60,10 @@ export class ContinuableResult extends Array {
         const result = this.parser(ctx);
         // FIXME: up until point i can gurantee it works
         console.log(result);
+        // this is required since the clickTrackingParams changes as it gets more data
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
-        this.continuation = result.continuation;
+        this.continuation = result.continuation; // probably im doing wrong here but i have no idea what im doing after all
         return result;
         // FIXME: I have no idea how this works
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
