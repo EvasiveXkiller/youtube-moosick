@@ -39,9 +39,14 @@
 			"outFiles": [
 				"${workspaceFolder}/dist/**/*.js"
 			],
+			"runtimeArgs": [
+				"--require",
+				"@nextools/suppress-experimental-warnings",
+				"--experimental-json-modules",
+			],
 			"args": [
 				"/t",
-				"${input:testArgs}",
+				"${fileBasenameNoExtension}",
 				"/k"
 			]
 		}
