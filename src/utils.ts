@@ -111,11 +111,11 @@ export class utils {
 		};
 	}
 
-	static buildEndpointContext(typeName: string, browseId: string) {
+	static buildEndpointContext(browseId: string, category: Category) {
 		return {
 			browseEndpointContextSupportedConfigs: {
 				browseEndpointContextMusicConfig: {
-					pageType: `MUSIC_PAGE_TYPE_${typeName.toUpperCase()}`,
+					pageType: `MUSIC_PAGE_TYPE_${category.toUpperCase()}`,
 				},
 			},
 			browseId,
