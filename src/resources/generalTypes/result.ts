@@ -89,13 +89,15 @@ export class ContinuableResult<T extends Item, V = T> extends Array {
 
 		const { continuation, clickTrackingParams } = this.continuation;
 
-		const ctx = await this.ctx['createApiRequest'](EndPoint.BROWSE, {}, {
+		const ctx = await this.ctx['createApiRequest'](EndPoint.SEARCH, {}, {
 			ctoken: continuation,
 			continuation,
 			itct: clickTrackingParams,
 		});
 
+		console.log(ctx);
 		const result = this.parser(ctx);
+
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 		const content = this.getContent(result);
 
