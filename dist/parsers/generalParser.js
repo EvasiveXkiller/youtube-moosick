@@ -23,8 +23,11 @@ export class GeneralParser {
         const playlists = [];
         const artist = [];
         const songs = [];
-        const continuation = searchType ? $$('.nextContinuationData')(context)[0] : undefined;
-        const musicShelf = $$('.musicShelfRenderer')(context);
+        const continuationMode = $$('.musicShelfContinuation')(context);
+        const continuation = searchType || continuationMode ? $$('.nextContinuationData')(context)[0] : undefined;
+        const musicShelf = $$('.musicShelfRenderer')(context).length === 0
+            ? continuationMode
+            : $$('.musicShelfRenderer')(context);
         for (const shelfItem of musicShelf) {
             const shelfContent = $$('.musicResponsiveListItemRenderer')(shelfItem);
             for (const item of shelfContent) {

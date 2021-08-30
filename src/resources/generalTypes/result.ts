@@ -95,19 +95,27 @@ export class ContinuableResult<T extends Item, V = T> extends Array {
 			itct: clickTrackingParams,
 		});
 
-		console.log(ctx);
 		const result = this.parser(ctx);
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		const content = this.getContent(result);
-
-		if (this.isDone ? this.isDone(content) : content == null) {
-			return null;
-		}
-
-		this.push(...content);
-
+		// FIXME: up until point i can gurantee it works
+		console.log(result);
+		// this is required since the clickTrackingParams changes as it gets more data
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-expect-error
+		this.continuation = result.continuation as NextContinuationData; // probably im doing wrong here but i have no idea what im doing after all
 		return result;
+
+		// FIXME: I have no idea how this works
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+		// const content = this.getContent(result);
+
+		// if (this.isDone ? this.isDone(content) : content == null) {
+		// 	return null;
+		// }
+		//
+		// this.push(...content);
+		//
+		// return result;
 	}
 
 	public async loadUntil(length = Infinity) {

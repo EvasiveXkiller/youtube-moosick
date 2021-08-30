@@ -48,8 +48,11 @@ export class GeneralParser {
 		const playlists: Playlist[] = [];
 		const artist: ArtistExtended[] = [];
 		const songs: Song[] = [];
-		const continuation = searchType ? ($$('.nextContinuationData')(context) as NextContinuationData[])[0] : undefined;
-		const musicShelf = $$('.musicShelfRenderer')(context) as MusicShelfRenderer[];
+		const continuationMode = $$('.musicShelfContinuation')(context) as any[];
+		const continuation = searchType || continuationMode ? ($$('.nextContinuationData')(context) as NextContinuationData[])[0] : undefined;
+		const musicShelf = ($$('.musicShelfRenderer')(context) as MusicShelfRenderer[]).length === 0
+			? continuationMode
+			: ($$('.musicShelfRenderer')(context) as MusicShelfRenderer[]);
 		for (const shelfItem of musicShelf) {
 			const shelfContent = $$('.musicResponsiveListItemRenderer')(shelfItem) as MusicResponsiveListItemRenderer[];
 			for (const item of shelfContent) {

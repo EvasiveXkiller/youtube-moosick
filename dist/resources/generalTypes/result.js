@@ -57,15 +57,23 @@ export class ContinuableResult extends Array {
             continuation,
             itct: clickTrackingParams,
         });
-        console.log(ctx);
         const result = this.parser(ctx);
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const content = this.getContent(result);
-        if (this.isDone ? this.isDone(content) : content == null) {
-            return null;
-        }
-        this.push(...content);
+        // FIXME: up until point i can gurantee it works
+        console.log(result);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        this.continuation = result.continuation;
         return result;
+        // FIXME: I have no idea how this works
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        // const content = this.getContent(result);
+        // if (this.isDone ? this.isDone(content) : content == null) {
+        // 	return null;
+        // }
+        //
+        // this.push(...content);
+        //
+        // return result;
     }
     async loadUntil(length = Infinity) {
         const loaded = [];
