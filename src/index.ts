@@ -6,14 +6,21 @@ import { utils } from './utils.js';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors/index.js';
 import { URLSearchParams } from 'url';
 import { GeneralParser, GetArtistParser, GetAlbumParser, GetPlaylistParser } from './parsers/index.js';
-import { AlbumURL, PlaylistURL, ArtistURL, SearchSuggestions } from './resources/resultTypes/index.js';
+import { AlbumURL, PlaylistURL, ArtistURL, SearchSuggestions, PlaylistContent } from './resources/resultTypes/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
 import type { ArtistURLFullResult } from './resources/etc/rawResultTypes/rawGetArtistURL.js';
 import type { SearchSuggestionsFullResult } from './resources/etc/rawResultTypes/rawGetSearchSuggestions.js';
 import type { AlbumURLFullResult } from './resources/etc/rawResultTypes/rawGetAlbumURL.js';
 import type { GeneralFull } from './resources/etc/rawResultTypes/general/generalFull.js';
-import type { Result } from './resources/etc/rawResultTypes/common.js';
+import type { Result as IResult } from './resources/etc/rawResultTypes/common.js';
 import type { YtCfgMain } from './resources/etc/cfgInterface.js';
+import type { Video } from './resources/generalTypes/video.js';
+import type { Song } from './resources/generalTypes/song.js';
+import type { Playlist } from './resources/generalTypes/playlist.js';
+import type { Artist } from './resources/generalTypes/artist.js';
+import type { Unsorted } from './resources/generalTypes/unsorted.js';
+import type { Album } from './resources/generalTypes/album.js';
+import { ContinuableResult, ContinuableResultBlueprint, ContinuableResultBuilder } from './resources/generalTypes/result.js';
 
 axios.defaults.adapter = axios0;
 
@@ -140,8 +147,8 @@ export class MooSick extends AsyncConstructor {
 	 *  then make this func generic so it's type safe
 	 * @internal
 	 */
-	async #createApiRequest(endpointName: EndPoint, inputVariables = {}, inputQuery = {}): Promise<Result> {
-		const res = await this.client.post<any, AxiosResponse<Result>>(
+	private async createApiRequest(endpointName: EndPoint, inputVariables = {}, inputQuery = {}): Promise<IResult> {
+		const res = await this.client.post<any, AxiosResponse<IResult>>(
 			`youtubei/${
 				this.config.INNERTUBE_API_VERSION
 			}/${
@@ -191,7 +198,7 @@ export class MooSick extends AsyncConstructor {
 	 * ```
 	 */
 	public async getSearchSuggestions(query: string): Promise<SearchSuggestions[]> {
-		const res = await this.#createApiRequest(EndPoint.SUGGESTIONS, {
+		const res = await this.createApiRequest(EndPoint.SUGGESTIONS, {
 			input: query,
 		}) as SearchSuggestionsFullResult;
 
@@ -218,7 +225,6 @@ export class MooSick extends AsyncConstructor {
 	 * Searches for songs using the Youtube Music API
 	 * @param query - String query text to search
 	 * @param categoryName - Type of category to search
-	 * @param _pageLimit - Max pages to obtain
 	 * @returns An object formatted by parsers.js
 	 *
 	 * Example
@@ -234,16 +240,35 @@ export class MooSick extends AsyncConstructor {
 	 * console.log(resultsSong)
 	 * ```
 	 */
-	async search(query: string, categoryName?: Category, _pageLimit = 1): Promise<unknown> {
-		const URI = categoryName ? `Eg-KAQwIA${utils.mapCategoryToURL(categoryName)}MABqChAEEAMQCRAFEAo%3D` : '';
-		const ctx = await this.#createApiRequest(
+	public async search(query: string): Promise<ContinuableResult<Unsorted>>;
+	public async search<T extends Category.VIDEO>(query: string, searchType?: T): Promise<ContinuableResult<Video>>;
+	public async search<T extends Category.SONG>(query: string, searchType?: T): Promise<ContinuableResult<Song>>;
+	public async search<T extends Category.PLAYLIST>(query: string, searchType?: T): Promise<ContinuableResult<Playlist>>;
+	public async search<T extends Category.ARTIST>(query: string, searchType?: T): Promise<ContinuableResult<Artist>>;
+	public async search<T extends Category.ALBUM | Category.EP | Category.SINGLE>(query: string, searchType?: T): Promise<ContinuableResult<Album>>;
+	public async search<T extends Category>(query: string, searchType?: T): Promise<ContinuableResult<Video | Song | Playlist | Artist | Album>>;
+	public async search<T extends Category>(query: string, searchType?: T): Promise<any> {
+		const URI = searchType ? `Eg-KAQwIA${utils.mapCategoryToURL(searchType)}MABqChAEEAMQCRAFEAo%3D` : '';
+		const ctx = await this.createApiRequest(
 			EndPoint.SEARCH,
 			{
 				query,
 				params: URI,
 			},
 		);
-		return GeneralParser.parseSearchResult(ctx as GeneralFull, categoryName);
+
+		const {
+			result,
+			continuation,
+		} = GeneralParser.parseSearchResult(ctx as GeneralFull, searchType);
+
+		return new ContinuableResultBuilder(this)
+			.push(...result)
+			.setContinuation(continuation)
+			.setParser((c) => GeneralParser.parseSearchResult(c, searchType))
+			.setGetContent((c: ContinuableResultBlueprint<typeof result>) => c.result)
+			.setIsDone((c: typeof result) => c?.length >= 0)
+			.build();
 	}
 
 	/**
@@ -265,9 +290,9 @@ export class MooSick extends AsyncConstructor {
 			throw new IllegalArgumentError('Album browse IDs must start with "MPREb"', 'browseId');
 		}
 
-		const ctx = await this.#createApiRequest(
+		const ctx = await this.createApiRequest(
 			EndPoint.SEARCH,
-			utils.buildEndpointContext(Category.ALBUM, browseId),
+			utils.buildEndpointContext(browseId, Category.ALBUM),
 		);
 
 		return GetAlbumParser.parseAlbumURLPage(ctx as AlbumURLFullResult);
@@ -302,27 +327,21 @@ export class MooSick extends AsyncConstructor {
 			browseId = 'VL' + browseId;
 		}
 
-		const ctx = this.#createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLIST, browseId));
+		const ctx = this.createApiRequest(
+			EndPoint.BROWSE,
+			utils.buildEndpointContext(browseId, Category.PLAYLIST),
+		);
 		const result = GetPlaylistParser.parsePlaylistURL(ctx);
 
-		while (contentLimit > result.playlistContents.length
-		&& result.continuation) {
-			const { continuation, clickTrackingParams } = result.continuation;
+		result.playlistContents = new ContinuableResultBuilder<PlaylistContent[], PlaylistURL>(this)
+			.push(result.playlistContents)
+			.setContinuation(result.continuation)
+			.setParser(GetPlaylistParser.parsePlaylistURL.bind(GetPlaylistParser))
+			.setGetContent((context: PlaylistURL) => context.playlistContents)
+			.build();
 
-			const ctx = this.#createApiRequest(EndPoint.BROWSE, {}, {
-				ctoken: continuation,
-				continuation,
-				itct: clickTrackingParams,
-			});
-			const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
-
-			if (!Array.isArray(continuationResult.playlistContents)) {
-				throw new IllegalStateError('Browse API responded with non-array `playlistContents`');
-			}
-
-			result.playlistContents.push(...continuationResult.playlistContents);
-			result.continuation = continuationResult.continuation;
-		}
+		await (result.playlistContents as ContinuableResult<PlaylistContent[], PlaylistURL>)
+			.loadUntil(contentLimit);
 
 		return result;
 	}
@@ -345,13 +364,38 @@ export class MooSick extends AsyncConstructor {
 			throw new IllegalArgumentError('Artist browse IDs must start with "UC"', 'browseId');
 		}
 
-		const ctx = await this.#createApiRequest(
+		const ctx = await this.createApiRequest(
 			EndPoint.BROWSE,
-			utils.buildEndpointContext(Category.ARTIST, browseId),
+			utils.buildEndpointContext(browseId, Category.ARTIST),
 		);
 
 		return GetArtistParser.parseArtistURLPage(ctx as ArtistURLFullResult);
 	}
+
+	// public async getNext(continuation: NextContinuationData): Promise<Unsorted[]>;
+	// public async getNext<T extends Category.VIDEO>(continuation: NextContinuationData, category?: T): Promise<Video[]>;
+	// public async getNext<T extends Category.SONG>(continuation: NextContinuationData, category?: T): Promise<Song[]>;
+	// public async getNext<T extends Category.PLAYLIST>(continuation: NextContinuationData, category?: T): Promise<Playlist[]>;
+	// public async getNext<T extends Category.ARTIST>(continuation: NextContinuationData, category?: T): Promise<Artist[]>;
+	// public async getNext<T extends Category.ALBUM | Category.EP | Category.SINGLE>(continuation: NextContinuationData, category?: T): Promise<Album[]>;
+	// public async getNext<T extends Category>(continuation: NextContinuationData, category?: T): Promise<Video[] | Song[] | Playlist[] | Artist[] | Album[]>;
+	// public async getNext<T extends Category>(continuation: NextContinuationData, category?: T): Promise<Item> {
+	// 	const { continuation: c, clickTrackingParams } = continuation;
+
+	// 	const ctx = this.#createApiRequest(EndPoint.BROWSE, {}, {
+	// 		ctoken: c,
+	// 		continuation,
+	// 		itct: clickTrackingParams,
+	// 	});
+	// 	const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
+
+	// 	if (!Array.isArray(continuationResult.playlistContents)) {
+	// 		throw new IllegalStateError('Browse API responded with non-array `playlistContents`');
+	// 	}
+
+	// 	result.playlistContents.push(...continuationResult.playlistContents);
+	// 	result.continuation = continuationResult.continuation;
+	// }
 
 	// FIXME: there is a method called `getNext` to get continuation, but its undocumented, should we implement it?
 }
