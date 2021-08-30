@@ -49,7 +49,7 @@ AsyncConstructor.constructor
 
 #### Defined in
 
-[blocks/asyncConstructor.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/blocks/asyncConstructor.ts#L6)
+[blocks/asyncConstructor.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/blocks/asyncConstructor.ts#L6)
 
 ## Properties
 
@@ -59,7 +59,7 @@ AsyncConstructor.constructor
 
 #### Defined in
 
-[index.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L28)
+[index.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L28)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[index.ts:30](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L30)
+[index.ts:30](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L30)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[index.ts:29](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L29)
+[index.ts:29](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L29)
 
 ## Methods
 
@@ -112,7 +112,7 @@ The result of the endpoint reply
 
 #### Defined in
 
-[index.ts:143](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L143)
+[index.ts:143](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L143)
 
 ___
 
@@ -144,7 +144,7 @@ console.log(results)
 
 #### Defined in
 
-[index.ts:263](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L263)
+[index.ts:263](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L263)
 
 ___
 
@@ -176,7 +176,7 @@ console.log(results);
 
 #### Defined in
 
-[index.ts:343](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L343)
+[index.ts:343](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L343)
 
 ___
 
@@ -214,7 +214,7 @@ console.log(results);
 
 #### Defined in
 
-[index.ts:295](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L295)
+[index.ts:295](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L295)
 
 ___
 
@@ -244,7 +244,7 @@ console.log(suggestions);
 
 #### Defined in
 
-[index.ts:193](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L193)
+[index.ts:193](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L193)
 
 ___
 
@@ -268,7 +268,7 @@ Adds with the original constructor
 
 #### Defined in
 
-[index.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L39)
+[index.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L39)
 
 ___
 
@@ -293,7 +293,7 @@ Sets the cookie that is called from the new method
 
 #### Defined in
 
-[index.ts:118](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L118)
+[index.ts:118](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L118)
 
 ___
 
@@ -332,7 +332,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[index.ts:237](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L237)
+[index.ts:237](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L237)
 
 ___
 
@@ -350,7 +350,7 @@ AsyncConstructor.brace
 
 #### Defined in
 
-[blocks/asyncConstructor.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/blocks/asyncConstructor.ts#L20)
+[blocks/asyncConstructor.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/blocks/asyncConstructor.ts#L20)
 
 ___
 
@@ -380,4 +380,4 @@ AsyncConstructor.new
 
 #### Defined in
 
-[index.ts:106](https://github.com/EvasiveXkiller/youtube-moosick/blob/13a57da/src/index.ts#L106)
+[index.ts:106](https://github.com/EvasiveXkiller/youtube-moosick/blob/0c15625/src/index.ts#L106)
