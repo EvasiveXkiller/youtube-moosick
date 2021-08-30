@@ -101,7 +101,7 @@ Array.constructor
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:79](https://github.com/EvasiveXkiller/youtube-moosick/blob/0ec19f8/src/resources/generalTypes/result.ts#L79)
+[src/resources/generalTypes/result.ts:79](https://github.com/EvasiveXkiller/youtube-moosick/blob/6a4bb5b/src/resources/generalTypes/result.ts#L79)
 
 ## Properties
 
@@ -111,7 +111,7 @@ Array.constructor
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:77](https://github.com/EvasiveXkiller/youtube-moosick/blob/0ec19f8/src/resources/generalTypes/result.ts#L77)
+[src/resources/generalTypes/result.ts:77](https://github.com/EvasiveXkiller/youtube-moosick/blob/6a4bb5b/src/resources/generalTypes/result.ts#L77)
 
 ___
 
@@ -135,7 +135,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:68](https://github.com/EvasiveXkiller/youtube-moosick/blob/0ec19f8/src/resources/generalTypes/result.ts#L68)
+[src/resources/generalTypes/result.ts:68](https://github.com/EvasiveXkiller/youtube-moosick/blob/6a4bb5b/src/resources/generalTypes/result.ts#L68)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:71](https://github.com/EvasiveXkiller/youtube-moosick/blob/0ec19f8/src/resources/generalTypes/result.ts#L71)
+[src/resources/generalTypes/result.ts:71](https://github.com/EvasiveXkiller/youtube-moosick/blob/6a4bb5b/src/resources/generalTypes/result.ts#L71)
 
 ___
 
@@ -169,7 +169,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:74](https://github.com/EvasiveXkiller/youtube-moosick/blob/0ec19f8/src/resources/generalTypes/result.ts#L74)
+[src/resources/generalTypes/result.ts:74](https://github.com/EvasiveXkiller/youtube-moosick/blob/6a4bb5b/src/resources/generalTypes/result.ts#L74)
 
 ___
 
@@ -209,7 +209,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:65](https://github.com/EvasiveXkiller/youtube-moosick/blob/0ec19f8/src/resources/generalTypes/result.ts#L65)
+[src/resources/generalTypes/result.ts:65](https://github.com/EvasiveXkiller/youtube-moosick/blob/6a4bb5b/src/resources/generalTypes/result.ts#L65)
 
 ___
 
@@ -465,7 +465,7 @@ ___
 
 ▸ **fill**(`value`, `start?`, `end?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `V`\>
 
-Returns the this object after filling the section identified by start and end with value
+Changes all array elements from `start` to `end` index to a static `value` and returns the modified array
 
 #### Parameters
 
@@ -789,7 +789,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:137](https://github.com/EvasiveXkiller/youtube-moosick/blob/0ec19f8/src/resources/generalTypes/result.ts#L137)
+[src/resources/generalTypes/result.ts:137](https://github.com/EvasiveXkiller/youtube-moosick/blob/6a4bb5b/src/resources/generalTypes/result.ts#L137)
 
 ___
 
@@ -876,7 +876,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:85](https://github.com/EvasiveXkiller/youtube-moosick/blob/0ec19f8/src/resources/generalTypes/result.ts#L85)
+[src/resources/generalTypes/result.ts:85](https://github.com/EvasiveXkiller/youtube-moosick/blob/6a4bb5b/src/resources/generalTypes/result.ts#L85)
 
 ___
 
@@ -896,7 +896,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:121](https://github.com/EvasiveXkiller/youtube-moosick/blob/0ec19f8/src/resources/generalTypes/result.ts#L121)
+[src/resources/generalTypes/result.ts:121](https://github.com/EvasiveXkiller/youtube-moosick/blob/6a4bb5b/src/resources/generalTypes/result.ts#L121)
 
 ___
 
