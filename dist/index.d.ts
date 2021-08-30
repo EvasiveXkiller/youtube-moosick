@@ -1,13 +1,19 @@
 import { Category } from './enums.js';
 import { AlbumURL, PlaylistURL, ArtistURL, SearchSuggestions } from './resources/resultTypes/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
+import type { Video } from './resources/generalTypes/video.js';
+import type { Song } from './resources/generalTypes/song.js';
+import type { Playlist } from './resources/generalTypes/playlist.js';
+import type { Artist } from './resources/generalTypes/artist.js';
+import type { Unsorted } from './resources/generalTypes/unsorted.js';
+import type { Album } from './resources/generalTypes/album.js';
+import { ContinuableResult } from './resources/generalTypes/result.js';
 /**
  * Main class to interact with methods
  *
  * @public
  */
 export declare class MooSick extends AsyncConstructor {
-    #private;
     private client;
     private cookies;
     private config;
@@ -33,6 +39,19 @@ export declare class MooSick extends AsyncConstructor {
      */
     private parseAndSetCookie;
     /**
+     * Creates a new api request to the specified endpoint.
+     * @param endpointName - The endpoint name?
+     * @param inputVariables - Any variable?
+     * @param inputQuery - Any queries?
+     * @returns The result of the endpoint reply
+     * @remarks Soonner or later destructure functions into individual files
+     *
+     *	TODO: probably define each api req's input vars & input queries,
+     *  then make this func generic so it's type safe
+     * @internal
+     */
+    private createApiRequest;
+    /**
      * Get search suggestions from Youtube Music
      * @param query - query String query text to search
      * @returns An object formatted with utils class
@@ -48,7 +67,6 @@ export declare class MooSick extends AsyncConstructor {
      * Searches for songs using the Youtube Music API
      * @param query - String query text to search
      * @param categoryName - Type of category to search
-     * @param _pageLimit - Max pages to obtain
      * @returns An object formatted by parsers.js
      *
      * Example
@@ -64,7 +82,13 @@ export declare class MooSick extends AsyncConstructor {
      * console.log(resultsSong)
      * ```
      */
-    search(query: string, categoryName?: Category, _pageLimit?: number): Promise<unknown>;
+    search(query: string): Promise<ContinuableResult<Unsorted>>;
+    search<T extends Category.VIDEO>(query: string, searchType?: T): Promise<ContinuableResult<Video>>;
+    search<T extends Category.SONG>(query: string, searchType?: T): Promise<ContinuableResult<Song>>;
+    search<T extends Category.PLAYLIST>(query: string, searchType?: T): Promise<ContinuableResult<Playlist>>;
+    search<T extends Category.ARTIST>(query: string, searchType?: T): Promise<ContinuableResult<Artist>>;
+    search<T extends Category.ALBUM | Category.EP | Category.SINGLE>(query: string, searchType?: T): Promise<ContinuableResult<Album>>;
+    search<T extends Category>(query: string, searchType?: T): Promise<ContinuableResult<Video | Song | Playlist | Artist | Album>>;
     /**
      * Gets the album details
      * @param browseId - The ID of the album, without `https` infront

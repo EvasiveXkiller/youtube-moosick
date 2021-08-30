@@ -48,7 +48,7 @@ export declare class utils {
             };
         };
     };
-    static buildEndpointContext(typeName: string, browseId: string): {
+    static buildEndpointContext(browseId: string, category: Category): {
         browseEndpointContextSupportedConfigs: {
             browseEndpointContextMusicConfig: {
                 pageType: string;

@@ -1,9 +1,25 @@
 import test from 'tape';
-import { GeneralParser } from '../../parsers/generalParser.js';
-import generalSearchFull from '../dummy/general/generalSearchFull.json';
+import '../../enums.js';
+import '../../parsers/generalParser.js';
+import '../../resources/utilities/walk.utility.js';
+import '../dummy/general/generalSearchFull.json';
 test('GeneralParser', async (t) => {
-    const results = GeneralParser.parseSearchResult(generalSearchFull);
-    // console.log(results);
+    // const result = GeneralParser.parseSearchResult(generalSearchFull as any);
+    // const expected: typeof result = [
+    // 	Album.from({
+    // 		browseId: String(),
+    // 		name: String(),
+    // 		url: String(),
+    // 	}),
+    // ];
+    // t.true(
+    // 	WalkUtility
+    // 		.walkAndAssertShape(
+    // 			result,
+    // 			expected,
+    // 		),
+    // 	'result has expected shape',
+    // );
     t.end();
 });
 //# sourceMappingURL=generalSearchParser.js.map

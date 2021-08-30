@@ -26,7 +26,7 @@ Main class to interact with methods
 
 ### Methods
 
-- [#createApiRequest](index.MooSick.md##createapirequest)
+- [createApiRequest](index.MooSick.md#createapirequest)
 - [getAlbum](index.MooSick.md#getalbum)
 - [getArtist](index.MooSick.md#getartist)
 - [getPlaylist](index.MooSick.md#getplaylist)
@@ -49,7 +49,7 @@ AsyncConstructor.constructor
 
 #### Defined in
 
-[blocks/asyncConstructor.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/blocks/asyncConstructor.ts#L6)
+[src/blocks/asyncConstructor.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/blocks/asyncConstructor.ts#L6)
 
 ## Properties
 
@@ -59,7 +59,7 @@ AsyncConstructor.constructor
 
 #### Defined in
 
-[index.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L28)
+[src/index.ts:35](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L35)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[index.ts:30](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L30)
+[src/index.ts:37](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L37)
 
 ___
 
@@ -79,13 +79,13 @@ ___
 
 #### Defined in
 
-[index.ts:29](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L29)
+[src/index.ts:36](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L36)
 
 ## Methods
 
-### #createApiRequest
+### createApiRequest
 
-▸ `Private` **#createApiRequest**(`endpointName`, `inputVariables?`, `inputQuery?`): `Promise`<`Result`\>
+▸ `Private` **createApiRequest**(`endpointName`, `inputVariables?`, `inputQuery?`): `Promise`<`Result`\>
 
 Creates a new api request to the specified endpoint.
 
@@ -112,7 +112,7 @@ The result of the endpoint reply
 
 #### Defined in
 
-[index.ts:143](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L143)
+[src/index.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L150)
 
 ___
 
@@ -144,7 +144,7 @@ console.log(results)
 
 #### Defined in
 
-[index.ts:263](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L263)
+[src/index.ts:288](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L288)
 
 ___
 
@@ -176,7 +176,7 @@ console.log(results);
 
 #### Defined in
 
-[index.ts:343](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L343)
+[src/index.ts:362](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L362)
 
 ___
 
@@ -214,7 +214,7 @@ console.log(results);
 
 #### Defined in
 
-[index.ts:295](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L295)
+[src/index.ts:320](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L320)
 
 ___
 
@@ -244,7 +244,7 @@ console.log(suggestions);
 
 #### Defined in
 
-[index.ts:193](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L193)
+[src/index.ts:200](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L200)
 
 ___
 
@@ -268,7 +268,7 @@ Adds with the original constructor
 
 #### Defined in
 
-[index.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L39)
+[src/index.ts:46](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L46)
 
 ___
 
@@ -293,27 +293,25 @@ Sets the cookie that is called from the new method
 
 #### Defined in
 
-[index.ts:118](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L118)
+[src/index.ts:125](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L125)
 
 ___
 
 ### search
 
-▸ **search**(`query`, `categoryName?`, `_pageLimit?`): `Promise`<`unknown`\>
+▸ **search**(`query`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`Unsorted`, `Unsorted`\>\>
 
 Searches for songs using the Youtube Music API
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `query` | `string` | `undefined` | String query text to search |
-| `categoryName?` | [`Category`](../enums/enums.Category.md) | `undefined` | Type of category to search |
-| `_pageLimit` | `number` | `1` | Max pages to obtain |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `query` | `string` | String query text to search |
 
 #### Returns
 
-`Promise`<`unknown`\>
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`Unsorted`, `Unsorted`\>\>
 
 An object formatted by parsers.js
 
@@ -332,7 +330,145 @@ console.log(resultsSong)
 
 #### Defined in
 
-[index.ts:237](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L237)
+[src/index.ts:243](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L243)
+
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md), [`Video`](resources_generalTypes.Video.md)\>\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`VIDEO`](../enums/enums.Category.md#video) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `query` | `string` |
+| `searchType?` | `T` |
+
+#### Returns
+
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md), [`Video`](resources_generalTypes.Video.md)\>\>
+
+#### Defined in
+
+[src/index.ts:244](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L244)
+
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Song`](resources_generalTypes.Song.md), [`Song`](resources_generalTypes.Song.md)\>\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`SONG`](../enums/enums.Category.md#song) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `query` | `string` |
+| `searchType?` | `T` |
+
+#### Returns
+
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Song`](resources_generalTypes.Song.md), [`Song`](resources_generalTypes.Song.md)\>\>
+
+#### Defined in
+
+[src/index.ts:245](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L245)
+
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Playlist`](resources_generalTypes.Playlist.md), [`Playlist`](resources_generalTypes.Playlist.md)\>\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`PLAYLIST`](../enums/enums.Category.md#playlist) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `query` | `string` |
+| `searchType?` | `T` |
+
+#### Returns
+
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Playlist`](resources_generalTypes.Playlist.md), [`Playlist`](resources_generalTypes.Playlist.md)\>\>
+
+#### Defined in
+
+[src/index.ts:246](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L246)
+
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Artist`](resources_generalTypes.Artist.md), [`Artist`](resources_generalTypes.Artist.md)\>\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`ARTIST`](../enums/enums.Category.md#artist) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `query` | `string` |
+| `searchType?` | `T` |
+
+#### Returns
+
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Artist`](resources_generalTypes.Artist.md), [`Artist`](resources_generalTypes.Artist.md)\>\>
+
+#### Defined in
+
+[src/index.ts:247](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L247)
+
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Album`](resources_generalTypes.Album.md), [`Album`](resources_generalTypes.Album.md)\>\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`ALBUM`](../enums/enums.Category.md#album) \| [`EP`](../enums/enums.Category.md#ep) \| [`SINGLE`](../enums/enums.Category.md#single) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `query` | `string` |
+| `searchType?` | `T` |
+
+#### Returns
+
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Album`](resources_generalTypes.Album.md), [`Album`](resources_generalTypes.Album.md)\>\>
+
+#### Defined in
+
+[src/index.ts:248](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L248)
+
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md), [`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md)\>\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`Category`](../enums/enums.Category.md) |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `query` | `string` |
+| `searchType?` | `T` |
+
+#### Returns
+
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md), [`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md)\>\>
+
+#### Defined in
+
+[src/index.ts:249](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L249)
 
 ___
 
@@ -350,7 +486,7 @@ AsyncConstructor.brace
 
 #### Defined in
 
-[blocks/asyncConstructor.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/blocks/asyncConstructor.ts#L20)
+[src/blocks/asyncConstructor.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/blocks/asyncConstructor.ts#L20)
 
 ___
 
@@ -380,4 +516,4 @@ AsyncConstructor.new
 
 #### Defined in
 
-[index.ts:106](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/index.ts#L106)
+[src/index.ts:113](https://github.com/EvasiveXkiller/youtube-moosick/blob/35a8b78/src/index.ts#L113)
