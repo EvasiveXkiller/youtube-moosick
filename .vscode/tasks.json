@@ -7,7 +7,7 @@
 			"group": "build",
 			"problemMatcher": [],
 			"label": "npm: build",
-			"detail": "rollup -c"
+			"detail": "tsc --build --clean && tsc",
 		},
 		{
 			"type": "npm",
@@ -15,10 +15,26 @@
 			"group": "build",
 			"problemMatcher": [],
 			"label": "npm: dev",
-			"detail": "rollup -c -w",
+			"detail": "tsc --watch",
 			"runOptions": {
-				"runOn": "folderOpen"
+				"runOn": "folderOpen",
 			}
+		},
+		{
+			"label": "start",
+			"type": "npm",
+			"script": "start",
+			"detail": "npm start",
+			"problemMatcher": [],
+		},
+		{
+			"label": "test",
+			"detail": "npm run test",
+			"problemMatcher": [],
+			"type": "shell",
+			"command": "npm run test",
+			"group": "test",
+			"args": []
 		}
-	]
+	],
 }

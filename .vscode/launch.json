@@ -15,6 +15,43 @@
 			"outFiles": [
 				"${workspaceFolder}/dist/**/*.js"
 			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Test, all",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}/src/test/index.ts",
+			"outFiles": [
+				"${workspaceFolder}/dist/**/*.js"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Test, individual",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}/src/test/index.ts",
+			"outFiles": [
+				"${workspaceFolder}/dist/**/*.js"
+			],
+			"args": [
+				"/t",
+				"${input:testArgs}",
+				"/k"
+			]
+		}
+	],
+	"inputs": [
+		{
+			"id": "testArgs",
+			"type": "promptString",
+			"description": "Test glob",
+			"default": "*",
 		}
 	]
 }
