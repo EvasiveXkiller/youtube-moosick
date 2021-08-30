@@ -43,7 +43,7 @@
 
 #### Defined in
 
-[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/blocks/item.ts#L20)
+[blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -53,7 +53,7 @@
 
 #### Defined in
 
-[resources/generalTypes/album.ts:14](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/resources/generalTypes/album.ts#L14)
+[resources/generalTypes/album.ts:14](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/resources/generalTypes/album.ts#L14)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[resources/generalTypes/album.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/resources/generalTypes/album.ts#L7)
+[resources/generalTypes/album.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/resources/generalTypes/album.ts#L7)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[resources/generalTypes/album.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/resources/generalTypes/album.ts#L6)
+[resources/generalTypes/album.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/resources/generalTypes/album.ts#L6)
 
 ___
 
@@ -91,7 +91,7 @@ ___
 
 #### Defined in
 
-[resources/generalTypes/album.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/resources/generalTypes/album.ts#L12)
+[resources/generalTypes/album.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/resources/generalTypes/album.ts#L12)
 
 ___
 
@@ -105,7 +105,7 @@ ___
 
 #### Defined in
 
-[resources/generalTypes/album.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/resources/generalTypes/album.ts#L8)
+[resources/generalTypes/album.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/resources/generalTypes/album.ts#L8)
 
 ___
 
@@ -115,7 +115,7 @@ ___
 
 #### Defined in
 
-[resources/generalTypes/album.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/resources/generalTypes/album.ts#L13)
+[resources/generalTypes/album.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/resources/generalTypes/album.ts#L13)
 
 ## Methods
 
@@ -145,4 +145,4 @@ ___
 
 #### Defined in
 
-[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/blocks/item.ts#L22)
+[blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/blocks/item.ts#L22)

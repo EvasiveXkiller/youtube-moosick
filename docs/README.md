@@ -2,13 +2,15 @@ youtube-moosick / [Modules](modules.md)
 
 # Youtube-MooSick
 
-<img alt="TypeScript Build Status" src="https://img.shields.io/github/workflow/status/EvasiveXkiller/youtube-moosick/tscBuild">
-<img alt="Latest Tag" src="https://img.shields.io/github/v/tag/EvasiveXkiller/youtube-moosick?label=Latest">
+<div>
+    <img alt="TypeScript Build Status" src="https://img.shields.io/github/workflow/status/EvasiveXkiller/youtube-moosick/tscBuild">
+    <img alt="Latest Tag" src="https://img.shields.io/github/v/tag/EvasiveXkiller/youtube-moosick?label=Latest">
+</div>
 
 Unofficial YouTube Music Library, written in TypeScript.
 
 ```typescript
-import { MooSick } from "MooSick";
+import {MooSick} from "MooSick";
 
 const ytmc = new MooSick.new();
 
@@ -21,12 +23,15 @@ ytmc.search("Never gonna give you up").then((results) => {
 const results = await ytmc.search("Never gonna give you up");
 console.log(results);
 ```
+
 ## Installation
+
 ```shell
 npm install youtube-moosick
 ```
 
 ## API
+
 ### ytmc.search(query, categoryName?, _pageLimit?)
 
 ▸ **search**(`query`, `categoryName?`, `_pageLimit?`): `Promise`<`unknown`\>
@@ -50,6 +55,7 @@ An object formatted by parsers.js
 See all available [return types](./docs/modules/resources_resultTypes.md)
 
 Example
+
 ```typescript
 const api = await MooSick.new();
 
@@ -81,6 +87,7 @@ Get search suggestions from Youtube Music
 An object formatted with utils class
 
 Example
+
 ```typescript
 const suggestions = ytmc.getSearchSuggestions("All We know");
 console.log(suggestions);
@@ -105,6 +112,7 @@ Gets the album details
 Album URL object
 
 Example:
+
 ```typescript
 const ytmc = await MooSick.new();
 const results = await ytmc.getAlbum('MPREb_REsMMqBZjZB');
@@ -131,6 +139,7 @@ Gets the artist details from Youtube Music
 An object formatted by the artist page
 
 Example:
+
 ```typescript
 const ytmc = await MooSick.new();
 const results = await ytmc.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
@@ -145,9 +154,8 @@ console.log(results);
 Gets the playlist using the Youtube Music API
 
 **`remarks`**
-FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
-I think i forgotten to change it, but i dont have faith on this system working,
-it relies on the old structure which i have modified
+FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change? I think i forgotten to change
+it, but i dont have faith on this system working, it relies on the old structure which i have modified
 
 #### Parameters
 
@@ -163,6 +171,7 @@ it relies on the old structure which i have modified
 An object formatted by the parser
 
 Example:
+
 ```typescript
 const api = await MooSick.new();
 const results = await api.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
@@ -171,6 +180,7 @@ console.log(results);
 ```
 
 ## Authors
+
 - [EvasiveXkiller](https://github.com/EvasiveXkiller)
 
 - [Sxxov](https://github.com/Sxxov)

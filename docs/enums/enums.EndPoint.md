@@ -25,7 +25,7 @@ Browse with the given Id
 
 #### Defined in
 
-[enums.ts:16](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/enums.ts#L16)
+[enums.ts:16](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/enums.ts#L16)
 
 ___
 
@@ -37,7 +37,7 @@ Used for continuation
 
 #### Defined in
 
-[enums.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/enums.ts#L20)
+[enums.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/enums.ts#L20)
 
 ___
 
@@ -49,7 +49,7 @@ Search
 
 #### Defined in
 
-[enums.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/enums.ts#L12)
+[enums.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/enums.ts#L12)
 
 ___
 
@@ -61,4 +61,4 @@ Search Suggestions
 
 #### Defined in
 
-[enums.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/ae18783/src/enums.ts#L8)
+[enums.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/7f55a5e/src/enums.ts#L8)
