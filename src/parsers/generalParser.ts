@@ -92,7 +92,7 @@ export class GeneralParser {
 					case 'SINGLE':
 					case 'EP': {
 						albums.push({
-							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.ARTIST, Boolean(searchType)),
+							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.ALBUM, Boolean(searchType)),
 							name: flexColumnRenderer[FlexColumnOffset.MAIN].text.runs[FlexColumnOffset.ONLYRUN].text,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
 							url: `${ConstantURLs.CHANNEL_URL}${item.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
