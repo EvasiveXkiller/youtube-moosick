@@ -37,8 +37,8 @@ export class GeneralParser {
 	public static parseSearchResult<T extends Category.VIDEO>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Video>;
 	public static parseSearchResult<T extends Category.SONG>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Song>;
 	public static parseSearchResult<T extends Category.PLAYLIST>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Playlist>;
-	public static parseSearchResult<T extends Category.ARTIST>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Artist>;
-	public static parseSearchResult<T extends Category.ALBUM | Category.EP | Category.SINGLE>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Album>;
+	public static parseSearchResult<T extends Category.ARTIST>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<ArtistExtended>;
+	public static parseSearchResult<T extends Category.ALBUM | Category.EP | Category.SINGLE>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<AlbumExtended>;
 	public static parseSearchResult<T extends Category>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Video | Song | Playlist | Artist | Album>;
 	// eslint-disable-next-line complexity
 	static parseSearchResult<T extends Category>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Item> {
