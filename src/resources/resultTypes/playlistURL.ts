@@ -10,7 +10,7 @@ export class PlaylistURL extends Item {
 
 export class PlaylistContent extends Item {
 	public declare trackTitle: string;
-	public declare trackId: string;
+	public trackId?: string;
 	public declare artist: Artist[];
 	public declare thumbnail: Thumbnails[];
 }
