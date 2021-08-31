@@ -1,10 +1,10 @@
 import test from 'tape';
-import { GeneralParser } from '../../parsers/generalParser.js';
-import generalSearchPlaylist from '../dummy/general/generalSearchPlaylist.json';
-import { Category } from '../../enums.js';
-import { Playlist } from '../../resources/generalTypes/playlist.js';
-import { Artist } from '../../resources/generalTypes/artist.js';
-import { WalkUtility } from '../../resources/utilities/walk.utility.js';
+import { GeneralParser } from '../../../parsers/generalParser.js';
+import generalSearchPlaylist from '../../dummy/general/generalSearchPlaylist.json';
+import { Category } from '../../../enums.js';
+import { Playlist } from '../../../resources/generalTypes/playlist.js';
+import { Artist } from '../../../resources/generalTypes/artist.js';
+import { WalkUtility } from '../../../resources/utilities/walk.utility.js';
 
 test('GeneralParserPlaylist', async (t) => {
 	const { result } = GeneralParser.parseSearchResult(generalSearchPlaylist as any, Category.PLAYLIST);

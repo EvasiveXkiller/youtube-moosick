@@ -1,10 +1,10 @@
 import test from 'tape';
-import { GeneralParser } from '../../parsers/generalParser.js';
-import generalSearchArtist from '../dummy/general/generalSearchArtist.json';
-import { Category } from '../../enums.js';
-import { ArtistExtended } from '../../resources/generalTypes/artist.js';
-import { EitherShape, WalkUtility } from '../../resources/utilities/walk.utility.js';
-import { Thumbnails } from '../../resources/generalTypes/thumbnails.js';
+import { GeneralParser } from '../../../parsers/generalParser.js';
+import generalSearchArtist from '../../dummy/general/generalSearchArtist.json';
+import { Category } from '../../../enums.js';
+import { ArtistExtended } from '../../../resources/generalTypes/artist.js';
+import { EitherShape, WalkUtility } from '../../../resources/utilities/walk.utility.js';
+import { Thumbnails } from '../../../resources/generalTypes/thumbnails.js';
 
 test('GeneralParserArtist', async (t) => {
 	const { result } = GeneralParser.parseSearchResult(generalSearchArtist as any, Category.ARTIST);
