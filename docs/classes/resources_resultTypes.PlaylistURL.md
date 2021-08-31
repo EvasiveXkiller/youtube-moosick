@@ -40,7 +40,7 @@ Item.constructor
 
 #### Defined in
 
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/blocks/item.ts#L20)
+[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/769bf26/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -50,7 +50,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/resources/resultTypes/playlistURL.ts#L8)
+[src/resources/resultTypes/playlistURL.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/769bf26/src/resources/resultTypes/playlistURL.ts#L8)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/resources/resultTypes/playlistURL.ts#L6)
+[src/resources/resultTypes/playlistURL.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/769bf26/src/resources/resultTypes/playlistURL.ts#L6)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/resources/resultTypes/playlistURL.ts#L7)
+[src/resources/resultTypes/playlistURL.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/769bf26/src/resources/resultTypes/playlistURL.ts#L7)
 
 ## Methods
 
@@ -100,4 +100,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/blocks/item.ts#L22)
+[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/769bf26/src/blocks/item.ts#L22)
