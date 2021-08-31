@@ -5,6 +5,17 @@ const config = {
     keepAlive: false,
     test: '*',
 };
+/*
+npm run test -- --test * --keep-alive
+npm run test -- -t * -k
+npm run test /test * /keep-alive
+npm run test /t * /k
+*/
+/*
+
+Unit tests : npm run test -- --test unit*
+
+*/
 for (let i = 2, l = process.argv.length; i < l; ++i) {
     const arg = process.argv[i];
     let unprefixedArg;

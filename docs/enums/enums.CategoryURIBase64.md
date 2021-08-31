@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[src/enums.ts:57](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/enums.ts#L57)
+[src/enums.ts:57](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/enums.ts#L57)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[src/enums.ts:58](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/enums.ts#L58)
+[src/enums.ts:58](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/enums.ts#L58)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[src/enums.ts:59](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/enums.ts#L59)
+[src/enums.ts:59](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/enums.ts#L59)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[src/enums.ts:55](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/enums.ts#L55)
+[src/enums.ts:55](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/enums.ts#L55)
 
 ___
 
@@ -62,4 +62,4 @@ ___
 
 #### Defined in
 
-[src/enums.ts:56](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/enums.ts#L56)
+[src/enums.ts:56](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/enums.ts#L56)

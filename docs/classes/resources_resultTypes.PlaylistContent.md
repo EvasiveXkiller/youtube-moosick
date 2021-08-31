@@ -41,7 +41,7 @@ Item.constructor
 
 #### Defined in
 
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/blocks/item.ts#L20)
+[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -51,7 +51,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:14](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/resources/resultTypes/playlistURL.ts#L14)
+[src/resources/resultTypes/playlistURL.ts:14](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/resources/resultTypes/playlistURL.ts#L14)
 
 ___
 
@@ -61,17 +61,17 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:15](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/resources/resultTypes/playlistURL.ts#L15)
+[src/resources/resultTypes/playlistURL.ts:15](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/resources/resultTypes/playlistURL.ts#L15)
 
 ___
 
 ### trackId
 
-• **trackId**: `string`
+• `Optional` **trackId**: `string`
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/resources/resultTypes/playlistURL.ts#L13)
+[src/resources/resultTypes/playlistURL.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/resources/resultTypes/playlistURL.ts#L13)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/resources/resultTypes/playlistURL.ts#L12)
+[src/resources/resultTypes/playlistURL.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/resources/resultTypes/playlistURL.ts#L12)
 
 ## Methods
 
@@ -111,4 +111,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/dccd770/src/blocks/item.ts#L22)
+[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/0121919/src/blocks/item.ts#L22)

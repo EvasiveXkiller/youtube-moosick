@@ -2,8 +2,8 @@ import { Category } from '../enums.js';
 import { Song } from '../resources/generalTypes/song.js';
 import { Video } from '../resources/generalTypes/video.js';
 import { Playlist } from '../resources/generalTypes/playlist.js';
-import { Artist } from '../resources/generalTypes/artist.js';
-import type { Album } from '../resources/generalTypes/album.js';
+import { Artist, ArtistExtended } from '../resources/generalTypes/artist.js';
+import type { Album, AlbumExtended } from '../resources/generalTypes/album.js';
 import type { GeneralFull, MusicResponsiveListItemRenderer } from '../resources/etc/rawResultTypes/general/generalFull.js';
 import { Unsorted } from '../resources/generalTypes/unsorted.js';
 import type { ContinuableResultBlueprint } from '../resources/generalTypes/result.js';
@@ -24,8 +24,8 @@ export declare class GeneralParser {
     static parseSearchResult<T extends Category.VIDEO>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Video>;
     static parseSearchResult<T extends Category.SONG>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Song>;
     static parseSearchResult<T extends Category.PLAYLIST>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Playlist>;
-    static parseSearchResult<T extends Category.ARTIST>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Artist>;
-    static parseSearchResult<T extends Category.ALBUM | Category.EP | Category.SINGLE>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Album>;
+    static parseSearchResult<T extends Category.ARTIST>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<ArtistExtended>;
+    static parseSearchResult<T extends Category.ALBUM | Category.EP | Category.SINGLE>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<AlbumExtended>;
     static parseSearchResult<T extends Category>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Video | Song | Playlist | Artist | Album>;
     /**
      * Only works for video and song
