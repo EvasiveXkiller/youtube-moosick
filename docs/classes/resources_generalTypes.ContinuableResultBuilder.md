@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:18](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/resources/generalTypes/result.ts#L18)
+[src/resources/generalTypes/result.ts:18](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/resources/generalTypes/result.ts#L18)
 
 ## Methods
 
@@ -61,7 +61,7 @@
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:52](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/resources/generalTypes/result.ts#L52)
+[src/resources/generalTypes/result.ts:52](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/resources/generalTypes/result.ts#L52)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/resources/generalTypes/result.ts#L22)
+[src/resources/generalTypes/result.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/resources/generalTypes/result.ts#L22)
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:46](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/resources/generalTypes/result.ts#L46)
+[src/resources/generalTypes/result.ts:46](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/resources/generalTypes/result.ts#L46)
 
 ___
 
@@ -121,7 +121,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:34](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/resources/generalTypes/result.ts#L34)
+[src/resources/generalTypes/result.ts:34](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/resources/generalTypes/result.ts#L34)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:40](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/resources/generalTypes/result.ts#L40)
+[src/resources/generalTypes/result.ts:40](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/resources/generalTypes/result.ts#L40)
 
 ___
 
@@ -161,4 +161,4 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/resources/generalTypes/result.ts#L28)
+[src/resources/generalTypes/result.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/resources/generalTypes/result.ts#L28)

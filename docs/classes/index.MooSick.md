@@ -52,7 +52,7 @@ console.log(results)
 
 #### Defined in
 
-[src/index.ts:288](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L288)
+[src/index.ts:288](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L288)
 
 ___
 
@@ -84,7 +84,7 @@ console.log(results);
 
 #### Defined in
 
-[src/index.ts:362](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L362)
+[src/index.ts:362](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L362)
 
 ___
 
@@ -122,7 +122,7 @@ console.log(results);
 
 #### Defined in
 
-[src/index.ts:320](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L320)
+[src/index.ts:320](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L320)
 
 ___
 
@@ -152,7 +152,7 @@ console.log(suggestions);
 
 #### Defined in
 
-[src/index.ts:200](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L200)
+[src/index.ts:200](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L200)
 
 ___
 
@@ -189,7 +189,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:243](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L243)
+[src/index.ts:243](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L243)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md), [`Video`](resources_generalTypes.Video.md)\>\>
 
@@ -212,7 +212,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:244](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L244)
+[src/index.ts:244](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L244)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Song`](resources_generalTypes.Song.md), [`Song`](resources_generalTypes.Song.md)\>\>
 
@@ -235,7 +235,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:245](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L245)
+[src/index.ts:245](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L245)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Playlist`](resources_generalTypes.Playlist.md), [`Playlist`](resources_generalTypes.Playlist.md)\>\>
 
@@ -258,7 +258,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:246](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L246)
+[src/index.ts:246](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L246)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Artist`](resources_generalTypes.Artist.md), [`Artist`](resources_generalTypes.Artist.md)\>\>
 
@@ -281,7 +281,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:247](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L247)
+[src/index.ts:247](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L247)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Album`](resources_generalTypes.Album.md), [`Album`](resources_generalTypes.Album.md)\>\>
 
@@ -304,7 +304,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:248](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L248)
+[src/index.ts:248](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L248)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md), [`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md)\>\>
 
@@ -327,4 +327,4 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:249](https://github.com/EvasiveXkiller/youtube-moosick/blob/bebd417/src/index.ts#L249)
+[src/index.ts:249](https://github.com/EvasiveXkiller/youtube-moosick/blob/a80887d/src/index.ts#L249)
