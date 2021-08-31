@@ -8,6 +8,7 @@ import { Thumbnails } from '../../../resources/generalTypes/thumbnails.js';
 
 test('GeneralParserArtist', async (t) => {
 	const { result } = GeneralParser.parseSearchResult(generalSearchArtist as any, Category.ARTIST);
+
 	const expected: typeof result = [
 		ArtistExtended.from({
 			browseId: String(),
@@ -30,8 +31,11 @@ test('GeneralParserArtist', async (t) => {
 				result,
 				expected,
 			),
-		'result has expected shape',
+		'GeneralParserArtist result has expected shape',
 	);
+
+	t.equals(result[0].name, 'TWICE', 'title match');
+	t.equals(result[1].browseId, 'UCqJnSdHjKtfsrHi9aI-9d3g', 'browseid count match');
 
 	t.end();
 });

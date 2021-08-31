@@ -9,6 +9,7 @@ import { Artist } from '../../../resources/generalTypes/artist.js';
 
 test('GeneralParserAlbum', async (t) => {
 	const { result } = GeneralParser.parseSearchResult(generalSearchAlbum as any, Category.ALBUM);
+
 	const expected: typeof result = [
 		AlbumExtended.from({
 			browseId: String(),
@@ -42,8 +43,11 @@ test('GeneralParserAlbum', async (t) => {
 				result,
 				expected,
 			),
-		'result has expected shape',
+		'GeneralParserAlbum result has expected shape',
 	);
+
+	t.equals(result[1].year, 2020, 'year match');
+	t.equals(result[13].url, 'https://music.youtube.com/channel/MPREb_xvWYs98yEcU', 'url match');
 
 	t.end();
 });

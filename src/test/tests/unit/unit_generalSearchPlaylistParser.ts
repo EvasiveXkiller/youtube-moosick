@@ -8,6 +8,7 @@ import { WalkUtility } from '../../../resources/utilities/walk.utility.js';
 
 test('GeneralParserPlaylist', async (t) => {
 	const { result } = GeneralParser.parseSearchResult(generalSearchPlaylist as any, Category.PLAYLIST);
+
 	const expected: typeof result = [
 		Playlist.from({
 			author: [
@@ -29,8 +30,12 @@ test('GeneralParserPlaylist', async (t) => {
 				result,
 				expected,
 			),
-		'result has expected shape',
+		'GeneralParserPlaylist result has expected shape',
 	);
+
+	t.equals(result[5].name, 'Covers I like to do', 'title match');
+	t.equals(result[12].trackCount, 76, 'track count match');
+	t.equals(result[18].author[0].url, 'https://music.youtube.com/channel/UCJ-pymBUbQ7hAZXaJTVO0cw', 'browseId match');
 
 	t.end();
 });

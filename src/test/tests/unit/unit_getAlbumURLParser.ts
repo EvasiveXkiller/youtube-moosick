@@ -6,7 +6,7 @@ import { AlbumURL, ReleaseDate, Track } from '../../../resources/resultTypes/ind
 import { ArtistExtended, Thumbnails } from '../../../resources/generalTypes/index.js';
 import { EitherShape, WalkUtility } from '../../../resources/utilities/index.js';
 
-test('getAlbumURLParser', (t) => {
+test('unit_getAlbumURLParser', (t) => {
 	const result = GetAlbumParser.parseAlbumURLPage(rawGetAlbumURL as AlbumURLFullResult);
 
 	const expected = [

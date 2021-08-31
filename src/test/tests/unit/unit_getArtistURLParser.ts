@@ -6,7 +6,7 @@ import { Albums, ArtistContent, ArtistHeader, ArtistURL, Single, Videos } from '
 import { Artist, Thumbnails } from '../../../resources/generalTypes/index.js';
 import type { ArtistURLFullResult } from '../../../resources/etc/rawResultTypes/rawGetArtistURL.js';
 
-test('getArtistURLParser', (t) => {
+test('unit_getArtistURLParser', (t) => {
 	const result = GetArtistParser.parseArtistURLPage(rawGetArtistURL as ArtistURLFullResult);
 
 	const expected = [
@@ -85,8 +85,12 @@ test('getArtistURLParser', (t) => {
 				result,
 				expected[0],
 			),
-		'result has expected shape',
+		'unit_getArtistURLParser result has expected shape',
 	);
+
+	t.equals(result.headers.artistName, 'TWICE', 'title match');
+	t.equals(result.headers.thumbnails[1].url, 'https://lh3.googleusercontent.com/lmbgcqGRdQLWqjyPgk7239RFd7bB2CRxf4JpS4ndFkZZzcVt1Ia6FHs6Kd4mbWwZQx6DLwHJVDRz3UrZ=w120-h120-l90-rj', 'thumbnails match');
+	t.equals(result.artistContents.single[5].browseId, 'MPREb_AvQIOJGBHLA', 'random videoId check pass');
 
 	t.end();
 });
