@@ -96,7 +96,7 @@ Array.constructor
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:79](https://github.com/EvasiveXkiller/youtube-moosick/blob/666a735/src/resources/generalTypes/result.ts#L79)
+[src/resources/generalTypes/result.ts:79](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/result.ts#L79)
 
 ## Properties
 
@@ -692,7 +692,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:137](https://github.com/EvasiveXkiller/youtube-moosick/blob/666a735/src/resources/generalTypes/result.ts#L137)
+[src/resources/generalTypes/result.ts:137](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/result.ts#L137)
 
 ___
 
@@ -779,7 +779,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:85](https://github.com/EvasiveXkiller/youtube-moosick/blob/666a735/src/resources/generalTypes/result.ts#L85)
+[src/resources/generalTypes/result.ts:85](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/result.ts#L85)
 
 ___
 
@@ -799,7 +799,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:121](https://github.com/EvasiveXkiller/youtube-moosick/blob/666a735/src/resources/generalTypes/result.ts#L121)
+[src/resources/generalTypes/result.ts:121](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/result.ts#L121)
 
 ___
 
