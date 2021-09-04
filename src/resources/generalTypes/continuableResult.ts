@@ -49,7 +49,7 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 	@unenumerable
 	private declare ctx: MooSick;
 
-	public async loadNext() {
+	public async loadNext(): Promise<ContinuableResultBlueprint<T> | null> {
 		if (this.continuation == null) {
 			return null;
 		}
@@ -73,7 +73,10 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 
 		this.merge(content);
 
-		return result;
+		return {
+			result: content,
+			continuation: this.continuation,
+		};
 	}
 
 	/**
@@ -98,8 +101,9 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 		}
 	}
 
-	public async loadUntil(minimumLength = Infinity) {
-		const loaded = [];
+	public async loadUntil(minimumLength = Infinity): Promise<ContinuableResultBlueprint<T>> {
+		const content: T[] = [];
+		let continuation: NextContinuationData | undefined;
 
 		while (this.length < minimumLength) {
 			const result = await this.loadNext();
@@ -108,10 +112,14 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 				break;
 			}
 
-			loaded.push(result);
+			content.push(...result.result);
+			continuation = result.continuation;
 		}
 
-		return loaded.flat();
+		return {
+			result: content,
+			continuation,
+		};
 	}
 
 	public async * iterator() {
