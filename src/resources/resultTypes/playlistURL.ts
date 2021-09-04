@@ -1,6 +1,6 @@
 import { Item } from '../../blocks/item.js';
 import type { Artist } from '../generalTypes/artist.js';
-import type { ContinuableResult } from '../generalTypes/result.js';
+import type { ContinuableResult } from '../generalTypes/continuableResult.js';
 import type { Thumbnails } from '../generalTypes/thumbnails.js';
 
 export class PlaylistURL extends Item {
