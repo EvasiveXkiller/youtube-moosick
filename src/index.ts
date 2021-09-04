@@ -18,9 +18,9 @@ import type { Video } from './resources/generalTypes/video.js';
 import type { Song } from './resources/generalTypes/song.js';
 import type { Playlist } from './resources/generalTypes/playlist.js';
 import type { Artist, ArtistExtended } from './resources/generalTypes/artist.js';
-import type { Unsorted } from './resources/generalTypes/unsorted.js';
+import { ContinuableUnsorted } from './resources/generalTypes/unsorted.js';
 import type { Album } from './resources/generalTypes/album.js';
-import { ContinuableResult, ContinuableResultFactory } from './resources/generalTypes/continuableResult.js';
+import { ContinuableResult, ContinuableResultBlueprint, ContinuableResultFactory } from './resources/generalTypes/continuableResult.js';
 
 axios.defaults.adapter = axios0;
 
@@ -240,7 +240,7 @@ export class MooSick extends AsyncConstructor {
 	 * console.log(resultsSong)
 	 * ```
 	 */
-	public async search(query: string): Promise<ContinuableResult<Unsorted>>;
+	public async search<T extends undefined>(query: string, searchType?: T): Promise<ContinuableUnsorted>;
 	public async search<T extends Category.VIDEO>(query: string, searchType?: T): Promise<ContinuableResult<Video>>;
 	public async search<T extends Category.SONG>(query: string, searchType?: T): Promise<ContinuableResult<Song>>;
 	public async search<T extends Category.PLAYLIST>(query: string, searchType?: T): Promise<ContinuableResult<Playlist>>;
@@ -262,16 +262,20 @@ export class MooSick extends AsyncConstructor {
 			continuation,
 		} = GeneralParser.parseSearchResult(ctx as GeneralFull, searchType);
 
-		const continuableResult = new ContinuableResultFactory<typeof result[0]>()
+		const continuableResult = new ContinuableResultFactory<
+			typeof result[0],
+			ContinuableResultBlueprint<typeof result[0]>,
+			typeof result
+		>(searchType == null ? ContinuableUnsorted as any : ContinuableResult)
 			.create({
 				ctx: this,
 				getContent: (context) => context.result,
 				parser: (context) => GeneralParser.parseSearchResult(context, searchType),
-				isDone: (context) => context?.length >= 0,
+				isDone: (context) => (context?.length ?? 0) === 0,
 				continuation,
 			});
 
-		continuableResult.push(...result);
+		continuableResult.merge(result);
 
 		return continuableResult;
 	}
