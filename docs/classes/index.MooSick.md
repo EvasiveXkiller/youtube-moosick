@@ -52,7 +52,7 @@ console.log(results)
 
 #### Defined in
 
-[src/index.ts:288](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L288)
+[src/index.ts:297](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L297)
 
 ___
 
@@ -84,13 +84,13 @@ console.log(results);
 
 #### Defined in
 
-[src/index.ts:362](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L362)
+[src/index.ts:377](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L377)
 
 ___
 
 ### getPlaylist
 
-▸ **getPlaylist**(`browseId`, `contentLimit?`): `Promise`<[`PlaylistURL`](resources_resultTypes.PlaylistURL.md)\>
+▸ **getPlaylist**(`browseId`, `contentLimit?`): `Promise`<[`ContinuablePlaylistURL`](resources_resultTypes.ContinuablePlaylistURL.md)\>
 
 Gets the playlist using the Youtube Music API
 
@@ -108,7 +108,7 @@ it relies on the old structure which i have modified
 
 #### Returns
 
-`Promise`<[`PlaylistURL`](resources_resultTypes.PlaylistURL.md)\>
+`Promise`<[`ContinuablePlaylistURL`](resources_resultTypes.ContinuablePlaylistURL.md)\>
 
 An object formatted by the parser
 
@@ -122,7 +122,7 @@ console.log(results);
 
 #### Defined in
 
-[src/index.ts:320](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L320)
+[src/index.ts:329](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L329)
 
 ___
 
@@ -152,25 +152,32 @@ console.log(suggestions);
 
 #### Defined in
 
-[src/index.ts:200](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L200)
+[src/index.ts:200](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L200)
 
 ___
 
 ### search
 
-▸ **search**(`query`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`Unsorted`, `Unsorted`\>\>
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<`ContinuableUnsorted`\>
 
 Searches for songs using the Youtube Music API
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `undefined` |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `query` | `string` | String query text to search |
+| `searchType?` | `T` | - |
 
 #### Returns
 
-`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`Unsorted`, `Unsorted`\>\>
+`Promise`<`ContinuableUnsorted`\>
 
 An object formatted by parsers.js
 
@@ -189,9 +196,9 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:243](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L243)
+[src/index.ts:243](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L243)
 
-▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md), [`Video`](resources_generalTypes.Video.md)\>\>
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Video`](resources_generalTypes.Video.md)\>, [`Video`](resources_generalTypes.Video.md)[]\>\>
 
 #### Type parameters
 
@@ -208,13 +215,13 @@ console.log(resultsSong)
 
 #### Returns
 
-`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md), [`Video`](resources_generalTypes.Video.md)\>\>
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Video`](resources_generalTypes.Video.md)\>, [`Video`](resources_generalTypes.Video.md)[]\>\>
 
 #### Defined in
 
-[src/index.ts:244](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L244)
+[src/index.ts:244](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L244)
 
-▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Song`](resources_generalTypes.Song.md), [`Song`](resources_generalTypes.Song.md)\>\>
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Song`](resources_generalTypes.Song.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Song`](resources_generalTypes.Song.md)\>, [`Song`](resources_generalTypes.Song.md)[]\>\>
 
 #### Type parameters
 
@@ -231,13 +238,13 @@ console.log(resultsSong)
 
 #### Returns
 
-`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Song`](resources_generalTypes.Song.md), [`Song`](resources_generalTypes.Song.md)\>\>
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Song`](resources_generalTypes.Song.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Song`](resources_generalTypes.Song.md)\>, [`Song`](resources_generalTypes.Song.md)[]\>\>
 
 #### Defined in
 
-[src/index.ts:245](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L245)
+[src/index.ts:245](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L245)
 
-▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Playlist`](resources_generalTypes.Playlist.md), [`Playlist`](resources_generalTypes.Playlist.md)\>\>
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Playlist`](resources_generalTypes.Playlist.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Playlist`](resources_generalTypes.Playlist.md)\>, [`Playlist`](resources_generalTypes.Playlist.md)[]\>\>
 
 #### Type parameters
 
@@ -254,13 +261,13 @@ console.log(resultsSong)
 
 #### Returns
 
-`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Playlist`](resources_generalTypes.Playlist.md), [`Playlist`](resources_generalTypes.Playlist.md)\>\>
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Playlist`](resources_generalTypes.Playlist.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Playlist`](resources_generalTypes.Playlist.md)\>, [`Playlist`](resources_generalTypes.Playlist.md)[]\>\>
 
 #### Defined in
 
-[src/index.ts:246](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L246)
+[src/index.ts:246](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L246)
 
-▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Artist`](resources_generalTypes.Artist.md), [`Artist`](resources_generalTypes.Artist.md)\>\>
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`ArtistExtended`](resources_generalTypes.ArtistExtended.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`ArtistExtended`](resources_generalTypes.ArtistExtended.md)\>, [`ArtistExtended`](resources_generalTypes.ArtistExtended.md)[]\>\>
 
 #### Type parameters
 
@@ -277,13 +284,13 @@ console.log(resultsSong)
 
 #### Returns
 
-`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Artist`](resources_generalTypes.Artist.md), [`Artist`](resources_generalTypes.Artist.md)\>\>
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`ArtistExtended`](resources_generalTypes.ArtistExtended.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`ArtistExtended`](resources_generalTypes.ArtistExtended.md)\>, [`ArtistExtended`](resources_generalTypes.ArtistExtended.md)[]\>\>
 
 #### Defined in
 
-[src/index.ts:247](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L247)
+[src/index.ts:247](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L247)
 
-▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Album`](resources_generalTypes.Album.md), [`Album`](resources_generalTypes.Album.md)\>\>
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Album`](resources_generalTypes.Album.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Album`](resources_generalTypes.Album.md)\>, [`Album`](resources_generalTypes.Album.md)[]\>\>
 
 #### Type parameters
 
@@ -300,13 +307,13 @@ console.log(resultsSong)
 
 #### Returns
 
-`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Album`](resources_generalTypes.Album.md), [`Album`](resources_generalTypes.Album.md)\>\>
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Album`](resources_generalTypes.Album.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Album`](resources_generalTypes.Album.md)\>, [`Album`](resources_generalTypes.Album.md)[]\>\>
 
 #### Defined in
 
-[src/index.ts:248](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L248)
+[src/index.ts:248](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L248)
 
-▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md), [`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md)\>\>
+▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Album`](resources_generalTypes.Album.md) \| [`Artist`](resources_generalTypes.Artist.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Album`](resources_generalTypes.Album.md) \| [`Artist`](resources_generalTypes.Artist.md)\>, ([`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Album`](resources_generalTypes.Album.md) \| [`Artist`](resources_generalTypes.Artist.md))[]\>\>
 
 #### Type parameters
 
@@ -323,8 +330,8 @@ console.log(resultsSong)
 
 #### Returns
 
-`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md), [`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Artist`](resources_generalTypes.Artist.md) \| [`Album`](resources_generalTypes.Album.md)\>\>
+`Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Album`](resources_generalTypes.Album.md) \| [`Artist`](resources_generalTypes.Artist.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Album`](resources_generalTypes.Album.md) \| [`Artist`](resources_generalTypes.Artist.md)\>, ([`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Album`](resources_generalTypes.Album.md) \| [`Artist`](resources_generalTypes.Artist.md))[]\>\>
 
 #### Defined in
 
-[src/index.ts:249](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/index.ts#L249)
+[src/index.ts:249](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/index.ts#L249)

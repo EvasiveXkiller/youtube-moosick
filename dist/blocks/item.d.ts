@@ -12,10 +12,12 @@ export declare type ItemOptions<T extends abstract new (...args: any[]) => any> 
 export declare class Item {
     /** @deprecated You're probably looking for `Item.from()` */
     constructor();
-    static from<T extends typeof Item>(this: T, options: ItemOptions<T>): InstanceType<T>;
+    static from<T extends Item>(this: new () => T, options: ItemOptions<new () => T>): T;
 }
-export declare abstract class Factory<T extends Item> {
-    abstract create(): T | Promise<T>;
+export declare abstract class Factory<R extends Item, T extends Partial<Item> = R> {
+    private item;
+    constructor(item: (new () => R));
+    create(options: T): R;
 }
 export {};
 //# sourceMappingURL=item.d.ts.map

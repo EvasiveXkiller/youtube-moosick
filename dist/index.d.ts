@@ -1,13 +1,13 @@
 import { Category } from './enums.js';
-import { AlbumURL, PlaylistURL, ArtistURL, SearchSuggestions } from './resources/resultTypes/index.js';
+import { AlbumURL, ArtistURL, SearchSuggestions, ContinuablePlaylistURL } from './resources/resultTypes/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
 import type { Video } from './resources/generalTypes/video.js';
 import type { Song } from './resources/generalTypes/song.js';
 import type { Playlist } from './resources/generalTypes/playlist.js';
-import type { Artist } from './resources/generalTypes/artist.js';
-import type { Unsorted } from './resources/generalTypes/unsorted.js';
+import type { Artist, ArtistExtended } from './resources/generalTypes/artist.js';
+import { ContinuableUnsorted } from './resources/generalTypes/unsorted.js';
 import type { Album } from './resources/generalTypes/album.js';
-import { ContinuableResult } from './resources/generalTypes/result.js';
+import { ContinuableResult } from './resources/generalTypes/continuableResult.js';
 /**
  * Main class to interact with methods
  *
@@ -82,11 +82,11 @@ export declare class MooSick extends AsyncConstructor {
      * console.log(resultsSong)
      * ```
      */
-    search(query: string): Promise<ContinuableResult<Unsorted>>;
+    search<T extends undefined>(query: string, searchType?: T): Promise<ContinuableUnsorted>;
     search<T extends Category.VIDEO>(query: string, searchType?: T): Promise<ContinuableResult<Video>>;
     search<T extends Category.SONG>(query: string, searchType?: T): Promise<ContinuableResult<Song>>;
     search<T extends Category.PLAYLIST>(query: string, searchType?: T): Promise<ContinuableResult<Playlist>>;
-    search<T extends Category.ARTIST>(query: string, searchType?: T): Promise<ContinuableResult<Artist>>;
+    search<T extends Category.ARTIST>(query: string, searchType?: T): Promise<ContinuableResult<ArtistExtended>>;
     search<T extends Category.ALBUM | Category.EP | Category.SINGLE>(query: string, searchType?: T): Promise<ContinuableResult<Album>>;
     search<T extends Category>(query: string, searchType?: T): Promise<ContinuableResult<Video | Song | Playlist | Artist | Album>>;
     /**
@@ -123,7 +123,7 @@ export declare class MooSick extends AsyncConstructor {
      * I think i forgotten to change it, but i dont have faith on this system working,
      * it relies on the old structure which i have modified
      */
-    getPlaylist(browseId: string, contentLimit?: number): Promise<PlaylistURL>;
+    getPlaylist(browseId: string, contentLimit?: number): Promise<ContinuablePlaylistURL>;
     /**
      * Gets the artist details from Youtube Music
      * @param browseId - The artist ID, sanitized

@@ -1,6 +1,6 @@
 [youtube-moosick](../README.md) / [Modules](../modules.md) / [resources/generalTypes](../modules/resources_generalTypes.md) / ContinuableResult
 
-# Class: ContinuableResult<T, V\>
+# Class: ContinuableResult<T, ParserResult, GetContentResult\>
 
 [resources/generalTypes](../modules/resources_generalTypes.md).ContinuableResult
 
@@ -9,13 +9,18 @@
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `Item` |
-| `V` | `T` |
+| `ParserResult` | [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\> |
+| `GetContentResult` | extends `any`[]`T`[] |
 
 ## Hierarchy
 
-- `Array`
+- `Array`<`T`\>
 
   ↳ **`ContinuableResult`**
+
+## Implements
+
+- `Item`
 
 ## Table of contents
 
@@ -53,6 +58,7 @@
 - [loadNext](resources_generalTypes.ContinuableResult.md#loadnext)
 - [loadUntil](resources_generalTypes.ContinuableResult.md#loaduntil)
 - [map](resources_generalTypes.ContinuableResult.md#map)
+- [merge](resources_generalTypes.ContinuableResult.md#merge)
 - [pop](resources_generalTypes.ContinuableResult.md#pop)
 - [push](resources_generalTypes.ContinuableResult.md#push)
 - [reduce](resources_generalTypes.ContinuableResult.md#reduce)
@@ -75,28 +81,53 @@
 
 ### constructor
 
-• **new ContinuableResult**<`T`, `V`\>(`ctx`)
+• **new ContinuableResult**<`T`, `ParserResult`, `GetContentResult`\>(`arrayLength`)
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `Item`<`T`\> |
-| `V` | `T` |
+| `ParserResult` | [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\> |
+| `GetContentResult` | extends `any`[]`T`[] |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `ctx` | [`MooSick`](index.MooSick.md) |
+| `arrayLength` | `number` |
 
-#### Overrides
+#### Inherited from
 
-Array.constructor
+Array<T\>.constructor
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:79](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/result.ts#L79)
+node_modules/typescript/lib/lib.es5.d.ts:1406
+
+• **new ContinuableResult**<`T`, `ParserResult`, `GetContentResult`\>(...`items`)
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `Item`<`T`\> |
+| `ParserResult` | [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\> |
+| `GetContentResult` | extends `any`[]`T`[] |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...items` | `T`[] |
+
+#### Inherited from
+
+Array<T\>.constructor
+
+#### Defined in
+
+node_modules/typescript/lib/lib.es5.d.ts:1407
 
 ## Properties
 
@@ -132,13 +163,13 @@ node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:314
 
 ### [iterator]
 
-▸ **[iterator]**(): `IterableIterator`<`any`\>
+▸ **[iterator]**(): `IterableIterator`<`T`\>
 
 Iterator
 
 #### Returns
 
-`IterableIterator`<`any`\>
+`IterableIterator`<`T`\>
 
 #### Inherited from
 
@@ -183,7 +214,7 @@ ___
 
 ### at
 
-▸ **at**(`index`): `any`
+▸ **at**(`index`): `undefined` \| `T`
 
 Takes an integer value and returns the item at that index,
 allowing for positive and negative integers.
@@ -197,7 +228,7 @@ Negative integers count back from the last item in the array.
 
 #### Returns
 
-`any`
+`undefined` \| `T`
 
 #### Inherited from
 
@@ -211,7 +242,7 @@ ___
 
 ### concat
 
-▸ **concat**(...`items`): `any`[]
+▸ **concat**(...`items`): `T`[]
 
 Combines two or more arrays.
 This method returns a new array without modifying any existing arrays.
@@ -220,11 +251,11 @@ This method returns a new array without modifying any existing arrays.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...items` | `ConcatArray`<`any`\>[] | Additional arrays and/or items to add to the end of the array. |
+| `...items` | `ConcatArray`<`T`\>[] | Additional arrays and/or items to add to the end of the array. |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 #### Inherited from
 
@@ -234,7 +265,7 @@ Array.concat
 
 node_modules/typescript/lib/lib.es5.d.ts:1248
 
-▸ **concat**(...`items`): `any`[]
+▸ **concat**(...`items`): `T`[]
 
 Combines two or more arrays.
 This method returns a new array without modifying any existing arrays.
@@ -243,11 +274,11 @@ This method returns a new array without modifying any existing arrays.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...items` | `any`[] | Additional arrays and/or items to add to the end of the array. |
+| `...items` | (`T` \| `ConcatArray`<`T`\>)[] | Additional arrays and/or items to add to the end of the array. |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 #### Inherited from
 
@@ -261,7 +292,7 @@ ___
 
 ### copyWithin
 
-▸ **copyWithin**(`target`, `start`, `end?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `V`\>
+▸ **copyWithin**(`target`, `start`, `end?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
 
 Returns the this object after copying a section of the array identified by start and end
 to the same array starting at position target
@@ -276,7 +307,7 @@ to the same array starting at position target
 
 #### Returns
 
-[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `V`\>
+[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
 
 #### Inherited from
 
@@ -290,13 +321,13 @@ ___
 
 ### entries
 
-▸ **entries**(): `IterableIterator`<[`number`, `any`]\>
+▸ **entries**(): `IterableIterator`<[`number`, `T`]\>
 
 Returns an iterable of key, value pairs for every entry in the array
 
 #### Returns
 
-`IterableIterator`<[`number`, `any`]\>
+`IterableIterator`<[`number`, `T`]\>
 
 #### Inherited from
 
@@ -318,13 +349,13 @@ Determines whether all the members of an array satisfy the specified test.
 
 | Name | Type |
 | :------ | :------ |
-| `S` | extends `any` |
+| `S` | extends `Item`<`S`\> |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `any`, `index`: `number`, `array`: `any`[]) => value is S | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
+| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => value is S | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -347,7 +378,7 @@ Determines whether all the members of an array satisfy the specified test.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `any`, `index`: `number`, `array`: `any`[]) => `unknown` | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
+| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `unknown` | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -366,7 +397,7 @@ ___
 
 ### fill
 
-▸ **fill**(`value`, `start?`, `end?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `V`\>
+▸ **fill**(`value`, `start?`, `end?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
 
 Changes all array elements from `start` to `end` index to a static `value` and returns the modified array
 
@@ -374,13 +405,13 @@ Changes all array elements from `start` to `end` index to a static `value` and r
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `value` | `any` | value to fill array section with |
+| `value` | `T` | value to fill array section with |
 | `start?` | `number` | index to start filling the array at. If start is negative, it is treated as length+start where length is the length of the array. |
 | `end?` | `number` | index to stop filling the array at. If end is negative, it is treated as length+end. |
 
 #### Returns
 
-[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `V`\>
+[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
 
 #### Inherited from
 
@@ -402,13 +433,13 @@ Returns the elements of an array that meet the condition specified in a callback
 
 | Name | Type |
 | :------ | :------ |
-| `S` | extends `any` |
+| `S` | extends `Item`<`S`\> |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `any`, `index`: `number`, `array`: `any`[]) => value is S | A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array. |
+| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => value is S | A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -423,7 +454,7 @@ Array.filter
 
 node_modules/typescript/lib/lib.es5.d.ts:1367
 
-▸ **filter**(`predicate`, `thisArg?`): `any`[]
+▸ **filter**(`predicate`, `thisArg?`): `T`[]
 
 Returns the elements of an array that meet the condition specified in a callback function.
 
@@ -431,12 +462,12 @@ Returns the elements of an array that meet the condition specified in a callback
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `any`, `index`: `number`, `array`: `any`[]) => `unknown` | A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array. |
+| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `unknown` | A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 #### Inherited from
 
@@ -459,13 +490,13 @@ otherwise.
 
 | Name | Type |
 | :------ | :------ |
-| `S` | extends `any` |
+| `S` | extends `Item`<`S`\> |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `any`, `index`: `number`, `obj`: `any`[]) => value is S | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, find immediately returns that element value. Otherwise, find returns undefined. |
+| `predicate` | (`value`: `T`, `index`: `number`, `obj`: `T`[]) => value is S | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, find immediately returns that element value. Otherwise, find returns undefined. |
 | `thisArg?` | `any` | If provided, it will be used as the this value for each invocation of predicate. If it is not provided, undefined is used instead. |
 
 #### Returns
@@ -480,18 +511,18 @@ Array.find
 
 node_modules/typescript/lib/lib.es2015.core.d.ts:31
 
-▸ **find**(`predicate`, `thisArg?`): `any`
+▸ **find**(`predicate`, `thisArg?`): `undefined` \| `T`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `predicate` | (`value`: `any`, `index`: `number`, `obj`: `any`[]) => `unknown` |
+| `predicate` | (`value`: `T`, `index`: `number`, `obj`: `T`[]) => `unknown` |
 | `thisArg?` | `any` |
 
 #### Returns
 
-`any`
+`undefined` \| `T`
 
 #### Inherited from
 
@@ -514,7 +545,7 @@ otherwise.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `any`, `index`: `number`, `obj`: `any`[]) => `unknown` | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, findIndex immediately returns that element index. Otherwise, findIndex returns -1. |
+| `predicate` | (`value`: `T`, `index`: `number`, `obj`: `T`[]) => `unknown` | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, findIndex immediately returns that element index. Otherwise, findIndex returns -1. |
 | `thisArg?` | `any` | If provided, it will be used as the this value for each invocation of predicate. If it is not provided, undefined is used instead. |
 
 #### Returns
@@ -584,7 +615,7 @@ This is identical to a map followed by flat with depth 1.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callback` | (`value`: `any`, `index`: `number`, `array`: `any`[]) => `U` \| readonly `U`[] | A function that accepts up to three arguments. The flatMap method calls the callback function one time for each element in the array. |
+| `callback` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `U` \| readonly `U`[] | A function that accepts up to three arguments. The flatMap method calls the callback function one time for each element in the array. |
 | `thisArg?` | `This` | An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -611,7 +642,7 @@ Performs the specified action for each element in an array.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`value`: `any`, `index`: `number`, `array`: `any`[]) => `void` | A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `void` | A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -638,7 +669,7 @@ Determines whether an array includes a certain element, returning true or false 
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `searchElement` | `any` | The element to search for. |
+| `searchElement` | `T` | The element to search for. |
 | `fromIndex?` | `number` | The position in this array at which to begin searching for searchElement. |
 
 #### Returns
@@ -665,7 +696,7 @@ Returns the index of the first occurrence of a value in an array, or -1 if it is
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `searchElement` | `any` | The value to locate in the array. |
+| `searchElement` | `T` | The value to locate in the array. |
 | `fromIndex?` | `number` | The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0. |
 
 #### Returns
@@ -684,15 +715,15 @@ ___
 
 ### iterator
 
-▸ **iterator**(): `AsyncGenerator`<`any`, `void`, `unknown`\>
+▸ **iterator**(): `AsyncGenerator`<`T`, `void`, `unknown`\>
 
 #### Returns
 
-`AsyncGenerator`<`any`, `void`, `unknown`\>
+`AsyncGenerator`<`T`, `void`, `unknown`\>
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:137](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/result.ts#L137)
+[src/resources/generalTypes/continuableResult.ts:111](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/resources/generalTypes/continuableResult.ts#L111)
 
 ___
 
@@ -752,7 +783,7 @@ Returns the index of the last occurrence of a specified value in an array, or -1
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `searchElement` | `any` | The value to locate in the array. |
+| `searchElement` | `T` | The value to locate in the array. |
 | `fromIndex?` | `number` | The array index at which to begin searching backward. If fromIndex is omitted, the search starts at the last index in the array. |
 
 #### Returns
@@ -771,35 +802,35 @@ ___
 
 ### loadNext
 
-▸ **loadNext**(): `Promise`<``null`` \| `V`\>
+▸ **loadNext**(): `Promise`<``null`` \| `ParserResult`\>
 
 #### Returns
 
-`Promise`<``null`` \| `V`\>
+`Promise`<``null`` \| `ParserResult`\>
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:85](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/result.ts#L85)
+[src/resources/generalTypes/continuableResult.ts:48](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/resources/generalTypes/continuableResult.ts#L48)
 
 ___
 
 ### loadUntil
 
-▸ **loadUntil**(`length?`): `Promise`<`V` extends readonly `InnerArr`[] ? `InnerArr` : `V`[]\>
+▸ **loadUntil**(`minimumLength?`): `Promise`<`ParserResult` extends readonly `InnerArr`[] ? `InnerArr` : `ParserResult`[]\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `length` | `number` |
+| `minimumLength` | `number` |
 
 #### Returns
 
-`Promise`<`V` extends readonly `InnerArr`[] ? `InnerArr` : `V`[]\>
+`Promise`<`ParserResult` extends readonly `InnerArr`[] ? `InnerArr` : `ParserResult`[]\>
 
 #### Defined in
 
-[src/resources/generalTypes/result.ts:121](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/result.ts#L121)
+[src/resources/generalTypes/continuableResult.ts:95](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/resources/generalTypes/continuableResult.ts#L95)
 
 ___
 
@@ -819,7 +850,7 @@ Calls a defined callback function on each element of an array, and returns an ar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`value`: `any`, `index`: `number`, `array`: `any`[]) => `U` | A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `U` | A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -836,16 +867,39 @@ node_modules/typescript/lib/lib.es5.d.ts:1361
 
 ___
 
+### merge
+
+▸ **merge**(`obj`): `void`
+
+Basically `Array.prototype.concat` but with the behaviour of push.
+Supports adding non POJA's (will add keys to `this`)
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `obj` | `T`[] \| `Record`<`string` \| `number` \| `symbol`, `T`\> | An `Array` a or class that extends `Array` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[src/resources/generalTypes/continuableResult.ts:78](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/resources/generalTypes/continuableResult.ts#L78)
+
+___
+
 ### pop
 
-▸ **pop**(): `any`
+▸ **pop**(): `undefined` \| `T`
 
 Removes the last element from an array and returns it.
 If the array is empty, undefined is returned and the array is not modified.
 
 #### Returns
 
-`any`
+`undefined` \| `T`
 
 #### Inherited from
 
@@ -867,7 +921,7 @@ Appends new elements to the end of an array, and returns the new length of the a
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...items` | `any`[] | New elements to add to the array. |
+| `...items` | `T`[] | New elements to add to the array. |
 
 #### Returns
 
@@ -885,7 +939,7 @@ ___
 
 ### reduce
 
-▸ **reduce**(`callbackfn`): `any`
+▸ **reduce**(`callbackfn`): `T`
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
@@ -893,11 +947,11 @@ Calls the specified callback function for all the elements in an array. The retu
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`previousValue`: `any`, `currentValue`: `any`, `currentIndex`: `number`, `array`: `any`[]) => `any` | A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`previousValue`: `T`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `T` | A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array. |
 
 #### Returns
 
-`any`
+`T`
 
 #### Inherited from
 
@@ -907,18 +961,18 @@ Array.reduce
 
 node_modules/typescript/lib/lib.es5.d.ts:1379
 
-▸ **reduce**(`callbackfn`, `initialValue`): `any`
+▸ **reduce**(`callbackfn`, `initialValue`): `T`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `callbackfn` | (`previousValue`: `any`, `currentValue`: `any`, `currentIndex`: `number`, `array`: `any`[]) => `any` |
-| `initialValue` | `any` |
+| `callbackfn` | (`previousValue`: `T`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `T` |
+| `initialValue` | `T` |
 
 #### Returns
 
-`any`
+`T`
 
 #### Inherited from
 
@@ -942,7 +996,7 @@ Calls the specified callback function for all the elements in an array. The retu
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`previousValue`: `U`, `currentValue`: `any`, `currentIndex`: `number`, `array`: `any`[]) => `U` | A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`previousValue`: `U`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `U` | A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array. |
 | `initialValue` | `U` | If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value. |
 
 #### Returns
@@ -961,7 +1015,7 @@ ___
 
 ### reduceRight
 
-▸ **reduceRight**(`callbackfn`): `any`
+▸ **reduceRight**(`callbackfn`): `T`
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
@@ -969,11 +1023,11 @@ Calls the specified callback function for all the elements in an array, in desce
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`previousValue`: `any`, `currentValue`: `any`, `currentIndex`: `number`, `array`: `any`[]) => `any` | A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`previousValue`: `T`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `T` | A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array. |
 
 #### Returns
 
-`any`
+`T`
 
 #### Inherited from
 
@@ -983,18 +1037,18 @@ Array.reduceRight
 
 node_modules/typescript/lib/lib.es5.d.ts:1392
 
-▸ **reduceRight**(`callbackfn`, `initialValue`): `any`
+▸ **reduceRight**(`callbackfn`, `initialValue`): `T`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `callbackfn` | (`previousValue`: `any`, `currentValue`: `any`, `currentIndex`: `number`, `array`: `any`[]) => `any` |
-| `initialValue` | `any` |
+| `callbackfn` | (`previousValue`: `T`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `T` |
+| `initialValue` | `T` |
 
 #### Returns
 
-`any`
+`T`
 
 #### Inherited from
 
@@ -1018,7 +1072,7 @@ Calls the specified callback function for all the elements in an array, in desce
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`previousValue`: `U`, `currentValue`: `any`, `currentIndex`: `number`, `array`: `any`[]) => `U` | A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`previousValue`: `U`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `U` | A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array. |
 | `initialValue` | `U` | If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value. |
 
 #### Returns
@@ -1037,14 +1091,14 @@ ___
 
 ### reverse
 
-▸ **reverse**(): `any`[]
+▸ **reverse**(): `T`[]
 
 Reverses the elements in an array in place.
 This method mutates the array and returns a reference to the same array.
 
 #### Returns
 
-`any`[]
+`T`[]
 
 #### Inherited from
 
@@ -1058,14 +1112,14 @@ ___
 
 ### shift
 
-▸ **shift**(): `any`
+▸ **shift**(): `undefined` \| `T`
 
 Removes the first element from an array and returns it.
 If the array is empty, undefined is returned and the array is not modified.
 
 #### Returns
 
-`any`
+`undefined` \| `T`
 
 #### Inherited from
 
@@ -1079,7 +1133,7 @@ ___
 
 ### slice
 
-▸ **slice**(`start?`, `end?`): `any`[]
+▸ **slice**(`start?`, `end?`): `T`[]
 
 Returns a copy of a section of an array.
 For both start and end, a negative index can be used to indicate an offset from the end of the array.
@@ -1094,7 +1148,7 @@ For example, -2 refers to the second to last element of the array.
 
 #### Returns
 
-`any`[]
+`T`[]
 
 #### Inherited from
 
@@ -1116,7 +1170,7 @@ Determines whether the specified callback function returns true for any element 
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `any`, `index`: `number`, `array`: `any`[]) => `unknown` | A function that accepts up to three arguments. The some method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value true, or until the end of the array. |
+| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `unknown` | A function that accepts up to three arguments. The some method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value true, or until the end of the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -1135,7 +1189,7 @@ ___
 
 ### sort
 
-▸ **sort**(`compareFn?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `V`\>
+▸ **sort**(`compareFn?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
 
 Sorts an array in place.
 This method mutates the array and returns a reference to the same array.
@@ -1144,11 +1198,11 @@ This method mutates the array and returns a reference to the same array.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `compareFn?` | (`a`: `any`, `b`: `any`) => `number` | Function used to determine the order of the elements. It is expected to return a negative value if first argument is less than second argument, zero if they're equal and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order. ```ts [11,2,22,1].sort((a, b) => a - b) ``` |
+| `compareFn?` | (`a`: `T`, `b`: `T`) => `number` | Function used to determine the order of the elements. It is expected to return a negative value if first argument is less than second argument, zero if they're equal and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order. ```ts [11,2,22,1].sort((a, b) => a - b) ``` |
 
 #### Returns
 
-[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `V`\>
+[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
 
 #### Inherited from
 
@@ -1162,7 +1216,7 @@ ___
 
 ### splice
 
-▸ **splice**(`start`, `deleteCount?`): `any`[]
+▸ **splice**(`start`, `deleteCount?`): `T`[]
 
 Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
 
@@ -1175,7 +1229,7 @@ Removes elements from an array and, if necessary, inserts new elements in their 
 
 #### Returns
 
-`any`[]
+`T`[]
 
 An array containing the elements that were deleted.
 
@@ -1187,7 +1241,7 @@ Array.splice
 
 node_modules/typescript/lib/lib.es5.d.ts:1297
 
-▸ **splice**(`start`, `deleteCount`, ...`items`): `any`[]
+▸ **splice**(`start`, `deleteCount`, ...`items`): `T`[]
 
 Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
 
@@ -1197,11 +1251,11 @@ Removes elements from an array and, if necessary, inserts new elements in their 
 | :------ | :------ | :------ |
 | `start` | `number` | The zero-based location in the array from which to start removing elements. |
 | `deleteCount` | `number` | The number of elements to remove. |
-| `...items` | `any`[] | Elements to insert into the array in place of the deleted elements. |
+| `...items` | `T`[] | Elements to insert into the array in place of the deleted elements. |
 
 #### Returns
 
-`any`[]
+`T`[]
 
 An array containing the elements that were deleted.
 
@@ -1265,7 +1319,7 @@ Inserts new elements at the start of an array, and returns the new length of the
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...items` | `any`[] | Elements to insert at the start of the array. |
+| `...items` | `T`[] | Elements to insert at the start of the array. |
 
 #### Returns
 
@@ -1283,13 +1337,13 @@ ___
 
 ### values
 
-▸ **values**(): `IterableIterator`<`any`\>
+▸ **values**(): `IterableIterator`<`T`\>
 
 Returns an iterable of values in the array
 
 #### Returns
 
-`IterableIterator`<`any`\>
+`IterableIterator`<`T`\>
 
 #### Inherited from
 

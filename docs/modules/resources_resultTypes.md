@@ -11,6 +11,7 @@
 - [ArtistContent](../classes/resources_resultTypes.ArtistContent.md)
 - [ArtistHeader](../classes/resources_resultTypes.ArtistHeader.md)
 - [ArtistURL](../classes/resources_resultTypes.ArtistURL.md)
+- [ContinuablePlaylistURL](../classes/resources_resultTypes.ContinuablePlaylistURL.md)
 - [PlaylistContent](../classes/resources_resultTypes.PlaylistContent.md)
 - [PlaylistHeader](../classes/resources_resultTypes.PlaylistHeader.md)
 - [PlaylistURL](../classes/resources_resultTypes.PlaylistURL.md)

@@ -98,14 +98,30 @@ export class WalkUtility {
         }
         return true;
     }
-    static walkAndAssertShape(obj1, obj2, key = '(root)') {
+    static walkAndAssertShape(obj1, obj2, path = '.') {
+        if (obj2 instanceof EitherShape) {
+            const shape = obj2.shapes.find((shape) => shape !== null
+                && typeof shape === 'object'
+                && shape.constructor
+                ? obj1 instanceof shape.constructor
+                : typeof obj1 === typeof shape);
+            if (shape == null && !obj2.shapes.includes(shape)) {
+                throw new AssertionError(`Value in "${path}" is not one of shape "${obj2.shapes.map((shape) => shape !== null
+                    && typeof shape === 'object'
+                    && shape.constructor?.name
+                    ? shape.constructor.name
+                    : typeof shape).join(' | ')}"`, obj1, obj2);
+            }
+            this.walkAndAssertShape(obj1, shape, path);
+            return true;
+        }
         // skip into objects inside array, as lengths may be different
         if (obj1 instanceof Array) {
             if (!(obj2 instanceof Array)) {
-                throw new AssertionError(`Value in "${key}" is of different shape`, obj1, obj2);
+                throw new AssertionError(`Value in "${path}" is of different shape`, obj1, obj2);
             }
-            obj1.forEach((obj1Part) => {
-                this.walkAndAssertShape(obj1Part, obj2[0], `${key}[(index)]`);
+            obj1.forEach((obj1Part, i) => {
+                this.walkAndAssertShape(obj1Part, obj2[0], `${path}[${i}]`);
             });
             return true;
         }
@@ -114,14 +130,8 @@ export class WalkUtility {
             || typeof obj1 !== 'object'
             || obj2 === null
             || typeof obj2 !== 'object') {
-            if (obj2 instanceof EitherShape) {
-                if (!obj2.shapes.some((shape) => typeof obj1 === typeof shape)) {
-                    throw new AssertionError(`Value in "${key}" is not one of shape "${obj2.shapes.map((shape) => typeof shape).join(' | ')}"`, obj1, obj2);
-                }
-                return true;
-            }
             if (typeof obj1 !== typeof obj2) {
-                throw new AssertionError(`Value in "${key}" is of different shape`, obj1, obj2);
+                throw new AssertionError(`Value in "${path}" is of different shape`, obj1, obj2);
             }
             return true;
         }
@@ -129,7 +139,7 @@ export class WalkUtility {
             if (!Object.prototype.hasOwnProperty.call(obj1, key)) {
                 continue;
             }
-            this.walkAndAssertShape(obj1[key], obj2[key], key);
+            this.walkAndAssertShape(obj1[key], obj2[key], `${path}.${key}`);
         }
         return true;
     }

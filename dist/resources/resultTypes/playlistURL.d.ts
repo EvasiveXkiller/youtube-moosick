@@ -1,10 +1,14 @@
 import { Item } from '../../blocks/item.js';
 import type { Artist } from '../generalTypes/artist.js';
+import type { ContinuableResult } from '../generalTypes/continuableResult.js';
 import type { Thumbnails } from '../generalTypes/thumbnails.js';
 export declare class PlaylistURL extends Item {
     headers: PlaylistHeader;
     playlistContents: PlaylistContent[];
     continuation: Continuation;
+}
+export declare class ContinuablePlaylistURL extends PlaylistURL {
+    playlistContents: ContinuableResult<PlaylistContent, PlaylistURL>;
 }
 export declare class PlaylistContent extends Item {
     trackTitle: string;

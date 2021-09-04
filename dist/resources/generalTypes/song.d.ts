@@ -8,7 +8,7 @@ export declare class Song extends Item {
     name: string;
     videoId: string;
     url: string;
-    playlistId: string;
+    playlistId?: string;
     artist: Artist[];
     album: Album[];
     duration: number;
