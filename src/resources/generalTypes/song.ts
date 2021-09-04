@@ -9,7 +9,7 @@ export class Song extends Item {
 	public declare name: string;
 	public declare videoId: string;
 	public declare url: string;
-	public declare playlistId: string;
+	public declare playlistId?: string;
 	public declare artist: Artist[];
 	public declare album: Album[];
 	public declare duration: number;
