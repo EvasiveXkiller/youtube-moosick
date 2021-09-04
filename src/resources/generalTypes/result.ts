@@ -1,9 +1,8 @@
-import type { Item } from '../../blocks/item.js';
+import { Factory, Item } from '../../blocks/item.js';
 import { EndPoint } from '../../enums.js';
 import type { MooSick } from '../../index.js';
 import type { Result as IResult } from '../../resources/etc/rawResultTypes/common.js';
 import { unenumerable } from '../decorators/enumerable.decorator.js';
-import { IllegalInvocationError } from '../errors/illegalInvocation.error.js';
 import type { NextContinuationData } from '../etc/rawResultTypes/common.js';
 
 export interface ContinuableResultBlueprint<T extends Item> {
@@ -11,76 +10,40 @@ export interface ContinuableResultBlueprint<T extends Item> {
 	continuation?: NextContinuationData;
 }
 
-export class ContinuableResultBuilder<T extends Item, V = any> {
-	private result: ContinuableResult<T, V>;
-	private isBuilt = false;
-
-	constructor(ctx: MooSick) {
-		this.result = new ContinuableResult(ctx);
+export class ContinuableResultFactory<
+	T extends Item,
+	ParserResult = ContinuableResultBlueprint<T>,
+	GetContentResult extends any[] = T[],
+> extends Factory<
+	ContinuableResult<T, ParserResult, GetContentResult>,
+	{
+		ctx: ContinuableResult<T, ParserResult, GetContentResult>['ctx'];
+		parser: ContinuableResult<T, ParserResult, GetContentResult>['parser'];
+		getContent: ContinuableResult<T, ParserResult, GetContentResult>['getContent'];
+		isDone?: ContinuableResult<T, ParserResult, GetContentResult>['isDone'];
+		continuation?: ContinuableResult<T, ParserResult, GetContentResult>['continuation'];
 	}
-
-	public push(...items: T[]) {
-		this.result.push(...items);
-
-		return this;
-	}
-
-	public setParser(parser: ContinuableResult<T, V>['parser']) {
-		this.result['parser'] = parser;
-
-		return this;
-	}
-
-	public setGetContent(getContent: ContinuableResult<T, V>['getContent']) {
-		this.result['getContent'] = getContent;
-
-		return this;
-	}
-
-	public setIsDone(isDone: ContinuableResult<T, V>['isDone']) {
-		this.result['isDone'] = isDone;
-
-		return this;
-	}
-
-	public setContinuation(continuation?: ContinuableResult<T, V>['continuation']) {
-		this.result['continuation'] = continuation;
-
-		return this;
-	}
-
-	public build() {
-		if (this.isBuilt) {
-			throw new IllegalInvocationError('You may only call Builder#build only once per instance');
-		}
-
-		this.isBuilt = true;
-
-		return this.result;
+> {
+	constructor() {
+		super(ContinuableResult);
 	}
 }
 
-export class ContinuableResult<T extends Item, V = T> extends Array {
+export class ContinuableResult<T extends Item, ParserResult = ContinuableResultBlueprint<T>, GetContentResult extends any[] = T[]> extends Array<T> implements Item {
 	@unenumerable
-	private declare parser: (context: IResult) => V;
+	private declare parser: (context: IResult) => ParserResult;
 
 	@unenumerable
-	private declare getContent: (context: V) => any;
+	private declare getContent: (context: ParserResult) => GetContentResult;
 
 	@unenumerable
-	private declare isDone: (content: any) => boolean;
-
-	@unenumerable
-	private declare items: T[];
+	private isDone: (content: GetContentResult) => boolean = (content) => content == null;
 
 	@unenumerable
 	private declare continuation?: NextContinuationData;
 
-	constructor(
-		private ctx: MooSick,
-	) {
-		super();
-	}
+	@unenumerable
+	private declare ctx: MooSick;
 
 	public async loadNext() {
 		if (this.continuation == null) {
@@ -96,10 +59,9 @@ export class ContinuableResult<T extends Item, V = T> extends Array {
 		});
 
 		const result = this.parser(ctx);
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 		const content = this.getContent(result);
 
-		if (this.isDone ? this.isDone(content) : content == null) {
+		if (this.isDone(content)) {
 			return null;
 		}
 
