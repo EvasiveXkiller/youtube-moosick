@@ -10,14 +10,14 @@ import type {
 	MusicResponsiveListItemFlexColumnRenderer,
 	NextContinuationData,
 } from '../resources/etc/rawResultTypes/common.js';
-import type { Album, AlbumExtended } from '../resources/generalTypes/album.js';
+import { Album, AlbumExtended } from '../resources/generalTypes/album.js';
 import type {
 	GeneralFull,
 	MusicResponsiveListItemRenderer,
 	MusicShelfRenderer,
 } from '../resources/etc/rawResultTypes/general/generalFull.js';
 import type { Item } from '../blocks/item.js';
-import { Unsorted } from '../resources/generalTypes/unsorted.js';
+import { Unsorted, UnsortedFactory } from '../resources/generalTypes/unsorted.js';
 import type { ContinuableResultBlueprint } from '../resources/generalTypes/continuableResult.js';
 
 /**
@@ -37,17 +37,19 @@ export class GeneralParser {
 	public static parseSearchResult<T extends Category.VIDEO>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Video>;
 	public static parseSearchResult<T extends Category.SONG>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Song>;
 	public static parseSearchResult<T extends Category.PLAYLIST>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Playlist>;
-	public static parseSearchResult<T extends Category.ARTIST>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Artist>;
-	public static parseSearchResult<T extends Category.ALBUM | Category.EP | Category.SINGLE>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Album>;
-	public static parseSearchResult<T extends Category>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Video | Song | Playlist | Artist | Album>;
+	public static parseSearchResult<T extends Category.ARTIST>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<ArtistExtended>;
+	public static parseSearchResult<T extends Category.ALBUM | Category.EP | Category.SINGLE>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<AlbumExtended>;
+	public static parseSearchResult<T extends Category>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Video | Song | Playlist | ArtistExtended | AlbumExtended | Unsorted>;
 	// eslint-disable-next-line complexity
 	static parseSearchResult<T extends Category>(context: GeneralFull, searchType?: T): ContinuableResultBlueprint<Item> {
+		const isUnsorted = searchType == null;
 		// prep all the parts
 		const albums: AlbumExtended[] = [];
 		const videos: Video[] = [];
 		const playlists: Playlist[] = [];
 		const artist: ArtistExtended[] = [];
 		const songs: Song[] = [];
+		const unsorted: (AlbumExtended | Video | Playlist | ArtistExtended | Song)[] = [];
 		const continuation = searchType ? ($$('.nextContinuationData')(context) as NextContinuationData[])[0] : undefined;
 		const musicShelf = $$('.musicShelfRenderer')(context) as MusicShelfRenderer[];
 		for (const shelfItem of musicShelf) {
@@ -65,6 +67,10 @@ export class GeneralParser {
 							playlistId: $('.playlistId')(display) as string,
 							params: WatchEndpointParams.WAEB,
 						}));
+						if (isUnsorted) {
+							unsorted.push(songs[songs.length - 1]);
+						}
+
 						break;
 					}
 
@@ -74,6 +80,10 @@ export class GeneralParser {
 							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.VIDEO, Boolean(searchType)),
 							thumbnails: ParsersExtended.thumbnailParser(item),
 						}));
+						if (isUnsorted) {
+							unsorted.push(videos[videos.length - 1]);
+						}
+
 						break;
 					}
 
@@ -83,6 +93,10 @@ export class GeneralParser {
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
 							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.PLAYLIST, Boolean(searchType)),
 						}));
+						if (isUnsorted) {
+							unsorted.push(playlists[playlists.length - 1]);
+						}
+
 						break;
 					}
 
@@ -94,19 +108,27 @@ export class GeneralParser {
 							url: `${ConstantURLs.CHANNEL_URL}${item.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
 							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.ARTIST, Boolean(searchType)),
 						}));
+						if (isUnsorted) {
+							unsorted.push(artist[artist.length - 1]);
+						}
+
 						break;
 					}
 
 					case 'ALBUM':
 					case 'SINGLE':
 					case 'EP': {
-						albums.push({
+						albums.push(AlbumExtended.from({
 							...ParsersExtended.flexSecondRowComplexParser(flexColumnRenderer[FlexColumnOffset.ALT].text.runs, Category.ALBUM, Boolean(searchType)),
 							name: flexColumnRenderer[FlexColumnOffset.MAIN].text.runs[FlexColumnOffset.ONLYRUN].text,
 							browseId: item.navigationEndpoint?.browseEndpoint?.browseId ?? '',
 							url: `${ConstantURLs.CHANNEL_URL}${item.navigationEndpoint?.browseEndpoint?.browseId ?? ''}`,
 							thumbnails: ParsersExtended.thumbnailParser(item),
-						});
+						}));
+						if (isUnsorted) {
+							unsorted.push(albums[albums.length - 1]);
+						}
+
 						break;
 					}
 
@@ -155,17 +177,20 @@ export class GeneralParser {
 
 			case undefined:
 			default: {
-				const unsorted = Unsorted.from({
-					albums,
-					videos,
-					playlists,
-					artist,
-					songs,
-				});
+				const result = new UnsortedFactory().create(
+					{
+						albums,
+						videos,
+						playlists,
+						artist,
+						songs,
+					},
+				);
+
+				result.push(...unsorted);
 
 				return {
-					// FIXME: fuck this xd
-					result: [unsorted],
+					result,
 					continuation,
 				};
 			}
