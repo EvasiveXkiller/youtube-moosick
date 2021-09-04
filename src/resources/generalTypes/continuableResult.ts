@@ -1,9 +1,8 @@
 import { Factory, Item } from '../../blocks/item.js';
 import { EndPoint } from '../../enums.js';
 import type { MooSick } from '../../index.js';
-import type { Result as IResult } from '../../resources/etc/rawResultTypes/common.js';
+import type { Result as IResult, NextContinuationData } from '../etc/rawResultTypes/common.js';
 import { unenumerable } from '../decorators/enumerable.decorator.js';
-import type { NextContinuationData } from '../etc/rawResultTypes/common.js';
 
 export interface ContinuableResultBlueprint<T extends Item> {
 	result: T[];

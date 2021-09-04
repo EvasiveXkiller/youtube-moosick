@@ -20,7 +20,7 @@ import type { Playlist } from './resources/generalTypes/playlist.js';
 import type { Artist, ArtistExtended } from './resources/generalTypes/artist.js';
 import type { Unsorted } from './resources/generalTypes/unsorted.js';
 import type { Album } from './resources/generalTypes/album.js';
-import { ContinuableResult, ContinuableResultFactory } from './resources/generalTypes/result.js';
+import { ContinuableResult, ContinuableResultFactory } from './resources/generalTypes/continuableResult.js';
 
 axios.defaults.adapter = axios0;
 
