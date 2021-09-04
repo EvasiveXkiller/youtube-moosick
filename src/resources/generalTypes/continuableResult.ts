@@ -20,6 +20,7 @@ export class ContinuableResultFactory<
 		ctx: ContinuableResult<T, ParserResult, GetContentResult>['ctx'];
 		parser: ContinuableResult<T, ParserResult, GetContentResult>['parser'];
 		getContent: ContinuableResult<T, ParserResult, GetContentResult>['getContent'];
+		getContinuation: ContinuableResult<T, ParserResult, GetContentResult>['getContinuation'];
 		isDone?: ContinuableResult<T, ParserResult, GetContentResult>['isDone'];
 		continuation?: ContinuableResult<T, ParserResult, GetContentResult>['continuation'];
 	}
@@ -32,6 +33,9 @@ export class ContinuableResultFactory<
 export class ContinuableResult<T extends Item, ParserResult = ContinuableResultBlueprint<T>, GetContentResult extends any[] = T[]> extends Array<T> implements Item {
 	@unenumerable
 	private declare parser: (this: ContinuableResult<T, ParserResult, GetContentResult>, context: IResult) => ParserResult;
+
+	@unenumerable
+	private declare getContinuation: (this: ContinuableResult<T, ParserResult, GetContentResult>, context: ParserResult) => NextContinuationData | undefined;
 
 	@unenumerable
 	private declare getContent: (this: ContinuableResult<T, ParserResult, GetContentResult>, context: ParserResult) => GetContentResult;
@@ -52,7 +56,7 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 
 		const { continuation, clickTrackingParams } = this.continuation;
 
-		const ctx = await this.ctx['createApiRequest'](EndPoint.BROWSE, {}, {
+		const ctx = await this.ctx['createApiRequest'](EndPoint.SEARCH, {}, {
 			ctoken: continuation,
 			continuation,
 			itct: clickTrackingParams,
@@ -60,6 +64,8 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 
 		const result = this.parser(ctx);
 		const content = this.getContent(result);
+
+		this.continuation = this.getContinuation(result);
 
 		if (this.isDone(content)) {
 			return null;
