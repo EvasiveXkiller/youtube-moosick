@@ -13,8 +13,9 @@ export class ContinuableResultFactory<
 	T extends Item,
 	ParserResult = ContinuableResultBlueprint<T>,
 	GetContentResult extends any[] = T[],
+	R extends ContinuableResult<T, ParserResult, GetContentResult> = ContinuableResult<T, ParserResult, GetContentResult>,
 > extends Factory<
-	ContinuableResult<T, ParserResult, GetContentResult>,
+	R,
 	{
 		ctx: ContinuableResult<T, ParserResult, GetContentResult>['ctx'];
 		parser: ContinuableResult<T, ParserResult, GetContentResult>['parser'];
@@ -23,20 +24,20 @@ export class ContinuableResultFactory<
 		continuation?: ContinuableResult<T, ParserResult, GetContentResult>['continuation'];
 	}
 > {
-	constructor() {
-		super(ContinuableResult);
+	constructor(ContinuableResultClass?: new() => R) {
+		super(ContinuableResultClass ?? ContinuableResult as unknown as new() => R);
 	}
 }
 
 export class ContinuableResult<T extends Item, ParserResult = ContinuableResultBlueprint<T>, GetContentResult extends any[] = T[]> extends Array<T> implements Item {
 	@unenumerable
-	private declare parser: (context: IResult) => ParserResult;
+	private declare parser: (this: ContinuableResult<T, ParserResult, GetContentResult>, context: IResult) => ParserResult;
 
 	@unenumerable
-	private declare getContent: (context: ParserResult) => GetContentResult;
+	private declare getContent: (this: ContinuableResult<T, ParserResult, GetContentResult>, context: ParserResult) => GetContentResult;
 
 	@unenumerable
-	private isDone: (content: GetContentResult) => boolean = (content) => content == null;
+	private isDone: (this: ContinuableResult<T, ParserResult, GetContentResult>, content: GetContentResult) => boolean = (content) => content == null;
 
 	@unenumerable
 	private declare continuation?: NextContinuationData;
@@ -64,15 +65,37 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 			return null;
 		}
 
-		this.push(...content);
+		this.merge(content);
 
 		return result;
 	}
 
-	public async loadUntil(length = Infinity) {
+	/**
+	 * Basically `Array.prototype.concat` but with the behaviour of push.
+	 * Supports adding non POJA's (will add keys to `this`)
+	 * @param obj - An `Array` a or class that extends `Array`
+	 */
+	public merge(obj: Record<string | number | symbol, T> | T[]) {
+		// is POJA
+		if (obj.constructor === Array) {
+			this.push(...obj);
+		} else {
+			Object.entries(obj).forEach(([key, value]) => {
+				// is string key
+				if (Number.isNaN(Number(key))) {
+					// @ts-expect-error dynamic obj assignment
+					this[key] = value;
+				} else {
+					this.push(value);
+				}
+			});
+		}
+	}
+
+	public async loadUntil(minimumLength = Infinity) {
 		const loaded = [];
 
-		while (this.length < length) {
+		while (this.length < minimumLength) {
 			const result = await this.loadNext();
 
 			if (result == null) {
