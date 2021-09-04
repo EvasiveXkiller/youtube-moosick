@@ -6,7 +6,7 @@ import { utils } from './utils.js';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors/index.js';
 import { URLSearchParams } from 'url';
 import { GeneralParser, GetArtistParser, GetAlbumParser, GetPlaylistParser } from './parsers/index.js';
-import { AlbumURL, PlaylistURL, ArtistURL, SearchSuggestions, PlaylistContent } from './resources/resultTypes/index.js';
+import { AlbumURL, PlaylistURL, ArtistURL, SearchSuggestions, PlaylistContent, ContinuablePlaylistURL } from './resources/resultTypes/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
 import type { ArtistURLFullResult } from './resources/etc/rawResultTypes/rawGetArtistURL.js';
 import type { SearchSuggestionsFullResult } from './resources/etc/rawResultTypes/rawGetSearchSuggestions.js';
@@ -17,10 +17,10 @@ import type { YtCfgMain } from './resources/etc/cfgInterface.js';
 import type { Video } from './resources/generalTypes/video.js';
 import type { Song } from './resources/generalTypes/song.js';
 import type { Playlist } from './resources/generalTypes/playlist.js';
-import type { Artist } from './resources/generalTypes/artist.js';
+import type { Artist, ArtistExtended } from './resources/generalTypes/artist.js';
 import type { Unsorted } from './resources/generalTypes/unsorted.js';
 import type { Album } from './resources/generalTypes/album.js';
-import { ContinuableResult, ContinuableResultBlueprint, ContinuableResultBuilder } from './resources/generalTypes/result.js';
+import { ContinuableResult, ContinuableResultFactory } from './resources/generalTypes/result.js';
 
 axios.defaults.adapter = axios0;
 
@@ -244,7 +244,7 @@ export class MooSick extends AsyncConstructor {
 	public async search<T extends Category.VIDEO>(query: string, searchType?: T): Promise<ContinuableResult<Video>>;
 	public async search<T extends Category.SONG>(query: string, searchType?: T): Promise<ContinuableResult<Song>>;
 	public async search<T extends Category.PLAYLIST>(query: string, searchType?: T): Promise<ContinuableResult<Playlist>>;
-	public async search<T extends Category.ARTIST>(query: string, searchType?: T): Promise<ContinuableResult<Artist>>;
+	public async search<T extends Category.ARTIST>(query: string, searchType?: T): Promise<ContinuableResult<ArtistExtended>>;
 	public async search<T extends Category.ALBUM | Category.EP | Category.SINGLE>(query: string, searchType?: T): Promise<ContinuableResult<Album>>;
 	public async search<T extends Category>(query: string, searchType?: T): Promise<ContinuableResult<Video | Song | Playlist | Artist | Album>>;
 	public async search<T extends Category>(query: string, searchType?: T): Promise<any> {
@@ -262,13 +262,18 @@ export class MooSick extends AsyncConstructor {
 			continuation,
 		} = GeneralParser.parseSearchResult(ctx as GeneralFull, searchType);
 
-		return new ContinuableResultBuilder(this)
-			.push(...result)
-			.setContinuation(continuation)
-			.setParser((c) => GeneralParser.parseSearchResult(c, searchType))
-			.setGetContent((c: ContinuableResultBlueprint<typeof result>) => c.result)
-			.setIsDone((c: typeof result) => c?.length >= 0)
-			.build();
+		const continuableResult = new ContinuableResultFactory<typeof result[0]>()
+			.create({
+				ctx: this,
+				getContent: (context) => context.result,
+				parser: (context) => GeneralParser.parseSearchResult(context, searchType),
+				isDone: (context) => context?.length >= 0,
+				continuation,
+			});
+
+		continuableResult.push(...result);
+
+		return continuableResult;
 	}
 
 	/**
@@ -317,7 +322,7 @@ export class MooSick extends AsyncConstructor {
 	 * I think i forgotten to change it, but i dont have faith on this system working,
 	 * it relies on the old structure which i have modified
 	 */
-	public async getPlaylist(browseId: string, contentLimit = 100): Promise<PlaylistURL> {
+	public async getPlaylist(browseId: string, contentLimit = 100): Promise<ContinuablePlaylistURL> {
 		if (!browseId.startsWith('VL')
 			&& !browseId.startsWith('PL')) {
 			throw new IllegalArgumentError('Playlist browse IDs must start with "VL" or "PL"', 'browseId');
@@ -332,18 +337,24 @@ export class MooSick extends AsyncConstructor {
 			utils.buildEndpointContext(browseId, Category.PLAYLIST),
 		);
 		const result = GetPlaylistParser.parsePlaylistURL(ctx);
+		const continuableResult = ContinuablePlaylistURL.from({
+			continuation: result.continuation,
+			headers: result.headers,
+			playlistContents: new ContinuableResultFactory<PlaylistContent, PlaylistURL>()
+				.create({
+					ctx: this,
+					getContent: (context) => context.playlistContents,
+					parser: GetPlaylistParser.parsePlaylistURL.bind(GetPlaylistParser),
+					continuation: result.continuation,
+				}),
+		});
 
-		result.playlistContents = new ContinuableResultBuilder<PlaylistContent[], PlaylistURL>(this)
-			.push(result.playlistContents)
-			.setContinuation(result.continuation)
-			.setParser(GetPlaylistParser.parsePlaylistURL.bind(GetPlaylistParser))
-			.setGetContent((context: PlaylistURL) => context.playlistContents)
-			.build();
+		continuableResult.playlistContents.push(...result.playlistContents);
 
-		await (result.playlistContents as ContinuableResult<PlaylistContent[], PlaylistURL>)
+		await continuableResult.playlistContents
 			.loadUntil(contentLimit);
 
-		return result;
+		return continuableResult;
 	}
 
 	/**
