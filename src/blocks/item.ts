@@ -19,20 +19,26 @@ export class Item {
 	/** @deprecated You're probably looking for `Item.from()` */
 	constructor() {}
 
-	public static from<T extends typeof Item>(
-		this: T,
+	public static from<T extends Item>(
+		this: new() => T,
 		// use this adapter type instead of just `InstanceType<T>`
 		// to hide protected types & `toString`
-		options: ItemOptions<T>,
-	): InstanceType<T> {
+		options: ItemOptions<new() => T>,
+	): T {
 		const instance = new this();
 
 		WalkUtility.mirror(options, instance);
 
-		return instance as InstanceType<T>;
+		return instance;
 	}
 }
 
-export abstract class Factory<T extends Item> {
-	public abstract create(): T | Promise<T>;
+export abstract class Factory<R extends Item, T extends Partial<Item>> {
+	constructor(private item: (new() => R) & typeof Item) {}
+
+	public create(
+		options: T,
+	): R {
+		return this.item.from(options) as R;
+	}
 }
