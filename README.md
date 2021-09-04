@@ -7,6 +7,13 @@
 
 Unofficial YouTube Music Library, written in TypeScript.
 
+### Important 
+WORK IN PROGRESS, Package not available on NPM (yet). Release is coming very soon
+
+The docs below are not finalized yet. They might change in the future.
+
+<hr>
+
 ```typescript
 import {MooSick} from "MooSick";
 

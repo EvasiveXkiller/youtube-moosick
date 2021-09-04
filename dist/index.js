@@ -8,6 +8,7 @@ import { URLSearchParams } from 'url';
 import { GeneralParser, GetArtistParser, GetAlbumParser, GetPlaylistParser } from './parsers/index.js';
 import { SearchSuggestions } from './resources/resultTypes/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
+import { ContinuableResultBuilder } from './resources/generalTypes/result.js';
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
 /**
@@ -109,7 +110,7 @@ export class MooSick extends AsyncConstructor {
      *  then make this func generic so it's type safe
      * @internal
      */
-    async #createApiRequest(endpointName, inputVariables = {}, inputQuery = {}) {
+    async createApiRequest(endpointName, inputVariables = {}, inputQuery = {}) {
         const res = await this.client.post(`youtubei/${this.config.INNERTUBE_API_VERSION}/${endpointName}?${new URLSearchParams({
             alt: 'json',
             key: this.config.INNERTUBE_API_KEY,
@@ -150,7 +151,7 @@ export class MooSick extends AsyncConstructor {
      * ```
      */
     async getSearchSuggestions(query) {
-        const res = await this.#createApiRequest(EndPoint.SUGGESTIONS, {
+        const res = await this.createApiRequest(EndPoint.SUGGESTIONS, {
             input: query,
         });
         if (res.contents == null) {
@@ -167,33 +168,20 @@ export class MooSick extends AsyncConstructor {
             artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
         }));
     }
-    /**
-     * Searches for songs using the Youtube Music API
-     * @param query - String query text to search
-     * @param categoryName - Type of category to search
-     * @param _pageLimit - Max pages to obtain
-     * @returns An object formatted by parsers.js
-     *
-     * Example
-     * ```typescript
-     * const api = await MooSick.new();
-     *
-     * // Get the general search results.
-     * const resultsGeneral = await api.search('Never gonna give you up');
-     * console.log(resultsGeneral)
-     *
-     * // Gets a specific category
-     * const resultsSong = await api.search('Never gonna give you up', Category.SONG);
-     * console.log(resultsSong)
-     * ```
-     */
-    async search(query, categoryName, _pageLimit = 1) {
-        const URI = categoryName ? `Eg-KAQwIA${utils.mapCategoryToURL(categoryName)}MABqChAEEAMQCRAFEAo%3D` : '';
-        const ctx = await this.#createApiRequest(EndPoint.SEARCH, {
+    async search(query, searchType) {
+        const URI = searchType ? `Eg-KAQwIA${utils.mapCategoryToURL(searchType)}MABqChAEEAMQCRAFEAo%3D` : '';
+        const ctx = await this.createApiRequest(EndPoint.SEARCH, {
             query,
             params: URI,
         });
-        return GeneralParser.parseSearchResult(ctx, categoryName);
+        const { result, continuation, } = GeneralParser.parseSearchResult(ctx, searchType);
+        return new ContinuableResultBuilder(this)
+            .push(...result)
+            .setContinuation(continuation)
+            .setParser((c) => GeneralParser.parseSearchResult(c, searchType))
+            .setGetContent((c) => c.result)
+            .setIsDone((c) => c?.length >= 0)
+            .build();
     }
     /**
      * Gets the album details
@@ -213,7 +201,7 @@ export class MooSick extends AsyncConstructor {
         if (!browseId.startsWith('MPREb')) {
             throw new IllegalArgumentError('Album browse IDs must start with "MPREb"', 'browseId');
         }
-        const ctx = await this.#createApiRequest(EndPoint.SEARCH, utils.buildEndpointContext(Category.ALBUM, browseId));
+        const ctx = await this.createApiRequest(EndPoint.SEARCH, utils.buildEndpointContext(browseId, Category.ALBUM));
         return GetAlbumParser.parseAlbumURLPage(ctx);
     }
     /**
@@ -243,23 +231,16 @@ export class MooSick extends AsyncConstructor {
         if (browseId.startsWith('PL')) {
             browseId = 'VL' + browseId;
         }
-        const ctx = this.#createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.PLAYLIST, browseId));
+        const ctx = this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.PLAYLIST));
         const result = GetPlaylistParser.parsePlaylistURL(ctx);
-        while (contentLimit > result.playlistContents.length
-            && result.continuation) {
-            const { continuation, clickTrackingParams } = result.continuation;
-            const ctx = this.#createApiRequest(EndPoint.BROWSE, {}, {
-                ctoken: continuation,
-                continuation,
-                itct: clickTrackingParams,
-            });
-            const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
-            if (!Array.isArray(continuationResult.playlistContents)) {
-                throw new IllegalStateError('Browse API responded with non-array `playlistContents`');
-            }
-            result.playlistContents.push(...continuationResult.playlistContents);
-            result.continuation = continuationResult.continuation;
-        }
+        result.playlistContents = new ContinuableResultBuilder(this)
+            .push(result.playlistContents)
+            .setContinuation(result.continuation)
+            .setParser(GetPlaylistParser.parsePlaylistURL.bind(GetPlaylistParser))
+            .setGetContent((context) => context.playlistContents)
+            .build();
+        await result.playlistContents
+            .loadUntil(contentLimit);
         return result;
     }
     /**
@@ -279,7 +260,7 @@ export class MooSick extends AsyncConstructor {
         if (!browseId.startsWith('UC')) {
             throw new IllegalArgumentError('Artist browse IDs must start with "UC"', 'browseId');
         }
-        const ctx = await this.#createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(Category.ARTIST, browseId));
+        const ctx = await this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.ARTIST));
         return GetArtistParser.parseArtistURLPage(ctx);
     }
 }

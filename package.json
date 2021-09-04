@@ -10,7 +10,7 @@
         "dev": "tsc --watch",
         "build": "tsc --build --clean && tsc",
         "lint": "eslint \"**/*.ts\" --quiet",
-        "doc": "typedoc",
+        "doc": "typedoc --excludePrivate --excludeProtected --excludeInternal",
         "docbuild": "npm run build && npm run doc"
     },
     "repository": {
@@ -45,8 +45,8 @@
         "@types/glob": "^7.1.4",
         "@types/tape": "^4.13.2",
         "@types/tough-cookie": "^4.0.1",
-        "@typescript-eslint/eslint-plugin": "^4.29.3",
-        "@typescript-eslint/parser": "^4.29.3",
+        "@typescript-eslint/eslint-plugin": "^4.30.0",
+        "@typescript-eslint/parser": "^4.30.0",
         "eslint": "^7.32.0",
         "eslint-config-xo": "^0.38.0",
         "eslint-config-xo-typescript": "^0.44.0",
@@ -54,12 +54,12 @@
         "eslint-plugin-tsdoc": "^0.2.14",
         "glob": "^7.1.7",
         "tape": "^5.3.1",
-        "typedoc": "^0.21.8",
+        "typedoc": "^0.21.9",
         "typedoc-plugin-markdown": "^3.10.4",
-        "typescript": "^4.3.5"
+        "typescript": "^4.4.2"
     },
     "dependencies": {
-        "@types/node": "^16.7.2",
+        "@types/node": "^16.7.10",
         "axios": "^0.21.1",
         "object-scan": "^17.0.0",
         "readdir-enhanced": "^6.0.4",

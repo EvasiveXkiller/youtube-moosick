@@ -8,7 +8,7 @@ export declare class PlaylistURL extends Item {
 }
 export declare class PlaylistContent extends Item {
     trackTitle: string;
-    trackId: string;
+    trackId?: string;
     artist: Artist[];
     thumbnail: Thumbnails[];
 }

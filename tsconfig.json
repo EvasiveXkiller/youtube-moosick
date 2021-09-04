@@ -47,6 +47,6 @@
 			"src/resources/resultTypes/index.ts",
 			"src/resources/generalTypes/index.ts",
 		],
-		"out": "docs"
+		"out": "docs",
 	}
 }
