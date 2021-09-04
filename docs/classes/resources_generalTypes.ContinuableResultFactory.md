@@ -58,6 +58,7 @@ Factory&lt;
 		ctx: ContinuableResult&lt;T, ParserResult, GetContentResult\&gt;[&#x27;ctx&#x27;];
 		parser: ContinuableResult&lt;T, ParserResult, GetContentResult\&gt;[&#x27;parser&#x27;];
 		getContent: ContinuableResult&lt;T, ParserResult, GetContentResult\&gt;[&#x27;getContent&#x27;];
+		getContinuation: ContinuableResult&lt;T, ParserResult, GetContentResult\&gt;[&#x27;getContinuation&#x27;];
 		isDone?: ContinuableResult&lt;T, ParserResult, GetContentResult\&gt;[&#x27;isDone&#x27;];
 		continuation?: ContinuableResult&lt;T, ParserResult, GetContentResult\&gt;[&#x27;continuation&#x27;];
 	}
@@ -65,7 +66,7 @@ Factory&lt;
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/resources/generalTypes/continuableResult.ts#L27)
+[src/resources/generalTypes/continuableResult.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/generalTypes/continuableResult.ts#L28)
 
 ## Methods
 
@@ -81,6 +82,7 @@ Factory&lt;
 | `options.continuation?` | `NextContinuationData` |
 | `options.ctx` | [`MooSick`](index.MooSick.md) |
 | `options.getContent` | (`context`: `ParserResult`) => `GetContentResult` |
+| `options.getContinuation` | (`context`: `ParserResult`) => `undefined` \| `NextContinuationData` |
 | `options.isDone?` | (`content`: `GetContentResult`) => `boolean` |
 | `options.parser` | (`context`: `Result`) => `ParserResult` |
 
@@ -94,4 +96,4 @@ Factory.create
 
 #### Defined in
 
-[src/blocks/item.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/blocks/item.ts#L39)
+[src/blocks/item.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/blocks/item.ts#L39)

@@ -19,18 +19,22 @@ export class ContinuableResult extends Array {
             return null;
         }
         const { continuation, clickTrackingParams } = this.continuation;
-        const ctx = await this.ctx['createApiRequest'](EndPoint.BROWSE, {}, {
+        const ctx = await this.ctx['createApiRequest'](EndPoint.SEARCH, {}, {
             ctoken: continuation,
             continuation,
             itct: clickTrackingParams,
         });
         const result = this.parser(ctx);
         const content = this.getContent(result);
+        this.continuation = this.getContinuation(result);
         if (this.isDone(content)) {
             return null;
         }
         this.merge(content);
-        return result;
+        return {
+            result: content,
+            continuation: this.continuation,
+        };
     }
     /**
      * Basically `Array.prototype.concat` but with the behaviour of push.
@@ -56,15 +60,20 @@ export class ContinuableResult extends Array {
         }
     }
     async loadUntil(minimumLength = Infinity) {
-        const loaded = [];
+        const content = [];
+        let continuation;
         while (this.length < minimumLength) {
             const result = await this.loadNext();
             if (result == null) {
                 break;
             }
-            loaded.push(result);
+            content.push(...result.result);
+            continuation = result.continuation;
         }
-        return loaded.flat();
+        return {
+            result: content,
+            continuation,
+        };
     }
     async *iterator() {
         for (let i = 0, l = this.length; i < l; ++i) {
@@ -78,6 +87,9 @@ export class ContinuableResult extends Array {
 __decorate([
     unenumerable
 ], ContinuableResult.prototype, "parser", void 0);
+__decorate([
+    unenumerable
+], ContinuableResult.prototype, "getContinuation", void 0);
 __decorate([
     unenumerable
 ], ContinuableResult.prototype, "getContent", void 0);

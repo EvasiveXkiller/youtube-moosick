@@ -149,8 +149,9 @@ test('searchSong', async (t) => {
     ];
     t.true(WalkUtility
         .walkAndAssertShape(result, expected), 'result has expected shape');
-    const loaded = await result.loadUntil();
-    console.log(loaded);
+    const initialLength = result.length;
+    const loaded = await result.loadUntil(111);
+    t.true(loaded.result.length + initialLength >= 111, 'result loaded correct amount of continuations');
     t.end();
 });
 test('searchAlbum', async (t) => {
@@ -181,8 +182,6 @@ test('searchAlbum', async (t) => {
     ];
     t.true(WalkUtility
         .walkAndAssertShape(result, expected), 'result has expected shape');
-    const loaded = await result.loadUntil();
-    console.log(loaded);
     t.end();
 });
 test('searchArtist', async (t) => {
@@ -206,8 +205,6 @@ test('searchArtist', async (t) => {
     ];
     t.true(WalkUtility
         .walkAndAssertShape(result, expected), 'result has expected shape');
-    const loaded = await result.loadUntil();
-    console.log(loaded);
     t.end();
 });
 test('searchPlaylist', async (t) => {
@@ -230,8 +227,6 @@ test('searchPlaylist', async (t) => {
     ];
     t.true(WalkUtility
         .walkAndAssertShape(result, expected), 'result has expected shape');
-    const loaded = await result.loadUntil();
-    console.log(loaded);
     t.end();
 });
 test('searchVideo', async (t) => {
@@ -263,8 +258,6 @@ test('searchVideo', async (t) => {
     ];
     t.true(WalkUtility
         .walkAndAssertShape(result, expected), 'searchVideo has expected shape');
-    const loaded = await result.loadUntil();
-    console.log(loaded);
     t.end();
 });
 //# sourceMappingURL=apiAllTest.js.map
