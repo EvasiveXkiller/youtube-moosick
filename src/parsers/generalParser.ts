@@ -3,14 +3,14 @@ import { Category, ConstantURLs, FlexColumnOffset } from '../enums.js';
 import { Song } from '../resources/generalTypes/song.js';
 import { Video } from '../resources/generalTypes/video.js';
 import { Playlist } from '../resources/generalTypes/playlist.js';
-import { Artist, ArtistExtended } from '../resources/generalTypes/artist.js';
+import { ArtistExtended } from '../resources/generalTypes/artist.js';
 import { ParsersExtended } from './parsersExtended.js';
 import { WatchEndpointParams } from '../resources/etc/rawResultTypes/common.js';
 import type {
 	MusicResponsiveListItemFlexColumnRenderer,
 	NextContinuationData,
 } from '../resources/etc/rawResultTypes/common.js';
-import { Album, AlbumExtended } from '../resources/generalTypes/album.js';
+import { AlbumExtended } from '../resources/generalTypes/album.js';
 import type {
 	GeneralFull,
 	MusicResponsiveListItemRenderer,
