@@ -33,12 +33,16 @@ export class Item {
 	}
 }
 
-export abstract class Factory<R extends Item, T extends Partial<Item>> {
-	constructor(private item: (new() => R) & typeof Item) {}
+export abstract class Factory<R extends Item, T extends Partial<Item> = R> {
+	constructor(private item: (new() => R)) {}
 
 	public create(
 		options: T,
 	): R {
-		return this.item.from(options) as R;
+		const instance = new this.item();
+
+		WalkUtility.mirror(options as unknown as R, instance);
+
+		return instance;
 	}
 }
