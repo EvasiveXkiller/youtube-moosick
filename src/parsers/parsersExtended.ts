@@ -47,6 +47,7 @@ export class ParsersExtended {
 			case Category.SINGLE:
 			case Category.ALBUM:
 				return {
+					artist,
 					year: Number(runsArray[runsArray.length - 1].text),
 				};
 			case Category.PLAYLIST:
