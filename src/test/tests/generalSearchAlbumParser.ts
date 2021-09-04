@@ -22,11 +22,13 @@ test('GeneralParserAlbum', async (t) => {
 				}),
 			],
 			artist: new EitherShape([
-				Artist.from({
-					browseId: String(),
-					name: String(),
-					url: String(),
-				}),
+				[
+					Artist.from({
+						browseId: String(),
+						name: String(),
+						url: String(),
+					}),
+				],
 				undefined,
 			]) as unknown as Artist[],
 			year: new EitherShape([
