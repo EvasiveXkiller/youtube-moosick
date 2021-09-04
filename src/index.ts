@@ -270,6 +270,7 @@ export class MooSick extends AsyncConstructor {
 			.create({
 				ctx: this,
 				getContent: (context) => context.result,
+				getContinuation: (context) => context.continuation,
 				parser: (context) => GeneralParser.parseSearchResult(context, searchType),
 				isDone: (context) => (context?.length ?? 0) === 0,
 				continuation,
@@ -348,6 +349,7 @@ export class MooSick extends AsyncConstructor {
 				.create({
 					ctx: this,
 					getContent: (context) => context.playlistContents,
+					getContinuation: (context) => context.continuation,
 					parser: GetPlaylistParser.parsePlaylistURL.bind(GetPlaylistParser),
 					continuation: result.continuation,
 				}),
