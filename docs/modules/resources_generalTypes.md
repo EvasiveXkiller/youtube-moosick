@@ -11,7 +11,7 @@
 - [Artist](../classes/resources_generalTypes.Artist.md)
 - [ArtistExtended](../classes/resources_generalTypes.ArtistExtended.md)
 - [ContinuableResult](../classes/resources_generalTypes.ContinuableResult.md)
-- [ContinuableResultBuilder](../classes/resources_generalTypes.ContinuableResultBuilder.md)
+- [ContinuableResultFactory](../classes/resources_generalTypes.ContinuableResultFactory.md)
 - [Playlist](../classes/resources_generalTypes.Playlist.md)
 - [Song](../classes/resources_generalTypes.Song.md)
 - [Thumbnails](../classes/resources_generalTypes.Thumbnails.md)

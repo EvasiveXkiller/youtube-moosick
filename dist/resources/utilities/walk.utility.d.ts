@@ -10,7 +10,7 @@ export declare class WalkUtility {
     static walkAndReturnVoid(object: any, callback: (objectPart: any) => void): void;
     static mirror<T extends Record<string, any>>(from: T, to: T): void;
     static walkAndCompare<T1 extends Record<string, any>, T2 extends Record<string, any>>(obj1: T1, obj2: T2, comparator: (v1: T1[keyof T1], v2: T2[keyof T2], key: keyof T1) => boolean): boolean;
-    static walkAndAssertShape<T1 extends Record<string, any>, T2 extends T1>(obj1: T1, obj2: T2, key?: string): true | never;
+    static walkAndAssertShape<T1 extends Record<string, any>, T2 extends T1>(obj1: T1, obj2: T2, path?: string): true | never;
     static walkAndCompareShape<T1 extends Record<string, any>, T2 extends T1>(obj1: T1, obj2: T2): boolean;
 }
 //# sourceMappingURL=walk.utility.d.ts.map

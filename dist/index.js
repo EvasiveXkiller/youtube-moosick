@@ -6,9 +6,10 @@ import { utils } from './utils.js';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors/index.js';
 import { URLSearchParams } from 'url';
 import { GeneralParser, GetArtistParser, GetAlbumParser, GetPlaylistParser } from './parsers/index.js';
-import { SearchSuggestions } from './resources/resultTypes/index.js';
+import { SearchSuggestions, ContinuablePlaylistURL } from './resources/resultTypes/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
-import { ContinuableResultBuilder } from './resources/generalTypes/result.js';
+import { ContinuableUnsorted } from './resources/generalTypes/unsorted.js';
+import { ContinuableResult, ContinuableResultFactory } from './resources/generalTypes/continuableResult.js';
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
 /**
@@ -175,13 +176,16 @@ export class MooSick extends AsyncConstructor {
             params: URI,
         });
         const { result, continuation, } = GeneralParser.parseSearchResult(ctx, searchType);
-        return new ContinuableResultBuilder(this)
-            .push(...result)
-            .setContinuation(continuation)
-            .setParser((c) => GeneralParser.parseSearchResult(c, searchType))
-            .setGetContent((c) => c.result)
-            .setIsDone((c) => c?.length >= 0)
-            .build();
+        const continuableResult = new ContinuableResultFactory(searchType == null ? ContinuableUnsorted : ContinuableResult)
+            .create({
+            ctx: this,
+            getContent: (context) => context.result,
+            parser: (context) => GeneralParser.parseSearchResult(context, searchType),
+            isDone: (context) => (context?.length ?? 0) === 0,
+            continuation,
+        });
+        continuableResult.merge(result);
+        return continuableResult;
     }
     /**
      * Gets the album details
@@ -233,15 +237,21 @@ export class MooSick extends AsyncConstructor {
         }
         const ctx = this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.PLAYLIST));
         const result = GetPlaylistParser.parsePlaylistURL(ctx);
-        result.playlistContents = new ContinuableResultBuilder(this)
-            .push(result.playlistContents)
-            .setContinuation(result.continuation)
-            .setParser(GetPlaylistParser.parsePlaylistURL.bind(GetPlaylistParser))
-            .setGetContent((context) => context.playlistContents)
-            .build();
-        await result.playlistContents
+        const continuableResult = ContinuablePlaylistURL.from({
+            continuation: result.continuation,
+            headers: result.headers,
+            playlistContents: new ContinuableResultFactory()
+                .create({
+                ctx: this,
+                getContent: (context) => context.playlistContents,
+                parser: GetPlaylistParser.parsePlaylistURL.bind(GetPlaylistParser),
+                continuation: result.continuation,
+            }),
+        });
+        continuableResult.playlistContents.push(...result.playlistContents);
+        await continuableResult.playlistContents
             .loadUntil(contentLimit);
-        return result;
+        return continuableResult;
     }
     /**
      * Gets the artist details from Youtube Music

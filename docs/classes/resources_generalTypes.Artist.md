@@ -42,7 +42,7 @@ Item.constructor
 
 #### Defined in
 
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/blocks/item.ts#L20)
+[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -52,7 +52,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/generalTypes/artist.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/artist.ts#L6)
+[src/resources/generalTypes/artist.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/resources/generalTypes/artist.ts#L6)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/artist.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/artist.ts#L5)
+[src/resources/generalTypes/artist.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/resources/generalTypes/artist.ts#L5)
 
 ___
 
@@ -72,29 +72,29 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/artist.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/resources/generalTypes/artist.ts#L7)
+[src/resources/generalTypes/artist.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/resources/generalTypes/artist.ts#L7)
 
 ## Methods
 
 ### from
 
-▸ `Static` **from**<`T`\>(`options`): `InstanceType`<`T`\>
+▸ `Static` **from**<`T`\>(`options`): `T`
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends typeof `Item` |
+| `T` | extends `Item`<`T`\> |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `options` | `ItemOptions`<`T`\> |
+| `options` | `ItemOptions`<`fn`\> |
 
 #### Returns
 
-`InstanceType`<`T`\>
+`T`
 
 #### Inherited from
 
@@ -102,4 +102,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/e3517b6/src/blocks/item.ts#L22)
+[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/8c1f1d1/src/blocks/item.ts#L22)

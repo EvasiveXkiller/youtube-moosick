@@ -12,5 +12,14 @@ export class Item {
     }
 }
 export class Factory {
+    item;
+    constructor(item) {
+        this.item = item;
+    }
+    create(options) {
+        const instance = new this.item();
+        WalkUtility.mirror(options, instance);
+        return instance;
+    }
 }
 //# sourceMappingURL=item.js.map
