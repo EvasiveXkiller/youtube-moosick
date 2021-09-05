@@ -34,7 +34,7 @@ jobs:
           npm run-script doc
       # Check if all Markdown links work
       - name : Markdown Link Check
-      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
           use-verbose-mode: 'yes'
       # Set date and time of builds, if all builds and checks passes
