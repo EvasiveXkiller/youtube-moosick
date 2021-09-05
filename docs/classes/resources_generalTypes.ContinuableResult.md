@@ -725,7 +725,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:125](https://github.com/EvasiveXkiller/youtube-moosick/blob/b45b69f/src/resources/generalTypes/continuableResult.ts#L125)
+[src/resources/generalTypes/continuableResult.ts:125](https://github.com/EvasiveXkiller/youtube-moosick/blob/c25a88c/src/resources/generalTypes/continuableResult.ts#L125)
 
 ___
 
@@ -812,7 +812,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:52](https://github.com/EvasiveXkiller/youtube-moosick/blob/b45b69f/src/resources/generalTypes/continuableResult.ts#L52)
+[src/resources/generalTypes/continuableResult.ts:52](https://github.com/EvasiveXkiller/youtube-moosick/blob/c25a88c/src/resources/generalTypes/continuableResult.ts#L52)
 
 ___
 
@@ -832,7 +832,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:104](https://github.com/EvasiveXkiller/youtube-moosick/blob/b45b69f/src/resources/generalTypes/continuableResult.ts#L104)
+[src/resources/generalTypes/continuableResult.ts:104](https://github.com/EvasiveXkiller/youtube-moosick/blob/c25a88c/src/resources/generalTypes/continuableResult.ts#L104)
 
 ___
 
@@ -888,7 +888,7 @@ Supports adding non POJA's (will add keys to `this`)
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:87](https://github.com/EvasiveXkiller/youtube-moosick/blob/b45b69f/src/resources/generalTypes/continuableResult.ts#L87)
+[src/resources/generalTypes/continuableResult.ts:87](https://github.com/EvasiveXkiller/youtube-moosick/blob/c25a88c/src/resources/generalTypes/continuableResult.ts#L87)
 
 ___
 

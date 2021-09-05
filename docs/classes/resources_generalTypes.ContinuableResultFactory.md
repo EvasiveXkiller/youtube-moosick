@@ -66,7 +66,7 @@ Factory&lt;
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/b45b69f/src/resources/generalTypes/continuableResult.ts#L28)
+[src/resources/generalTypes/continuableResult.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/c25a88c/src/resources/generalTypes/continuableResult.ts#L28)
 
 ## Methods
 
@@ -96,4 +96,4 @@ Factory.create
 
 #### Defined in
 
-[src/blocks/item.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/b45b69f/src/blocks/item.ts#L39)
+[src/blocks/item.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/c25a88c/src/blocks/item.ts#L39)
