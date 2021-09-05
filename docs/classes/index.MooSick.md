@@ -52,7 +52,7 @@ console.log(results)
 
 #### Defined in
 
-[src/index.ts:308](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L308)
+[src/index.ts:308](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L308)
 
 ___
 
@@ -84,7 +84,7 @@ console.log(results);
 
 #### Defined in
 
-[src/index.ts:389](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L389)
+[src/index.ts:389](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L389)
 
 ___
 
@@ -122,7 +122,7 @@ console.log(results);
 
 #### Defined in
 
-[src/index.ts:340](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L340)
+[src/index.ts:340](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L340)
 
 ___
 
@@ -152,7 +152,7 @@ console.log(suggestions);
 
 #### Defined in
 
-[src/index.ts:212](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L212)
+[src/index.ts:212](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L212)
 
 ___
 
@@ -196,7 +196,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:255](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L255)
+[src/index.ts:255](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L255)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Video`](resources_generalTypes.Video.md)\>, [`Video`](resources_generalTypes.Video.md)[]\>\>
 
@@ -219,7 +219,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:256](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L256)
+[src/index.ts:256](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L256)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Song`](resources_generalTypes.Song.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Song`](resources_generalTypes.Song.md)\>, [`Song`](resources_generalTypes.Song.md)[]\>\>
 
@@ -242,7 +242,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:257](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L257)
+[src/index.ts:257](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L257)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Playlist`](resources_generalTypes.Playlist.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Playlist`](resources_generalTypes.Playlist.md)\>, [`Playlist`](resources_generalTypes.Playlist.md)[]\>\>
 
@@ -265,7 +265,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:258](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L258)
+[src/index.ts:258](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L258)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`ArtistExtended`](resources_generalTypes.ArtistExtended.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`ArtistExtended`](resources_generalTypes.ArtistExtended.md)\>, [`ArtistExtended`](resources_generalTypes.ArtistExtended.md)[]\>\>
 
@@ -288,7 +288,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:259](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L259)
+[src/index.ts:259](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L259)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Album`](resources_generalTypes.Album.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Album`](resources_generalTypes.Album.md)\>, [`Album`](resources_generalTypes.Album.md)[]\>\>
 
@@ -311,7 +311,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:260](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L260)
+[src/index.ts:260](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L260)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Album`](resources_generalTypes.Album.md) \| [`Artist`](resources_generalTypes.Artist.md), [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Album`](resources_generalTypes.Album.md) \| [`Artist`](resources_generalTypes.Artist.md)\>, ([`Video`](resources_generalTypes.Video.md) \| [`Song`](resources_generalTypes.Song.md) \| [`Playlist`](resources_generalTypes.Playlist.md) \| [`Album`](resources_generalTypes.Album.md) \| [`Artist`](resources_generalTypes.Artist.md))[]\>\>
 
@@ -334,4 +334,4 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/index.ts:261](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/index.ts#L261)
+[src/index.ts:261](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/index.ts#L261)
