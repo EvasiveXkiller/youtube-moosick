@@ -25,7 +25,7 @@
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/c25a88c/src/resources/generalTypes/continuableResult.ts#L9)
+[src/resources/generalTypes/continuableResult.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/82a5706/src/resources/generalTypes/continuableResult.ts#L9)
 
 ___
 
@@ -35,4 +35,4 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/c25a88c/src/resources/generalTypes/continuableResult.ts#L8)
+[src/resources/generalTypes/continuableResult.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/82a5706/src/resources/generalTypes/continuableResult.ts#L8)
