@@ -1,4 +1,5 @@
 /**
+ * @internal
  * Different Endpoints for createNewApi method
  */
 export var EndPoint;
@@ -20,6 +21,9 @@ export var EndPoint;
      */
     EndPoint["NEXT"] = "next";
 })(EndPoint || (EndPoint = {}));
+/**
+ * Categories that can be placed into search()
+ */
 export var Category;
 (function (Category) {
     /**
@@ -51,6 +55,9 @@ export var Category;
      */
     Category["SINGLE"] = "SINGLE";
 })(Category || (Category = {}));
+/**
+ * @internal
+ */
 export var CategoryURIBase64;
 (function (CategoryURIBase64) {
     CategoryURIBase64["SONG"] = "RAAGAAgACgA";
@@ -59,17 +66,26 @@ export var CategoryURIBase64;
     CategoryURIBase64["ARTIST"] = "BAAGAAgASgA";
     CategoryURIBase64["PLAYLIST"] = "BAAGAAgACgB";
 })(CategoryURIBase64 || (CategoryURIBase64 = {}));
+/**
+ * Constant Links
+ */
 export var ConstantURLs;
 (function (ConstantURLs) {
     ConstantURLs["VIDEOLINK"] = "https://www.youtube.com/watch?v=";
     ConstantURLs["CHANNEL_URL"] = "https://music.youtube.com/channel/";
 })(ConstantURLs || (ConstantURLs = {}));
+/**
+ * @internal
+ */
 export var FlexColumnOffset;
 (function (FlexColumnOffset) {
     FlexColumnOffset[FlexColumnOffset["MAIN"] = 0] = "MAIN";
     FlexColumnOffset[FlexColumnOffset["ALT"] = 1] = "ALT";
     FlexColumnOffset[FlexColumnOffset["ONLYRUN"] = 0] = "ONLYRUN";
 })(FlexColumnOffset || (FlexColumnOffset = {}));
+/**
+ * @internal
+ */
 export var FlexSecondRowOffset;
 (function (FlexSecondRowOffset) {
     FlexSecondRowOffset[FlexSecondRowOffset["ARTIST"] = 0] = "ARTIST";

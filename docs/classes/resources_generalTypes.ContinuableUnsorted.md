@@ -120,7 +120,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1407
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:21](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/unsorted.ts#L21)
+[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/unsorted.ts#L24)
 
 ___
 
@@ -134,7 +134,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/unsorted.ts#L24)
+[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/unsorted.ts#L27)
 
 ___
 
@@ -164,7 +164,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:23](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/unsorted.ts#L23)
+[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/unsorted.ts#L26)
 
 ___
 
@@ -178,7 +178,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/unsorted.ts#L25)
+[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/unsorted.ts#L28)
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/unsorted.ts#L22)
+[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/unsorted.ts#L25)
 
 ___
 
@@ -776,7 +776,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:125](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/continuableResult.ts#L125)
+[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 
@@ -855,11 +855,11 @@ ___
 
 ### loadNext
 
-▸ **loadNext**(): `Promise`<``null`` \| [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>\>
+▸ **loadNext**(): `Promise`<``null`` \| `ContinuableResultBlueprint`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>\>
 
 #### Returns
 
-`Promise`<``null`` \| [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>\>
+`Promise`<``null`` \| `ContinuableResultBlueprint`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>\>
 
 #### Inherited from
 
@@ -867,13 +867,13 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:52](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/continuableResult.ts#L52)
+[src/resources/generalTypes/continuableResult.ts:58](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/continuableResult.ts#L58)
 
 ___
 
 ### loadUntil
 
-▸ **loadUntil**(`minimumLength?`): `Promise`<[`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>\>
+▸ **loadUntil**(`minimumLength?`): `Promise`<`ContinuableResultBlueprint`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>\>
 
 #### Parameters
 
@@ -883,7 +883,7 @@ ___
 
 #### Returns
 
-`Promise`<[`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>\>
+`Promise`<`ContinuableResultBlueprint`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>\>
 
 #### Inherited from
 
@@ -891,7 +891,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:104](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/continuableResult.ts#L104)
+[src/resources/generalTypes/continuableResult.ts:110](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/continuableResult.ts#L110)
 
 ___
 
@@ -951,7 +951,7 @@ Supports adding non POJA's (will add keys to `this`)
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:87](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/continuableResult.ts#L87)
+[src/resources/generalTypes/continuableResult.ts:93](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/continuableResult.ts#L93)
 
 ___
 

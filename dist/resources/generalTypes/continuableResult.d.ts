@@ -1,9 +1,15 @@
 import { Factory, Item } from '../../blocks/item.js';
 import type { NextContinuationData } from '../etc/rawResultTypes/common.js';
+/**
+ * @internal
+ */
 export interface ContinuableResultBlueprint<T extends Item> {
     result: T[];
     continuation?: NextContinuationData;
 }
+/**
+ * @internal
+ */
 export declare class ContinuableResultFactory<T extends Item, ParserResult = ContinuableResultBlueprint<T>, GetContentResult extends any[] = T[], R extends ContinuableResult<T, ParserResult, GetContentResult> = ContinuableResult<T, ParserResult, GetContentResult>> extends Factory<R, {
     ctx: ContinuableResult<T, ParserResult, GetContentResult>['ctx'];
     parser: ContinuableResult<T, ParserResult, GetContentResult>['parser'];

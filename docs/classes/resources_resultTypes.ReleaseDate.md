@@ -12,10 +12,6 @@
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](resources_resultTypes.ReleaseDate.md#constructor)
-
 ### Properties
 
 - [day](resources_resultTypes.ReleaseDate.md#day)
@@ -26,22 +22,6 @@
 
 - [from](resources_resultTypes.ReleaseDate.md#from)
 
-## Constructors
-
-### constructor
-
-• **new ReleaseDate**()
-
-**`deprecated`** You're probably looking for `Item.from()`
-
-#### Inherited from
-
-Item.constructor
-
-#### Defined in
-
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L20)
-
 ## Properties
 
 ### day
@@ -50,7 +30,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/resultTypes/albumURL.ts:19](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/albumURL.ts#L19)
+[src/resources/resultTypes/albumURL.ts:19](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/albumURL.ts#L19)
 
 ___
 
@@ -60,7 +40,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/albumURL.ts:18](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/albumURL.ts#L18)
+[src/resources/resultTypes/albumURL.ts:18](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/albumURL.ts#L18)
 
 ___
 
@@ -70,7 +50,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/albumURL.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/albumURL.ts#L17)
+[src/resources/resultTypes/albumURL.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/albumURL.ts#L17)
 
 ## Methods
 
@@ -100,4 +80,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L22)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/blocks/item.ts#L25)

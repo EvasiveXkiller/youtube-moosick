@@ -11,18 +11,12 @@
 - [Artist](../classes/resources_generalTypes.Artist.md)
 - [ArtistExtended](../classes/resources_generalTypes.ArtistExtended.md)
 - [ContinuableResult](../classes/resources_generalTypes.ContinuableResult.md)
-- [ContinuableResultFactory](../classes/resources_generalTypes.ContinuableResultFactory.md)
 - [ContinuableUnsorted](../classes/resources_generalTypes.ContinuableUnsorted.md)
 - [Playlist](../classes/resources_generalTypes.Playlist.md)
 - [Song](../classes/resources_generalTypes.Song.md)
 - [Thumbnails](../classes/resources_generalTypes.Thumbnails.md)
 - [Unsorted](../classes/resources_generalTypes.Unsorted.md)
-- [UnsortedFactory](../classes/resources_generalTypes.UnsortedFactory.md)
 - [Video](../classes/resources_generalTypes.Video.md)
-
-### Interfaces
-
-- [ContinuableResultBlueprint](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)
 
 ### Type aliases
 
@@ -36,4 +30,4 @@
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/unsorted.ts#L9)
+[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/unsorted.ts#L9)

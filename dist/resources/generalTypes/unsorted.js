@@ -1,5 +1,8 @@
 import { Factory } from '../../blocks/item.js';
 import { ContinuableResult } from './continuableResult.js';
+/**
+ * @internal
+ */
 export class UnsortedFactory extends Factory {
     constructor() {
         super(Unsorted);

@@ -12,10 +12,6 @@
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](resources_resultTypes.ArtistContent.md#constructor)
-
 ### Properties
 
 - [albums](resources_resultTypes.ArtistContent.md#albums)
@@ -26,22 +22,6 @@
 
 - [from](resources_resultTypes.ArtistContent.md#from)
 
-## Constructors
-
-### constructor
-
-• **new ArtistContent**()
-
-**`deprecated`** You're probably looking for `Item.from()`
-
-#### Inherited from
-
-Item.constructor
-
-#### Defined in
-
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L20)
-
 ## Properties
 
 ### albums
@@ -50,7 +30,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:11](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/artistURL.ts#L11)
+[src/resources/resultTypes/artistURL.ts:11](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/artistURL.ts#L11)
 
 ___
 
@@ -60,7 +40,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/artistURL.ts#L12)
+[src/resources/resultTypes/artistURL.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/artistURL.ts#L12)
 
 ___
 
@@ -70,7 +50,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/artistURL.ts#L13)
+[src/resources/resultTypes/artistURL.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/artistURL.ts#L13)
 
 ## Methods
 
@@ -100,4 +80,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L22)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/blocks/item.ts#L25)

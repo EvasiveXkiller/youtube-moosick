@@ -12,10 +12,6 @@
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](resources_resultTypes.Albums.md#constructor)
-
 ### Properties
 
 - [URL](resources_resultTypes.Albums.md#url)
@@ -28,22 +24,6 @@
 
 - [from](resources_resultTypes.Albums.md#from)
 
-## Constructors
-
-### constructor
-
-• **new Albums**()
-
-**`deprecated`** You're probably looking for `Item.from()`
-
-#### Inherited from
-
-Item.constructor
-
-#### Defined in
-
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L20)
-
 ## Properties
 
 ### URL
@@ -52,7 +32,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/artistURL.ts#L26)
+[src/resources/resultTypes/artistURL.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/artistURL.ts#L26)
 
 ___
 
@@ -62,7 +42,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/artistURL.ts#L25)
+[src/resources/resultTypes/artistURL.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/artistURL.ts#L25)
 
 ___
 
@@ -72,7 +52,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/artistURL.ts#L28)
+[src/resources/resultTypes/artistURL.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/artistURL.ts#L28)
 
 ___
 
@@ -82,7 +62,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/artistURL.ts#L24)
+[src/resources/resultTypes/artistURL.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/artistURL.ts#L24)
 
 ___
 
@@ -92,7 +72,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/artistURL.ts#L27)
+[src/resources/resultTypes/artistURL.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/artistURL.ts#L27)
 
 ## Methods
 
@@ -122,4 +102,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L22)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/blocks/item.ts#L25)

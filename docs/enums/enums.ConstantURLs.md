@@ -4,6 +4,8 @@
 
 [enums](../modules/enums.md).ConstantURLs
 
+Constant Links
+
 ## Table of contents
 
 ### Enumeration members
@@ -19,7 +21,7 @@
 
 #### Defined in
 
-[src/enums.ts:64](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/enums.ts#L64)
+[src/enums.ts:74](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/enums.ts#L74)
 
 ___
 
@@ -29,4 +31,4 @@ ___
 
 #### Defined in
 
-[src/enums.ts:63](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/enums.ts#L63)
+[src/enums.ts:73](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/enums.ts#L73)

@@ -14,10 +14,6 @@
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](resources_resultTypes.PlaylistURL.md#constructor)
-
 ### Properties
 
 - [continuation](resources_resultTypes.PlaylistURL.md#continuation)
@@ -28,22 +24,6 @@
 
 - [from](resources_resultTypes.PlaylistURL.md#from)
 
-## Constructors
-
-### constructor
-
-• **new PlaylistURL**()
-
-**`deprecated`** You're probably looking for `Item.from()`
-
-#### Inherited from
-
-Item.constructor
-
-#### Defined in
-
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L20)
-
 ## Properties
 
 ### continuation
@@ -52,7 +32,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/playlistURL.ts#L9)
+[src/resources/resultTypes/playlistURL.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/playlistURL.ts#L9)
 
 ___
 
@@ -62,7 +42,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/playlistURL.ts#L7)
+[src/resources/resultTypes/playlistURL.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/playlistURL.ts#L7)
 
 ___
 
@@ -72,7 +52,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/playlistURL.ts#L8)
+[src/resources/resultTypes/playlistURL.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/playlistURL.ts#L8)
 
 ## Methods
 
@@ -102,4 +82,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L22)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/blocks/item.ts#L25)

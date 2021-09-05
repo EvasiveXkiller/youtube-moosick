@@ -7,6 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { Factory } from '../../blocks/item.js';
 import { EndPoint } from '../../enums.js';
 import { unenumerable } from '../decorators/enumerable.decorator.js';
+/**
+ * @internal
+ */
 export class ContinuableResultFactory extends Factory {
     constructor(ContinuableResultClass) {
         super(ContinuableResultClass ?? ContinuableResult);

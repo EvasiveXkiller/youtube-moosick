@@ -12,10 +12,6 @@
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](resources_generalTypes.Song.md#constructor)
-
 ### Properties
 
 - [album](resources_generalTypes.Song.md#album)
@@ -33,22 +29,6 @@
 
 - [from](resources_generalTypes.Song.md#from)
 
-## Constructors
-
-### constructor
-
-• **new Song**()
-
-**`deprecated`** You're probably looking for `Item.from()`
-
-#### Inherited from
-
-Item.constructor
-
-#### Defined in
-
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L20)
-
 ## Properties
 
 ### album
@@ -57,7 +37,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:14](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L14)
+[src/resources/generalTypes/song.ts:14](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L14)
 
 ___
 
@@ -67,7 +47,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L13)
+[src/resources/generalTypes/song.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L13)
 
 ___
 
@@ -77,7 +57,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:15](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L15)
+[src/resources/generalTypes/song.ts:15](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L15)
 
 ___
 
@@ -87,7 +67,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L9)
+[src/resources/generalTypes/song.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L9)
 
 ___
 
@@ -97,7 +77,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L17)
+[src/resources/generalTypes/song.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L17)
 
 ___
 
@@ -107,7 +87,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L12)
+[src/resources/generalTypes/song.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L12)
 
 ___
 
@@ -117,7 +97,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:16](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L16)
+[src/resources/generalTypes/song.ts:16](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L16)
 
 ___
 
@@ -127,7 +107,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L8)
+[src/resources/generalTypes/song.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L8)
 
 ___
 
@@ -137,7 +117,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:11](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L11)
+[src/resources/generalTypes/song.ts:11](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L11)
 
 ___
 
@@ -147,7 +127,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/song.ts:10](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/song.ts#L10)
+[src/resources/generalTypes/song.ts:10](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/song.ts#L10)
 
 ## Methods
 
@@ -177,4 +157,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L22)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/blocks/item.ts#L25)

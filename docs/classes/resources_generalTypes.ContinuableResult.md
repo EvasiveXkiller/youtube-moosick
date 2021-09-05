@@ -9,7 +9,7 @@
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `Item` |
-| `ParserResult` | [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\> |
+| `ParserResult` | `ContinuableResultBlueprint`<`T`\> |
 | `GetContentResult` | extends `any`[]`T`[] |
 
 ## Hierarchy
@@ -90,7 +90,7 @@
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `Item`<`T`\> |
-| `ParserResult` | [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\> |
+| `ParserResult` | `ContinuableResultBlueprint`<`T`\> |
 | `GetContentResult` | extends `any`[]`T`[] |
 
 #### Parameters
@@ -114,7 +114,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1406
 | Name | Type |
 | :------ | :------ |
 | `T` | extends `Item`<`T`\> |
-| `ParserResult` | [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\> |
+| `ParserResult` | `ContinuableResultBlueprint`<`T`\> |
 | `GetContentResult` | extends `any`[]`T`[] |
 
 #### Parameters
@@ -725,7 +725,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:125](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/continuableResult.ts#L125)
+[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 
@@ -804,21 +804,21 @@ ___
 
 ### loadNext
 
-▸ **loadNext**(): `Promise`<``null`` \| [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\>\>
+▸ **loadNext**(): `Promise`<``null`` \| `ContinuableResultBlueprint`<`T`\>\>
 
 #### Returns
 
-`Promise`<``null`` \| [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\>\>
+`Promise`<``null`` \| `ContinuableResultBlueprint`<`T`\>\>
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:52](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/continuableResult.ts#L52)
+[src/resources/generalTypes/continuableResult.ts:58](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/continuableResult.ts#L58)
 
 ___
 
 ### loadUntil
 
-▸ **loadUntil**(`minimumLength?`): `Promise`<[`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\>\>
+▸ **loadUntil**(`minimumLength?`): `Promise`<`ContinuableResultBlueprint`<`T`\>\>
 
 #### Parameters
 
@@ -828,11 +828,11 @@ ___
 
 #### Returns
 
-`Promise`<[`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\>\>
+`Promise`<`ContinuableResultBlueprint`<`T`\>\>
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:104](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/continuableResult.ts#L104)
+[src/resources/generalTypes/continuableResult.ts:110](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/continuableResult.ts#L110)
 
 ___
 
@@ -888,7 +888,7 @@ Supports adding non POJA's (will add keys to `this`)
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:87](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/continuableResult.ts#L87)
+[src/resources/generalTypes/continuableResult.ts:93](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/continuableResult.ts#L93)
 
 ___
 

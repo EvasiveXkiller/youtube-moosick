@@ -76,7 +76,7 @@ Get search suggestions from Youtube Music
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `query` | `string` | query String query text to search |
+| `query` | `string` | String query text to search |
 
 #### Returns
 
@@ -101,7 +101,7 @@ Gets the album details
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `browseId` | `string` | The ID of the album, without `https` infront |
+| `browseId` | `string` | The album Id only, without `https://....` |
 
 #### Returns
 
@@ -128,7 +128,7 @@ Gets the artist details from Youtube Music
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `browseId` | `string` | The artist ID, sanitized |
+| `browseId` | `string` | The artist `browseId` only, without `https://....` |
 
 #### Returns
 
@@ -151,16 +151,12 @@ console.log(results);
 
 Gets the playlist using the Youtube Music API
 
-**`remarks`**
-FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change? I think i forgotten to change
-it, but i dont have faith on this system working, it relies on the old structure which i have modified
-
 #### Parameters
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `browseId` | `string` | `undefined` | The playlist ID, sanitized |
-| `contentLimit` | `number` | `100` | Maximum content to get |
+| `browseId` | `string` | `undefined` | The playlist `browseId` only, without `https://....` |
+| `contentLimit` | `number` | `100` | Maximum amount of contents to get, defaults to 100 |
 
 #### Returns
 

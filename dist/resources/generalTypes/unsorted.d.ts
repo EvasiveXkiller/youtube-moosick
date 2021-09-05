@@ -6,6 +6,9 @@ import type { Playlist } from './playlist.js';
 import type { Song } from './song.js';
 import type { Video } from './video.js';
 export declare type UnsortedSubTypes = Video | Song | Playlist | ArtistExtended | AlbumExtended;
+/**
+ * @internal
+ */
 export declare class UnsortedFactory extends Factory<Unsorted, Pick<Unsorted, Exclude<keyof Unsorted, keyof any[]>>> {
     constructor();
 }

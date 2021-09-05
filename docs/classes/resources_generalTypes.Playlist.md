@@ -12,10 +12,6 @@
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](resources_generalTypes.Playlist.md#constructor)
-
 ### Properties
 
 - [author](resources_generalTypes.Playlist.md#author)
@@ -27,22 +23,6 @@
 
 - [from](resources_generalTypes.Playlist.md#from)
 
-## Constructors
-
-### constructor
-
-• **new Playlist**()
-
-**`deprecated`** You're probably looking for `Item.from()`
-
-#### Inherited from
-
-Item.constructor
-
-#### Defined in
-
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L20)
-
 ## Properties
 
 ### author
@@ -51,7 +31,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/generalTypes/playlist.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/playlist.ts#L7)
+[src/resources/generalTypes/playlist.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/playlist.ts#L7)
 
 ___
 
@@ -61,7 +41,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/playlist.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/playlist.ts#L6)
+[src/resources/generalTypes/playlist.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/playlist.ts#L6)
 
 ___
 
@@ -71,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/playlist.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/playlist.ts#L5)
+[src/resources/generalTypes/playlist.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/playlist.ts#L5)
 
 ___
 
@@ -81,7 +61,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/playlist.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/playlist.ts#L8)
+[src/resources/generalTypes/playlist.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/playlist.ts#L8)
 
 ## Methods
 
@@ -111,4 +91,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L22)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/blocks/item.ts#L25)

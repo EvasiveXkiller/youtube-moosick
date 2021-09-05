@@ -12,10 +12,6 @@
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](resources_resultTypes.Track.md#constructor)
-
 ### Properties
 
 - [index](resources_resultTypes.Track.md#index)
@@ -27,22 +23,6 @@
 
 - [from](resources_resultTypes.Track.md#from)
 
-## Constructors
-
-### constructor
-
-• **new Track**()
-
-**`deprecated`** You're probably looking for `Item.from()`
-
-#### Inherited from
-
-Item.constructor
-
-#### Defined in
-
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L20)
-
 ## Properties
 
 ### index
@@ -51,7 +31,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/resultTypes/albumURL.ts:23](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/albumURL.ts#L23)
+[src/resources/resultTypes/albumURL.ts:23](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/albumURL.ts#L23)
 
 ___
 
@@ -61,7 +41,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/albumURL.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/albumURL.ts#L26)
+[src/resources/resultTypes/albumURL.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/albumURL.ts#L26)
 
 ___
 
@@ -71,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/albumURL.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/albumURL.ts#L24)
+[src/resources/resultTypes/albumURL.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/albumURL.ts#L24)
 
 ___
 
@@ -81,7 +61,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/albumURL.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/resultTypes/albumURL.ts#L25)
+[src/resources/resultTypes/albumURL.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/resultTypes/albumURL.ts#L25)
 
 ## Methods
 
@@ -111,4 +91,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L22)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/blocks/item.ts#L25)

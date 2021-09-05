@@ -16,10 +16,6 @@
 
 ## Table of contents
 
-### Constructors
-
-- [constructor](resources_generalTypes.Thumbnails.md#constructor)
-
 ### Properties
 
 - [height](resources_generalTypes.Thumbnails.md#height)
@@ -29,22 +25,6 @@
 ### Methods
 
 - [from](resources_generalTypes.Thumbnails.md#from)
-
-## Constructors
-
-### constructor
-
-• **new Thumbnails**()
-
-**`deprecated`** You're probably looking for `Item.from()`
-
-#### Inherited from
-
-Item.constructor
-
-#### Defined in
-
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -58,7 +38,7 @@ ThumbnailElement.height
 
 #### Defined in
 
-[src/resources/generalTypes/thumbnails.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/thumbnails.ts#L7)
+[src/resources/generalTypes/thumbnails.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/thumbnails.ts#L7)
 
 ___
 
@@ -72,7 +52,7 @@ ThumbnailElement.url
 
 #### Defined in
 
-[src/resources/generalTypes/thumbnails.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/thumbnails.ts#L5)
+[src/resources/generalTypes/thumbnails.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/thumbnails.ts#L5)
 
 ___
 
@@ -86,7 +66,7 @@ ThumbnailElement.width
 
 #### Defined in
 
-[src/resources/generalTypes/thumbnails.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/resources/generalTypes/thumbnails.ts#L6)
+[src/resources/generalTypes/thumbnails.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/resources/generalTypes/thumbnails.ts#L6)
 
 ## Methods
 
@@ -116,4 +96,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/42733e8/src/blocks/item.ts#L22)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/021e1ed/src/blocks/item.ts#L25)

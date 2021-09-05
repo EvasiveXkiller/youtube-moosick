@@ -10,7 +10,10 @@ export declare type ItemOptions<T extends abstract new (...args: any[]) => any> 
     [Q in keyof WritableProps<InstanceType<T>>]: InstanceType<T>[Q];
 };
 export declare class Item {
-    /** @deprecated You're probably looking for `Item.from()` */
+    /**
+     * @internal
+     * @deprecated You're probably looking for `Item.from()`
+     */
     constructor();
     static from<T extends Item>(this: new () => T, options: ItemOptions<new () => T>): T;
 }

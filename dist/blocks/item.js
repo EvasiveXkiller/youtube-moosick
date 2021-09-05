@@ -1,6 +1,9 @@
 import { WalkUtility } from '../resources/utilities/index.js';
 export class Item {
-    /** @deprecated You're probably looking for `Item.from()` */
+    /**
+     * @internal
+     * @deprecated You're probably looking for `Item.from()`
+     */
     constructor() { }
     static from(
     // use this adapter type instead of just `InstanceType<T>`
