@@ -35,7 +35,7 @@ Factory&lt;
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:15](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/unsorted.ts#L15)
+[src/resources/generalTypes/unsorted.ts:15](https://github.com/EvasiveXkiller/youtube-moosick/blob/b45b69f/src/resources/generalTypes/unsorted.ts#L15)
 
 ## Methods
 
@@ -59,4 +59,4 @@ Factory.create
 
 #### Defined in
 
-[src/blocks/item.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/blocks/item.ts#L39)
+[src/blocks/item.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/b45b69f/src/blocks/item.ts#L39)
