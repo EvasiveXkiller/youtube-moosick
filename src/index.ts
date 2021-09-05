@@ -6,7 +6,6 @@ import { utils } from './utils.js';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors/index.js';
 import { URLSearchParams } from 'url';
 import { GeneralParser, GetArtistParser, GetAlbumParser, GetPlaylistParser } from './parsers/index.js';
-import { AlbumURL, PlaylistURL, ArtistURL, SearchSuggestions, PlaylistContent, ContinuablePlaylistURL } from './resources/resultTypes/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
 import type { ArtistURLFullResult } from './resources/etc/rawResultTypes/rawGetArtistURL.js';
 import type { SearchSuggestionsFullResult } from './resources/etc/rawResultTypes/rawGetSearchSuggestions.js';
@@ -14,13 +13,26 @@ import type { AlbumURLFullResult } from './resources/etc/rawResultTypes/rawGetAl
 import type { GeneralFull } from './resources/etc/rawResultTypes/general/generalFull.js';
 import type { Result as IResult } from './resources/etc/rawResultTypes/common.js';
 import type { YtCfgMain } from './resources/etc/cfgInterface.js';
-import type { Video } from './resources/generalTypes/video.js';
-import type { Song } from './resources/generalTypes/song.js';
-import type { Playlist } from './resources/generalTypes/playlist.js';
-import type { Artist, ArtistExtended } from './resources/generalTypes/artist.js';
-import { ContinuableUnsorted } from './resources/generalTypes/unsorted.js';
-import type { Album } from './resources/generalTypes/album.js';
-import { ContinuableResult, ContinuableResultBlueprint, ContinuableResultFactory } from './resources/generalTypes/continuableResult.js';
+import {
+	AlbumURL,
+	PlaylistURL,
+	ArtistURL,
+	SearchSuggestions,
+	PlaylistContent,
+	ContinuablePlaylistURL,
+} from './resources/resultTypes/index.js';
+import {
+	Song,
+	Playlist,
+	Video,
+	Artist,
+	ArtistExtended,
+	ContinuableUnsorted,
+	Album,
+	ContinuableResult,
+	ContinuableResultBlueprint,
+	ContinuableResultFactory,
+} from './resources/generalTypes/index.js';
 
 axios.defaults.adapter = axios0;
 
@@ -262,11 +274,9 @@ export class MooSick extends AsyncConstructor {
 			continuation,
 		} = GeneralParser.parseSearchResult(ctx as GeneralFull, searchType);
 
-		const continuableResult = new ContinuableResultFactory<
-			typeof result[0],
+		const continuableResult = new ContinuableResultFactory<typeof result[0],
 			ContinuableResultBlueprint<typeof result[0]>,
-			typeof result
-		>(searchType == null ? ContinuableUnsorted as any : ContinuableResult)
+			typeof result>(searchType == null ? ContinuableUnsorted as any : ContinuableResult)
 			.create({
 				ctx: this,
 				getContent: (context) => context.result,

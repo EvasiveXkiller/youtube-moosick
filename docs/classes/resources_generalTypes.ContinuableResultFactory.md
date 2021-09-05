@@ -1,4 +1,4 @@
-[youtube-moosick](../README.md) / [Modules](../modules.md) / [resources/generalTypes](../modules/resources_generalTypes.md) / ContinuableResultFactory
+[youtube-moosick](../README.md) / [resources/generalTypes](../modules/resources_generalTypes.md) / ContinuableResultFactory
 
 # Class: ContinuableResultFactory<T, ParserResult, GetContentResult, R\>
 
@@ -66,7 +66,7 @@ Factory&lt;
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/generalTypes/continuableResult.ts#L28)
+[src/resources/generalTypes/continuableResult.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/continuableResult.ts#L28)
 
 ## Methods
 
@@ -96,4 +96,4 @@ Factory.create
 
 #### Defined in
 
-[src/blocks/item.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/blocks/item.ts#L39)
+[src/blocks/item.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/blocks/item.ts#L39)

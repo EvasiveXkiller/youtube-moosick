@@ -1,4 +1,4 @@
-[youtube-moosick](../README.md) / [Modules](../modules.md) / enums
+[youtube-moosick](../README.md) / enums
 
 # Module: enums
 

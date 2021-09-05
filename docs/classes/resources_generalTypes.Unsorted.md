@@ -1,97 +1,78 @@
-[youtube-moosick](../README.md) / [resources/generalTypes](../modules/resources_generalTypes.md) / ContinuableResult
+[youtube-moosick](../README.md) / [resources/generalTypes](../modules/resources_generalTypes.md) / Unsorted
 
-# Class: ContinuableResult<T, ParserResult, GetContentResult\>
+# Class: Unsorted
 
-[resources/generalTypes](../modules/resources_generalTypes.md).ContinuableResult
-
-## Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `Item` |
-| `ParserResult` | [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\> |
-| `GetContentResult` | extends `any`[]`T`[] |
+[resources/generalTypes](../modules/resources_generalTypes.md).Unsorted
 
 ## Hierarchy
 
-- `Array`<`T`\>
+- `Array`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>
 
-  ↳ **`ContinuableResult`**
+  ↳ **`Unsorted`**
 
   ↳↳ [`ContinuableUnsorted`](resources_generalTypes.ContinuableUnsorted.md)
-
-## Implements
-
-- `Item`
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](resources_generalTypes.ContinuableResult.md#constructor)
+- [constructor](resources_generalTypes.Unsorted.md#constructor)
 
 ### Properties
 
-- [length](resources_generalTypes.ContinuableResult.md#length)
-- [[species]](resources_generalTypes.ContinuableResult.md#[species])
+- [albums](resources_generalTypes.Unsorted.md#albums)
+- [artist](resources_generalTypes.Unsorted.md#artist)
+- [length](resources_generalTypes.Unsorted.md#length)
+- [playlists](resources_generalTypes.Unsorted.md#playlists)
+- [songs](resources_generalTypes.Unsorted.md#songs)
+- [videos](resources_generalTypes.Unsorted.md#videos)
+- [[species]](resources_generalTypes.Unsorted.md#[species])
 
 ### Methods
 
-- [[iterator]](resources_generalTypes.ContinuableResult.md#[iterator])
-- [[unscopables]](resources_generalTypes.ContinuableResult.md#[unscopables])
-- [at](resources_generalTypes.ContinuableResult.md#at)
-- [concat](resources_generalTypes.ContinuableResult.md#concat)
-- [copyWithin](resources_generalTypes.ContinuableResult.md#copywithin)
-- [entries](resources_generalTypes.ContinuableResult.md#entries)
-- [every](resources_generalTypes.ContinuableResult.md#every)
-- [fill](resources_generalTypes.ContinuableResult.md#fill)
-- [filter](resources_generalTypes.ContinuableResult.md#filter)
-- [find](resources_generalTypes.ContinuableResult.md#find)
-- [findIndex](resources_generalTypes.ContinuableResult.md#findindex)
-- [flat](resources_generalTypes.ContinuableResult.md#flat)
-- [flatMap](resources_generalTypes.ContinuableResult.md#flatmap)
-- [forEach](resources_generalTypes.ContinuableResult.md#foreach)
-- [includes](resources_generalTypes.ContinuableResult.md#includes)
-- [indexOf](resources_generalTypes.ContinuableResult.md#indexof)
-- [iterator](resources_generalTypes.ContinuableResult.md#iterator)
-- [join](resources_generalTypes.ContinuableResult.md#join)
-- [keys](resources_generalTypes.ContinuableResult.md#keys)
-- [lastIndexOf](resources_generalTypes.ContinuableResult.md#lastindexof)
-- [loadNext](resources_generalTypes.ContinuableResult.md#loadnext)
-- [loadUntil](resources_generalTypes.ContinuableResult.md#loaduntil)
-- [map](resources_generalTypes.ContinuableResult.md#map)
-- [merge](resources_generalTypes.ContinuableResult.md#merge)
-- [pop](resources_generalTypes.ContinuableResult.md#pop)
-- [push](resources_generalTypes.ContinuableResult.md#push)
-- [reduce](resources_generalTypes.ContinuableResult.md#reduce)
-- [reduceRight](resources_generalTypes.ContinuableResult.md#reduceright)
-- [reverse](resources_generalTypes.ContinuableResult.md#reverse)
-- [shift](resources_generalTypes.ContinuableResult.md#shift)
-- [slice](resources_generalTypes.ContinuableResult.md#slice)
-- [some](resources_generalTypes.ContinuableResult.md#some)
-- [sort](resources_generalTypes.ContinuableResult.md#sort)
-- [splice](resources_generalTypes.ContinuableResult.md#splice)
-- [toLocaleString](resources_generalTypes.ContinuableResult.md#tolocalestring)
-- [toString](resources_generalTypes.ContinuableResult.md#tostring)
-- [unshift](resources_generalTypes.ContinuableResult.md#unshift)
-- [values](resources_generalTypes.ContinuableResult.md#values)
-- [from](resources_generalTypes.ContinuableResult.md#from)
-- [isArray](resources_generalTypes.ContinuableResult.md#isarray)
-- [of](resources_generalTypes.ContinuableResult.md#of)
+- [[iterator]](resources_generalTypes.Unsorted.md#[iterator])
+- [[unscopables]](resources_generalTypes.Unsorted.md#[unscopables])
+- [at](resources_generalTypes.Unsorted.md#at)
+- [concat](resources_generalTypes.Unsorted.md#concat)
+- [copyWithin](resources_generalTypes.Unsorted.md#copywithin)
+- [entries](resources_generalTypes.Unsorted.md#entries)
+- [every](resources_generalTypes.Unsorted.md#every)
+- [fill](resources_generalTypes.Unsorted.md#fill)
+- [filter](resources_generalTypes.Unsorted.md#filter)
+- [find](resources_generalTypes.Unsorted.md#find)
+- [findIndex](resources_generalTypes.Unsorted.md#findindex)
+- [flat](resources_generalTypes.Unsorted.md#flat)
+- [flatMap](resources_generalTypes.Unsorted.md#flatmap)
+- [forEach](resources_generalTypes.Unsorted.md#foreach)
+- [includes](resources_generalTypes.Unsorted.md#includes)
+- [indexOf](resources_generalTypes.Unsorted.md#indexof)
+- [join](resources_generalTypes.Unsorted.md#join)
+- [keys](resources_generalTypes.Unsorted.md#keys)
+- [lastIndexOf](resources_generalTypes.Unsorted.md#lastindexof)
+- [map](resources_generalTypes.Unsorted.md#map)
+- [pop](resources_generalTypes.Unsorted.md#pop)
+- [push](resources_generalTypes.Unsorted.md#push)
+- [reduce](resources_generalTypes.Unsorted.md#reduce)
+- [reduceRight](resources_generalTypes.Unsorted.md#reduceright)
+- [reverse](resources_generalTypes.Unsorted.md#reverse)
+- [shift](resources_generalTypes.Unsorted.md#shift)
+- [slice](resources_generalTypes.Unsorted.md#slice)
+- [some](resources_generalTypes.Unsorted.md#some)
+- [sort](resources_generalTypes.Unsorted.md#sort)
+- [splice](resources_generalTypes.Unsorted.md#splice)
+- [toLocaleString](resources_generalTypes.Unsorted.md#tolocalestring)
+- [toString](resources_generalTypes.Unsorted.md#tostring)
+- [unshift](resources_generalTypes.Unsorted.md#unshift)
+- [values](resources_generalTypes.Unsorted.md#values)
+- [from](resources_generalTypes.Unsorted.md#from)
+- [isArray](resources_generalTypes.Unsorted.md#isarray)
+- [of](resources_generalTypes.Unsorted.md#of)
 
 ## Constructors
 
 ### constructor
 
-• **new ContinuableResult**<`T`, `ParserResult`, `GetContentResult`\>(`arrayLength`)
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `Item`<`T`\> |
-| `ParserResult` | [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\> |
-| `GetContentResult` | extends `any`[]`T`[] |
+• **new Unsorted**(`arrayLength`)
 
 #### Parameters
 
@@ -101,37 +82,49 @@
 
 #### Inherited from
 
-Array<T\>.constructor
+Array<UnsortedSubTypes\>.constructor
 
 #### Defined in
 
 node_modules/typescript/lib/lib.es5.d.ts:1406
 
-• **new ContinuableResult**<`T`, `ParserResult`, `GetContentResult`\>(...`items`)
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `Item`<`T`\> |
-| `ParserResult` | [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\> |
-| `GetContentResult` | extends `any`[]`T`[] |
+• **new Unsorted**(...`items`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...items` | `T`[] |
+| `...items` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[] |
 
 #### Inherited from
 
-Array<T\>.constructor
+Array<UnsortedSubTypes\>.constructor
 
 #### Defined in
 
 node_modules/typescript/lib/lib.es5.d.ts:1407
 
 ## Properties
+
+### albums
+
+• **albums**: [`AlbumExtended`](resources_generalTypes.AlbumExtended.md)[]
+
+#### Defined in
+
+[src/resources/generalTypes/unsorted.ts:21](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/unsorted.ts#L21)
+
+___
+
+### artist
+
+• **artist**: [`ArtistExtended`](resources_generalTypes.ArtistExtended.md)[]
+
+#### Defined in
+
+[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/unsorted.ts#L24)
+
+___
 
 ### length
 
@@ -146,6 +139,36 @@ Array.length
 #### Defined in
 
 node_modules/typescript/lib/lib.es5.d.ts:1224
+
+___
+
+### playlists
+
+• **playlists**: [`Playlist`](resources_generalTypes.Playlist.md)[]
+
+#### Defined in
+
+[src/resources/generalTypes/unsorted.ts:23](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/unsorted.ts#L23)
+
+___
+
+### songs
+
+• **songs**: [`Song`](resources_generalTypes.Song.md)[]
+
+#### Defined in
+
+[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/unsorted.ts#L25)
+
+___
+
+### videos
+
+• **videos**: [`Video`](resources_generalTypes.Video.md)[]
+
+#### Defined in
+
+[src/resources/generalTypes/unsorted.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/unsorted.ts#L22)
 
 ___
 
@@ -165,13 +188,13 @@ node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:314
 
 ### [iterator]
 
-▸ **[iterator]**(): `IterableIterator`<`T`\>
+▸ **[iterator]**(): `IterableIterator`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>
 
 Iterator
 
 #### Returns
 
-`IterableIterator`<`T`\>
+`IterableIterator`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>
 
 #### Inherited from
 
@@ -216,7 +239,7 @@ ___
 
 ### at
 
-▸ **at**(`index`): `undefined` \| `T`
+▸ **at**(`index`): `undefined` \| [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 Takes an integer value and returns the item at that index,
 allowing for positive and negative integers.
@@ -230,7 +253,7 @@ Negative integers count back from the last item in the array.
 
 #### Returns
 
-`undefined` \| `T`
+`undefined` \| [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Inherited from
 
@@ -244,7 +267,7 @@ ___
 
 ### concat
 
-▸ **concat**(...`items`): `T`[]
+▸ **concat**(...`items`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 Combines two or more arrays.
 This method returns a new array without modifying any existing arrays.
@@ -253,11 +276,11 @@ This method returns a new array without modifying any existing arrays.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...items` | `ConcatArray`<`T`\>[] | Additional arrays and/or items to add to the end of the array. |
+| `...items` | `ConcatArray`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>[] | Additional arrays and/or items to add to the end of the array. |
 
 #### Returns
 
-`T`[]
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 #### Inherited from
 
@@ -267,7 +290,7 @@ Array.concat
 
 node_modules/typescript/lib/lib.es5.d.ts:1248
 
-▸ **concat**(...`items`): `T`[]
+▸ **concat**(...`items`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 Combines two or more arrays.
 This method returns a new array without modifying any existing arrays.
@@ -276,11 +299,11 @@ This method returns a new array without modifying any existing arrays.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...items` | (`T` \| `ConcatArray`<`T`\>)[] | Additional arrays and/or items to add to the end of the array. |
+| `...items` | ([`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) \| `ConcatArray`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>)[] | Additional arrays and/or items to add to the end of the array. |
 
 #### Returns
 
-`T`[]
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 #### Inherited from
 
@@ -294,7 +317,7 @@ ___
 
 ### copyWithin
 
-▸ **copyWithin**(`target`, `start`, `end?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
+▸ **copyWithin**(`target`, `start`, `end?`): [`Unsorted`](resources_generalTypes.Unsorted.md)
 
 Returns the this object after copying a section of the array identified by start and end
 to the same array starting at position target
@@ -309,7 +332,7 @@ to the same array starting at position target
 
 #### Returns
 
-[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
+[`Unsorted`](resources_generalTypes.Unsorted.md)
 
 #### Inherited from
 
@@ -323,13 +346,13 @@ ___
 
 ### entries
 
-▸ **entries**(): `IterableIterator`<[`number`, `T`]\>
+▸ **entries**(): `IterableIterator`<[`number`, [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)]\>
 
 Returns an iterable of key, value pairs for every entry in the array
 
 #### Returns
 
-`IterableIterator`<[`number`, `T`]\>
+`IterableIterator`<[`number`, [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)]\>
 
 #### Inherited from
 
@@ -351,13 +374,13 @@ Determines whether all the members of an array satisfy the specified test.
 
 | Name | Type |
 | :------ | :------ |
-| `S` | extends `Item`<`S`\> |
+| `S` | extends [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => value is S | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => value is S | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -380,7 +403,7 @@ Determines whether all the members of an array satisfy the specified test.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `unknown` | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `unknown` | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -399,7 +422,7 @@ ___
 
 ### fill
 
-▸ **fill**(`value`, `start?`, `end?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
+▸ **fill**(`value`, `start?`, `end?`): [`Unsorted`](resources_generalTypes.Unsorted.md)
 
 Changes all array elements from `start` to `end` index to a static `value` and returns the modified array
 
@@ -407,13 +430,13 @@ Changes all array elements from `start` to `end` index to a static `value` and r
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `value` | `T` | value to fill array section with |
+| `value` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) | value to fill array section with |
 | `start?` | `number` | index to start filling the array at. If start is negative, it is treated as length+start where length is the length of the array. |
 | `end?` | `number` | index to stop filling the array at. If end is negative, it is treated as length+end. |
 
 #### Returns
 
-[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
+[`Unsorted`](resources_generalTypes.Unsorted.md)
 
 #### Inherited from
 
@@ -435,13 +458,13 @@ Returns the elements of an array that meet the condition specified in a callback
 
 | Name | Type |
 | :------ | :------ |
-| `S` | extends `Item`<`S`\> |
+| `S` | extends [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => value is S | A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => value is S | A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -456,7 +479,7 @@ Array.filter
 
 node_modules/typescript/lib/lib.es5.d.ts:1367
 
-▸ **filter**(`predicate`, `thisArg?`): `T`[]
+▸ **filter**(`predicate`, `thisArg?`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 Returns the elements of an array that meet the condition specified in a callback function.
 
@@ -464,12 +487,12 @@ Returns the elements of an array that meet the condition specified in a callback
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `unknown` | A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `unknown` | A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
 
-`T`[]
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 #### Inherited from
 
@@ -492,13 +515,13 @@ otherwise.
 
 | Name | Type |
 | :------ | :------ |
-| `S` | extends `Item`<`S`\> |
+| `S` | extends [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) |
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `obj`: `T`[]) => value is S | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, find immediately returns that element value. Otherwise, find returns undefined. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `obj`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => value is S | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, find immediately returns that element value. Otherwise, find returns undefined. |
 | `thisArg?` | `any` | If provided, it will be used as the this value for each invocation of predicate. If it is not provided, undefined is used instead. |
 
 #### Returns
@@ -513,18 +536,18 @@ Array.find
 
 node_modules/typescript/lib/lib.es2015.core.d.ts:31
 
-▸ **find**(`predicate`, `thisArg?`): `undefined` \| `T`
+▸ **find**(`predicate`, `thisArg?`): `undefined` \| [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `obj`: `T`[]) => `unknown` |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `obj`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `unknown` |
 | `thisArg?` | `any` |
 
 #### Returns
 
-`undefined` \| `T`
+`undefined` \| [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Inherited from
 
@@ -547,7 +570,7 @@ otherwise.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `obj`: `T`[]) => `unknown` | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, findIndex immediately returns that element index. Otherwise, findIndex returns -1. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `obj`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `unknown` | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, findIndex immediately returns that element index. Otherwise, findIndex returns -1. |
 | `thisArg?` | `any` | If provided, it will be used as the this value for each invocation of predicate. If it is not provided, undefined is used instead. |
 
 #### Returns
@@ -617,7 +640,7 @@ This is identical to a map followed by flat with depth 1.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callback` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `U` \| readonly `U`[] | A function that accepts up to three arguments. The flatMap method calls the callback function one time for each element in the array. |
+| `callback` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `U` \| readonly `U`[] | A function that accepts up to three arguments. The flatMap method calls the callback function one time for each element in the array. |
 | `thisArg?` | `This` | An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -644,7 +667,7 @@ Performs the specified action for each element in an array.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `void` | A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `void` | A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -671,7 +694,7 @@ Determines whether an array includes a certain element, returning true or false 
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `searchElement` | `T` | The element to search for. |
+| `searchElement` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) | The element to search for. |
 | `fromIndex?` | `number` | The position in this array at which to begin searching for searchElement. |
 
 #### Returns
@@ -698,7 +721,7 @@ Returns the index of the first occurrence of a value in an array, or -1 if it is
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `searchElement` | `T` | The value to locate in the array. |
+| `searchElement` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) | The value to locate in the array. |
 | `fromIndex?` | `number` | The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0. |
 
 #### Returns
@@ -712,20 +735,6 @@ Array.indexOf
 #### Defined in
 
 node_modules/typescript/lib/lib.es5.d.ts:1316
-
-___
-
-### iterator
-
-▸ **iterator**(): `AsyncGenerator`<`T`, `void`, `unknown`\>
-
-#### Returns
-
-`AsyncGenerator`<`T`, `void`, `unknown`\>
-
-#### Defined in
-
-[src/resources/generalTypes/continuableResult.ts:125](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/continuableResult.ts#L125)
 
 ___
 
@@ -785,7 +794,7 @@ Returns the index of the last occurrence of a specified value in an array, or -1
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `searchElement` | `T` | The value to locate in the array. |
+| `searchElement` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) | The value to locate in the array. |
 | `fromIndex?` | `number` | The array index at which to begin searching backward. If fromIndex is omitted, the search starts at the last index in the array. |
 
 #### Returns
@@ -799,40 +808,6 @@ Array.lastIndexOf
 #### Defined in
 
 node_modules/typescript/lib/lib.es5.d.ts:1322
-
-___
-
-### loadNext
-
-▸ **loadNext**(): `Promise`<``null`` \| [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\>\>
-
-#### Returns
-
-`Promise`<``null`` \| [`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\>\>
-
-#### Defined in
-
-[src/resources/generalTypes/continuableResult.ts:52](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/continuableResult.ts#L52)
-
-___
-
-### loadUntil
-
-▸ **loadUntil**(`minimumLength?`): `Promise`<[`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\>\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `minimumLength` | `number` |
-
-#### Returns
-
-`Promise`<[`ContinuableResultBlueprint`](../interfaces/resources_generalTypes.ContinuableResultBlueprint.md)<`T`\>\>
-
-#### Defined in
-
-[src/resources/generalTypes/continuableResult.ts:104](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/continuableResult.ts#L104)
 
 ___
 
@@ -852,7 +827,7 @@ Calls a defined callback function on each element of an array, and returns an ar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `U` | A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `U` | A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -869,39 +844,16 @@ node_modules/typescript/lib/lib.es5.d.ts:1361
 
 ___
 
-### merge
-
-▸ **merge**(`obj`): `void`
-
-Basically `Array.prototype.concat` but with the behaviour of push.
-Supports adding non POJA's (will add keys to `this`)
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj` | `T`[] \| `Record`<`string` \| `number` \| `symbol`, `T`\> | An `Array` a or class that extends `Array` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/resources/generalTypes/continuableResult.ts:87](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/continuableResult.ts#L87)
-
-___
-
 ### pop
 
-▸ **pop**(): `undefined` \| `T`
+▸ **pop**(): `undefined` \| [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 Removes the last element from an array and returns it.
 If the array is empty, undefined is returned and the array is not modified.
 
 #### Returns
 
-`undefined` \| `T`
+`undefined` \| [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Inherited from
 
@@ -923,7 +875,7 @@ Appends new elements to the end of an array, and returns the new length of the a
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...items` | `T`[] | New elements to add to the array. |
+| `...items` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[] | New elements to add to the array. |
 
 #### Returns
 
@@ -941,7 +893,7 @@ ___
 
 ### reduce
 
-▸ **reduce**(`callbackfn`): `T`
+▸ **reduce**(`callbackfn`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
@@ -949,11 +901,11 @@ Calls the specified callback function for all the elements in an array. The retu
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`previousValue`: `T`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `T` | A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`previousValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentIndex`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) | A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array. |
 
 #### Returns
 
-`T`
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Inherited from
 
@@ -963,18 +915,18 @@ Array.reduce
 
 node_modules/typescript/lib/lib.es5.d.ts:1379
 
-▸ **reduce**(`callbackfn`, `initialValue`): `T`
+▸ **reduce**(`callbackfn`, `initialValue`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `callbackfn` | (`previousValue`: `T`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `T` |
-| `initialValue` | `T` |
+| `callbackfn` | (`previousValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentIndex`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) |
+| `initialValue` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) |
 
 #### Returns
 
-`T`
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Inherited from
 
@@ -998,7 +950,7 @@ Calls the specified callback function for all the elements in an array. The retu
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`previousValue`: `U`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `U` | A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`previousValue`: `U`, `currentValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentIndex`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `U` | A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array. |
 | `initialValue` | `U` | If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value. |
 
 #### Returns
@@ -1017,7 +969,7 @@ ___
 
 ### reduceRight
 
-▸ **reduceRight**(`callbackfn`): `T`
+▸ **reduceRight**(`callbackfn`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
@@ -1025,11 +977,11 @@ Calls the specified callback function for all the elements in an array, in desce
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`previousValue`: `T`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `T` | A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`previousValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentIndex`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) | A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array. |
 
 #### Returns
 
-`T`
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Inherited from
 
@@ -1039,18 +991,18 @@ Array.reduceRight
 
 node_modules/typescript/lib/lib.es5.d.ts:1392
 
-▸ **reduceRight**(`callbackfn`, `initialValue`): `T`
+▸ **reduceRight**(`callbackfn`, `initialValue`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `callbackfn` | (`previousValue`: `T`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `T` |
-| `initialValue` | `T` |
+| `callbackfn` | (`previousValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentIndex`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) |
+| `initialValue` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes) |
 
 #### Returns
 
-`T`
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Inherited from
 
@@ -1074,7 +1026,7 @@ Calls the specified callback function for all the elements in an array, in desce
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callbackfn` | (`previousValue`: `U`, `currentValue`: `T`, `currentIndex`: `number`, `array`: `T`[]) => `U` | A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array. |
+| `callbackfn` | (`previousValue`: `U`, `currentValue`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `currentIndex`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `U` | A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array. |
 | `initialValue` | `U` | If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value. |
 
 #### Returns
@@ -1093,14 +1045,14 @@ ___
 
 ### reverse
 
-▸ **reverse**(): `T`[]
+▸ **reverse**(): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 Reverses the elements in an array in place.
 This method mutates the array and returns a reference to the same array.
 
 #### Returns
 
-`T`[]
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 #### Inherited from
 
@@ -1114,14 +1066,14 @@ ___
 
 ### shift
 
-▸ **shift**(): `undefined` \| `T`
+▸ **shift**(): `undefined` \| [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 Removes the first element from an array and returns it.
 If the array is empty, undefined is returned and the array is not modified.
 
 #### Returns
 
-`undefined` \| `T`
+`undefined` \| [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)
 
 #### Inherited from
 
@@ -1135,7 +1087,7 @@ ___
 
 ### slice
 
-▸ **slice**(`start?`, `end?`): `T`[]
+▸ **slice**(`start?`, `end?`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 Returns a copy of a section of an array.
 For both start and end, a negative index can be used to indicate an offset from the end of the array.
@@ -1150,7 +1102,7 @@ For example, -2 refers to the second to last element of the array.
 
 #### Returns
 
-`T`[]
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 #### Inherited from
 
@@ -1172,7 +1124,7 @@ Determines whether the specified callback function returns true for any element 
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `unknown` | A function that accepts up to three arguments. The some method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value true, or until the end of the array. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]) => `unknown` | A function that accepts up to three arguments. The some method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value true, or until the end of the array. |
 | `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
@@ -1191,7 +1143,7 @@ ___
 
 ### sort
 
-▸ **sort**(`compareFn?`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
+▸ **sort**(`compareFn?`): [`Unsorted`](resources_generalTypes.Unsorted.md)
 
 Sorts an array in place.
 This method mutates the array and returns a reference to the same array.
@@ -1200,11 +1152,11 @@ This method mutates the array and returns a reference to the same array.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `compareFn?` | (`a`: `T`, `b`: `T`) => `number` | Function used to determine the order of the elements. It is expected to return a negative value if first argument is less than second argument, zero if they're equal and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order. ```ts [11,2,22,1].sort((a, b) => a - b) ``` |
+| `compareFn?` | (`a`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes), `b`: [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)) => `number` | Function used to determine the order of the elements. It is expected to return a negative value if first argument is less than second argument, zero if they're equal and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order. ```ts [11,2,22,1].sort((a, b) => a - b) ``` |
 
 #### Returns
 
-[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
+[`Unsorted`](resources_generalTypes.Unsorted.md)
 
 #### Inherited from
 
@@ -1218,7 +1170,7 @@ ___
 
 ### splice
 
-▸ **splice**(`start`, `deleteCount?`): `T`[]
+▸ **splice**(`start`, `deleteCount?`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
 
@@ -1231,7 +1183,7 @@ Removes elements from an array and, if necessary, inserts new elements in their 
 
 #### Returns
 
-`T`[]
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 An array containing the elements that were deleted.
 
@@ -1243,7 +1195,7 @@ Array.splice
 
 node_modules/typescript/lib/lib.es5.d.ts:1297
 
-▸ **splice**(`start`, `deleteCount`, ...`items`): `T`[]
+▸ **splice**(`start`, `deleteCount`, ...`items`): [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
 
@@ -1253,11 +1205,11 @@ Removes elements from an array and, if necessary, inserts new elements in their 
 | :------ | :------ | :------ |
 | `start` | `number` | The zero-based location in the array from which to start removing elements. |
 | `deleteCount` | `number` | The number of elements to remove. |
-| `...items` | `T`[] | Elements to insert into the array in place of the deleted elements. |
+| `...items` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[] | Elements to insert into the array in place of the deleted elements. |
 
 #### Returns
 
-`T`[]
+[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[]
 
 An array containing the elements that were deleted.
 
@@ -1321,7 +1273,7 @@ Inserts new elements at the start of an array, and returns the new length of the
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...items` | `T`[] | Elements to insert at the start of the array. |
+| `...items` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[] | Elements to insert at the start of the array. |
 
 #### Returns
 
@@ -1339,13 +1291,13 @@ ___
 
 ### values
 
-▸ **values**(): `IterableIterator`<`T`\>
+▸ **values**(): `IterableIterator`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>
 
 Returns an iterable of values in the array
 
 #### Returns
 
-`IterableIterator`<`T`\>
+`IterableIterator`<[`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\>
 
 #### Inherited from
 

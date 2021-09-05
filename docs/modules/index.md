@@ -1,4 +1,4 @@
-[youtube-moosick](../README.md) / [Modules](../modules.md) / index
+[youtube-moosick](../README.md) / index
 
 # Module: index
 

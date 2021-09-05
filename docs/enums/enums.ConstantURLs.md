@@ -1,4 +1,4 @@
-[youtube-moosick](../README.md) / [Modules](../modules.md) / [enums](../modules/enums.md) / ConstantURLs
+[youtube-moosick](../README.md) / [enums](../modules/enums.md) / ConstantURLs
 
 # Enumeration: ConstantURLs
 
@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[src/enums.ts:64](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/enums.ts#L64)
+[src/enums.ts:64](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/enums.ts#L64)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[src/enums.ts:63](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/enums.ts#L63)
+[src/enums.ts:63](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/enums.ts#L63)

@@ -1,13 +1,7 @@
 import { Category } from './enums.js';
-import { AlbumURL, ArtistURL, SearchSuggestions, ContinuablePlaylistURL } from './resources/resultTypes/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
-import type { Video } from './resources/generalTypes/video.js';
-import type { Song } from './resources/generalTypes/song.js';
-import type { Playlist } from './resources/generalTypes/playlist.js';
-import type { Artist, ArtistExtended } from './resources/generalTypes/artist.js';
-import { ContinuableUnsorted } from './resources/generalTypes/unsorted.js';
-import type { Album } from './resources/generalTypes/album.js';
-import { ContinuableResult } from './resources/generalTypes/continuableResult.js';
+import { AlbumURL, ArtistURL, SearchSuggestions, ContinuablePlaylistURL } from './resources/resultTypes/index.js';
+import { Song, Playlist, Video, Artist, ArtistExtended, ContinuableUnsorted, Album, ContinuableResult } from './resources/generalTypes/index.js';
 /**
  * Main class to interact with methods
  *

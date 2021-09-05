@@ -1,0 +1,36 @@
+name: tests
+# You may pin to the exact commit or the version.
+# uses: github-actions-x/commit@5cf7985b07155682f82d02b6c2188d90cebeb0c8
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: Builds `dist` and run tests
+    runs-on: ubuntu-latest
+    steps:
+      # Gets the latest commit
+      - uses: actions/checkout@v1
+      # Setup node env
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      # npm install stuff
+      - name: Install all dependencies
+        run: |
+          npm install
+      # TypeScript Build
+      - name : TypeScript Build
+        run: |
+          npm run-script build
+      # Run all tests
+      - name : Run all tests
+        run: |
+          npm npm run test -- --test *
+      # Check if all Markdown links work
+      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+

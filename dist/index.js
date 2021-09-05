@@ -6,10 +6,9 @@ import { utils } from './utils.js';
 import { IllegalArgumentError, IllegalStateError } from './resources/errors/index.js';
 import { URLSearchParams } from 'url';
 import { GeneralParser, GetArtistParser, GetAlbumParser, GetPlaylistParser } from './parsers/index.js';
-import { SearchSuggestions, ContinuablePlaylistURL } from './resources/resultTypes/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
-import { ContinuableUnsorted } from './resources/generalTypes/unsorted.js';
-import { ContinuableResult, ContinuableResultFactory } from './resources/generalTypes/continuableResult.js';
+import { SearchSuggestions, ContinuablePlaylistURL, } from './resources/resultTypes/index.js';
+import { ContinuableUnsorted, ContinuableResult, ContinuableResultFactory, } from './resources/generalTypes/index.js';
 axios.defaults.adapter = axios0;
 // you found a kitten, please collect it
 /**

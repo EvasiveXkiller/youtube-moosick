@@ -1,4 +1,4 @@
-[youtube-moosick](../README.md) / [Modules](../modules.md) / [enums](../modules/enums.md) / EndPoint
+[youtube-moosick](../README.md) / [enums](../modules/enums.md) / EndPoint
 
 # Enumeration: EndPoint
 
@@ -25,7 +25,7 @@ Browse with the given Id
 
 #### Defined in
 
-[src/enums.ts:16](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/enums.ts#L16)
+[src/enums.ts:16](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/enums.ts#L16)
 
 ___
 
@@ -37,7 +37,7 @@ Used for continuation
 
 #### Defined in
 
-[src/enums.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/enums.ts#L20)
+[src/enums.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/enums.ts#L20)
 
 ___
 
@@ -49,7 +49,7 @@ Search
 
 #### Defined in
 
-[src/enums.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/enums.ts#L12)
+[src/enums.ts:12](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/enums.ts#L12)
 
 ___
 
@@ -61,4 +61,4 @@ Search Suggestions
 
 #### Defined in
 
-[src/enums.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/enums.ts#L8)
+[src/enums.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/enums.ts#L8)

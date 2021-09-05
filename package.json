@@ -10,7 +10,7 @@
         "dev": "tsc --watch",
         "build": "tsc --build --clean && tsc",
         "lint": "eslint \"**/*.ts\" --quiet",
-        "doc": "typedoc --excludePrivate --excludeProtected --excludeInternal",
+        "doc": "typedoc --excludePrivate --excludeProtected --excludeInternal --readme none",
         "docbuild": "npm run build && npm run doc"
     },
     "repository": {
@@ -23,7 +23,8 @@
         "youtube-music",
         "youtube music",
         "music",
-        "api"
+        "api",
+        "scraper"
     ],
     "author": {
         "name": "EvasiveXkiller",

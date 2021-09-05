@@ -15,7 +15,7 @@ The docs below are not finalized yet. They might change in the future.
 <hr>
 
 ```typescript
-import {MooSick} from "MooSick";
+import { MooSick } from "MooSick";
 
 const ytmc = new MooSick.new();
 
@@ -75,7 +75,7 @@ console.log(resultsSong)
 
 ### ytmc.getSearchSuggestions(query);
 
-▸ **getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](resources_resultTypes.SearchSuggestions.md)[]\>
+▸ **getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]\>
 
 Get search suggestions from Youtube Music
 
@@ -87,7 +87,7 @@ Get search suggestions from Youtube Music
 
 #### Returns
 
-`Promise`<[`SearchSuggestions`](resources_resultTypes.SearchSuggestions.md)[]\>
+`Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]\>
 
 An object formatted with utils class
 
@@ -100,7 +100,7 @@ console.log(suggestions);
 
 ### ytmc.getAlbum(browseId)
 
-▸ **getAlbum**(`browseId`): `Promise`<[`AlbumURL`](resources_resultTypes.AlbumURL.md)\>
+▸ **getAlbum**(`browseId`): `Promise`<[`AlbumURL`](./docs/classes/resources_resultTypes.AlbumURL.md)\>
 
 Gets the album details
 
@@ -112,7 +112,7 @@ Gets the album details
 
 #### Returns
 
-`Promise`<[`AlbumURL`](resources_resultTypes.AlbumURL.md)\>
+`Promise`<[`AlbumURL`](./docs/classes/resources_resultTypes.AlbumURL.md)\>
 
 Album URL object
 
@@ -127,7 +127,7 @@ console.log(results)
 
 ### ytmc.getArtist(browseId)
 
-▸ **getArtist**(`browseId`): `Promise`<[`ArtistURL`](resources_resultTypes.ArtistURL.md)\>
+▸ **getArtist**(`browseId`): `Promise`<[`ArtistURL`](./docs/classes/resources_resultTypes.ArtistURL.md)\>
 
 Gets the artist details from Youtube Music
 
@@ -139,7 +139,7 @@ Gets the artist details from Youtube Music
 
 #### Returns
 
-`Promise`<[`ArtistURL`](resources_resultTypes.ArtistURL.md)\>
+`Promise`<[`ArtistURL`](./docs/classes/resources_resultTypes.ArtistURL.md)\>
 
 An object formatted by the artist page
 
@@ -154,7 +154,7 @@ console.log(results);
 
 ### ytmc.getPlaylist(browseId)
 
-▸ **getPlaylist**(`browseId`, `contentLimit?`): `Promise`<[`PlaylistURL`](resources_resultTypes.PlaylistURL.md)\>
+▸ **getPlaylist**(`browseId`, `contentLimit?`): `Promise`<[`PlaylistURL`](./docs/classes/resources_resultTypes.PlaylistURL.md)\>
 
 Gets the playlist using the Youtube Music API
 
@@ -171,7 +171,7 @@ it, but i dont have faith on this system working, it relies on the old structure
 
 #### Returns
 
-`Promise`<[`PlaylistURL`](resources_resultTypes.PlaylistURL.md)\>
+`Promise`<[`PlaylistURL`](./docs/classes/resources_resultTypes.PlaylistURL.md)\>
 
 An object formatted by the parser
 

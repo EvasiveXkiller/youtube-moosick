@@ -1,4 +1,4 @@
-[youtube-moosick](../README.md) / [Modules](../modules.md) / [resources/resultTypes](../modules/resources_resultTypes.md) / ContinuablePlaylistURL
+[youtube-moosick](../README.md) / [resources/resultTypes](../modules/resources_resultTypes.md) / ContinuablePlaylistURL
 
 # Class: ContinuablePlaylistURL
 
@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/blocks/item.ts#L20)
+[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -54,7 +54,7 @@
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/resultTypes/playlistURL.ts#L9)
+[src/resources/resultTypes/playlistURL.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/resultTypes/playlistURL.ts#L9)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/resultTypes/playlistURL.ts#L7)
+[src/resources/resultTypes/playlistURL.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/resultTypes/playlistURL.ts#L7)
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/resultTypes/playlistURL.ts#L13)
+[src/resources/resultTypes/playlistURL.ts:13](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/resultTypes/playlistURL.ts#L13)
 
 ## Methods
 
@@ -112,4 +112,4 @@ ___
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/blocks/item.ts#L22)
+[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/blocks/item.ts#L22)

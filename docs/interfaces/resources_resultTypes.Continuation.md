@@ -1,4 +1,4 @@
-[youtube-moosick](../README.md) / [Modules](../modules.md) / [resources/resultTypes](../modules/resources_resultTypes.md) / Continuation
+[youtube-moosick](../README.md) / [resources/resultTypes](../modules/resources_resultTypes.md) / Continuation
 
 # Interface: Continuation
 
@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:34](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/resultTypes/playlistURL.ts#L34)
+[src/resources/resultTypes/playlistURL.ts:34](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/resultTypes/playlistURL.ts#L34)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:33](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/resultTypes/playlistURL.ts#L33)
+[src/resources/resultTypes/playlistURL.ts:33](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/resultTypes/playlistURL.ts#L33)

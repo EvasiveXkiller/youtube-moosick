@@ -1,4 +1,4 @@
-[youtube-moosick](../README.md) / [Modules](../modules.md) / [resources/generalTypes](../modules/resources_generalTypes.md) / Playlist
+[youtube-moosick](../README.md) / [resources/generalTypes](../modules/resources_generalTypes.md) / Playlist
 
 # Class: Playlist
 
@@ -41,7 +41,7 @@ Item.constructor
 
 #### Defined in
 
-[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/blocks/item.ts#L20)
+[src/blocks/item.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/blocks/item.ts#L20)
 
 ## Properties
 
@@ -51,7 +51,7 @@ Item.constructor
 
 #### Defined in
 
-[src/resources/generalTypes/playlist.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/generalTypes/playlist.ts#L7)
+[src/resources/generalTypes/playlist.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/playlist.ts#L7)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/playlist.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/generalTypes/playlist.ts#L6)
+[src/resources/generalTypes/playlist.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/playlist.ts#L6)
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/playlist.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/generalTypes/playlist.ts#L5)
+[src/resources/generalTypes/playlist.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/playlist.ts#L5)
 
 ___
 
@@ -81,7 +81,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/playlist.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/resources/generalTypes/playlist.ts#L8)
+[src/resources/generalTypes/playlist.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/resources/generalTypes/playlist.ts#L8)
 
 ## Methods
 
@@ -111,4 +111,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/73cf5e6/src/blocks/item.ts#L22)
+[src/blocks/item.ts:22](https://github.com/EvasiveXkiller/youtube-moosick/blob/b0721d3/src/blocks/item.ts#L22)

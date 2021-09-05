@@ -1,4 +1,4 @@
-[youtube-moosick](../README.md) / [Modules](../modules.md) / resources/resultTypes
+[youtube-moosick](../README.md) / resources/resultTypes
 
 # Module: resources/resultTypes
 
