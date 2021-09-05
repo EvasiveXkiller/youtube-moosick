@@ -32,7 +32,12 @@ jobs:
       - name : Generate Docs
         run: |
           npm run-script doc
-      # Set date and time of builds
+      # Check if all Markdown links work
+      - name : Markdown Link Check
+      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-verbose-mode: 'yes'
+      # Set date and time of builds, if all builds and checks passes
       - name: Get current date and time
         id: date
         run: echo "::set-output name=date::🔨 @ $(date +'%Y-%m-%dT%H:%M:%S')"

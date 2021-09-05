@@ -36,4 +36,4 @@
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/8fb67f1/src/resources/generalTypes/unsorted.ts#L9)
+[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/a8c55cd/src/resources/generalTypes/unsorted.ts#L9)

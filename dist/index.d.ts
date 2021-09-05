@@ -60,7 +60,7 @@ export declare class MooSick extends AsyncConstructor {
     /**
      * Searches for songs using the Youtube Music API
      * @param query - String query text to search
-     * @param categoryName - Type of category to search
+     * @param searchType - Type of category to search
      * @returns An object formatted by parsers.js
      *
      * Example

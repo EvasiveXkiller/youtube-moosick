@@ -2,17 +2,11 @@
 
 <div>
     <img alt="TypeScript Build Status" src="https://img.shields.io/github/workflow/status/EvasiveXkiller/youtube-moosick/tscBuild">
+    <img alt="Tests Status" src="https://img.shields.io/github/workflow/status/EvasiveXkiller/youtube-moosick/tests?color=blue&label=tests">
     <img alt="Latest Tag" src="https://img.shields.io/github/v/tag/EvasiveXkiller/youtube-moosick?label=Latest">
 </div>
 
 Unofficial YouTube Music Library, written in TypeScript.
-
-### Important 
-WORK IN PROGRESS, Package not available on NPM (yet). Release is coming very soon
-
-The docs below are not finalized yet. They might change in the future.
-
-<hr>
 
 ```typescript
 import { MooSick } from "MooSick";
@@ -39,7 +33,7 @@ npm install youtube-moosick
 
 ### ytmc.search(query, categoryName?, _pageLimit?)
 
-▸ **search**(`query`, `categoryName?`, `_pageLimit?`): `Promise`<`unknown`\>
+▸ **search**(`query`, `searchType?`): `Promise`<`unknown`\>
 
 Searches for songs using the Youtube Music API
 
@@ -48,8 +42,7 @@ Searches for songs using the Youtube Music API
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `query` | `string` | `undefined` | String query text to search |
-| `categoryName?` | [`Category`](./docs/enums/enums.Category.md) | `undefined` | Type of category to search |
-| `_pageLimit` | `number` | `1` | Max pages to obtain |
+| `searchType?` | [`Category`](./docs/enums/enums.Category.md) | `undefined` | Type of category to search |
 
 #### Returns
 
