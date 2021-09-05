@@ -30,7 +30,7 @@ jobs:
       # Run all tests
       - name : Run all tests
         run: |
-          npm run test -- --test *
+          npm run test
       # Check if all Markdown links work
       - uses: gaurav-nelson/github-action-markdown-link-check@v1
 
