@@ -4,11 +4,17 @@ import type { MooSick } from '../../index.js';
 import type { Result as IResult, NextContinuationData } from '../etc/rawResultTypes/common.js';
 import { unenumerable } from '../decorators/enumerable.decorator.js';
 
+/**
+ * @internal
+ */
 export interface ContinuableResultBlueprint<T extends Item> {
 	result: T[];
 	continuation?: NextContinuationData;
 }
 
+/**
+ * @internal
+ */
 export class ContinuableResultFactory<
 	T extends Item,
 	ParserResult = ContinuableResultBlueprint<T>,

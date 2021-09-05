@@ -16,7 +16,10 @@ export type ItemOptions<T extends abstract new (...args: any[]) => any> = {
 };
 
 export class Item {
-	/** @deprecated You're probably looking for `Item.from()` */
+	/**
+	 * @internal
+	 * @deprecated You're probably looking for `Item.from()`
+	 */
 	constructor() {}
 
 	public static from<T extends Item>(

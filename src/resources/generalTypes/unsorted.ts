@@ -8,6 +8,9 @@ import type { Video } from './video.js';
 
 export type UnsortedSubTypes = Video | Song | Playlist | ArtistExtended | AlbumExtended;
 
+/**
+ * @internal
+ */
 export class UnsortedFactory extends Factory<
 	Unsorted,
 	Pick<Unsorted, Exclude<keyof Unsorted, keyof any[]>>

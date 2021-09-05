@@ -200,8 +200,8 @@ export class MooSick extends AsyncConstructor {
 
 	/**
 	 * Get search suggestions from Youtube Music
-	 * @param query - query String query text to search
-	 * @returns An object formatted with utils class
+	 * @param query - String query text to search
+	 * @returns An object formatted by parsers.js
 	 *
 	 * Example
 	 * ```typescript
@@ -293,8 +293,8 @@ export class MooSick extends AsyncConstructor {
 
 	/**
 	 * Gets the album details
-	 * @param browseId - The ID of the album, without `https` infront
-	 * @returns Album URL object
+	 * @param browseId - The album Id only, without `https://....`
+	 * @returns AlbumURL object
 	 *
 	 * Example:
 	 * ```typescript
@@ -303,7 +303,6 @@ export class MooSick extends AsyncConstructor {
 	 *
 	 * console.log(results)
 	 * ```
-	 *
 	 */
 	async getAlbum(browseId: string): Promise<AlbumURL> {
 		if (!browseId.startsWith('MPREb')) {
@@ -320,9 +319,9 @@ export class MooSick extends AsyncConstructor {
 
 	/**
 	 * Gets the playlist using the Youtube Music API
-	 * @param browseId - The playlist ID, sanitized
-	 * @param contentLimit - Maximum content to get
-	 * @returns An object formatted by the parser
+	 * @param browseId - The playlist `browseId` only, without `https://....`
+	 * @param contentLimit - Maximum amount of contents to get, defaults to 100
+	 * @returns PlaylistURL object
 	 *
 	 * Example:
 	 * ```typescript
@@ -331,11 +330,6 @@ export class MooSick extends AsyncConstructor {
 	 *
 	 * console.log(results);
 	 * ```
-	 *
-	 * @remarks
-	 * FIXME: in stale/index.js, they reference `.content` instead. is this a conscious change?
-	 * I think i forgotten to change it, but i dont have faith on this system working,
-	 * it relies on the old structure which i have modified
 	 */
 	public async getPlaylist(browseId: string, contentLimit = 100): Promise<ContinuablePlaylistURL> {
 		if (!browseId.startsWith('VL')
@@ -375,8 +369,8 @@ export class MooSick extends AsyncConstructor {
 
 	/**
 	 * Gets the artist details from Youtube Music
-	 * @param browseId - The artist ID, sanitized
-	 * @returns An object formatted by the artist page
+	 * @param browseId - The artist `browseId` only, without `https://....`
+	 * @returns ArtistURL object
 	 *
 	 * Example:
 	 * ```typescript
@@ -423,7 +417,5 @@ export class MooSick extends AsyncConstructor {
 	// 	result.playlistContents.push(...continuationResult.playlistContents);
 	// 	result.continuation = continuationResult.continuation;
 	// }
-
-	// FIXME: there is a method called `getNext` to get continuation, but its undocumented, should we implement it?
 }
 
