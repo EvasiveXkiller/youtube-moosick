@@ -61,7 +61,7 @@
     },
     "dependencies": {
         "@types/node": "^16.7.10",
-        "axios": "^0.21.1",
+        "axios": "^0.21.3",
         "object-scan": "^17.0.0",
         "readdir-enhanced": "^6.0.4",
         "tough-cookie": "^4.0.0"
