@@ -392,30 +392,5 @@ export class MooSick extends AsyncConstructor {
 
 		return GetArtistParser.parseArtistURLPage(ctx as ArtistURLFullResult);
 	}
-
-	// public async getNext(continuation: NextContinuationData): Promise<Unsorted[]>;
-	// public async getNext<T extends Category.VIDEO>(continuation: NextContinuationData, category?: T): Promise<Video[]>;
-	// public async getNext<T extends Category.SONG>(continuation: NextContinuationData, category?: T): Promise<Song[]>;
-	// public async getNext<T extends Category.PLAYLIST>(continuation: NextContinuationData, category?: T): Promise<Playlist[]>;
-	// public async getNext<T extends Category.ARTIST>(continuation: NextContinuationData, category?: T): Promise<Artist[]>;
-	// public async getNext<T extends Category.ALBUM | Category.EP | Category.SINGLE>(continuation: NextContinuationData, category?: T): Promise<Album[]>;
-	// public async getNext<T extends Category>(continuation: NextContinuationData, category?: T): Promise<Video[] | Song[] | Playlist[] | Artist[] | Album[]>;
-	// public async getNext<T extends Category>(continuation: NextContinuationData, category?: T): Promise<Item> {
-	// 	const { continuation: c, clickTrackingParams } = continuation;
-
-	// 	const ctx = this.#createApiRequest(EndPoint.BROWSE, {}, {
-	// 		ctoken: c,
-	// 		continuation,
-	// 		itct: clickTrackingParams,
-	// 	});
-	// 	const continuationResult = GetPlaylistParser.parsePlaylistURL(ctx);
-
-	// 	if (!Array.isArray(continuationResult.playlistContents)) {
-	// 		throw new IllegalStateError('Browse API responded with non-array `playlistContents`');
-	// 	}
-
-	// 	result.playlistContents.push(...continuationResult.playlistContents);
-	// 	result.continuation = continuationResult.continuation;
-	// }
 }
 
