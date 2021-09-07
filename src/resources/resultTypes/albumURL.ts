@@ -1,27 +1,25 @@
 import { Item } from '../../blocks/item.js';
-import type { ArtistExtended } from '../generalTypes/artist.js';
-import type { Thumbnails } from '../generalTypes/thumbnails.js';
+import type { Thumbnails, Artist } from '../generalTypes/index.js';
 
 export class AlbumURL extends Item {
+	public declare AlbumURLHeader: AlbumURLHeader;
+	public declare tracks: Track[];
+}
+
+export class AlbumURLHeader extends Item {
 	public declare title: string;
 	public declare description: string;
 	public declare trackCount: number;
-	public declare date: ReleaseDate;
-	public declare duration: number;
-	public declare artist: ArtistExtended[];
-	public declare tracks: Track[];
 	public declare thumbnails: Thumbnails[];
-}
-
-export class ReleaseDate extends Item {
-	public declare year: number;
-	public declare month: number;
-	public declare day: number;
+	public declare date: string;
+	public declare totalRuntime: string;
+	public declare artist: Artist[];
 }
 
 export class Track extends Item {
-	public declare index: number;
 	public declare title: string;
 	public declare videoId: string;
+	public declare url: string;
+	public declare playlistId: string;
 	public declare lengthMs: number;
 }
