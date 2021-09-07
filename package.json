@@ -1,6 +1,6 @@
 {
     "name": "youtube-moosick",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Unofficial Youtube music API, fully written in TypeScript",
     "main": "./dist/index.js",
     "typings": "./dist/index.d.ts",
@@ -24,7 +24,8 @@
         "youtube music",
         "music",
         "api",
-        "scraper"
+        "scraper",
+        "youtube-api"
     ],
     "author": {
         "name": "EvasiveXkiller",
@@ -36,7 +37,7 @@
             "url": "https://github.com/Sxxov"
         }
     ],
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/EvasiveXkiller/youtube-moosick/issues"
     },
