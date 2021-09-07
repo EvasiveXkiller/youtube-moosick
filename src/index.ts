@@ -307,7 +307,7 @@ export class MooSick extends AsyncConstructor {
 		}
 
 		const ctx = await this.createApiRequest(
-			EndPoint.SEARCH,
+			EndPoint.BROWSE,
 			utils.buildEndpointContext(browseId, Category.ALBUM),
 		);
 
@@ -338,11 +338,12 @@ export class MooSick extends AsyncConstructor {
 			browseId = 'VL' + browseId;
 		}
 
-		const ctx = this.createApiRequest(
+		const ctx = await this.createApiRequest(
 			EndPoint.BROWSE,
 			utils.buildEndpointContext(browseId, Category.PLAYLIST),
 		);
 		const result = GetPlaylistParser.parsePlaylistURL(ctx);
+		// Results here are expected
 		const continuableResult = ContinuablePlaylistURL.from({
 			continuation: result.continuation,
 			headers: result.headers,
@@ -357,7 +358,7 @@ export class MooSick extends AsyncConstructor {
 		});
 
 		continuableResult.playlistContents.push(...result.playlistContents);
-
+		// FIXME: There seems to be something wrong with this, debugger shows that this line causes http 400 errors
 		await continuableResult.playlistContents
 			.loadUntil(contentLimit);
 

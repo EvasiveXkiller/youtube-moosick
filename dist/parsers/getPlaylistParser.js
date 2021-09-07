@@ -11,6 +11,7 @@ import { FlexColumnOffset } from '../enums.js';
  */
 export class GetPlaylistParser {
     static parsePlaylistURL(context) {
+        console.log(context);
         // Gets the entire flexColumn, and filter those with empty members
         const flexColumn = $$('.musicResponsiveListItemFlexColumnRenderer')(context)
             .filter((item) => item.text?.runs != null);

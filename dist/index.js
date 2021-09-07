@@ -201,7 +201,7 @@ export class MooSick extends AsyncConstructor {
         if (!browseId.startsWith('MPREb')) {
             throw new IllegalArgumentError('Album browse IDs must start with "MPREb"', 'browseId');
         }
-        const ctx = await this.createApiRequest(EndPoint.SEARCH, utils.buildEndpointContext(browseId, Category.ALBUM));
+        const ctx = await this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.ALBUM));
         return GetAlbumParser.parseAlbumURLPage(ctx);
     }
     /**
@@ -226,7 +226,7 @@ export class MooSick extends AsyncConstructor {
         if (browseId.startsWith('PL')) {
             browseId = 'VL' + browseId;
         }
-        const ctx = this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.PLAYLIST));
+        const ctx = await this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.PLAYLIST));
         const result = GetPlaylistParser.parsePlaylistURL(ctx);
         const continuableResult = ContinuablePlaylistURL.from({
             continuation: result.continuation,

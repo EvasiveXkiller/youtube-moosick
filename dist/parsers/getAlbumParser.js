@@ -16,6 +16,7 @@ export class GetAlbumParser {
      * @param context - The return results from axios
      */
     static parseAlbumURLPage(context) {
+        console.log(context);
         // Overview of the albums
         const albumOverview = $$('.musicAlbumRelease')(context)[0];
         // For description
