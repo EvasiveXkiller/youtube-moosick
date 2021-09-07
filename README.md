@@ -11,15 +11,10 @@ Unofficial YouTube Music Library, written in TypeScript.
 ```typescript
 import { MooSick } from "MooSick";
 
-const ytmc = new MooSick.new();
-
-// Using Callbacks
-ytmc.search("Never gonna give you up").then((results) => {
-	console.log(results);
-})
+const ytms = new MooSick.new();
 
 // Using Async await 
-const results = await ytmc.search("Never gonna give you up");
+const results = await ytms.search("Never gonna give you up");
 console.log(results);
 ```
 
@@ -31,7 +26,7 @@ npm install youtube-moosick
 
 ## API
 
-### ytmc.search(query, categoryName?, _pageLimit?)
+### ytms.search(query, categoryName?)
 
 ▸ **search**(`query`, `searchType?`): `Promise`<`unknown`\>
 
@@ -55,18 +50,18 @@ See all available [return types](./docs/modules/resources_resultTypes.md)
 Example
 
 ```typescript
-const api = await MooSick.new();
+const ytms = await MooSick.new();
 
 // Get the general search results.
-const resultsGeneral = await api.search('Never gonna give you up');
+const resultsGeneral = await ytms.search('Never gonna give you up');
 console.log(resultsGeneral)
 
 // Gets a specific category
-const resultsSong = await api.search('Never gonna give you up', Category.SONG);
+const resultsSong = await ytms.search('Never gonna give you up', Category.SONG);
 console.log(resultsSong)
 ```
 
-### ytmc.getSearchSuggestions(query);
+### ytms.getSearchSuggestions(query);
 
 ▸ **getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]\>
 
@@ -87,11 +82,11 @@ An object formatted with utils class
 Example
 
 ```typescript
-const suggestions = ytmc.getSearchSuggestions("All We know");
+const suggestions = ytms.getSearchSuggestions("All We know");
 console.log(suggestions);
 ```
 
-### ytmc.getAlbum(browseId)
+### ytms.getAlbum(browseId)
 
 ▸ **getAlbum**(`browseId`): `Promise`<[`AlbumURL`](./docs/classes/resources_resultTypes.AlbumURL.md)\>
 
@@ -112,13 +107,13 @@ Album URL object
 Example:
 
 ```typescript
-const ytmc = await MooSick.new();
-const results = await ytmc.getAlbum('MPREb_REsMMqBZjZB');
+const ytms = await MooSick.new();
+const results = await ytms.getAlbum('MPREb_REsMMqBZjZB');
 
 console.log(results)
 ```
 
-### ytmc.getArtist(browseId)
+### ytms.getArtist(browseId)
 
 ▸ **getArtist**(`browseId`): `Promise`<[`ArtistURL`](./docs/classes/resources_resultTypes.ArtistURL.md)\>
 
@@ -139,13 +134,13 @@ An object formatted by the artist page
 Example:
 
 ```typescript
-const ytmc = await MooSick.new();
-const results = await ytmc.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
+const ytms = await MooSick.new();
+const results = await ytms.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
 
 console.log(results);
 ```
 
-### ytmc.getPlaylist(browseId)
+### ytms.getPlaylist(browseId)
 
 ▸ **getPlaylist**(`browseId`, `contentLimit?`): `Promise`<[`PlaylistURL`](./docs/classes/resources_resultTypes.PlaylistURL.md)\>
 
@@ -167,8 +162,8 @@ An object formatted by the parser
 Example:
 
 ```typescript
-const api = await MooSick.new();
-const results = await api.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
+const ytms = await MooSick.new();
+const results = await ytms.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
 
 console.log(results);
 ```
