@@ -118,8 +118,7 @@ export class MooSick extends AsyncConstructor {
 	}
 
 	/**
-	 * I have no idea what this method is supposed to do
-	 * @returns something?
+	 * Overrides the constructor
 	 * @internal
 	 */
 	public static override async new<T = MooSick>(): Promise<T> {
@@ -155,8 +154,6 @@ export class MooSick extends AsyncConstructor {
 	 * @returns The result of the endpoint reply
 	 * @remarks Soonner or later destructure functions into individual files
 	 *
-	 *	TODO: probably define each api req's input vars & input queries,
-	 *  then make this func generic so it's type safe
 	 * @internal
 	 */
 	private async createApiRequest(endpointName: EndPoint, inputVariables = {}, inputQuery = {}): Promise<IResult> {
