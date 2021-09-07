@@ -7,6 +7,7 @@
 ### Classes
 
 - [AlbumURL](../classes/resources_resultTypes.AlbumURL.md)
+- [AlbumURLHeader](../classes/resources_resultTypes.AlbumURLHeader.md)
 - [Albums](../classes/resources_resultTypes.Albums.md)
 - [ArtistContent](../classes/resources_resultTypes.ArtistContent.md)
 - [ArtistHeader](../classes/resources_resultTypes.ArtistHeader.md)
@@ -15,7 +16,6 @@
 - [PlaylistContent](../classes/resources_resultTypes.PlaylistContent.md)
 - [PlaylistHeader](../classes/resources_resultTypes.PlaylistHeader.md)
 - [PlaylistURL](../classes/resources_resultTypes.PlaylistURL.md)
-- [ReleaseDate](../classes/resources_resultTypes.ReleaseDate.md)
 - [SearchSuggestions](../classes/resources_resultTypes.SearchSuggestions.md)
 - [Single](../classes/resources_resultTypes.Single.md)
 - [Track](../classes/resources_resultTypes.Track.md)
