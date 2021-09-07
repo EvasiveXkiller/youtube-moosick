@@ -6,7 +6,7 @@ import type { GeneralFull, MusicResponsiveListItemRenderer } from '../resources/
  *
  * @remarks
  * Do not use this class directly, unless for tests purposes
- * @beta
+ * @internal
  */
 export declare class GeneralParser {
     /**

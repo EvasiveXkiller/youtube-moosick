@@ -4,6 +4,9 @@ import { Category, ConstantURLs, FlexColumnOffset, FlexSecondRowOffset } from '.
 import { Artist } from '../resources/generalTypes/artist.js';
 import { utils } from '../utils.js';
 import { IllegalArgumentError } from '../resources/errors/index.js';
+/**
+ * Extended parser that is used wherever possible
+ */
 export class ParsersExtended {
     static flexSecondRowComplexParser(runsArray, categoryType, trim) {
         const delimiter = ' • ';
@@ -51,14 +54,14 @@ export class ParsersExtended {
     }
     /**
      * Gets the thumbnail from the sectionList
-     * @param sectionContext
+     * @param sectionContext - Section context
      */
     static thumbnailParser(sectionContext) {
         return $('.musicThumbnailRenderer .thumbnails')(sectionContext);
     }
     /**
      * Parses the artist from the Artist array
-     * @param artistRaw
+     * @param artistRaw - The raw runs of artist
      */
     static artistParser(artistRaw) {
         const artistFiltered = artistRaw.filter((artist) => artist.navigationEndpoint !== undefined);
@@ -72,7 +75,7 @@ export class ParsersExtended {
     }
     /**
      * Parses the album from the Album Array
-     * @param albumRaw
+     * @param albumRaw - The raw runs of album
      */
     static albumParser(albumRaw) {
         return albumRaw.map((album) => (Album.from({

@@ -8,7 +8,7 @@ import { WatchEndpointParams } from '../resources/etc/rawResultTypes/common.js';
  *
  * @remarks
  * Do not use this class directly, unless for tests purposes
- * @beta
+ * @internal
  */
 export class GeneralParser {
     // eslint-disable-next-line complexity
