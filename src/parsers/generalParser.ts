@@ -19,7 +19,7 @@ import type { Item } from '../blocks/item.js';
  *
  * @remarks
  * Do not use this class directly, unless for tests purposes
- * @beta
+ * @internal
  */
 export class GeneralParser {
 	/**
