@@ -36,6 +36,9 @@ export class ContinuableResultFactory<
 	}
 }
 
+/**
+ * Enables the loading of continuation
+ */
 export class ContinuableResult<T extends Item, ParserResult = ContinuableResultBlueprint<T>, GetContentResult extends any[] = T[]> extends Array<T> implements Item {
 	@unenumerable
 	private declare parser: (this: ContinuableResult<T, ParserResult, GetContentResult>, context: IResult) => ParserResult;
@@ -55,6 +58,9 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 	@unenumerable
 	private declare ctx: MooSick;
 
+	/**
+	 * Loads the next continuation
+	 */
 	public async loadNext(): Promise<ContinuableResultBlueprint<T> | null> {
 		if (this.continuation == null) {
 			return null;

@@ -9,7 +9,7 @@
 Unofficial YouTube Music Library, written in TypeScript.
 
 ```typescript
-import {MooSick} from "MooSick";
+import { MooSick } from "MooSick";
 
 const ytms = new MooSick.new();
 
@@ -45,6 +45,18 @@ ContinuableUnsorted(16) [
 */
 ```
 
+## Table of contents
+- [Youtube-MooSick](#youtube-moosick)
+    - [Installation](#installation)
+    - [API](#api)
+        - [ytms.search(query, categoryName?)](#ytmssearchquery-categoryname)
+        - [ytms.getSearchSuggestions(query);](#ytmsgetsearchsuggestionsquery)
+        - [ytms.getAlbum(browseId)](#ytmsgetalbumbrowseid)
+        - [ytms.getArtist(browseId)](#ytmsgetartistbrowseid)
+        - [ytms.getPlaylist(browseId)](#ytmsgetplaylistbrowseid)
+    - [Tests](#tests)
+    - [Authors](#authors)
+
 ## Installation
 
 ```shell
@@ -68,11 +80,19 @@ Searches for songs using the Youtube Music API
 
 #### Returns
 
-`Promise`<`unknown`\>
+The return of this function depends on the supplied value of `searchType`.
 
-An object formatted by parsers.js
 
-See all available [return types](./docs/modules/resources_resultTypes.md)
+| Category | Return Type |
+| :------ | :------ |
+| `undefined` | `Promise`<[`ContinuableUnsorted`](./docs/classes/resources_generalTypes.ContinuableUnsorted.md)\> |
+| [`Category.SONG`](./docs/enums/enums.Category.md#song) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<Song>`](./docs/classes/resources_generalTypes.Song.md)\> |
+| [`Category.VIDEO`](./docs/enums/enums.Category.md#video) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<Video>`](./docs/classes/resources_generalTypes.Video.md)\> |
+| [`Category.ALBUM`](./docs/enums/enums.Category.md#album),[`Category.SINGLE`](./docs/enums/enums.Category.md#single),[`Category.EP`](./docs/enums/enums.Category.md#ep)| `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<Album>`](./docs/classes/resources_generalTypes.Album.md)\> |
+| [`Category.ARTIST`](./docs/enums/enums.Category.md#artist) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<ArtistExtended>`](./docs/classes/resources_generalTypes.ArtistExtended.md)\> |
+| [`Category.PLAYLIST`](./docs/enums/enums.Category.md#playlist) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<Playlist>`](./docs/classes/resources_generalTypes.Playlist.md)\> |
+
+For more info, see [here](./docs/modules/resources_resultTypes.md)
 
 Example
 
@@ -146,8 +166,7 @@ ContinuableResult(20) [
 ### ytms.getSearchSuggestions(query);
 
 ▸ **
-getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]
-\>
+getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]>
 
 Get search suggestions from Youtube Music
 
@@ -208,54 +227,42 @@ const results = await ytms.getAlbum('MPREb_REsMMqBZjZB');
 console.log(results)
 /*
 AlbumURL {
-  title: 'Eyes wide open',
-  trackCount: 13,
-  date: ReleaseDate { day: 26, month: 10, year: 2020 },
-  duration: 2611000,
-  thumbnails: [
-    Thumbnails {
-      width: 60,
-      height: 60,
-      url: 'https://lh3.googleusercontent.com/lhQnqdU_0lhyPbM5f3wWp_jEs2_46A_d1_
-baovMrWdAc2BS-QIaplee_fTTXJ--0YCvCZNTDXqfDeQ7d=w60-h60-l90-rj'
-    },
-    Thumbnails {
-      width: 120,
-      height: 120,
-      url: 'https://lh3.googleusercontent.com/lhQnqdU_0lhyPbM5f3wWp_jEs2_46A_d1_
-baovMrWdAc2BS-QIaplee_fTTXJ--0YCvCZNTDXqfDeQ7d=w120-h120-l90-rj'
-    },
-    ...
-  ],
-  description: `Eyes Wide Open is the second Korean studio album by South Korean
- girl group Twice. It was released on October 26, 2020, by JYP Entertainment and
- Republic Records. It is the ...",
-  artist: [
-    ArtistExtended {
-      subs: undefined,
-      name: 'TWICE',
-      browseId: 'UCAq0pFGa2w9SjxOq0ZxKVIw',
-      url: 'https://music.youtube.com/channel/UCAq0pFGa2w9SjxOq0ZxKVIw',
-      thumbnails: [Array]
-    }
-  ],
+  AlbumURLHeader: AlbumURLHeader {
+    title: 'Eyes wide open',
+    description: `Eyes Wide Open is the second Korean studio album by South Korean girl group Twice. It was released on
+October 26, 2020, by JYP Entertainment and Republic Records. It is the group's first ...",
+    date: '2020',
+    thumbnails: [ [Object], [Object], [Object], [Object] ],
+    trackCount: 13,
+    totalRuntime: '43 minutes',
+    artist: [ [Artist] ]
+  },
   tracks: [
     Track {
-      index: 1,
       lengthMs: 206000,
       title: "I CAN'T STOP ME",
-      videoId: 'CM4CkVFmTds'
+      videoId: 'CM4CkVFmTds',
+      playlistId: 'OLAK5uy_nGyCX4aNigDzsvNSRZ63NPiH75wef3lCw',
+      url: 'https://www.youtube.com/watch?v=CM4CkVFmTds'
     },
     Track {
-      index: 2,
       lengthMs: 180000,
       title: 'HELL IN HEAVEN',
-      videoId: '0O18GnTW1CU'
+      videoId: '0O18GnTW1CU',
+      playlistId: 'OLAK5uy_nGyCX4aNigDzsvNSRZ63NPiH75wef3lCw',
+      url: 'https://www.youtube.com/watch?v=0O18GnTW1CU'
     },
-    ...
+    Track {
+      lengthMs: 215000,
+      title: 'UP NO MORE',
+      videoId: 'Qgylz1pLFE0',
+      playlistId: 'OLAK5uy_nGyCX4aNigDzsvNSRZ63NPiH75wef3lCw',
+      url: 'https://www.youtube.com/watch?v=Qgylz1pLFE0'
+    },
+    ....
   ]
 }
- */
+*/
 ```
 
 ### ytms.getArtist(browseId)
@@ -381,6 +388,13 @@ GtnRURDTTBH',
 
  */
 ```
+
+## Tests
+Tests are written in [tape](https://github.com/substack/tape)
+```shell
+npm run test
+```
+These tests are real life tests, they actually run a query to simulate a real life situation.
 
 ## Authors
 

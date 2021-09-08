@@ -4,6 +4,8 @@
 
 [resources/generalTypes](../modules/resources_generalTypes.md).ContinuableResult
 
+Enables the loading of continuation
+
 ## Type parameters
 
 | Name | Type |
@@ -725,7 +727,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/36b0b90/src/resources/generalTypes/continuableResult.ts#L131)
+[src/resources/generalTypes/continuableResult.ts:137](https://github.com/EvasiveXkiller/youtube-moosick/blob/af0ca53/src/resources/generalTypes/continuableResult.ts#L137)
 
 ___
 
@@ -806,13 +808,15 @@ ___
 
 ▸ **loadNext**(): `Promise`<``null`` \| `ContinuableResultBlueprint`<`T`\>\>
 
+Loads the next continuation
+
 #### Returns
 
 `Promise`<``null`` \| `ContinuableResultBlueprint`<`T`\>\>
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:58](https://github.com/EvasiveXkiller/youtube-moosick/blob/36b0b90/src/resources/generalTypes/continuableResult.ts#L58)
+[src/resources/generalTypes/continuableResult.ts:64](https://github.com/EvasiveXkiller/youtube-moosick/blob/af0ca53/src/resources/generalTypes/continuableResult.ts#L64)
 
 ___
 
@@ -832,7 +836,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:110](https://github.com/EvasiveXkiller/youtube-moosick/blob/36b0b90/src/resources/generalTypes/continuableResult.ts#L110)
+[src/resources/generalTypes/continuableResult.ts:116](https://github.com/EvasiveXkiller/youtube-moosick/blob/af0ca53/src/resources/generalTypes/continuableResult.ts#L116)
 
 ___
 
@@ -888,7 +892,7 @@ Supports adding non POJA's (will add keys to `this`)
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:93](https://github.com/EvasiveXkiller/youtube-moosick/blob/36b0b90/src/resources/generalTypes/continuableResult.ts#L93)
+[src/resources/generalTypes/continuableResult.ts:99](https://github.com/EvasiveXkiller/youtube-moosick/blob/af0ca53/src/resources/generalTypes/continuableResult.ts#L99)
 
 ___
 

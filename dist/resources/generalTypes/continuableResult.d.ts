@@ -20,6 +20,9 @@ export declare class ContinuableResultFactory<T extends Item, ParserResult = Con
 }> {
     constructor(ContinuableResultClass?: new () => R);
 }
+/**
+ * Enables the loading of continuation
+ */
 export declare class ContinuableResult<T extends Item, ParserResult = ContinuableResultBlueprint<T>, GetContentResult extends any[] = T[]> extends Array<T> implements Item {
     private parser;
     private getContinuation;
@@ -27,6 +30,9 @@ export declare class ContinuableResult<T extends Item, ParserResult = Continuabl
     private isDone;
     private continuation?;
     private ctx;
+    /**
+     * Loads the next continuation
+     */
     loadNext(): Promise<ContinuableResultBlueprint<T> | null>;
     /**
      * Basically `Array.prototype.concat` but with the behaviour of push.

@@ -15,8 +15,14 @@ export class ContinuableResultFactory extends Factory {
         super(ContinuableResultClass ?? ContinuableResult);
     }
 }
+/**
+ * Enables the loading of continuation
+ */
 export class ContinuableResult extends Array {
     isDone = (content) => content == null;
+    /**
+     * Loads the next continuation
+     */
     async loadNext() {
         if (this.continuation == null) {
             return null;

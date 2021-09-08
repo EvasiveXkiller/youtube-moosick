@@ -264,6 +264,7 @@ test('searchVideo', async (t) => {
 test('api_getAlbumURLParser', async (t) => {
     const ytms = await MooSick.new();
     const result = await ytms.getAlbum('MPREb_REsMMqBZjZB');
+    console.log(result);
     const expected = [
         AlbumURL.from({
             AlbumURLHeader: AlbumURLHeader.from({
