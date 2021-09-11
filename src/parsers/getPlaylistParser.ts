@@ -3,7 +3,7 @@ import { ParsersExtended } from './parsersExtended.js';
 import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL.js';
 import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/etc/rawResultTypes/rawGetSongURL.js';
 import type { MusicDetailHeaderRenderer } from '../resources/etc/rawResultTypes/rawGetPlaylistURL.js';
-import type { Run } from '../resources/etc/rawResultTypes/common.js';
+import { DisplayPriority, Run } from '../resources/etc/rawResultTypes/common.js';
 import { FlexColumnOffset } from '../enums.js';
 
 /**
@@ -17,7 +17,12 @@ export class GetPlaylistParser {
 	public static parsePlaylistURL(context: any): PlaylistURL {
 		// Gets the entire flexColumn, and filter those with empty members
 		const flexColumn = ($$('.musicResponsiveListItemFlexColumnRenderer')(context) as MusicResponsiveListItemFlexColumnRenderer[])
-			.filter((item) => item.text?.runs != null);
+			.filter(
+				(item) => (
+					item.text?.runs != null
+					&& item.displayPriority === DisplayPriority.HIGH
+				),
+			);
 		const unprocessedHeader = ($$('.musicDetailHeaderRenderer')(context) as MusicDetailHeaderRenderer[]);
 		const allThumbnailRenderers = ($$('.musicThumbnailRenderer')(context)) as MusicThumbnailRenderer[];
 		const continuation = ($('.nextContinuationData')(context)) as Continuation;
@@ -34,7 +39,9 @@ export class GetPlaylistParser {
 		}
 
 		return PlaylistURL.from({
-			headers: GetPlaylistParser.playlistURLHeaderParser(unprocessedHeader),
+			headers: unprocessedHeader.length > 0
+				? GetPlaylistParser.playlistURLHeaderParser(unprocessedHeader)
+				: undefined,
 			playlistContents,
 			continuation,
 		});
