@@ -29,6 +29,7 @@ export class ContinuableResultFactory<
 		getContinuation: ContinuableResult<T, ParserResult, GetContentResult>['getContinuation'];
 		isDone?: ContinuableResult<T, ParserResult, GetContentResult>['isDone'];
 		continuation?: ContinuableResult<T, ParserResult, GetContentResult>['continuation'];
+		endpoint?: ContinuableResult<T, ParserResult, GetContentResult>['endpoint'];
 	}
 > {
 	constructor(ContinuableResultClass?: new() => R) {
@@ -53,6 +54,9 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 	private isDone: (this: ContinuableResult<T, ParserResult, GetContentResult>, content: GetContentResult) => boolean = (content) => content == null;
 
 	@unenumerable
+	private endpoint: EndPoint = EndPoint.SEARCH;
+
+	@unenumerable
 	private declare continuation?: NextContinuationData;
 
 	@unenumerable
@@ -68,7 +72,7 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 
 		const { continuation, clickTrackingParams } = this.continuation;
 
-		const ctx = await this.ctx['createApiRequest'](EndPoint.SEARCH, {}, {
+		const ctx = await this.ctx['createApiRequest'](this.endpoint, {}, {
 			ctoken: continuation,
 			continuation,
 			itct: clickTrackingParams,
