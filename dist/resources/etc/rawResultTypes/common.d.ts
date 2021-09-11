@@ -87,8 +87,8 @@ export interface MusicResponsiveListItemFlexColumnRenderer {
     displayPriority: DisplayPriority;
 }
 export declare enum DisplayPriority {
-    MusicResponsiveListItemColumnDisplayPriorityHigh = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH",
-    MusicResponsiveListItemColumnDisplayPriorityMedium = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_MEDIUM"
+    HIGH = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH",
+    MEDIUM = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_MEDIUM"
 }
 export interface FlexColumn {
     musicResponsiveListItemFlexColumnRenderer: MusicResponsiveListItemFlexColumnRenderer;

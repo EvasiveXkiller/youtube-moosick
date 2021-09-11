@@ -1,4 +1,4 @@
-import type { Result } from './common.js';
+import type { Result, DisplayPriority } from './common.js';
 export interface AlbumURLFullResult extends Result {
     responseContext: ResponseContext;
     trackingParams: string;
@@ -55,11 +55,8 @@ export interface MusicResponsiveListItemFixedColumnRenderer {
     displayPriority: DisplayPriority;
     size: Size;
 }
-export declare enum DisplayPriority {
-    MusicResponsiveListItemColumnDisplayPriorityHigh = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH"
-}
 export declare enum Size {
-    MusicResponsiveListItemFixedColumnSizeSmall = "MUSIC_RESPONSIVE_LIST_ITEM_FIXED_COLUMN_SIZE_SMALL"
+    SMALL = "MUSIC_RESPONSIVE_LIST_ITEM_FIXED_COLUMN_SIZE_SMALL"
 }
 export interface Description {
     runs: DescriptionRun[];
