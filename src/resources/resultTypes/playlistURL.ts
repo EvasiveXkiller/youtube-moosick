@@ -4,7 +4,7 @@ import type { ContinuableResult } from '../generalTypes/continuableResult.js';
 import type { Thumbnails } from '../generalTypes/thumbnails.js';
 
 export class PlaylistURL extends Item {
-	public declare headers: PlaylistHeader;
+	public declare headers?: PlaylistHeader;
 	public declare playlistContents: PlaylistContent[];
 	public declare continuation: Continuation;
 }
