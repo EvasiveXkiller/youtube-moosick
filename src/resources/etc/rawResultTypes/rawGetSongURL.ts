@@ -1,4 +1,4 @@
-import type { EndpointlessText, Result } from './common.js';
+import type { DisplayPriority, EndpointlessText, Result } from './common.js';
 
 export interface SongURLFullResult extends Result {
 	responseContext: ResponseContext;
@@ -104,10 +104,6 @@ export interface FlexColumn {
 export interface MusicResponsiveListItemFlexColumnRenderer {
 	text: EndpointlessText;
 	displayPriority: DisplayPriority;
-}
-
-export enum DisplayPriority {
-	MusicResponsiveListItemColumnDisplayPriorityHigh = 'MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH',
 }
 
 export interface BrowseEndpoint {
@@ -389,13 +385,13 @@ export interface MusicResponsiveListItemRendererThumbnail {
 }
 
 export interface MusicThumbnailRenderer {
-	thumbnail: MusicResponsiveListItemRendererThumbnail;
+	thumbnail: MusicThumbnailRendererThumbnail;
 	thumbnailCrop: ThumbnailCrop;
 	thumbnailScale: ThumbnailScale;
 	trackingParams: string;
 }
 
-export interface MusicResponsiveListItemRendererThumbnail {
+export interface MusicThumbnailRendererThumbnail {
 	thumbnails: Thumbnail[];
 }
 
