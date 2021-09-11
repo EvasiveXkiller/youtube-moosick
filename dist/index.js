@@ -181,7 +181,7 @@ export class MooSick extends AsyncConstructor {
             isDone: (context) => (context?.length ?? 0) === 0,
             continuation,
         })
-            .merge(result);
+            .append(result);
         return continuableResult;
     }
     /**
@@ -241,9 +241,8 @@ export class MooSick extends AsyncConstructor {
                 continuation: result.continuation,
                 endpoint: EndPoint.BROWSE,
             })
-                .merge(result.playlistContents),
+                .append(result.playlistContents),
         });
-        // FIXME: There seems to be something wrong with this, debugger shows that this line causes http 400 errors
         await continuableResult.playlistContents
             .loadUntil(contentLimit);
         return continuableResult;

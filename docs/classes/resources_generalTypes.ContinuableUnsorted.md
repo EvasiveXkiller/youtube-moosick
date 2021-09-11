@@ -32,6 +32,7 @@
 
 - [[iterator]](resources_generalTypes.ContinuableUnsorted.md#[iterator])
 - [[unscopables]](resources_generalTypes.ContinuableUnsorted.md#[unscopables])
+- [append](resources_generalTypes.ContinuableUnsorted.md#append)
 - [at](resources_generalTypes.ContinuableUnsorted.md#at)
 - [concat](resources_generalTypes.ContinuableUnsorted.md#concat)
 - [copyWithin](resources_generalTypes.ContinuableUnsorted.md#copywithin)
@@ -53,7 +54,6 @@
 - [loadNext](resources_generalTypes.ContinuableUnsorted.md#loadnext)
 - [loadUntil](resources_generalTypes.ContinuableUnsorted.md#loaduntil)
 - [map](resources_generalTypes.ContinuableUnsorted.md#map)
-- [merge](resources_generalTypes.ContinuableUnsorted.md#merge)
 - [pop](resources_generalTypes.ContinuableUnsorted.md#pop)
 - [push](resources_generalTypes.ContinuableUnsorted.md#push)
 - [reduce](resources_generalTypes.ContinuableUnsorted.md#reduce)
@@ -120,7 +120,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1407
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/unsorted.ts#L24)
+[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/unsorted.ts#L24)
 
 ___
 
@@ -134,7 +134,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/unsorted.ts#L27)
+[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/unsorted.ts#L27)
 
 ___
 
@@ -164,7 +164,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/unsorted.ts#L26)
+[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/unsorted.ts#L26)
 
 ___
 
@@ -178,7 +178,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/unsorted.ts#L28)
+[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/unsorted.ts#L28)
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/unsorted.ts#L25)
+[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/unsorted.ts#L25)
 
 ___
 
@@ -258,6 +258,33 @@ when they will be absent when used in a 'with' statement.
 #### Defined in
 
 node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:99
+
+___
+
+### append
+
+▸ **append**(`obj`): [`ContinuableUnsorted`](resources_generalTypes.ContinuableUnsorted.md)
+
+Basically `Array.prototype.concat` but with the behaviour of push.
+Supports adding non POJA's (will add keys to `this`)
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `obj` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[] \| `Record`<`string` \| `number` \| `symbol`, [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\> | An `Array` a or class that extends `Array` |
+
+#### Returns
+
+[`ContinuableUnsorted`](resources_generalTypes.ContinuableUnsorted.md)
+
+#### Inherited from
+
+[ContinuableResult](resources_generalTypes.ContinuableResult.md).[append](resources_generalTypes.ContinuableResult.md#append)
+
+#### Defined in
+
+[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 
@@ -776,7 +803,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L171)
+[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/continuableResult.ts#L171)
 
 ___
 
@@ -869,7 +896,7 @@ Loads the next continuation
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L96)
+[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/continuableResult.ts#L96)
 
 ___
 
@@ -893,7 +920,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L150)
+[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/continuableResult.ts#L150)
 
 ___
 
@@ -927,33 +954,6 @@ Calls a defined callback function on each element of an array, and returns an ar
 #### Defined in
 
 node_modules/typescript/lib/lib.es5.d.ts:1361
-
-___
-
-### merge
-
-▸ **merge**(`obj`): [`ContinuableUnsorted`](resources_generalTypes.ContinuableUnsorted.md)
-
-Basically `Array.prototype.concat` but with the behaviour of push.
-Supports adding non POJA's (will add keys to `this`)
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj` | [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)[] \| `Record`<`string` \| `number` \| `symbol`, [`UnsortedSubTypes`](../modules/resources_generalTypes.md#unsortedsubtypes)\> | An `Array` a or class that extends `Array` |
-
-#### Returns
-
-[`ContinuableUnsorted`](resources_generalTypes.ContinuableUnsorted.md)
-
-#### Inherited from
-
-[ContinuableResult](resources_generalTypes.ContinuableResult.md).[merge](resources_generalTypes.ContinuableResult.md#merge)
-
-#### Defined in
-
-[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 

@@ -41,6 +41,7 @@ Enables the loading of continuation
 
 - [[iterator]](resources_generalTypes.ContinuableResult.md#[iterator])
 - [[unscopables]](resources_generalTypes.ContinuableResult.md#[unscopables])
+- [append](resources_generalTypes.ContinuableResult.md#append)
 - [at](resources_generalTypes.ContinuableResult.md#at)
 - [concat](resources_generalTypes.ContinuableResult.md#concat)
 - [copyWithin](resources_generalTypes.ContinuableResult.md#copywithin)
@@ -62,7 +63,6 @@ Enables the loading of continuation
 - [loadNext](resources_generalTypes.ContinuableResult.md#loadnext)
 - [loadUntil](resources_generalTypes.ContinuableResult.md#loaduntil)
 - [map](resources_generalTypes.ContinuableResult.md#map)
-- [merge](resources_generalTypes.ContinuableResult.md#merge)
 - [pop](resources_generalTypes.ContinuableResult.md#pop)
 - [push](resources_generalTypes.ContinuableResult.md#push)
 - [reduce](resources_generalTypes.ContinuableResult.md#reduce)
@@ -213,6 +213,29 @@ Array.\_\_@unscopables@318
 #### Defined in
 
 node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts:99
+
+___
+
+### append
+
+▸ **append**(`obj`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
+
+Basically `Array.prototype.concat` but with the behaviour of push.
+Supports adding non POJA's (will add keys to `this`)
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `obj` | `T`[] \| `Record`<`string` \| `number` \| `symbol`, `T`\> | An `Array` a or class that extends `Array` |
+
+#### Returns
+
+[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
+
+#### Defined in
+
+[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 
@@ -727,7 +750,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L171)
+[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/continuableResult.ts#L171)
 
 ___
 
@@ -816,7 +839,7 @@ Loads the next continuation
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L96)
+[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/continuableResult.ts#L96)
 
 ___
 
@@ -836,7 +859,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L150)
+[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/resources/generalTypes/continuableResult.ts#L150)
 
 ___
 
@@ -870,29 +893,6 @@ Array.map
 #### Defined in
 
 node_modules/typescript/lib/lib.es5.d.ts:1361
-
-___
-
-### merge
-
-▸ **merge**(`obj`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
-
-Basically `Array.prototype.concat` but with the behaviour of push.
-Supports adding non POJA's (will add keys to `this`)
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj` | `T`[] \| `Record`<`string` \| `number` \| `symbol`, `T`\> | An `Array` a or class that extends `Array` |
-
-#### Returns
-
-[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
-
-#### Defined in
-
-[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 

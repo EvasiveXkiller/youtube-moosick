@@ -69,7 +69,7 @@ export declare class ContinuableResult<T extends Item, ParserResult = Continuabl
      * Supports adding non POJA's (will add keys to `this`)
      * @param obj - An `Array` a or class that extends `Array`
      */
-    merge(obj: Record<string | number | symbol, T> | T[]): this;
+    append(obj: Record<string | number | symbol, T> | T[]): this;
     loadUntil(minimumLength?: number): Promise<ContinuableResultBlueprint<T>>;
     iterator(): AsyncGenerator<T, void, unknown>;
 }

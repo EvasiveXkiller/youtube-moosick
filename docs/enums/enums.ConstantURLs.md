@@ -21,7 +21,7 @@ Constant Links
 
 #### Defined in
 
-[src/enums.ts:74](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/enums.ts#L74)
+[src/enums.ts:74](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/enums.ts#L74)
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-[src/enums.ts:73](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/enums.ts#L73)
+[src/enums.ts:73](https://github.com/EvasiveXkiller/youtube-moosick/blob/cff01fc/src/enums.ts#L73)

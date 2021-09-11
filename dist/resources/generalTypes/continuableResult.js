@@ -48,7 +48,7 @@ export class ContinuableResult extends Array {
         if (this.isDone(content)) {
             return null;
         }
-        this.merge(content);
+        this.append(content);
         return {
             result: content,
             continuation: this.continuation,
@@ -59,7 +59,7 @@ export class ContinuableResult extends Array {
      * Supports adding non POJA's (will add keys to `this`)
      * @param obj - An `Array` a or class that extends `Array`
      */
-    merge(obj) {
+    append(obj) {
         // is POJA
         if (obj.constructor === Array) {
             this.push(...obj);
