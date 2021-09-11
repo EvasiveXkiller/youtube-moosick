@@ -47,8 +47,8 @@
 			"args": [
 				"/t",
 				"${fileBasenameNoExtension}",
-				"/k"
-			]
+			],
+			"outputCapture": "std"
 		}
 	],
 	"inputs": [
