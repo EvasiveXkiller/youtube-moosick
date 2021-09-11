@@ -49,9 +49,9 @@ test('unit_getPlaylistURLParser', (t) => {
     ];
     t.true(WalkUtility
         .walkAndAssertShape(result, expected[0]), 'unit_getPlaylistURLParser result has expected shape');
-    t.equals(result.headers.owner, 'Jakub Gabryš', 'owner match');
+    t.equals(result.headers?.owner, 'Jakub Gabryš', 'owner match');
     t.equals(result.playlistContents.length, 34, 'track count match');
-    t.equals(result.headers.thumbnail[1].url, 'https://yt3.ggpht.com/V1rNjDHlr0HGGw1wLTeSMwdttlkz9987hVAWhQoZrU3a8Rqb1T7vjt6HffU6M9HCwe_Y2c1riA=s576', 'thumbnails match');
+    t.equals(result.headers?.thumbnail[1].url, 'https://yt3.ggpht.com/V1rNjDHlr0HGGw1wLTeSMwdttlkz9987hVAWhQoZrU3a8Rqb1T7vjt6HffU6M9HCwe_Y2c1riA=s576', 'thumbnails match');
     t.equals(result.playlistContents[30].trackId, 'njTHReUm3fw', 'random videoId check pass');
     t.end();
 });

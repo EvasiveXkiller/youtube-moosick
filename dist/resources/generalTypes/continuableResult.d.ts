@@ -17,6 +17,7 @@ export declare class ContinuableResultFactory<T extends Item, ParserResult = Con
     getContinuation: ContinuableResult<T, ParserResult, GetContentResult>['getContinuation'];
     isDone?: ContinuableResult<T, ParserResult, GetContentResult>['isDone'];
     continuation?: ContinuableResult<T, ParserResult, GetContentResult>['continuation'];
+    endpoint?: ContinuableResult<T, ParserResult, GetContentResult>['endpoint'];
 }> {
     constructor(ContinuableResultClass?: new () => R);
 }
@@ -24,11 +25,40 @@ export declare class ContinuableResultFactory<T extends Item, ParserResult = Con
  * Enables the loading of continuation
  */
 export declare class ContinuableResult<T extends Item, ParserResult = ContinuableResultBlueprint<T>, GetContentResult extends any[] = T[]> extends Array<T> implements Item {
+    /**
+     * Parser for the result of `MooSick#createApiRequest`
+     * @internal
+     */
     private parser;
+    /**
+     * Returns the continuation from the result of the parser
+     * @internal
+     */
     private getContinuation;
+    /**
+     * Returns the content from the result of the parser
+     * @internal
+     */
     private getContent;
+    /**
+     * Returns whether or not there's still more items to continue fetching
+     * @internal
+     */
     private isDone;
+    /**
+     * The endpoint for `MooSick#createApiRequest`
+     * @internal
+     */
+    private endpoint;
+    /**
+     * The continuation where this object will refer to
+     * @internal
+     */
     private continuation?;
+    /**
+     * An instance of `MooSick`
+     * @internal
+     */
     private ctx;
     /**
      * Loads the next continuation
@@ -39,7 +69,7 @@ export declare class ContinuableResult<T extends Item, ParserResult = Continuabl
      * Supports adding non POJA's (will add keys to `this`)
      * @param obj - An `Array` a or class that extends `Array`
      */
-    merge(obj: Record<string | number | symbol, T> | T[]): void;
+    merge(obj: Record<string | number | symbol, T> | T[]): this;
     loadUntil(minimumLength?: number): Promise<ContinuableResultBlueprint<T>>;
     iterator(): AsyncGenerator<T, void, unknown>;
 }

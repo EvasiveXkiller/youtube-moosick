@@ -180,8 +180,8 @@ export class MooSick extends AsyncConstructor {
             parser: (context) => GeneralParser.parseSearchResult(context, searchType),
             isDone: (context) => (context?.length ?? 0) === 0,
             continuation,
-        });
-        continuableResult.merge(result);
+        })
+            .merge(result);
         return continuableResult;
     }
     /**
@@ -239,9 +239,10 @@ export class MooSick extends AsyncConstructor {
                 getContinuation: (context) => context.continuation,
                 parser: GetPlaylistParser.parsePlaylistURL.bind(GetPlaylistParser),
                 continuation: result.continuation,
-            }),
+                endpoint: EndPoint.BROWSE,
+            })
+                .merge(result.playlistContents),
         });
-        continuableResult.playlistContents.push(...result.playlistContents);
         // FIXME: There seems to be something wrong with this, debugger shows that this line causes http 400 errors
         await continuableResult.playlistContents
             .loadUntil(contentLimit);

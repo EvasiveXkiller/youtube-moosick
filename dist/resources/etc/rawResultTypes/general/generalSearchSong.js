@@ -15,10 +15,6 @@ export var IconType;
     IconType["Unfavorite"] = "UNFAVORITE";
     IconType["VolumeUp"] = "VOLUME_UP";
 })(IconType || (IconType = {}));
-export var DisplayPriority;
-(function (DisplayPriority) {
-    DisplayPriority["MusicResponsiveListItemColumnDisplayPriorityHigh"] = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH";
-})(DisplayPriority || (DisplayPriority = {}));
 export var ItemHeight;
 (function (ItemHeight) {
     ItemHeight["MusicResponsiveListItemHeightTall"] = "MUSIC_RESPONSIVE_LIST_ITEM_HEIGHT_TALL";

@@ -1,7 +1,3 @@
-export var DisplayPriority;
-(function (DisplayPriority) {
-    DisplayPriority["MusicResponsiveListItemColumnDisplayPriorityHigh"] = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH";
-})(DisplayPriority || (DisplayPriority = {}));
 export var PageType;
 (function (PageType) {
     PageType["MusicPageTypeAlbum"] = "MUSIC_PAGE_TYPE_ALBUM";

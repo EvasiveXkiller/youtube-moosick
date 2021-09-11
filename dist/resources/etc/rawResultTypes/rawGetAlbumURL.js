@@ -1,10 +1,6 @@
-export var DisplayPriority;
-(function (DisplayPriority) {
-    DisplayPriority["MusicResponsiveListItemColumnDisplayPriorityHigh"] = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH";
-})(DisplayPriority || (DisplayPriority = {}));
 export var Size;
 (function (Size) {
-    Size["MusicResponsiveListItemFixedColumnSizeSmall"] = "MUSIC_RESPONSIVE_LIST_ITEM_FIXED_COLUMN_SIZE_SMALL";
+    Size["SMALL"] = "MUSIC_RESPONSIVE_LIST_ITEM_FIXED_COLUMN_SIZE_SMALL";
 })(Size || (Size = {}));
 export var Params;
 (function (Params) {

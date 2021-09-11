@@ -19,7 +19,16 @@ export class ContinuableResultFactory extends Factory {
  * Enables the loading of continuation
  */
 export class ContinuableResult extends Array {
+    /**
+     * Returns whether or not there's still more items to continue fetching
+     * @internal
+     */
     isDone = (content) => content == null;
+    /**
+     * The endpoint for `MooSick#createApiRequest`
+     * @internal
+     */
+    endpoint = EndPoint.SEARCH;
     /**
      * Loads the next continuation
      */
@@ -28,7 +37,7 @@ export class ContinuableResult extends Array {
             return null;
         }
         const { continuation, clickTrackingParams } = this.continuation;
-        const ctx = await this.ctx['createApiRequest'](EndPoint.SEARCH, {}, {
+        const ctx = await this.ctx['createApiRequest'](this.endpoint, {}, {
             ctoken: continuation,
             continuation,
             itct: clickTrackingParams,
@@ -67,6 +76,7 @@ export class ContinuableResult extends Array {
                 }
             });
         }
+        return this;
     }
     async loadUntil(minimumLength = Infinity) {
         const content = [];
@@ -105,6 +115,9 @@ __decorate([
 __decorate([
     unenumerable
 ], ContinuableResult.prototype, "isDone", void 0);
+__decorate([
+    unenumerable
+], ContinuableResult.prototype, "endpoint", void 0);
 __decorate([
     unenumerable
 ], ContinuableResult.prototype, "continuation", void 0);

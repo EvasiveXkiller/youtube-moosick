@@ -1,4 +1,4 @@
-import type { BrowseEndpoint, FlexColumn, NextContinuationData, Text, WatchEndpoint } from '../common.js';
+import type { BrowseEndpoint, DisplayPriority, FlexColumn, NextContinuationData, Text, WatchEndpoint } from '../common.js';
 export interface GeneralSongFull {
     responseContext: ResponseContext;
     trackingParams: string;
@@ -88,9 +88,6 @@ export declare enum IconType {
 export interface MusicResponsiveListItemFlexColumnRenderer {
     text: Text;
     displayPriority: DisplayPriority;
-}
-export declare enum DisplayPriority {
-    MusicResponsiveListItemColumnDisplayPriorityHigh = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH"
 }
 export interface RunNavigationEndpoint {
     clickTrackingParams: string;

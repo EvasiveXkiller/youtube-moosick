@@ -13,7 +13,7 @@ export var PageType;
 })(PageType || (PageType = {}));
 export var DisplayPriority;
 (function (DisplayPriority) {
-    DisplayPriority["MusicResponsiveListItemColumnDisplayPriorityHigh"] = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH";
-    DisplayPriority["MusicResponsiveListItemColumnDisplayPriorityMedium"] = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_MEDIUM";
+    DisplayPriority["HIGH"] = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_HIGH";
+    DisplayPriority["MEDIUM"] = "MUSIC_RESPONSIVE_LIST_ITEM_COLUMN_DISPLAY_PRIORITY_MEDIUM";
 })(DisplayPriority || (DisplayPriority = {}));
 //# sourceMappingURL=common.js.map

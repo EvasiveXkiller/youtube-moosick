@@ -727,7 +727,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:137](https://github.com/EvasiveXkiller/youtube-moosick/blob/966afc3/src/resources/generalTypes/continuableResult.ts#L137)
+[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L171)
 
 ___
 
@@ -816,7 +816,7 @@ Loads the next continuation
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:64](https://github.com/EvasiveXkiller/youtube-moosick/blob/966afc3/src/resources/generalTypes/continuableResult.ts#L64)
+[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L96)
 
 ___
 
@@ -836,7 +836,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:116](https://github.com/EvasiveXkiller/youtube-moosick/blob/966afc3/src/resources/generalTypes/continuableResult.ts#L116)
+[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L150)
 
 ___
 
@@ -875,7 +875,7 @@ ___
 
 ### merge
 
-▸ **merge**(`obj`): `void`
+▸ **merge**(`obj`): [`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
 
 Basically `Array.prototype.concat` but with the behaviour of push.
 Supports adding non POJA's (will add keys to `this`)
@@ -888,11 +888,11 @@ Supports adding non POJA's (will add keys to `this`)
 
 #### Returns
 
-`void`
+[`ContinuableResult`](resources_generalTypes.ContinuableResult.md)<`T`, `ParserResult`, `GetContentResult`\>
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:99](https://github.com/EvasiveXkiller/youtube-moosick/blob/966afc3/src/resources/generalTypes/continuableResult.ts#L99)
+[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/3cced14/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 
