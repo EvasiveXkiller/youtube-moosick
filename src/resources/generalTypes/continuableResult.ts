@@ -41,24 +41,52 @@ export class ContinuableResultFactory<
  * Enables the loading of continuation
  */
 export class ContinuableResult<T extends Item, ParserResult = ContinuableResultBlueprint<T>, GetContentResult extends any[] = T[]> extends Array<T> implements Item {
+	/**
+	 * Parser for the result of `MooSick#createApiRequest`
+	 * @internal
+	 */
 	@unenumerable
 	private declare parser: (this: ContinuableResult<T, ParserResult, GetContentResult>, context: IResult) => ParserResult;
 
+	/**
+	 * Returns the continuation from the result of the parser
+	 * @internal
+	 */
 	@unenumerable
 	private declare getContinuation: (this: ContinuableResult<T, ParserResult, GetContentResult>, context: ParserResult) => NextContinuationData | undefined;
 
+	/**
+	 * Returns the content from the result of the parser
+	 * @internal
+	 */
 	@unenumerable
 	private declare getContent: (this: ContinuableResult<T, ParserResult, GetContentResult>, context: ParserResult) => GetContentResult;
 
+	/**
+	 * Returns whether or not there's still more items to continue fetching
+	 * @internal
+	 */
 	@unenumerable
 	private isDone: (this: ContinuableResult<T, ParserResult, GetContentResult>, content: GetContentResult) => boolean = (content) => content == null;
 
+	/**
+	 * The endpoint for `MooSick#createApiRequest`
+	 * @internal
+	 */
 	@unenumerable
 	private endpoint: EndPoint = EndPoint.SEARCH;
 
+	/**
+	 * The continuation where this object will refer to
+	 * @internal
+	 */
 	@unenumerable
 	private declare continuation?: NextContinuationData;
 
+	/**
+	 * An instance of `MooSick`
+	 * @internal
+	 */
 	@unenumerable
 	private declare ctx: MooSick;
 
