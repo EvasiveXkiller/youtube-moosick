@@ -115,6 +115,8 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 				}
 			});
 		}
+
+		return this;
 	}
 
 	public async loadUntil(minimumLength = Infinity): Promise<ContinuableResultBlueprint<T>> {
