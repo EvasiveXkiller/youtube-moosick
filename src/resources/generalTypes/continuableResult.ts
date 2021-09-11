@@ -115,7 +115,7 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 			return null;
 		}
 
-		this.merge(content);
+		this.append(content);
 
 		return {
 			result: content,
@@ -128,7 +128,7 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 	 * Supports adding non POJA's (will add keys to `this`)
 	 * @param obj - An `Array` a or class that extends `Array`
 	 */
-	public merge(obj: Record<string | number | symbol, T> | T[]) {
+	public append(obj: Record<string | number | symbol, T> | T[]) {
 		// is POJA
 		if (obj.constructor === Array) {
 			this.push(...obj);
