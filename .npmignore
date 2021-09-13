@@ -1,0 +1,8 @@
+src/
+docs/
+error.txt
+mlc_config.json
+.vscode/
+.idea/
+.github/
+types/
