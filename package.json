@@ -1,14 +1,17 @@
 {
     "name": "youtube-moosick",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Unofficial Youtube music API, fully written in TypeScript",
     "main": "./dist/index.js",
-    "typings": "./dist/index.d.ts",
+    "module": "./dist/esm/index.js",
+    "typings": "./dist/cjs/index.d.ts",
     "type": "module",
     "scripts": {
-        "test": "node --require @nextools/suppress-experimental-warnings --experimental-json-modules dist/test/index",
+        "test": "node --require @nextools/suppress-experimental-warnings --experimental-json-modules dist/esm/test/index",
         "dev": "tsc --watch",
-        "build": "tsc --build --clean && tsc",
+        "build" : "npm run build:cjs && npm run build:esm",
+        "build:cjs": "tsc --outDir dist/cjs",
+        "build:esm": "tsc --outDir dist/esm --module esnext",
         "lint": "eslint \"**/*.ts\" --quiet",
         "doc": "typedoc --excludePrivate --excludeProtected --excludeInternal --readme none",
         "docbuild": "npm run build && npm run doc"
