@@ -1,4 +1,6 @@
-# Youtube-MooSick
+# youtube-moosick
+
+Unofficial YouTube Music Library, written in TypeScript.
 
 <div>
     <img alt="TypeScript Build Status" src="https://img.shields.io/github/workflow/status/EvasiveXkiller/youtube-moosick/tscBuild">
@@ -6,14 +8,18 @@
     <img alt="Latest Tag" src="https://img.shields.io/github/v/tag/EvasiveXkiller/youtube-moosick?label=Latest">
 </div>
 
-Unofficial YouTube Music Library, written in TypeScript.
+<br>
 
-```typescript
+---
+
+<br>
+
+```ts
 import { YoutubeMoosick } from "MooSick";
 
 const ytms = new YoutubeMoosick.new();
 
-// Using Async await 
+// Using async await 
 const results = await ytms.search("Never gonna give you up");
 console.log(results);
 
@@ -40,36 +46,44 @@ ContinuableUnsorted(16) [
     playlistId: 'RDAMVMlYBUbBu4W08',
     params: 'wAEB'
   },
-  ....
+  // ...
  ]
 */
 ```
 
-## Table of contents
-- [Youtube-MooSick](#youtube-moosick)
-    - [Installation](#installation)
-    - [API](#api)
-        - [ytms.search(query, categoryName?)](#ytmssearchquery-categoryname)
-        - [ytms.getSearchSuggestions(query);](#ytmsgetsearchsuggestionsquery)
-        - [ytms.getAlbum(browseId)](#ytmsgetalbumbrowseid)
-        - [ytms.getArtist(browseId)](#ytmsgetartistbrowseid)
-        - [ytms.getPlaylist(browseId)](#ytmsgetplaylistbrowseid)
-    - [Tests](#tests)
-    - [Authors](#authors)
+<br>
+
+---
+
+<br>
 
 ## Installation
 
-```shell
-npm install youtube-moosick
+```bash
+npm i youtube-moosick
 ```
+
+<br>
+
+---
+
+<br>
 
 ## API
 
-### ytms.search(query, categoryName?)
+* [`search`](#search)
+* [`getSearchSuggestions`](#getsearchsuggestions)
+* [`getAlbum`](#getalbum)
+* [`getArtist`](#getartist)
+* [`getPlaylist`](#getplaylist)
+
+<br>
+
+### `search`
 
 ▸ **search**(`query`, `searchType?`): `Promise`<`unknown`\>
 
-Searches for songs using the Youtube Music API
+Searches YouTube Music.
 
 #### Parameters
 
@@ -92,11 +106,11 @@ The return of this function depends on the supplied value of `searchType`.
 | [`Category.ARTIST`](./docs/enums/enums.Category.md#artist) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<ArtistExtended>`](./docs/classes/resources_generalTypes.ArtistExtended.md)\> |
 | [`Category.PLAYLIST`](./docs/enums/enums.Category.md#playlist) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<Playlist>`](./docs/classes/resources_generalTypes.Playlist.md)\> |
 
-For more info, see [here](./docs/modules/resources_resultTypes.md)
+For more info, see [here](./docs/modules/resources_resultTypes.md).
 
-Example
+##### Example
 
-```typescript
+```ts
 const ytms = await YoutubeMoosick.new();
 
 // Get the general search results.
@@ -125,7 +139,7 @@ ContinuableUnsorted(16) [
     playlistId: 'RDAMVMlYBUbBu4W08',
     params: 'wAEB'
   },
-  ....
+  // ...
  ]
  */
 
@@ -163,12 +177,13 @@ ContinuableResult(20) [
 */
 ```
 
-### ytms.getSearchSuggestions(query);
+<br>
 
-▸ **
-getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]>
+### `getSearchSuggestions`
 
-Get search suggestions from Youtube Music
+▸ **getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]>
+
+Fetches search suggestions from YouTube Music.
 
 #### Parameters
 
@@ -180,11 +195,11 @@ Get search suggestions from Youtube Music
 
 `Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]\>
 
-An object formatted with utils class
+An object containing data gotten from the search.
 
-Example
+##### Example
 
-```typescript
+```ts
 const suggestions = ytms.getSearchSuggestions("All We know");
 console.log(suggestions);
 /*
@@ -200,11 +215,13 @@ console.log(suggestions);
 */
 ```
 
-### ytms.getAlbum(browseId)
+<br>
+
+### `getAlbum`
 
 ▸ **getAlbum**(`browseId`): `Promise`<[`AlbumURL`](./docs/classes/resources_resultTypes.AlbumURL.md)\>
 
-Gets the album details
+Fetches album details from YouTube Music.
 
 #### Parameters
 
@@ -216,11 +233,11 @@ Gets the album details
 
 `Promise`<[`AlbumURL`](./docs/classes/resources_resultTypes.AlbumURL.md)\>
 
-Album URL object
+An object containing data of the Album requested.
 
-Example:
+##### Example
 
-```typescript
+```ts
 const ytms = await YoutubeMoosick.new();
 const results = await ytms.getAlbum('MPREb_REsMMqBZjZB');
 
@@ -265,11 +282,13 @@ October 26, 2020, by JYP Entertainment and Republic Records. It is the group's f
 */
 ```
 
-### ytms.getArtist(browseId)
+<br>
+
+### `getArtist`
 
 ▸ **getArtist**(`browseId`): `Promise`<[`ArtistURL`](./docs/classes/resources_resultTypes.ArtistURL.md)\>
 
-Gets the artist details from Youtube Music
+Fetches artist details from YouTube Music.
 
 #### Parameters
 
@@ -281,11 +300,11 @@ Gets the artist details from Youtube Music
 
 `Promise`<[`ArtistURL`](./docs/classes/resources_resultTypes.ArtistURL.md)\>
 
-An object formatted by the artist page
+An object containing data of the Artist requested.
 
-Example:
+##### Example
 
-```typescript
+```ts
 const ytms = await YoutubeMoosick.new();
 const results = await ytms.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
 
@@ -327,12 +346,13 @@ ongyeon, Momo, Sana, Jihyo, Mina, Dahyun, Chaeyoung, and Tzuyu. Twice was ...',
 */
 ```
 
-### ytms.getPlaylist(browseId)
+<br>
 
-▸ **getPlaylist**(`browseId`
-, `contentLimit?`): `Promise`<[`PlaylistURL`](./docs/classes/resources_resultTypes.PlaylistURL.md)\>
+### `getPlaylist`
 
-Gets the playlist using the Youtube Music API
+▸ **getPlaylist**(`browseId`, `contentLimit?`): `Promise`<[`PlaylistURL`](./docs/classes/resources_resultTypes.PlaylistURL.md)\>
+
+Fetches playlist details from YouTube Music.
 
 #### Parameters
 
@@ -345,11 +365,11 @@ Gets the playlist using the Youtube Music API
 
 `Promise`<[`PlaylistURL`](./docs/classes/resources_resultTypes.PlaylistURL.md)\>
 
-An object formatted by the parser
+An object containing data of the Playlist requested.
 
-Example:
+##### Example
 
-```typescript
+```ts
 const ytms = await YoutubeMoosick.new();
 const results = await ytms.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
 
@@ -385,19 +405,51 @@ GtnRURDTTBH',
     clickTrackingParams: 'CBIQybcCIhMI1KHIoI7E8gIVC8***********'
   }
 }
-
  */
 ```
 
+<br>
+
+---
+
+<br>
+
 ## Tests
+
 Tests are written in [tape](https://github.com/substack/tape)
 ```shell
 npm run test
 ```
 These tests are real life tests, they actually run a query to simulate a real life situation.
 
+<br>
+
+---
+
+<br>
+
+## Contributing
+
+All contributions are welcome. File an [issue](https://github.com/EvasiveXkiller/youtube-moosick/issues) if you find something wrong, & a [pull request](https://github.com/EvasiveXkiller/youtube-moosick/pulls) if you can fix it.
+
+<br>
+
+---
+
+<br>
+
 ## Authors
 
 - [EvasiveXkiller](https://github.com/EvasiveXkiller)
 
 - [Sxxov](https://github.com/Sxxov)
+
+<br>
+
+---
+
+<br>
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
