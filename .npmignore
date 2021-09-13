@@ -6,3 +6,4 @@ mlc_config.json
 .idea/
 .github/
 types/
+dist/test
