@@ -31,7 +31,7 @@
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:19](https://github.com/EvasiveXkiller/youtube-moosick/blob/dbc05ae/src/resources/resultTypes/playlistURL.ts#L19)
+[src/resources/resultTypes/playlistURL.ts:19](https://github.com/EvasiveXkiller/youtube-moosick/blob/59c2859/src/resources/resultTypes/playlistURL.ts#L19)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/dbc05ae/src/resources/resultTypes/playlistURL.ts#L20)
+[src/resources/resultTypes/playlistURL.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/59c2859/src/resources/resultTypes/playlistURL.ts#L20)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:18](https://github.com/EvasiveXkiller/youtube-moosick/blob/dbc05ae/src/resources/resultTypes/playlistURL.ts#L18)
+[src/resources/resultTypes/playlistURL.ts:18](https://github.com/EvasiveXkiller/youtube-moosick/blob/59c2859/src/resources/resultTypes/playlistURL.ts#L18)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/dbc05ae/src/resources/resultTypes/playlistURL.ts#L17)
+[src/resources/resultTypes/playlistURL.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/59c2859/src/resources/resultTypes/playlistURL.ts#L17)
 
 ## Methods
 
@@ -91,4 +91,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/dbc05ae/src/blocks/item.ts#L25)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/59c2859/src/blocks/item.ts#L25)

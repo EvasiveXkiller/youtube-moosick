@@ -6,4 +6,4 @@
 
 ### Classes
 
-- [MooSick](../classes/index.MooSick.md)
+- [YoutubeMoosick](../classes/index.YoutubeMoosick.md)
