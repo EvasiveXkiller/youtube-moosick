@@ -7,7 +7,7 @@ import { Song, Playlist, Video, Artist, ArtistExtended, ContinuableUnsorted, Alb
  *
  * @public
  */
-export declare class MooSick extends AsyncConstructor {
+export declare class YoutubeMoosick extends AsyncConstructor {
     private client;
     private cookies;
     private config;
@@ -23,7 +23,7 @@ export declare class MooSick extends AsyncConstructor {
      * Overrides the constructor
      * @internal
      */
-    static new<T = MooSick>(): Promise<T>;
+    static new<T = YoutubeMoosick>(): Promise<T>;
     /**
      * Sets the cookie that is called from the new method
      * @param cookieString - Cookie string

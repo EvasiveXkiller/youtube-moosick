@@ -1,6 +1,6 @@
 import { Factory, Item } from '../../blocks/item.js';
 import { EndPoint } from '../../enums.js';
-import type { MooSick } from '../../index.js';
+import type { YoutubeMoosick } from '../../index.js';
 import type { Result as IResult, NextContinuationData } from '../etc/rawResultTypes/common.js';
 import { unenumerable } from '../decorators/enumerable.decorator.js';
 
@@ -88,7 +88,7 @@ export class ContinuableResult<T extends Item, ParserResult = ContinuableResultB
 	 * @internal
 	 */
 	@unenumerable
-	private declare ctx: MooSick;
+	private declare ctx: YoutubeMoosick;
 
 	/**
 	 * Loads the next continuation

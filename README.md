@@ -9,9 +9,9 @@
 Unofficial YouTube Music Library, written in TypeScript.
 
 ```typescript
-import { MooSick } from "MooSick";
+import { YoutubeMoosick } from "MooSick";
 
-const ytms = new MooSick.new();
+const ytms = new YoutubeMoosick.new();
 
 // Using Async await 
 const results = await ytms.search("Never gonna give you up");
@@ -97,7 +97,7 @@ For more info, see [here](./docs/modules/resources_resultTypes.md)
 Example
 
 ```typescript
-const ytms = await MooSick.new();
+const ytms = await YoutubeMoosick.new();
 
 // Get the general search results.
 const resultsGeneral = await ytms.search('Never gonna give you up');
@@ -221,7 +221,7 @@ Album URL object
 Example:
 
 ```typescript
-const ytms = await MooSick.new();
+const ytms = await YoutubeMoosick.new();
 const results = await ytms.getAlbum('MPREb_REsMMqBZjZB');
 
 console.log(results)
@@ -286,7 +286,7 @@ An object formatted by the artist page
 Example:
 
 ```typescript
-const ytms = await MooSick.new();
+const ytms = await YoutubeMoosick.new();
 const results = await ytms.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
 
 console.log(results);
@@ -350,7 +350,7 @@ An object formatted by the parser
 Example:
 
 ```typescript
-const ytms = await MooSick.new();
+const ytms = await YoutubeMoosick.new();
 const results = await ytms.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
 
 console.log(results);

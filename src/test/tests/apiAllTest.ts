@@ -1,5 +1,5 @@
 import test from 'tape';
-import { MooSick } from '../../index.js';
+import { YoutubeMoosick } from '../../index.js';
 import { EitherShape, WalkUtility } from '../../resources/utilities/walk.utility.js';
 import { Category } from '../../enums.js';
 import {
@@ -21,7 +21,7 @@ import {
 } from '../../resources/resultTypes/index.js';
 
 test('searchUnsorted', async (t) => {
-	const api = await MooSick.new();
+	const api = await YoutubeMoosick.new();
 	const result = await api.search('All We Know');
 
 	t.true(result instanceof Array, 'is array');
@@ -140,7 +140,7 @@ test('searchUnsorted', async (t) => {
 });
 
 test('searchSong', async (t) => {
-	const ytms = await MooSick.new();
+	const ytms = await YoutubeMoosick.new();
 	const result = await ytms.search<Category.SONG>('do what we like', Category.SONG);
 
 	t.true(result instanceof Array, 'search Song result is array');
@@ -199,7 +199,7 @@ test('searchSong', async (t) => {
 });
 
 test('searchAlbum', async (t) => {
-	const ytms = await MooSick.new();
+	const ytms = await YoutubeMoosick.new();
 	const result = await ytms.search('All We Know', Category.ALBUM);
 
 	t.true(result instanceof Array, 'searchAlbumResult is array');
@@ -241,7 +241,7 @@ test('searchAlbum', async (t) => {
 });
 
 test('searchArtist', async (t) => {
-	const ytms = await MooSick.new();
+	const ytms = await YoutubeMoosick.new();
 	const result = await ytms.search('All We Know', Category.ARTIST);
 
 	t.true(result instanceof Array, 'result is array');
@@ -275,7 +275,7 @@ test('searchArtist', async (t) => {
 });
 
 test('searchPlaylist', async (t) => {
-	const ytms = await MooSick.new();
+	const ytms = await YoutubeMoosick.new();
 	const result = await ytms.search('All We Know', Category.PLAYLIST);
 
 	t.true(result instanceof Array, 'searchPlaylist is array');
@@ -308,7 +308,7 @@ test('searchPlaylist', async (t) => {
 });
 
 test('searchVideo', async (t) => {
-	const ytms = await MooSick.new();
+	const ytms = await YoutubeMoosick.new();
 	const result = await ytms.search('All We Know', Category.VIDEO);
 
 	t.true(result instanceof Array, 'searchVideo is array');
@@ -350,7 +350,7 @@ test('searchVideo', async (t) => {
 });
 
 test('api_getAlbumURLParser', async (t) => {
-	const ytms = await MooSick.new();
+	const ytms = await YoutubeMoosick.new();
 	const result = await ytms.getAlbum('MPREb_REsMMqBZjZB');
 
 	const expected = [
@@ -399,7 +399,7 @@ test('api_getAlbumURLParser', async (t) => {
 });
 
 test('api_getPlaylistParser', async (t) => {
-	const ytms = await MooSick.new();
+	const ytms = await YoutubeMoosick.new();
 	const resultSmall = await ytms.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
 	const resultLarge = await ytms.getPlaylist('PLVxe6MjYOfpwM3Yf7_GcR03ieesDBn0h7', 200);
 	const expected = [
@@ -467,7 +467,7 @@ test('api_getPlaylistParser', async (t) => {
 });
 
 test('api_getArtistURLParser', async (t) => {
-	const ytms = await MooSick.new();
+	const ytms = await YoutubeMoosick.new();
 	const result = await ytms.getArtist('UCAq0pFGa2w9SjxOq0ZxKVIw');
 
 	const expected = [

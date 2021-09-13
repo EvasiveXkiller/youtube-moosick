@@ -43,7 +43,7 @@ axios.defaults.adapter = axios0;
  *
  * @public
  */
-export class MooSick extends AsyncConstructor {
+export class YoutubeMoosick extends AsyncConstructor {
 	private client!: AxiosInstance;
 	private cookies!: tough.CookieJar;
 	private config!: YtCfgMain;
@@ -121,10 +121,10 @@ export class MooSick extends AsyncConstructor {
 	 * Overrides the constructor
 	 * @internal
 	 */
-	public static override async new<T = MooSick>(): Promise<T> {
+	public static override async new<T = YoutubeMoosick>(): Promise<T> {
 		void super.new();
 
-		return new MooSick().new() as unknown as Promise<T>;
+		return new YoutubeMoosick().new() as unknown as Promise<T>;
 	}
 
 	/**

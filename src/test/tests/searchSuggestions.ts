@@ -1,10 +1,10 @@
 import test from 'tape';
-import { MooSick } from '../../index.js';
+import { YoutubeMoosick } from '../../index.js';
 import { SearchSuggestions } from '../../resources/resultTypes/searchSuggestions.js';
 import { WalkUtility } from '../../resources/utilities/walk.utility.js';
 
 test('searchSuggestions', async (t) => {
-	const api = await MooSick.new();
+	const api = await YoutubeMoosick.new();
 	const result = await api.getSearchSuggestions('something');
 
 	t.true(result instanceof Array, 'is array');

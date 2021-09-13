@@ -16,7 +16,7 @@ axios.defaults.adapter = axios0;
  *
  * @public
  */
-export class MooSick extends AsyncConstructor {
+export class YoutubeMoosick extends AsyncConstructor {
     client;
     cookies;
     config;
@@ -82,7 +82,7 @@ export class MooSick extends AsyncConstructor {
      */
     static async new() {
         void super.new();
-        return new MooSick().new();
+        return new YoutubeMoosick().new();
     }
     /**
      * Sets the cookie that is called from the new method
