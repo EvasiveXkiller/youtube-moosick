@@ -402,21 +402,15 @@ npm run test
 ```
 These tests are real life tests, they actually run a query to simulate a real life situation.
 
-<br>
-
 ## Contributing
 
 All contributions are welcome. File an [issue](https://github.com/EvasiveXkiller/youtube-moosick/issues) if you find something wrong, & a [pull request](https://github.com/EvasiveXkiller/youtube-moosick/pulls) if you can fix it.
-
-<br>
 
 ## Authors
 
 - [EvasiveXkiller](https://github.com/EvasiveXkiller)
 
 - [Sxxov](https://github.com/Sxxov)
-
-<br>
 
 ## License
 
