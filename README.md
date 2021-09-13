@@ -46,15 +46,12 @@ ContinuableUnsorted(16) [
 */
 ```
 
-<br>
-
 ## Installation
 
 ```bash
 npm i youtube-moosick
 ```
 
-<br>
 
 ## API
 
