@@ -61,8 +61,6 @@ npm i youtube-moosick
 * [`getArtist`](#getartist)
 * [`getPlaylist`](#getplaylist)
 
-<br>
-
 ### `search`
 
 ▸ **search**(`query`, `searchType?`): `Promise`<`unknown`\>
@@ -391,8 +389,6 @@ GtnRURDTTBH',
 }
  */
 ```
-
-<br>
 
 ## Tests
 
