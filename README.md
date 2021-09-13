@@ -7,11 +7,6 @@ Unofficial YouTube Music Library, written in TypeScript.
     <img alt="Tests Status" src="https://img.shields.io/github/workflow/status/EvasiveXkiller/youtube-moosick/tests?color=blue&label=tests">
     <img alt="Latest Tag" src="https://img.shields.io/github/v/tag/EvasiveXkiller/youtube-moosick?label=Latest">
 </div>
-
-<br>
-
----
-
 <br>
 
 ```ts
@@ -53,19 +48,11 @@ ContinuableUnsorted(16) [
 
 <br>
 
----
-
-<br>
-
 ## Installation
 
 ```bash
 npm i youtube-moosick
 ```
-
-<br>
-
----
 
 <br>
 
@@ -410,10 +397,6 @@ GtnRURDTTBH',
 
 <br>
 
----
-
-<br>
-
 ## Tests
 
 Tests are written in [tape](https://github.com/substack/tape)
@@ -424,17 +407,9 @@ These tests are real life tests, they actually run a query to simulate a real li
 
 <br>
 
----
-
-<br>
-
 ## Contributing
 
 All contributions are welcome. File an [issue](https://github.com/EvasiveXkiller/youtube-moosick/issues) if you find something wrong, & a [pull request](https://github.com/EvasiveXkiller/youtube-moosick/pulls) if you can fix it.
-
-<br>
-
----
 
 <br>
 
@@ -443,10 +418,6 @@ All contributions are welcome. File an [issue](https://github.com/EvasiveXkiller
 - [EvasiveXkiller](https://github.com/EvasiveXkiller)
 
 - [Sxxov](https://github.com/Sxxov)
-
-<br>
-
----
 
 <br>
 
