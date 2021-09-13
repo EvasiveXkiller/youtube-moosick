@@ -1,20 +1,25 @@
-import { AssertionError } from '../errors/index.js';
-export class Shape {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.WalkUtility = exports.EitherShape = exports.Shape = void 0;
+const index_js_1 = require("../errors/index.js");
+class Shape {
 }
-export class EitherShape extends Shape {
+exports.Shape = Shape;
+class EitherShape extends Shape {
     shapes;
     constructor(shapes) {
         super();
         this.shapes = shapes;
     }
 }
+exports.EitherShape = EitherShape;
 /*
     eslint-disable
         @typescript-eslint/no-unsafe-assignment,
         @typescript-eslint/no-unsafe-return,
         @typescript-eslint/no-unsafe-member-access
 */
-export class WalkUtility {
+class WalkUtility {
     static walkAlongChildren(object, childKey, callback) {
         if (typeof object[childKey] !== 'object') {
             return;
@@ -106,7 +111,7 @@ export class WalkUtility {
                 ? obj1 instanceof shape.constructor
                 : typeof obj1 === typeof shape);
             if (shape == null && !obj2.shapes.includes(shape)) {
-                throw new AssertionError(`Value in "${path}" is not one of shape "${obj2.shapes.map((shape) => shape !== null
+                throw new index_js_1.AssertionError(`Value in "${path}" is not one of shape "${obj2.shapes.map((shape) => shape !== null
                     && typeof shape === 'object'
                     && shape.constructor?.name
                     ? shape.constructor.name
@@ -118,7 +123,7 @@ export class WalkUtility {
         // skip into objects inside array, as lengths may be different
         if (obj1 instanceof Array) {
             if (!(obj2 instanceof Array)) {
-                throw new AssertionError(`Value in "${path}" is of different shape`, obj1, obj2);
+                throw new index_js_1.AssertionError(`Value in "${path}" is of different shape`, obj1, obj2);
             }
             obj1.forEach((obj1Part, i) => {
                 this.walkAndAssertShape(obj1Part, obj2[0], `${path}[${i}]`);
@@ -131,7 +136,7 @@ export class WalkUtility {
             || obj2 === null
             || typeof obj2 !== 'object') {
             if (typeof obj1 !== typeof obj2) {
-                throw new AssertionError(`Value in "${path}" is of different shape`, obj1, obj2);
+                throw new index_js_1.AssertionError(`Value in "${path}" is of different shape`, obj1, obj2);
             }
             return true;
         }
@@ -152,4 +157,5 @@ export class WalkUtility {
         }
     }
 }
+exports.WalkUtility = WalkUtility;
 //# sourceMappingURL=walk.utility.js.map

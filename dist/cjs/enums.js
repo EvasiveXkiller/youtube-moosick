@@ -1,8 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FlexSecondRowOffset = exports.FlexColumnOffset = exports.ConstantURLs = exports.CategoryURIBase64 = exports.Category = exports.EndPoint = void 0;
 /**
  * @internal
  * Different Endpoints for createNewApi method
  */
-export var EndPoint;
+var EndPoint;
 (function (EndPoint) {
     /**
      * Search Suggestions
@@ -20,11 +23,11 @@ export var EndPoint;
      * Used for continuation
      */
     EndPoint["NEXT"] = "next";
-})(EndPoint || (EndPoint = {}));
+})(EndPoint = exports.EndPoint || (exports.EndPoint = {}));
 /**
  * Categories that can be placed into search()
  */
-export var Category;
+var Category;
 (function (Category) {
     /**
      * Category Song
@@ -54,41 +57,41 @@ export var Category;
      * Category Single
      */
     Category["SINGLE"] = "SINGLE";
-})(Category || (Category = {}));
+})(Category = exports.Category || (exports.Category = {}));
 /**
  * @internal
  */
-export var CategoryURIBase64;
+var CategoryURIBase64;
 (function (CategoryURIBase64) {
     CategoryURIBase64["SONG"] = "RAAGAAgACgA";
     CategoryURIBase64["VIDEO"] = "BABGAAgACgA";
     CategoryURIBase64["ALBUM"] = "BAAGAEgACgA";
     CategoryURIBase64["ARTIST"] = "BAAGAAgASgA";
     CategoryURIBase64["PLAYLIST"] = "BAAGAAgACgB";
-})(CategoryURIBase64 || (CategoryURIBase64 = {}));
+})(CategoryURIBase64 = exports.CategoryURIBase64 || (exports.CategoryURIBase64 = {}));
 /**
  * Constant Links
  */
-export var ConstantURLs;
+var ConstantURLs;
 (function (ConstantURLs) {
     ConstantURLs["VIDEOLINK"] = "https://www.youtube.com/watch?v=";
     ConstantURLs["CHANNEL_URL"] = "https://music.youtube.com/channel/";
-})(ConstantURLs || (ConstantURLs = {}));
+})(ConstantURLs = exports.ConstantURLs || (exports.ConstantURLs = {}));
 /**
  * @internal
  */
-export var FlexColumnOffset;
+var FlexColumnOffset;
 (function (FlexColumnOffset) {
     FlexColumnOffset[FlexColumnOffset["MAIN"] = 0] = "MAIN";
     FlexColumnOffset[FlexColumnOffset["ALT"] = 1] = "ALT";
     FlexColumnOffset[FlexColumnOffset["ONLYRUN"] = 0] = "ONLYRUN";
-})(FlexColumnOffset || (FlexColumnOffset = {}));
+})(FlexColumnOffset = exports.FlexColumnOffset || (exports.FlexColumnOffset = {}));
 /**
  * @internal
  */
-export var FlexSecondRowOffset;
+var FlexSecondRowOffset;
 (function (FlexSecondRowOffset) {
     FlexSecondRowOffset[FlexSecondRowOffset["ARTIST"] = 0] = "ARTIST";
     FlexSecondRowOffset[FlexSecondRowOffset["OTHERS"] = 1] = "OTHERS";
-})(FlexSecondRowOffset || (FlexSecondRowOffset = {}));
+})(FlexSecondRowOffset = exports.FlexSecondRowOffset || (exports.FlexSecondRowOffset = {}));
 //# sourceMappingURL=enums.js.map

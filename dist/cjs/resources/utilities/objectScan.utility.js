@@ -1,5 +1,11 @@
-import objectScan from 'object-scan';
-export class ObjectScanUtility {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.$$ = exports.$ = exports.ObjectScanUtility = void 0;
+const object_scan_1 = __importDefault(require("object-scan"));
+class ObjectScanUtility {
     /**
      * Queries an object using a selector & returns the first result
      * @param selector A CSS selector string (excluding `+` & `~`)
@@ -40,7 +46,7 @@ export class ObjectScanUtility {
             'count',
         ];
         let rtn = 'value';
-        const result = (obj) => objectScan(this.adaptCSSSelector(selector), {
+        const result = (obj) => (0, object_scan_1.default)(this.adaptCSSSelector(selector), {
             get rtn() {
                 return rtn;
             },
@@ -77,5 +83,6 @@ export class ObjectScanUtility {
         });
     }
 }
-export const { $, $$, } = ObjectScanUtility;
+exports.ObjectScanUtility = ObjectScanUtility;
+exports.$ = ObjectScanUtility.$, exports.$$ = ObjectScanUtility.$$;
 //# sourceMappingURL=objectScan.utility.js.map

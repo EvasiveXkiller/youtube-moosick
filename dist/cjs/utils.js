@@ -1,5 +1,8 @@
-import { Category, CategoryURIBase64 } from './enums.js';
-export class utils {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.utils = void 0;
+const enums_js_1 = require("./enums.js");
+class utils {
     // FIXME: Should we deprecate this function?
     /**
      * fv (FieldVisitor)
@@ -99,24 +102,24 @@ export class utils {
         };
     }
     static mapCategoryToURL(category) {
-        let categoryURL = CategoryURIBase64.SONG;
+        let categoryURL = enums_js_1.CategoryURIBase64.SONG;
         switch (category) {
-            case Category.SONG:
-                categoryURL = CategoryURIBase64.SONG;
+            case enums_js_1.Category.SONG:
+                categoryURL = enums_js_1.CategoryURIBase64.SONG;
                 break;
-            case Category.VIDEO:
-                categoryURL = CategoryURIBase64.VIDEO;
+            case enums_js_1.Category.VIDEO:
+                categoryURL = enums_js_1.CategoryURIBase64.VIDEO;
                 break;
-            case Category.ALBUM:
-            case Category.EP:
-            case Category.SINGLE:
-                categoryURL = CategoryURIBase64.ALBUM;
+            case enums_js_1.Category.ALBUM:
+            case enums_js_1.Category.EP:
+            case enums_js_1.Category.SINGLE:
+                categoryURL = enums_js_1.CategoryURIBase64.ALBUM;
                 break;
-            case Category.ARTIST:
-                categoryURL = CategoryURIBase64.ARTIST;
+            case enums_js_1.Category.ARTIST:
+                categoryURL = enums_js_1.CategoryURIBase64.ARTIST;
                 break;
-            case Category.PLAYLIST:
-                categoryURL = CategoryURIBase64.PLAYLIST;
+            case enums_js_1.Category.PLAYLIST:
+                categoryURL = enums_js_1.CategoryURIBase64.PLAYLIST;
                 break;
             default:
                 break;
@@ -124,4 +127,5 @@ export class utils {
         return categoryURL;
     }
 }
+exports.utils = utils;
 //# sourceMappingURL=utils.js.map

@@ -1,4 +1,7 @@
-export class ClientError extends Error {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ClientError = void 0;
+class ClientError extends Error {
     constructor(message = 'No message provided, an error with errors?') {
         super(message);
         this.name = this.constructor.name;
@@ -21,4 +24,5 @@ export class ClientError extends Error {
         };
     }
 }
+exports.ClientError = ClientError;
 //# sourceMappingURL=client.error.js.map

@@ -1,22 +1,28 @@
-import axios from 'axios';
-import axios0 from 'axios/lib/adapters/http.js';
-import tough from 'tough-cookie';
-import { Category, EndPoint } from './enums.js';
-import { utils } from './utils.js';
-import { IllegalArgumentError, IllegalStateError } from './resources/errors/index.js';
-import { URLSearchParams } from 'url';
-import { GeneralParser, GetArtistParser, GetAlbumParser, GetPlaylistParser } from './parsers/index.js';
-import { AsyncConstructor } from './blocks/asyncConstructor.js';
-import { SearchSuggestions, ContinuablePlaylistURL, } from './resources/resultTypes/index.js';
-import { ContinuableUnsorted, ContinuableResult, ContinuableResultFactory, } from './resources/generalTypes/index.js';
-axios.defaults.adapter = axios0;
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.YoutubeMoosick = void 0;
+const axios_1 = __importDefault(require("axios"));
+const http_js_1 = __importDefault(require("axios/lib/adapters/http.js"));
+const tough_cookie_1 = __importDefault(require("tough-cookie"));
+const enums_js_1 = require("./enums.js");
+const utils_js_1 = require("./utils.js");
+const index_js_1 = require("./resources/errors/index.js");
+const url_1 = require("url");
+const index_js_2 = require("./parsers/index.js");
+const asyncConstructor_js_1 = require("./blocks/asyncConstructor.js");
+const index_js_3 = require("./resources/resultTypes/index.js");
+const index_js_4 = require("./resources/generalTypes/index.js");
+axios_1.default.defaults.adapter = http_js_1.default;
 // you found a kitten, please collect it
 /**
  * Main class to interact with methods
  *
  * @public
  */
-export class YoutubeMoosick extends AsyncConstructor {
+class YoutubeMoosick extends asyncConstructor_js_1.AsyncConstructor {
     client;
     cookies;
     config;
@@ -28,8 +34,8 @@ export class YoutubeMoosick extends AsyncConstructor {
      * @beta
      */
     async new() {
-        this.cookies = new tough.CookieJar();
-        this.client = axios.create({
+        this.cookies = new tough_cookie_1.default.CookieJar();
+        this.client = axios_1.default.create({
             baseURL: 'https://music.youtube.com/',
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36',
@@ -40,7 +46,7 @@ export class YoutubeMoosick extends AsyncConstructor {
         this.client.interceptors.request.use((req) => {
             if (!req.baseURL
                 || !req.headers) {
-                throw new IllegalStateError('Incomplete `req`');
+                throw new index_js_1.IllegalStateError('Incomplete `req`');
             }
             const cookies = this.cookies.getCookieStringSync(req.baseURL);
             if (cookies && cookies.length > 0) {
@@ -51,7 +57,7 @@ export class YoutubeMoosick extends AsyncConstructor {
         this.client.interceptors.response.use((res) => {
             if (!res.config?.baseURL
                 || (typeof res.headers !== 'object')) {
-                throw new IllegalStateError('Incomplete `req`');
+                throw new index_js_1.IllegalStateError('Incomplete `req`');
             }
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const { headers } = res;
@@ -71,7 +77,7 @@ export class YoutubeMoosick extends AsyncConstructor {
         const res = await this.client.get('/');
         const dataString = /(?<=ytcfg\.set\().+(?=\);)/.exec(res.data)?.[0];
         if (dataString == null) {
-            throw new IllegalStateError('API initialization returned a nullish value');
+            throw new index_js_1.IllegalStateError('API initialization returned a nullish value');
         }
         this.config = JSON.parse(dataString);
         return this;
@@ -91,9 +97,9 @@ export class YoutubeMoosick extends AsyncConstructor {
      * @internal
      */
     parseAndSetCookie(cookieString, baseURL) {
-        const cookie = tough.Cookie.parse(cookieString);
+        const cookie = tough_cookie_1.default.Cookie.parse(cookieString);
         if (cookie == null) {
-            throw new IllegalArgumentError(`"${String(cookieString)}" is not a cookie`, 'cookieString');
+            throw new index_js_1.IllegalArgumentError(`"${String(cookieString)}" is not a cookie`, 'cookieString');
         }
         this.cookies.setCookieSync(cookie, baseURL);
     }
@@ -108,14 +114,14 @@ export class YoutubeMoosick extends AsyncConstructor {
      * @internal
      */
     async createApiRequest(endpointName, inputVariables = {}, inputQuery = {}) {
-        const res = await this.client.post(`youtubei/${this.config.INNERTUBE_API_VERSION}/${endpointName}?${new URLSearchParams({
+        const res = await this.client.post(`youtubei/${this.config.INNERTUBE_API_VERSION}/${endpointName}?${new url_1.URLSearchParams({
             alt: 'json',
             key: this.config.INNERTUBE_API_KEY,
             ...inputQuery,
         })
             .toString()}`, {
             ...inputVariables,
-            ...utils.createApiContext(this.config),
+            ...utils_js_1.utils.createApiContext(this.config),
         }, {
             responseType: 'json',
             headers: {
@@ -134,7 +140,7 @@ export class YoutubeMoosick extends AsyncConstructor {
         if (res.data?.responseContext != null) {
             return res.data;
         }
-        throw new IllegalStateError('Youtube Music API request failed (`res.data?.responseContext` was nullish)');
+        throw new index_js_1.IllegalStateError('Youtube Music API request failed (`res.data?.responseContext` was nullish)');
     }
     /**
      * Get search suggestions from Youtube Music
@@ -148,36 +154,36 @@ export class YoutubeMoosick extends AsyncConstructor {
      * ```
      */
     async getSearchSuggestions(query) {
-        const res = await this.createApiRequest(EndPoint.SUGGESTIONS, {
+        const res = await this.createApiRequest(enums_js_1.EndPoint.SUGGESTIONS, {
             input: query,
         });
         if (res.contents == null) {
-            throw new IllegalStateError('No results found');
+            throw new index_js_1.IllegalStateError('No results found');
         }
         const { contents } = res.contents[0].searchSuggestionsSectionRenderer;
         if (!contents) {
-            throw new IllegalStateError('Results array not found');
+            throw new index_js_1.IllegalStateError('Results array not found');
         }
         return contents
-            .map((searchSuggestionRenderer) => SearchSuggestions
+            .map((searchSuggestionRenderer) => index_js_3.SearchSuggestions
             .from({
             title: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[0]?.text ?? '',
             artist: searchSuggestionRenderer.searchSuggestionRenderer.suggestion.runs[1]?.text ?? '',
         }));
     }
     async search(query, searchType) {
-        const URI = searchType ? `Eg-KAQwIA${utils.mapCategoryToURL(searchType)}MABqChAEEAMQCRAFEAo%3D` : '';
-        const ctx = await this.createApiRequest(EndPoint.SEARCH, {
+        const URI = searchType ? `Eg-KAQwIA${utils_js_1.utils.mapCategoryToURL(searchType)}MABqChAEEAMQCRAFEAo%3D` : '';
+        const ctx = await this.createApiRequest(enums_js_1.EndPoint.SEARCH, {
             query,
             params: URI,
         });
-        const { result, continuation, } = GeneralParser.parseSearchResult(ctx, searchType);
-        const continuableResult = new ContinuableResultFactory(searchType == null ? ContinuableUnsorted : ContinuableResult)
+        const { result, continuation, } = index_js_2.GeneralParser.parseSearchResult(ctx, searchType);
+        const continuableResult = new index_js_4.ContinuableResultFactory(searchType == null ? index_js_4.ContinuableUnsorted : index_js_4.ContinuableResult)
             .create({
             ctx: this,
             getContent: (context) => context.result,
             getContinuation: (context) => context.continuation,
-            parser: (context) => GeneralParser.parseSearchResult(context, searchType),
+            parser: (context) => index_js_2.GeneralParser.parseSearchResult(context, searchType),
             isDone: (context) => (context?.length ?? 0) === 0,
             continuation,
         })
@@ -199,10 +205,10 @@ export class YoutubeMoosick extends AsyncConstructor {
      */
     async getAlbum(browseId) {
         if (!browseId.startsWith('MPREb')) {
-            throw new IllegalArgumentError('Album browse IDs must start with "MPREb"', 'browseId');
+            throw new index_js_1.IllegalArgumentError('Album browse IDs must start with "MPREb"', 'browseId');
         }
-        const ctx = await this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.ALBUM));
-        return GetAlbumParser.parseAlbumURLPage(ctx);
+        const ctx = await this.createApiRequest(enums_js_1.EndPoint.BROWSE, utils_js_1.utils.buildEndpointContext(browseId, enums_js_1.Category.ALBUM));
+        return index_js_2.GetAlbumParser.parseAlbumURLPage(ctx);
     }
     /**
      * Gets the playlist using the Youtube Music API
@@ -221,25 +227,25 @@ export class YoutubeMoosick extends AsyncConstructor {
     async getPlaylist(browseId, contentLimit = 100) {
         if (!browseId.startsWith('VL')
             && !browseId.startsWith('PL')) {
-            throw new IllegalArgumentError('Playlist browse IDs must start with "VL" or "PL"', 'browseId');
+            throw new index_js_1.IllegalArgumentError('Playlist browse IDs must start with "VL" or "PL"', 'browseId');
         }
         if (browseId.startsWith('PL')) {
             browseId = 'VL' + browseId;
         }
-        const ctx = await this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.PLAYLIST));
-        const result = GetPlaylistParser.parsePlaylistURL(ctx);
+        const ctx = await this.createApiRequest(enums_js_1.EndPoint.BROWSE, utils_js_1.utils.buildEndpointContext(browseId, enums_js_1.Category.PLAYLIST));
+        const result = index_js_2.GetPlaylistParser.parsePlaylistURL(ctx);
         // Results here are expected
-        const continuableResult = ContinuablePlaylistURL.from({
+        const continuableResult = index_js_3.ContinuablePlaylistURL.from({
             continuation: result.continuation,
             headers: result.headers,
-            playlistContents: new ContinuableResultFactory()
+            playlistContents: new index_js_4.ContinuableResultFactory()
                 .create({
                 ctx: this,
                 getContent: (context) => context.playlistContents,
                 getContinuation: (context) => context.continuation,
-                parser: GetPlaylistParser.parsePlaylistURL.bind(GetPlaylistParser),
+                parser: index_js_2.GetPlaylistParser.parsePlaylistURL.bind(index_js_2.GetPlaylistParser),
                 continuation: result.continuation,
-                endpoint: EndPoint.BROWSE,
+                endpoint: enums_js_1.EndPoint.BROWSE,
             })
                 .append(result.playlistContents),
         });
@@ -262,10 +268,11 @@ export class YoutubeMoosick extends AsyncConstructor {
      */
     async getArtist(browseId) {
         if (!browseId.startsWith('UC')) {
-            throw new IllegalArgumentError('Artist browse IDs must start with "UC"', 'browseId');
+            throw new index_js_1.IllegalArgumentError('Artist browse IDs must start with "UC"', 'browseId');
         }
-        const ctx = await this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.ARTIST));
-        return GetArtistParser.parseArtistURLPage(ctx);
+        const ctx = await this.createApiRequest(enums_js_1.EndPoint.BROWSE, utils_js_1.utils.buildEndpointContext(browseId, enums_js_1.Category.ARTIST));
+        return index_js_2.GetArtistParser.parseArtistURLPage(ctx);
     }
 }
+exports.YoutubeMoosick = YoutubeMoosick;
 //# sourceMappingURL=index.js.map
