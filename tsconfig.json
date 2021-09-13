@@ -22,7 +22,7 @@
 		],
 		"esModuleInterop": true,
 		"isolatedModules": true,
-		// "module": "esnext",
+		"module": "esnext",
 		"target": "esnext",
 		"sourceMap": true,
 		"moduleResolution": "node",
