@@ -1,7 +1,6 @@
 import test from 'tape';
-import { YoutubeMoosick } from '../../index.js';
+import { YoutubeMoosick, Category } from '../../index.js';
 import { EitherShape, WalkUtility } from '../../resources/utilities/walk.utility.js';
-import { Category } from '../../enums.js';
 import { Album, Thumbnails, Artist, Song, Playlist, AlbumExtended, ArtistExtended, Video, } from '../../resources/generalTypes/index.js';
 import { Albums, AlbumURL, AlbumURLHeader, ArtistContent, ArtistHeader, ArtistURL, ContinuablePlaylistURL, PlaylistContent, PlaylistHeader, Single, Track, Videos, } from '../../resources/resultTypes/index.js';
 test('searchUnsorted', async (t) => {

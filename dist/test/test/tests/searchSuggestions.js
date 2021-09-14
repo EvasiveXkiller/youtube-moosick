@@ -1,5 +1,5 @@
 import test from 'tape';
-import { YoutubeMoosick } from '../../index.js';
+import { YoutubeMoosick } from '../../YoutubeMoosick.js';
 import { SearchSuggestions } from '../../resources/resultTypes/searchSuggestions.js';
 import { WalkUtility } from '../../resources/utilities/walk.utility.js';
 test('searchSuggestions', async (t) => {
