@@ -1,0 +1,1 @@
+{"version":3,"file":"playlist.d.ts","sourceRoot":"","sources":["../../../../src/resources/generalTypes/playlist.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,IAAI,EAAE,MAAM,sBAAsB,CAAC;AAC5C,OAAO,KAAK,EAAE,MAAM,EAAE,MAAM,aAAa,CAAC;AAE1C,qBAAa,QAAS,SAAQ,IAAI;IAClB,IAAI,EAAE,MAAM,CAAC;IACb,QAAQ,EAAE,MAAM,CAAC;IACjB,MAAM,EAAE,MAAM,EAAE,CAAC;IACjB,UAAU,EAAE,MAAM,CAAC;CAClC"}
