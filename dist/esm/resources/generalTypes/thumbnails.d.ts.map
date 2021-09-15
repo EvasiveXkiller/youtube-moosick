@@ -1,0 +1,1 @@
+{"version":3,"file":"thumbnails.d.ts","sourceRoot":"","sources":["../../../../src/resources/generalTypes/thumbnails.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,IAAI,EAAE,MAAM,sBAAsB,CAAC;AAC5C,OAAO,KAAK,EAAE,gBAAgB,EAAE,MAAM,iCAAiC,CAAC;AAExE,qBAAa,UAAW,SAAQ,IAAK,YAAW,gBAAgB;IAChD,GAAG,EAAE,MAAM,CAAC;IACZ,KAAK,EAAE,MAAM,CAAC;IACd,MAAM,EAAE,MAAM,CAAC;CAC9B"}
