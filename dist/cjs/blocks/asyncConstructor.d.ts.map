@@ -1,0 +1,1 @@
+{"version":3,"file":"asyncConstructor.d.ts","sourceRoot":"","sources":["../../../src/blocks/asyncConstructor.ts"],"names":[],"mappings":"AAEA,qBAAa,gBAAgB;IAC5B,OAAO,CAAC,MAAM,CAAC,mBAAmB,CAAS;IAE3C,SAAS;WAQW,GAAG,CAAC,CAAC,GAAG,gBAAgB,EAAE,GAAG,KAAK,EAAE,GAAG,EAAE,GAAG,OAAO,CAAC,CAAC,CAAC;IAM1E,SAAS,CAAC,MAAM,CAAC,KAAK,IAAI,IAAI;CAG9B"}

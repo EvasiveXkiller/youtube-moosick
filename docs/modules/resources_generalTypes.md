@@ -30,4 +30,4 @@
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/a6e6546/src/resources/generalTypes/unsorted.ts#L9)
+[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/e19b17f/src/resources/generalTypes/unsorted.ts#L9)
