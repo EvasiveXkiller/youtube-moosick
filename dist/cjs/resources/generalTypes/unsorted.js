@@ -1,15 +1,21 @@
-import { Factory } from '../../blocks/item.js';
-import { ContinuableResult } from './continuableResult.js';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ContinuableUnsorted = exports.Unsorted = exports.UnsortedFactory = void 0;
+const item_js_1 = require("../../blocks/item.js");
+const continuableResult_js_1 = require("./continuableResult.js");
 /**
  * @internal
  */
-export class UnsortedFactory extends Factory {
+class UnsortedFactory extends item_js_1.Factory {
     constructor() {
         super(Unsorted);
     }
 }
-export class Unsorted extends Array {
+exports.UnsortedFactory = UnsortedFactory;
+class Unsorted extends Array {
 }
-export class ContinuableUnsorted extends ContinuableResult {
+exports.Unsorted = Unsorted;
+class ContinuableUnsorted extends continuableResult_js_1.ContinuableResult {
 }
+exports.ContinuableUnsorted = ContinuableUnsorted;
 //# sourceMappingURL=unsorted.js.map

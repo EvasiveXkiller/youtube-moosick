@@ -1,3 +1,4 @@
+"use strict";
 /*
     eslint-disable
         @typescript-eslint/no-unsafe-return,
@@ -5,7 +6,9 @@
         @typescript-eslint/no-unsafe-assignment,
 */
 // stolen wholesale from https://stackoverflow.com/a/61863345
-export function enumerable(target, name, desc) {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.unenumerable = exports.enumerable = void 0;
+function enumerable(target, name, desc) {
     if (desc) {
         desc.enumerable = true;
         return desc;
@@ -23,7 +26,8 @@ export function enumerable(target, name, desc) {
         configurable: true,
     });
 }
-export function unenumerable(target, name, desc) {
+exports.enumerable = enumerable;
+function unenumerable(target, name, desc) {
     if (desc) {
         desc.enumerable = false;
         return desc;
@@ -39,4 +43,5 @@ export function unenumerable(target, name, desc) {
         configurable: true,
     });
 }
+exports.unenumerable = unenumerable;
 //# sourceMappingURL=enumerable.decorator.js.map

@@ -1,5 +1,8 @@
-import { WalkUtility } from '../resources/utilities/index.js';
-export class Item {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Factory = exports.Item = void 0;
+const index_js_1 = require("../resources/utilities/index.js");
+class Item {
     /**
      * @internal
      * @deprecated You're probably looking for `Item.from()`
@@ -10,19 +13,21 @@ export class Item {
     // to hide protected types & `toString`
     options) {
         const instance = new this();
-        WalkUtility.mirror(options, instance);
+        index_js_1.WalkUtility.mirror(options, instance);
         return instance;
     }
 }
-export class Factory {
+exports.Item = Item;
+class Factory {
     item;
     constructor(item) {
         this.item = item;
     }
     create(options) {
         const instance = new this.item();
-        WalkUtility.mirror(options, instance);
+        index_js_1.WalkUtility.mirror(options, instance);
         return instance;
     }
 }
+exports.Factory = Factory;
 //# sourceMappingURL=item.js.map

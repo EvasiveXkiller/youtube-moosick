@@ -1,6 +1,6 @@
 import { Factory, Item } from '../../blocks/item.js';
 import { EndPoint } from '../../enums.js';
-import type { YoutubeMoosick } from '../../index.js';
+import type { YoutubeMoosick } from '../../YoutubeMoosick.js';
 import type { Result as IResult, NextContinuationData } from '../etc/rawResultTypes/common.js';
 import { unenumerable } from '../decorators/enumerable.decorator.js';
 

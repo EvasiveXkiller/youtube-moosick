@@ -1,7 +1,6 @@
 import test from 'tape';
-import { YoutubeMoosick } from '../../index.js';
+import { YoutubeMoosick, Category } from '../../index.js';
 import { EitherShape, WalkUtility } from '../../resources/utilities/walk.utility.js';
-import { Category } from '../../enums.js';
 import {
 	Album,
 	Thumbnails,
@@ -402,6 +401,8 @@ test('api_getPlaylistParser', async (t) => {
 	const ytms = await YoutubeMoosick.new();
 	const resultSmall = await ytms.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
 	const resultLarge = await ytms.getPlaylist('PLVxe6MjYOfpwM3Yf7_GcR03ieesDBn0h7', 200);
+	const quad_flexColumn = await ytms.getPlaylist('PLhsz9CILh357zA1yMT-K5T9ZTNEU6Fl6n', 400);
+	console.log(quad_flexColumn.playlistContents.length);
 	const expected = [
 		ContinuablePlaylistURL.from({
 			continuation: {
@@ -461,6 +462,15 @@ test('api_getPlaylistParser', async (t) => {
 				expected[0],
 			),
 		'api_getPlaylistURLParser (large playlist) result has expected shape',
+	);
+
+	t.true(
+		WalkUtility
+			.walkAndAssertShape(
+				quad_flexColumn,
+				expected[0],
+			),
+		'api_getPlaylistURLParser (quad_flexColumn playlist) result has expected shape',
 	);
 
 	t.end();

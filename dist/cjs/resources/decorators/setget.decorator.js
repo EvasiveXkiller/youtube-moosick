@@ -1,9 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.get = exports.set = void 0;
 const contextToKeyValueMap = new Map();
 /**
  * Adds a callback to when a property is set.
  * @param onSet Called when a property is set. Returns the value to be set by the setter.
  */
-export function set(onSet) {
+function set(onSet) {
     return function (target, name) {
         const desc = Object.getOwnPropertyDescriptor(target, name)
             ?? {
@@ -46,11 +49,12 @@ export function set(onSet) {
         Object.defineProperty(target, name, desc);
     };
 }
+exports.set = set;
 /**
  * Adds a callback to when a property is get.
  * @param onGet Called when a property is get. Returns the value to be gotten by the getter.
  */
-export function get(onGet) {
+function get(onGet) {
     return function (target, name) {
         const desc = Object.getOwnPropertyDescriptor(target, name)
             ?? {
@@ -92,4 +96,5 @@ export function get(onGet) {
         Object.defineProperty(target, name, desc);
     };
 }
+exports.get = get;
 //# sourceMappingURL=setget.decorator.js.map

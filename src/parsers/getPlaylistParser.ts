@@ -1,9 +1,13 @@
 import { $, $$ } from '../resources/utilities/objectScan.utility.js';
 import { ParsersExtended } from './parsersExtended.js';
 import { Continuation, PlaylistContent, PlaylistHeader, PlaylistURL } from '../resources/resultTypes/playlistURL.js';
-import type { MusicResponsiveListItemFlexColumnRenderer, MusicThumbnailRenderer, Thumbnail } from '../resources/etc/rawResultTypes/rawGetSongURL.js';
-import type { MusicDetailHeaderRenderer } from '../resources/etc/rawResultTypes/rawGetPlaylistURL.js';
-import { DisplayPriority, Run } from '../resources/etc/rawResultTypes/common.js';
+import type { Thumbnail } from '../resources/etc/rawResultTypes/rawGetSongURL.js';
+import type {
+	MusicDetailHeaderRenderer,
+	MusicResponsiveListItemRenderer,
+	MusicThumbnailRenderer,
+} from '../resources/etc/rawResultTypes/rawGetPlaylistURL.js';
+import type { MusicResponsiveListItemFlexColumnRenderer } from '../resources/etc/rawResultTypes/common.js';
 import { FlexColumnOffset } from '../enums.js';
 
 /**
@@ -15,14 +19,15 @@ import { FlexColumnOffset } from '../enums.js';
  */
 export class GetPlaylistParser {
 	public static parsePlaylistURL(context: any): PlaylistURL {
-		// Gets the entire flexColumn, and filter those with empty members
-		const flexColumn = ($$('.musicResponsiveListItemFlexColumnRenderer')(context) as MusicResponsiveListItemFlexColumnRenderer[])
-			.filter(
-				(item) => (
-					item.text?.runs != null
-					&& item.displayPriority === DisplayPriority.HIGH
-				),
-			);
+		// Gets all the ListItemRenderers and pushes the first 2 out only
+		const flexColumn: MusicResponsiveListItemFlexColumnRenderer[] = [];
+		const allResponsiveRenderers = $$('.musicResponsiveListItemRenderer')(context) as MusicResponsiveListItemRenderer[];
+		// eslint-disable-next-line @typescript-eslint/prefer-for-of
+		for (let i = 0; i < allResponsiveRenderers.length; i++) {
+			flexColumn.push(allResponsiveRenderers[i].flexColumns[0].musicResponsiveListItemFlexColumnRenderer);
+			flexColumn.push(allResponsiveRenderers[i].flexColumns[1].musicResponsiveListItemFlexColumnRenderer);
+		}
+
 		const unprocessedHeader = ($$('.musicDetailHeaderRenderer')(context) as MusicDetailHeaderRenderer[]);
 		const allThumbnailRenderers = ($$('.musicThumbnailRenderer')(context)) as MusicThumbnailRenderer[];
 		const continuation = ($('.nextContinuationData')(context)) as Continuation;
@@ -33,8 +38,8 @@ export class GetPlaylistParser {
 			playlistContents.push({
 				trackTitle: $('.text')(flexColumnFirstRow) as string,
 				trackId: $('.videoId')(flexColumnFirstRow) as string,
-				artist: ParsersExtended.artistParser(flexColumn[i + 1].text.runs as Run[]),
-				thumbnail: allThumbnailRenderers[Math.floor(i / 2)].thumbnail.thumbnails,
+				artist: ParsersExtended.artistParser(flexColumn[i + 1].text.runs),
+				thumbnail: allThumbnailRenderers[Math.floor(i / 2)]?.thumbnail?.thumbnails ?? [],
 			});
 		}
 

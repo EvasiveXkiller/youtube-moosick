@@ -1,0 +1,1 @@
+{"version":3,"file":"getAlbumParser.d.ts","sourceRoot":"","sources":["../../../src/parsers/getAlbumParser.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,QAAQ,EAAyB,MAAM,sCAAsC,CAAC;AAIvF,OAAO,KAAK,EACX,kBAAkB,EAElB,MAAM,mDAAmD,CAAC;AAI3D;;;;;;GAMG;AACH,qBAAa,cAAc;IAC1B;;;OAGG;WACW,iBAAiB,CAAC,OAAO,EAAE,kBAAkB,GAAG,QAAQ;IAyBtE,OAAO,CAAC,MAAM,CAAC,uBAAuB;CAYtC"}

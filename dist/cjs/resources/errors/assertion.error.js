@@ -1,5 +1,8 @@
-import { ClientError } from './client.error.js';
-export class AssertionError extends ClientError {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AssertionError = void 0;
+const client_error_js_1 = require("./client.error.js");
+class AssertionError extends client_error_js_1.ClientError {
     item1;
     item2;
     constructor(message, item1, item2) {
@@ -12,4 +15,5 @@ export class AssertionError extends ClientError {
         }
     }
 }
+exports.AssertionError = AssertionError;
 //# sourceMappingURL=assertion.error.js.map
