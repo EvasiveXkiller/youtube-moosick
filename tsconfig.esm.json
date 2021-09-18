@@ -4,6 +4,7 @@
 		"src/test",
 	],
 	"compilerOptions": {
+		"noEmit": false,
 		"module": "esnext",
 		"outDir": "dist/esm"
 	},

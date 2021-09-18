@@ -5,6 +5,7 @@
 		"types"
 	],
 	"compilerOptions": {
+		"noEmit": false,
 		"module": "esnext",
 		"outDir": "dist/test"
 	},
