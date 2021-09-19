@@ -12,9 +12,10 @@ export declare class ContinuablePlaylistURL extends PlaylistURL {
 }
 export declare class PlaylistContent extends Item {
     trackTitle: string;
-    trackId?: string;
+    trackId: string;
     artist: Artist[];
     thumbnail: Thumbnails[];
+    duration: number;
 }
 export declare class PlaylistHeader extends Item {
     playlistName: string;

@@ -9,7 +9,6 @@ class ContinuablePlaylistURL extends PlaylistURL {
 }
 exports.ContinuablePlaylistURL = ContinuablePlaylistURL;
 class PlaylistContent extends item_js_1.Item {
-    trackId;
 }
 exports.PlaylistContent = PlaylistContent;
 class PlaylistHeader extends item_js_1.Item {
