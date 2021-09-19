@@ -341,7 +341,7 @@ test('api_getPlaylistParser', async (t) => {
                             width: Number(),
                         }),
                     ],
-                    trackId: String(),
+                    trackId: new EitherShape([String(), undefined]),
                     trackTitle: String(),
                     duration: Number(),
                 }),
