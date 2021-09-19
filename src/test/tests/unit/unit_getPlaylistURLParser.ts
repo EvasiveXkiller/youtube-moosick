@@ -1,7 +1,7 @@
 import test from 'tape';
 import rawGetPlaylistURL from '../../dummy/rawGetPlaylistURL.json';
 import { GetPlaylistParser } from '../../../parsers/getPlaylistParser.js';
-import { WalkUtility, EitherShape } from '../../../resources/utilities/index.js';
+import { WalkUtility } from '../../../resources/utilities/index.js';
 import { PlaylistContent, PlaylistHeader, PlaylistURL } from '../../../resources/resultTypes/index.js';
 import { Artist, Thumbnails } from '../../../resources/generalTypes/index.js';
 import type { PlaylistURLFullResult } from '../../../resources/etc/rawResultTypes/rawGetPlaylistURL.js';
@@ -44,8 +44,9 @@ test('unit_getPlaylistURLParser', (t) => {
 							width: Number(),
 						}),
 					],
-					trackId: new EitherShape([String(), undefined]) as unknown as string,
+					trackId: String(),
 					trackTitle: String(),
+					duration: Number(),
 				}),
 			],
 		}),
