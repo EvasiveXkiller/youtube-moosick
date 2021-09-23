@@ -87,7 +87,7 @@ export class ParsersExtended {
 				? ConstantURLs.CHANNEL_URL + String(artist.navigationEndpoint?.browseEndpoint?.browseId ?? '')
 				: '',
 		})));
-		return semiParsedArtist.filter((_, i) => i % 2);
+		return semiParsedArtist.filter((str) => !(/^\s*\W\s*$/.exec(str.name)));
 	}
 
 	/**

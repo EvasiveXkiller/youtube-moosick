@@ -30,7 +30,6 @@ test('searchUnsorted', async (t) => {
 	const api = await YoutubeMoosick.new();
 	const result = await api.search('Stay');
 	const resultButLink = await api.search('https://www.youtube.com/watch?v=ix1nKNZfr0s');
-
 	t.true(result instanceof Array, 'is array');
 
 	const expected = [
