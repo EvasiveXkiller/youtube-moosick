@@ -34,6 +34,9 @@ import {
 	ContinuableResultFactory,
 } from './resources/generalTypes/index.js';
 
+export * from './resources/resultTypes/index.js';
+export * from './resources/generalTypes/index.js';
+
 axios.defaults.adapter = axios0;
 
 // you found a kitten, please collect it
