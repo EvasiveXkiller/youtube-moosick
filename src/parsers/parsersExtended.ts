@@ -80,14 +80,14 @@ export class ParsersExtended {
 	 * @param artistRaw - The raw runs of artist
 	 */
 	static artistParser(artistRaw: Run[]): Artist[] {
-		const artistFiltered = artistRaw.filter((artist) => artist.navigationEndpoint !== undefined);
-		return artistFiltered.map((artist) => (Artist.from({
+		const semiParsedArtist = artistRaw.map((artist) => (Artist.from({
 			name: artist.text,
 			browseId: artist.navigationEndpoint?.browseEndpoint?.browseId ?? '',
-			url: artist.navigationEndpoint?.browseEndpoint?.browseId === ''
-				? ''
-				: ConstantURLs.CHANNEL_URL + String(artist.navigationEndpoint?.browseEndpoint?.browseId ?? ''),
+			url: artist.navigationEndpoint?.browseEndpoint?.browseId
+				? ConstantURLs.CHANNEL_URL + String(artist.navigationEndpoint?.browseEndpoint?.browseId ?? '')
+				: '',
 		})));
+		return semiParsedArtist.filter((_, i) => i % 2);
 	}
 
 	/**

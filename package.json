@@ -1,6 +1,6 @@
 {
     "name": "youtube-moosick",
-    "version": "0.2.7",
+    "version": "0.2.8",
     "description": "Unofficial Youtube music API, fully written in TypeScript",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
@@ -15,7 +15,7 @@
     "scripts": {
         "test": "node --require @nextools/suppress-experimental-warnings --experimental-json-modules dist/test/test/index",
         "dev": "tsc --watch",
-        "build" : "npm run build:cjs && npm run build:esm && npm run build:test",
+        "build": "npm run build:cjs && npm run build:esm && npm run build:test",
         "build:cjs": "tsc --build tsconfig.cjs.json --clean && tsc --build tsconfig.cjs.json && node -e \"require('fs').writeFileSync('./dist/cjs/package.json',JSON.stringify({type:'commonjs'}))\"",
         "build:esm": "tsc --build tsconfig.esm.json --clean && tsc --build tsconfig.esm.json",
         "build:test": "tsc --build tsconfig.test.json --clean && tsc --build tsconfig.test.json",
@@ -55,6 +55,7 @@
     "devDependencies": {
         "@nextools/suppress-experimental-warnings": "^0.1.0",
         "@types/glob": "^7.1.4",
+        "@types/node": "^16.9.1",
         "@types/tape": "^4.13.2",
         "@types/tough-cookie": "^4.0.1",
         "@typescript-eslint/eslint-plugin": "^4.31.0",
@@ -71,7 +72,6 @@
         "typescript": "^4.4.2"
     },
     "dependencies": {
-        "@types/node": "^16.9.1",
         "axios": "^0.21.4",
         "object-scan": "^17.0.1",
         "readdir-enhanced": "^6.0.4",
