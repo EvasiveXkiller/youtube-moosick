@@ -1,27 +1,35 @@
 import test from 'tape';
-import { YoutubeMoosick, Category } from '../../index.js';
+import { Category, YoutubeMoosick } from '../../index.js';
 import { EitherShape, WalkUtility } from '../../resources/utilities/walk.utility.js';
 import {
 	Album,
-	Thumbnails,
-	Artist,
-	Song,
-	Playlist,
 	AlbumExtended,
-	ArtistExtended, Video,
+	Artist,
+	ArtistExtended,
+	Playlist,
+	Song,
+	Thumbnails,
+	Video,
 } from '../../resources/generalTypes/index.js';
 import {
-	Albums, AlbumURL, AlbumURLHeader,
-	ArtistContent, ArtistHeader, ArtistURL, ContinuablePlaylistURL,
+	Albums,
+	AlbumURL,
+	AlbumURLHeader,
+	ArtistContent,
+	ArtistHeader,
+	ArtistURL,
+	ContinuablePlaylistURL,
 	PlaylistContent,
 	PlaylistHeader,
-	Single, Track,
+	Single,
+	Track,
 	Videos,
 } from '../../resources/resultTypes/index.js';
 
 test('searchUnsorted', async (t) => {
 	const api = await YoutubeMoosick.new();
-	const result = await api.search('All We Know');
+	const result = await api.search('Stay');
+	const resultButLink = await api.search('https://www.youtube.com/watch?v=ix1nKNZfr0s');
 
 	t.true(result instanceof Array, 'is array');
 
@@ -133,6 +141,15 @@ test('searchUnsorted', async (t) => {
 				expected as any,
 			),
 		'result has expected shape',
+	);
+
+	t.true(
+		WalkUtility
+			.walkAndAssertShape(
+				resultButLink,
+				expected as any,
+			),
+		'resultButLink has expected shape',
 	);
 
 	t.end();
@@ -402,7 +419,7 @@ test('api_getPlaylistParser', async (t) => {
 	const resultSmall = await ytms.getPlaylist('PLXs921kKn8XT5_bq5kR2gQ_blPZ7DgyS1');
 	const resultLarge = await ytms.getPlaylist('PLVxe6MjYOfpwM3Yf7_GcR03ieesDBn0h7', 200);
 	const quad_flexColumn = await ytms.getPlaylist('PLhsz9CILh357zA1yMT-K5T9ZTNEU6Fl6n', 400);
-	console.log(quad_flexColumn.playlistContents.length);
+
 	const expected = [
 		ContinuablePlaylistURL.from({
 			continuation: {
