@@ -81,14 +81,14 @@ The return of this function depends on the supplied value of `searchType`.
 
 | Category | Return Type |
 | :------ | :------ |
-| `undefined` | `Promise`<[`ContinuableUnsorted`](./docs/classes/resources_generalTypes.ContinuableUnsorted.md)\> |
-| [`Category.SONG`](./docs/enums/enums.Category.md#song) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<Song>`](./docs/classes/resources_generalTypes.Song.md)\> |
-| [`Category.VIDEO`](./docs/enums/enums.Category.md#video) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<Video>`](./docs/classes/resources_generalTypes.Video.md)\> |
-| [`Category.ALBUM`](./docs/enums/enums.Category.md#album),[`Category.SINGLE`](./docs/enums/enums.Category.md#single),[`Category.EP`](./docs/enums/enums.Category.md#ep)| `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<Album>`](./docs/classes/resources_generalTypes.Album.md)\> |
-| [`Category.ARTIST`](./docs/enums/enums.Category.md#artist) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<ArtistExtended>`](./docs/classes/resources_generalTypes.ArtistExtended.md)\> |
-| [`Category.PLAYLIST`](./docs/enums/enums.Category.md#playlist) | `Promise`<[`ContinuableResult`](./docs/classes/resources_generalTypes.ContinuableResult.md)[`<Playlist>`](./docs/classes/resources_generalTypes.Playlist.md)\> |
+| `undefined` | `Promise`<[`ContinuableUnsorted`](./docs/classes/index.ContinuableUnsorted.md)\> |
+| [`Category.SONG`](./docs/enums/enums.Category.md#song) | `Promise`<[`ContinuableResult`](./docs/classes/index.ContinuableResult.md)[`<Song>`](./docs/classes/index.Song.md)\> |
+| [`Category.VIDEO`](./docs/enums/enums.Category.md#video) | `Promise`<[`ContinuableResult`](./docs/classes/index.ContinuableResult.md)[`<Video>`](./docs/classes/index.Video.md)\> |
+| [`Category.ALBUM`](./docs/enums/enums.Category.md#album),[`Category.SINGLE`](./docs/enums/enums.Category.md#single),[`Category.EP`](./docs/enums/enums.Category.md#ep)| `Promise`<[`ContinuableResult`](./docs/classes/index.ContinuableResult.md)[`<Album>`](./docs/classes/index.Album.md)\> |
+| [`Category.ARTIST`](./docs/enums/enums.Category.md#artist) | `Promise`<[`ContinuableResult`](./docs/classes/index.ContinuableResult.md)[`<ArtistExtended>`](./docs/classes/index.ArtistExtended.md)\> |
+| [`Category.PLAYLIST`](./docs/enums/enums.Category.md#playlist) | `Promise`<[`ContinuableResult`](./docs/classes/index.ContinuableResult.md)[`<Playlist>`](./docs/classes/index.Playlist.md)\> |
 
-For more info, see [here](./docs/modules/resources_resultTypes.md).
+For more info, see [here](./docs/modules/index.md).
 
 ##### Example
 
@@ -163,7 +163,7 @@ ContinuableResult(20) [
 
 ### `getSearchSuggestions`
 
-▸ **getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]>
+▸ **getSearchSuggestions**(`query`): `Promise`<[`SearchSuggestions`](./docs/classes/index.SearchSuggestions.md)[]>
 
 Fetches search suggestions from YouTube Music.
 
@@ -175,7 +175,7 @@ Fetches search suggestions from YouTube Music.
 
 #### Returns
 
-`Promise`<[`SearchSuggestions`](./docs/classes/resources_resultTypes.SearchSuggestions.md)[]\>
+`Promise`<[`SearchSuggestions`](./docs/classes/index.SearchSuggestions.md)[]\>
 
 An object containing data gotten from the search.
 
@@ -201,7 +201,7 @@ console.log(suggestions);
 
 ### `getAlbum`
 
-▸ **getAlbum**(`browseId`): `Promise`<[`AlbumURL`](./docs/classes/resources_resultTypes.AlbumURL.md)\>
+▸ **getAlbum**(`browseId`): `Promise`<[`AlbumURL`](./docs/classes/index.AlbumURL.md)\>
 
 Fetches album details from YouTube Music.
 
@@ -213,7 +213,7 @@ Fetches album details from YouTube Music.
 
 #### Returns
 
-`Promise`<[`AlbumURL`](./docs/classes/resources_resultTypes.AlbumURL.md)\>
+`Promise`<[`AlbumURL`](./docs/classes/index.AlbumURL.md)\>
 
 An object containing data of the Album requested.
 
@@ -268,7 +268,7 @@ October 26, 2020, by JYP Entertainment and Republic Records. It is the group's f
 
 ### `getArtist`
 
-▸ **getArtist**(`browseId`): `Promise`<[`ArtistURL`](./docs/classes/resources_resultTypes.ArtistURL.md)\>
+▸ **getArtist**(`browseId`): `Promise`<[`ArtistURL`](./docs/classes/index.ArtistURL.md)\>
 
 Fetches artist details from YouTube Music.
 
@@ -280,7 +280,7 @@ Fetches artist details from YouTube Music.
 
 #### Returns
 
-`Promise`<[`ArtistURL`](./docs/classes/resources_resultTypes.ArtistURL.md)\>
+`Promise`<[`ArtistURL`](./docs/classes/index.ArtistURL.md)\>
 
 An object containing data of the Artist requested.
 
@@ -332,7 +332,7 @@ ongyeon, Momo, Sana, Jihyo, Mina, Dahyun, Chaeyoung, and Tzuyu. Twice was ...',
 
 ### `getPlaylist`
 
-▸ **getPlaylist**(`browseId`, `contentLimit?`): `Promise`<[`PlaylistURL`](./docs/classes/resources_resultTypes.PlaylistURL.md)\>
+▸ **getPlaylist**(`browseId`, `contentLimit?`): `Promise`<[`PlaylistURL`](./docs/classes/index.PlaylistURL.md)\>
 
 Fetches playlist details from YouTube Music.
 
@@ -345,7 +345,7 @@ Fetches playlist details from YouTube Music.
 
 #### Returns
 
-`Promise`<[`PlaylistURL`](./docs/classes/resources_resultTypes.PlaylistURL.md)\>
+`Promise`<[`PlaylistURL`](./docs/classes/index.PlaylistURL.md)\>
 
 An object containing data of the Playlist requested.
 
