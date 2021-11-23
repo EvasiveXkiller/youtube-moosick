@@ -52,7 +52,7 @@ console.log(results)
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:306](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L306)
+[src/YoutubeMoosick.ts:306](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L306)
 
 ___
 
@@ -84,7 +84,7 @@ console.log(results);
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:383](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L383)
+[src/YoutubeMoosick.ts:383](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L383)
 
 ___
 
@@ -117,7 +117,7 @@ console.log(results);
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:333](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L333)
+[src/YoutubeMoosick.ts:333](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L333)
 
 ___
 
@@ -147,7 +147,7 @@ console.log(suggestions);
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:212](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L212)
+[src/YoutubeMoosick.ts:212](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L212)
 
 ___
 
@@ -191,7 +191,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:255](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L255)
+[src/YoutubeMoosick.ts:255](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L255)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](index.ContinuableResult.md)<[`Video`](index.Video.md), `ContinuableResultBlueprint`<[`Video`](index.Video.md)\>, [`Video`](index.Video.md)[]\>\>
 
@@ -214,7 +214,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:256](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L256)
+[src/YoutubeMoosick.ts:256](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L256)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](index.ContinuableResult.md)<[`Song`](index.Song.md), `ContinuableResultBlueprint`<[`Song`](index.Song.md)\>, [`Song`](index.Song.md)[]\>\>
 
@@ -237,7 +237,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:257](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L257)
+[src/YoutubeMoosick.ts:257](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L257)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](index.ContinuableResult.md)<[`Playlist`](index.Playlist.md), `ContinuableResultBlueprint`<[`Playlist`](index.Playlist.md)\>, [`Playlist`](index.Playlist.md)[]\>\>
 
@@ -260,7 +260,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:258](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L258)
+[src/YoutubeMoosick.ts:258](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L258)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](index.ContinuableResult.md)<[`ArtistExtended`](index.ArtistExtended.md), `ContinuableResultBlueprint`<[`ArtistExtended`](index.ArtistExtended.md)\>, [`ArtistExtended`](index.ArtistExtended.md)[]\>\>
 
@@ -283,7 +283,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:259](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L259)
+[src/YoutubeMoosick.ts:259](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L259)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](index.ContinuableResult.md)<[`Album`](index.Album.md), `ContinuableResultBlueprint`<[`Album`](index.Album.md)\>, [`Album`](index.Album.md)[]\>\>
 
@@ -306,7 +306,7 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:260](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L260)
+[src/YoutubeMoosick.ts:260](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L260)
 
 ▸ **search**<`T`\>(`query`, `searchType?`): `Promise`<[`ContinuableResult`](index.ContinuableResult.md)<[`Video`](index.Video.md) \| [`Song`](index.Song.md) \| [`Playlist`](index.Playlist.md) \| [`Album`](index.Album.md) \| [`Artist`](index.Artist.md), `ContinuableResultBlueprint`<[`Video`](index.Video.md) \| [`Song`](index.Song.md) \| [`Playlist`](index.Playlist.md) \| [`Album`](index.Album.md) \| [`Artist`](index.Artist.md)\>, ([`Video`](index.Video.md) \| [`Song`](index.Song.md) \| [`Playlist`](index.Playlist.md) \| [`Album`](index.Album.md) \| [`Artist`](index.Artist.md))[]\>\>
 
@@ -329,4 +329,4 @@ console.log(resultsSong)
 
 #### Defined in
 
-[src/YoutubeMoosick.ts:261](https://github.com/EvasiveXkiller/youtube-moosick/blob/941fb25/src/YoutubeMoosick.ts#L261)
+[src/YoutubeMoosick.ts:261](https://github.com/EvasiveXkiller/youtube-moosick/blob/b2fb5c5/src/YoutubeMoosick.ts#L261)
