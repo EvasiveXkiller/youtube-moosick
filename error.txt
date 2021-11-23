@@ -26911,3 +26911,912 @@ FILE: ./README.md
 [✓] https://opensource.org/licenses/MIT → Status: 200
 
 31 links checked.
+
+FILE: ./docs/classes/index.Unsorted.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] ../modules/index.md#unsortedsubtypes → Status: 200
+[✓] index.ContinuableUnsorted.md → Status: 200
+[✓] index.Unsorted.md#constructor → Status: 200
+[✓] index.Unsorted.md#albums → Status: 200
+[✓] index.Unsorted.md#artist → Status: 200
+[✓] index.Unsorted.md#length → Status: 200
+[✓] index.Unsorted.md#playlists → Status: 200
+[✓] index.Unsorted.md#songs → Status: 200
+[✓] index.Unsorted.md#videos → Status: 200
+[✓] index.Unsorted.md#[species] → Status: 200
+[✓] index.Unsorted.md#[iterator] → Status: 200
+[✓] index.Unsorted.md#[unscopables] → Status: 200
+[✓] index.Unsorted.md#at → Status: 200
+[✓] index.Unsorted.md#concat → Status: 200
+[✓] index.Unsorted.md#copywithin → Status: 200
+[✓] index.Unsorted.md#entries → Status: 200
+[✓] index.Unsorted.md#every → Status: 200
+[✓] index.Unsorted.md#fill → Status: 200
+[✓] index.Unsorted.md#filter → Status: 200
+[✓] index.Unsorted.md#find → Status: 200
+[✓] index.Unsorted.md#findindex → Status: 200
+[✓] index.Unsorted.md#flat → Status: 200
+[✓] index.Unsorted.md#flatmap → Status: 200
+[✓] index.Unsorted.md#foreach → Status: 200
+[✓] index.Unsorted.md#includes → Status: 200
+[✓] index.Unsorted.md#indexof → Status: 200
+[✓] index.Unsorted.md#join → Status: 200
+[✓] index.Unsorted.md#keys → Status: 200
+[✓] index.Unsorted.md#lastindexof → Status: 200
+[✓] index.Unsorted.md#map → Status: 200
+[✓] index.Unsorted.md#pop → Status: 200
+[✓] index.Unsorted.md#push → Status: 200
+[✓] index.Unsorted.md#reduce → Status: 200
+[✓] index.Unsorted.md#reduceright → Status: 200
+[✓] index.Unsorted.md#reverse → Status: 200
+[✓] index.Unsorted.md#shift → Status: 200
+[✓] index.Unsorted.md#slice → Status: 200
+[✓] index.Unsorted.md#some → Status: 200
+[✓] index.Unsorted.md#sort → Status: 200
+[✓] index.Unsorted.md#splice → Status: 200
+[✓] index.Unsorted.md#tolocalestring → Status: 200
+[✓] index.Unsorted.md#tostring → Status: 200
+[✓] index.Unsorted.md#unshift → Status: 200
+[✓] index.Unsorted.md#values → Status: 200
+[✓] index.Unsorted.md#from → Status: 200
+[✓] index.Unsorted.md#isarray → Status: 200
+[✓] index.Unsorted.md#of → Status: 200
+[✓] index.AlbumExtended.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L24 → Status: 200
+[✓] index.ArtistExtended.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L27 → Status: 200
+[✓] index.Playlist.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L26 → Status: 200
+[✓] index.Song.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L28 → Status: 200
+[✓] index.Video.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L25 → Status: 200
+[✓] index.Unsorted.md → Status: 200
+
+60 links checked.
+
+FILE: ./docs/classes/index.ContinuablePlaylistURL.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.PlaylistURL.md → Status: 200
+[✓] index.ContinuablePlaylistURL.md#continuation → Status: 200
+[✓] index.ContinuablePlaylistURL.md#headers → Status: 200
+[✓] index.ContinuablePlaylistURL.md#playlistcontents → Status: 200
+[✓] index.ContinuablePlaylistURL.md#from → Status: 200
+[✓] ../interfaces/index.Continuation.md → Status: 200
+[✓] index.PlaylistURL.md#continuation → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L9 → Status: 200
+[✓] index.PlaylistHeader.md → Status: 200
+[✓] index.PlaylistURL.md#headers → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L7 → Status: 200
+[✓] index.ContinuableResult.md → Status: 200
+[✓] index.PlaylistContent.md → Status: 200
+[✓] index.PlaylistURL.md#playlistcontents → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L13 → Status: 200
+[✓] index.PlaylistURL.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+19 links checked.
+
+FILE: ./docs/classes/index.Artist.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.ArtistExtended.md → Status: 200
+[✓] index.Artist.md#browseid → Status: 200
+[✓] index.Artist.md#name → Status: 200
+[✓] index.Artist.md#url → Status: 200
+[✓] index.Artist.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/artist.ts#L6 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/artist.ts#L5 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/artist.ts#L7 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+11 links checked.
+
+FILE: ./docs/classes/index.Albums.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Albums.md#url → Status: 200
+[✓] index.Albums.md#browseid → Status: 200
+[✓] index.Albums.md#thumbnails → Status: 200
+[✓] index.Albums.md#title → Status: 200
+[✓] index.Albums.md#year → Status: 200
+[✓] index.Albums.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L26 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L25 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L28 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L24 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L27 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+15 links checked.
+
+FILE: ./docs/classes/index.AlbumURL.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.AlbumURL.md#albumurlheader → Status: 200
+[✓] index.AlbumURL.md#tracks → Status: 200
+[✓] index.AlbumURL.md#from → Status: 200
+[✓] index.AlbumURLHeader.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L5 → Status: 200
+[✓] index.Track.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L6 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+10 links checked.
+
+FILE: ./docs/classes/index.ArtistURL.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.ArtistURL.md#artistcontents → Status: 200
+[✓] index.ArtistURL.md#headers → Status: 200
+[✓] index.ArtistURL.md#from → Status: 200
+[✓] index.ArtistContent.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L7 → Status: 200
+[✓] index.ArtistHeader.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L6 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+10 links checked.
+
+FILE: ./docs/classes/index.Video.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Video.md#author → Status: 200
+[✓] index.Video.md#length → Status: 200
+[✓] index.Video.md#name → Status: 200
+[✓] index.Video.md#thumbnails → Status: 200
+[✓] index.Video.md#url → Status: 200
+[✓] index.Video.md#videoid → Status: 200
+[✓] index.Video.md#views → Status: 200
+[✓] index.Video.md#from → Status: 200
+[✓] index.Artist.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/video.ts#L9 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/video.ts#L10 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/video.ts#L6 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/video.ts#L12 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/video.ts#L8 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/video.ts#L7 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/video.ts#L11 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+20 links checked.
+
+FILE: ./docs/classes/index.Track.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Track.md#lengthms → Status: 200
+[✓] index.Track.md#playlistid → Status: 200
+[✓] index.Track.md#title → Status: 200
+[✓] index.Track.md#url → Status: 200
+[✓] index.Track.md#videoid → Status: 200
+[✓] index.Track.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L24 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L23 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L20 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L22 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L21 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+14 links checked.
+
+FILE: ./docs/classes/index.YoutubeMoosick.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.YoutubeMoosick.md#getalbum → Status: 200
+[✓] index.YoutubeMoosick.md#getartist → Status: 200
+[✓] index.YoutubeMoosick.md#getplaylist → Status: 200
+[✓] index.YoutubeMoosick.md#getsearchsuggestions → Status: 200
+[✓] index.YoutubeMoosick.md#search → Status: 200
+[✓] index.AlbumURL.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L306 → Status: 200
+[✓] index.ArtistURL.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L383 → Status: 200
+[✓] index.ContinuablePlaylistURL.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L333 → Status: 200
+[✓] index.SearchSuggestions.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L212 → Status: 200
+[✓] index.ContinuableUnsorted.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L255 → Status: 200
+[✓] index.ContinuableResult.md → Status: 200
+[✓] index.Video.md → Status: 200
+[✓] ../enums/enums.Category.md#video → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L256 → Status: 200
+[✓] index.Song.md → Status: 200
+[✓] ../enums/enums.Category.md#song → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L257 → Status: 200
+[✓] index.Playlist.md → Status: 200
+[✓] ../enums/enums.Category.md#playlist → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L258 → Status: 200
+[✓] index.ArtistExtended.md → Status: 200
+[✓] ../enums/enums.Category.md#artist → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L259 → Status: 200
+[✓] index.Album.md → Status: 200
+[✓] ../enums/enums.Category.md#album → Status: 200
+[✓] ../enums/enums.Category.md#ep → Status: 200
+[✓] ../enums/enums.Category.md#single → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L260 → Status: 200
+[✓] index.Artist.md → Status: 200
+[✓] ../enums/enums.Category.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/YoutubeMoosick.ts#L261 → Status: 200
+
+38 links checked.
+
+FILE: ./docs/classes/index.PlaylistContent.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.PlaylistContent.md#artist → Status: 200
+[✓] index.PlaylistContent.md#duration → Status: 200
+[✓] index.PlaylistContent.md#thumbnail → Status: 200
+[✓] index.PlaylistContent.md#trackid → Status: 200
+[✓] index.PlaylistContent.md#tracktitle → Status: 200
+[✓] index.PlaylistContent.md#from → Status: 200
+[✓] index.Artist.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L19 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L21 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L20 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L18 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L17 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+16 links checked.
+
+FILE: ./docs/classes/index.Album.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.AlbumExtended.md → Status: 200
+[✓] index.Album.md#browseid → Status: 200
+[✓] index.Album.md#name → Status: 200
+[✓] index.Album.md#url → Status: 200
+[✓] index.Album.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/album.ts#L7 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/album.ts#L6 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/album.ts#L8 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+11 links checked.
+
+FILE: ./docs/classes/index.SearchSuggestions.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.SearchSuggestions.md#artist → Status: 200
+[✓] index.SearchSuggestions.md#title → Status: 200
+[✓] index.SearchSuggestions.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/searchSuggestions.ts#L5 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/searchSuggestions.ts#L4 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+8 links checked.
+
+FILE: ./docs/classes/index.AlbumURLHeader.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.AlbumURLHeader.md#artist → Status: 200
+[✓] index.AlbumURLHeader.md#date → Status: 200
+[✓] index.AlbumURLHeader.md#description → Status: 200
+[✓] index.AlbumURLHeader.md#thumbnails → Status: 200
+[✓] index.AlbumURLHeader.md#title → Status: 200
+[✓] index.AlbumURLHeader.md#totalruntime → Status: 200
+[✓] index.AlbumURLHeader.md#trackcount → Status: 200
+[✓] index.AlbumURLHeader.md#from → Status: 200
+[✓] index.Artist.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L16 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L14 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L11 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L13 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L10 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L15 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/albumURL.ts#L12 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+20 links checked.
+
+FILE: ./docs/classes/index.ArtistExtended.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Artist.md → Status: 200
+[✓] index.ArtistExtended.md#browseid → Status: 200
+[✓] index.ArtistExtended.md#name → Status: 200
+[✓] index.ArtistExtended.md#subs → Status: 200
+[✓] index.ArtistExtended.md#thumbnails → Status: 200
+[✓] index.ArtistExtended.md#url → Status: 200
+[✓] index.ArtistExtended.md#from → Status: 200
+[✓] index.Artist.md#browseid → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/artist.ts#L6 → Status: 200
+[✓] index.Artist.md#name → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/artist.ts#L5 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/artist.ts#L12 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/artist.ts#L11 → Status: 200
+[✓] index.Artist.md#url → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/artist.ts#L7 → Status: 200
+[✓] index.Artist.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+20 links checked.
+
+FILE: ./docs/classes/index.ContinuableUnsorted.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.ContinuableResult.md → Status: 200
+[✓] ../modules/index.md#unsortedsubtypes → Status: 200
+[✓] index.Unsorted.md → Status: 200
+[✓] index.ContinuableUnsorted.md#constructor → Status: 200
+[✓] index.ContinuableUnsorted.md#albums → Status: 200
+[✓] index.ContinuableUnsorted.md#artist → Status: 200
+[✓] index.ContinuableUnsorted.md#length → Status: 200
+[✓] index.ContinuableUnsorted.md#playlists → Status: 200
+[✓] index.ContinuableUnsorted.md#songs → Status: 200
+[✓] index.ContinuableUnsorted.md#videos → Status: 200
+[✓] index.ContinuableUnsorted.md#[species] → Status: 200
+[✓] index.ContinuableUnsorted.md#[iterator] → Status: 200
+[✓] index.ContinuableUnsorted.md#[unscopables] → Status: 200
+[✓] index.ContinuableUnsorted.md#append → Status: 200
+[✓] index.ContinuableUnsorted.md#at → Status: 200
+[✓] index.ContinuableUnsorted.md#concat → Status: 200
+[✓] index.ContinuableUnsorted.md#copywithin → Status: 200
+[✓] index.ContinuableUnsorted.md#entries → Status: 200
+[✓] index.ContinuableUnsorted.md#every → Status: 200
+[✓] index.ContinuableUnsorted.md#fill → Status: 200
+[✓] index.ContinuableUnsorted.md#filter → Status: 200
+[✓] index.ContinuableUnsorted.md#find → Status: 200
+[✓] index.ContinuableUnsorted.md#findindex → Status: 200
+[✓] index.ContinuableUnsorted.md#flat → Status: 200
+[✓] index.ContinuableUnsorted.md#flatmap → Status: 200
+[✓] index.ContinuableUnsorted.md#foreach → Status: 200
+[✓] index.ContinuableUnsorted.md#includes → Status: 200
+[✓] index.ContinuableUnsorted.md#indexof → Status: 200
+[✓] index.ContinuableUnsorted.md#iterator → Status: 200
+[✓] index.ContinuableUnsorted.md#join → Status: 200
+[✓] index.ContinuableUnsorted.md#keys → Status: 200
+[✓] index.ContinuableUnsorted.md#lastindexof → Status: 200
+[✓] index.ContinuableUnsorted.md#loadnext → Status: 200
+[✓] index.ContinuableUnsorted.md#loaduntil → Status: 200
+[✓] index.ContinuableUnsorted.md#map → Status: 200
+[✓] index.ContinuableUnsorted.md#pop → Status: 200
+[✓] index.ContinuableUnsorted.md#push → Status: 200
+[✓] index.ContinuableUnsorted.md#reduce → Status: 200
+[✓] index.ContinuableUnsorted.md#reduceright → Status: 200
+[✓] index.ContinuableUnsorted.md#reverse → Status: 200
+[✓] index.ContinuableUnsorted.md#shift → Status: 200
+[✓] index.ContinuableUnsorted.md#slice → Status: 200
+[✓] index.ContinuableUnsorted.md#some → Status: 200
+[✓] index.ContinuableUnsorted.md#sort → Status: 200
+[✓] index.ContinuableUnsorted.md#splice → Status: 200
+[✓] index.ContinuableUnsorted.md#tolocalestring → Status: 200
+[✓] index.ContinuableUnsorted.md#tostring → Status: 200
+[✓] index.ContinuableUnsorted.md#unshift → Status: 200
+[✓] index.ContinuableUnsorted.md#values → Status: 200
+[✓] index.ContinuableUnsorted.md#from → Status: 200
+[✓] index.ContinuableUnsorted.md#isarray → Status: 200
+[✓] index.ContinuableUnsorted.md#of → Status: 200
+[✓] index.Unsorted.md#constructor → Status: 200
+[✓] index.AlbumExtended.md → Status: 200
+[✓] index.Unsorted.md#albums → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L24 → Status: 200
+[✓] index.ArtistExtended.md → Status: 200
+[✓] index.Unsorted.md#artist → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L27 → Status: 200
+[✓] index.Unsorted.md#length → Status: 200
+[✓] index.Playlist.md → Status: 200
+[✓] index.Unsorted.md#playlists → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L26 → Status: 200
+[✓] index.Song.md → Status: 200
+[✓] index.Unsorted.md#songs → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L28 → Status: 200
+[✓] index.Video.md → Status: 200
+[✓] index.Unsorted.md#videos → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L25 → Status: 200
+[✓] index.Unsorted.md#[species] → Status: 200
+[✓] index.Unsorted.md#[iterator] → Status: 200
+[✓] index.Unsorted.md#[unscopables] → Status: 200
+[✓] index.ContinuableUnsorted.md → Status: 200
+[✓] index.ContinuableResult.md#append → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/continuableResult.ts#L131 → Status: 200
+[✓] index.Unsorted.md#at → Status: 200
+[✓] index.Unsorted.md#concat → Status: 200
+[✓] index.Unsorted.md#copywithin → Status: 200
+[✓] index.Unsorted.md#entries → Status: 200
+[✓] index.Unsorted.md#every → Status: 200
+[✓] index.Unsorted.md#fill → Status: 200
+[✓] index.Unsorted.md#filter → Status: 200
+[✓] index.Unsorted.md#find → Status: 200
+[✓] index.Unsorted.md#findindex → Status: 200
+[✓] index.Unsorted.md#flat → Status: 200
+[✓] index.Unsorted.md#flatmap → Status: 200
+[✓] index.Unsorted.md#foreach → Status: 200
+[✓] index.Unsorted.md#includes → Status: 200
+[✓] index.Unsorted.md#indexof → Status: 200
+[✓] index.ContinuableResult.md#iterator → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/continuableResult.ts#L171 → Status: 200
+[✓] index.Unsorted.md#join → Status: 200
+[✓] index.Unsorted.md#keys → Status: 200
+[✓] index.Unsorted.md#lastindexof → Status: 200
+[✓] index.ContinuableResult.md#loadnext → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/continuableResult.ts#L96 → Status: 200
+[✓] index.ContinuableResult.md#loaduntil → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/continuableResult.ts#L150 → Status: 200
+[✓] index.Unsorted.md#map → Status: 200
+[✓] index.Unsorted.md#pop → Status: 200
+[✓] index.Unsorted.md#push → Status: 200
+[✓] index.Unsorted.md#reduce → Status: 200
+[✓] index.Unsorted.md#reduceright → Status: 200
+[✓] index.Unsorted.md#reverse → Status: 200
+[✓] index.Unsorted.md#shift → Status: 200
+[✓] index.Unsorted.md#slice → Status: 200
+[✓] index.Unsorted.md#some → Status: 200
+[✓] index.Unsorted.md#sort → Status: 200
+[✓] index.Unsorted.md#splice → Status: 200
+[✓] index.Unsorted.md#tolocalestring → Status: 200
+[✓] index.Unsorted.md#tostring → Status: 200
+[✓] index.Unsorted.md#unshift → Status: 200
+[✓] index.Unsorted.md#values → Status: 200
+[✓] index.Unsorted.md#from → Status: 200
+[✓] index.Unsorted.md#isarray → Status: 200
+[✓] index.Unsorted.md#of → Status: 200
+
+118 links checked.
+
+FILE: ./docs/classes/index.AlbumExtended.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Album.md → Status: 200
+[✓] index.AlbumExtended.md#artist → Status: 200
+[✓] index.AlbumExtended.md#browseid → Status: 200
+[✓] index.AlbumExtended.md#name → Status: 200
+[✓] index.AlbumExtended.md#thumbnails → Status: 200
+[✓] index.AlbumExtended.md#url → Status: 200
+[✓] index.AlbumExtended.md#year → Status: 200
+[✓] index.AlbumExtended.md#from → Status: 200
+[✓] index.Artist.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/album.ts#L14 → Status: 200
+[✓] index.Album.md#browseid → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/album.ts#L7 → Status: 200
+[✓] index.Album.md#name → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/album.ts#L6 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/album.ts#L12 → Status: 200
+[✓] index.Album.md#url → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/album.ts#L8 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/album.ts#L13 → Status: 200
+[✓] index.Album.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+23 links checked.
+
+FILE: ./docs/classes/index.PlaylistURL.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.ContinuablePlaylistURL.md → Status: 200
+[✓] index.PlaylistURL.md#continuation → Status: 200
+[✓] index.PlaylistURL.md#headers → Status: 200
+[✓] index.PlaylistURL.md#playlistcontents → Status: 200
+[✓] index.PlaylistURL.md#from → Status: 200
+[✓] ../interfaces/index.Continuation.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L9 → Status: 200
+[✓] index.PlaylistHeader.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L7 → Status: 200
+[✓] index.PlaylistContent.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L8 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+14 links checked.
+
+FILE: ./docs/classes/index.ContinuableResult.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.ContinuableUnsorted.md → Status: 200
+[✓] index.ContinuableResult.md#constructor → Status: 200
+[✓] index.ContinuableResult.md#length → Status: 200
+[✓] index.ContinuableResult.md#[species] → Status: 200
+[✓] index.ContinuableResult.md#[iterator] → Status: 200
+[✓] index.ContinuableResult.md#[unscopables] → Status: 200
+[✓] index.ContinuableResult.md#append → Status: 200
+[✓] index.ContinuableResult.md#at → Status: 200
+[✓] index.ContinuableResult.md#concat → Status: 200
+[✓] index.ContinuableResult.md#copywithin → Status: 200
+[✓] index.ContinuableResult.md#entries → Status: 200
+[✓] index.ContinuableResult.md#every → Status: 200
+[✓] index.ContinuableResult.md#fill → Status: 200
+[✓] index.ContinuableResult.md#filter → Status: 200
+[✓] index.ContinuableResult.md#find → Status: 200
+[✓] index.ContinuableResult.md#findindex → Status: 200
+[✓] index.ContinuableResult.md#flat → Status: 200
+[✓] index.ContinuableResult.md#flatmap → Status: 200
+[✓] index.ContinuableResult.md#foreach → Status: 200
+[✓] index.ContinuableResult.md#includes → Status: 200
+[✓] index.ContinuableResult.md#indexof → Status: 200
+[✓] index.ContinuableResult.md#iterator → Status: 200
+[✓] index.ContinuableResult.md#join → Status: 200
+[✓] index.ContinuableResult.md#keys → Status: 200
+[✓] index.ContinuableResult.md#lastindexof → Status: 200
+[✓] index.ContinuableResult.md#loadnext → Status: 200
+[✓] index.ContinuableResult.md#loaduntil → Status: 200
+[✓] index.ContinuableResult.md#map → Status: 200
+[✓] index.ContinuableResult.md#pop → Status: 200
+[✓] index.ContinuableResult.md#push → Status: 200
+[✓] index.ContinuableResult.md#reduce → Status: 200
+[✓] index.ContinuableResult.md#reduceright → Status: 200
+[✓] index.ContinuableResult.md#reverse → Status: 200
+[✓] index.ContinuableResult.md#shift → Status: 200
+[✓] index.ContinuableResult.md#slice → Status: 200
+[✓] index.ContinuableResult.md#some → Status: 200
+[✓] index.ContinuableResult.md#sort → Status: 200
+[✓] index.ContinuableResult.md#splice → Status: 200
+[✓] index.ContinuableResult.md#tolocalestring → Status: 200
+[✓] index.ContinuableResult.md#tostring → Status: 200
+[✓] index.ContinuableResult.md#unshift → Status: 200
+[✓] index.ContinuableResult.md#values → Status: 200
+[✓] index.ContinuableResult.md#from → Status: 200
+[✓] index.ContinuableResult.md#isarray → Status: 200
+[✓] index.ContinuableResult.md#of → Status: 200
+[✓] index.ContinuableResult.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/continuableResult.ts#L131 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/continuableResult.ts#L171 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/continuableResult.ts#L96 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/continuableResult.ts#L150 → Status: 200
+
+52 links checked.
+
+FILE: ./docs/classes/index.Single.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Single.md#url → Status: 200
+[✓] index.Single.md#browseid → Status: 200
+[✓] index.Single.md#thumbnails → Status: 200
+[✓] index.Single.md#title → Status: 200
+[✓] index.Single.md#year → Status: 200
+[✓] index.Single.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L34 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L33 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L36 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L32 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L35 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+15 links checked.
+
+FILE: ./docs/classes/index.PlaylistHeader.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.PlaylistHeader.md#approxruntime → Status: 200
+[✓] index.PlaylistHeader.md#createdyear → Status: 200
+[✓] index.PlaylistHeader.md#owner → Status: 200
+[✓] index.PlaylistHeader.md#playlistname → Status: 200
+[✓] index.PlaylistHeader.md#songcount → Status: 200
+[✓] index.PlaylistHeader.md#thumbnail → Status: 200
+[✓] index.PlaylistHeader.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L30 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L27 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L26 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L25 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L29 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L28 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+17 links checked.
+
+FILE: ./docs/classes/index.Videos.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Videos.md#url → Status: 200
+[✓] index.Videos.md#author → Status: 200
+[✓] index.Videos.md#playlistid → Status: 200
+[✓] index.Videos.md#thumbnails → Status: 200
+[✓] index.Videos.md#title → Status: 200
+[✓] index.Videos.md#videoid → Status: 200
+[✓] index.Videos.md#views → Status: 200
+[✓] index.Videos.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L42 → Status: 200
+[✓] index.Artist.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L45 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L43 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L46 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L40 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L41 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L44 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+20 links checked.
+
+FILE: ./docs/classes/index.ArtistContent.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.ArtistContent.md#albums → Status: 200
+[✓] index.ArtistContent.md#single → Status: 200
+[✓] index.ArtistContent.md#videos → Status: 200
+[✓] index.ArtistContent.md#from → Status: 200
+[✓] index.Albums.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L11 → Status: 200
+[✓] index.Single.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L12 → Status: 200
+[✓] index.Videos.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L13 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+13 links checked.
+
+FILE: ./docs/classes/index.Playlist.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Playlist.md#author → Status: 200
+[✓] index.Playlist.md#browseid → Status: 200
+[✓] index.Playlist.md#name → Status: 200
+[✓] index.Playlist.md#trackcount → Status: 200
+[✓] index.Playlist.md#from → Status: 200
+[✓] index.Artist.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/playlist.ts#L7 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/playlist.ts#L6 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/playlist.ts#L5 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/playlist.ts#L8 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+13 links checked.
+
+FILE: ./docs/classes/index.Thumbnails.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Thumbnails.md#height → Status: 200
+[✓] index.Thumbnails.md#url → Status: 200
+[✓] index.Thumbnails.md#width → Status: 200
+[✓] index.Thumbnails.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/thumbnails.ts#L7 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/thumbnails.ts#L5 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/thumbnails.ts#L6 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+10 links checked.
+
+FILE: ./docs/classes/index.Song.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Song.md#album → Status: 200
+[✓] index.Song.md#artist → Status: 200
+[✓] index.Song.md#duration → Status: 200
+[✓] index.Song.md#name → Status: 200
+[✓] index.Song.md#params → Status: 200
+[✓] index.Song.md#playlistid → Status: 200
+[✓] index.Song.md#thumbnails → Status: 200
+[✓] index.Song.md#type → Status: 200
+[✓] index.Song.md#url → Status: 200
+[✓] index.Song.md#videoid → Status: 200
+[✓] index.Song.md#from → Status: 200
+[✓] index.Album.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L14 → Status: 200
+[✓] index.Artist.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L13 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L15 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L9 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L17 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L12 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L16 → Status: 200
+[✓] ../enums/enums.Category.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L8 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L11 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/song.ts#L10 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+28 links checked.
+
+FILE: ./docs/classes/index.ArtistHeader.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.ArtistHeader.md#artistname → Status: 200
+[✓] index.ArtistHeader.md#description → Status: 200
+[✓] index.ArtistHeader.md#thumbnails → Status: 200
+[✓] index.ArtistHeader.md#totalsubscribers → Status: 200
+[✓] index.ArtistHeader.md#from → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L17 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L19 → Status: 200
+[✓] index.Thumbnails.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L20 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/artistURL.ts#L18 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/blocks/item.ts#L25 → Status: 200
+
+13 links checked.
+
+FILE: ./docs/interfaces/index.Continuation.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/index.md → Status: 200
+[✓] index.Continuation.md#clicktrackingparams → Status: 200
+[✓] index.Continuation.md#continuation → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L35 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/resultTypes/playlistURL.ts#L34 → Status: 200
+
+6 links checked.
+
+FILE: ./docs/enums/enums.Category.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/enums.md → Status: 200
+[✓] enums.Category.md#album → Status: 200
+[✓] enums.Category.md#artist → Status: 200
+[✓] enums.Category.md#ep → Status: 200
+[✓] enums.Category.md#playlist → Status: 200
+[✓] enums.Category.md#single → Status: 200
+[✓] enums.Category.md#song → Status: 200
+[✓] enums.Category.md#video → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/enums.ts#L39 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/enums.ts#L43 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/enums.ts#L51 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/enums.ts#L47 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/enums.ts#L55 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/enums.ts#L31 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/enums.ts#L35 → Status: 200
+
+16 links checked.
+
+FILE: ./docs/enums/enums.ConstantURLs.md
+[✓] ../README.md → Status: 200
+[✓] ../modules/enums.md → Status: 200
+[✓] enums.ConstantURLs.md#channel_url → Status: 200
+[✓] enums.ConstantURLs.md#videolink → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/enums.ts#L74 → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/enums.ts#L73 → Status: 200
+
+6 links checked.
+
+FILE: ./docs/README.md
+[✓] modules/enums.md → Status: 200
+[✓] modules/index.md → Status: 200
+[✓] modules/resources_generalTypes.md → Status: 200
+[✓] modules/resources_resultTypes.md → Status: 200
+
+4 links checked.
+
+FILE: ./docs/modules/index.md
+[✓] ../README.md → Status: 200
+[✓] index.md#category → Status: 200
+[✓] index.md#constanturls → Status: 200
+[✓] ../classes/index.Album.md → Status: 200
+[✓] ../classes/index.AlbumExtended.md → Status: 200
+[✓] ../classes/index.AlbumURL.md → Status: 200
+[✓] ../classes/index.AlbumURLHeader.md → Status: 200
+[✓] ../classes/index.Albums.md → Status: 200
+[✓] ../classes/index.Artist.md → Status: 200
+[✓] ../classes/index.ArtistContent.md → Status: 200
+[✓] ../classes/index.ArtistExtended.md → Status: 200
+[✓] ../classes/index.ArtistHeader.md → Status: 200
+[✓] ../classes/index.ArtistURL.md → Status: 200
+[✓] ../classes/index.ContinuablePlaylistURL.md → Status: 200
+[✓] ../classes/index.ContinuableResult.md → Status: 200
+[✓] ../classes/index.ContinuableUnsorted.md → Status: 200
+[✓] ../classes/index.Playlist.md → Status: 200
+[✓] ../classes/index.PlaylistContent.md → Status: 200
+[✓] ../classes/index.PlaylistHeader.md → Status: 200
+[✓] ../classes/index.PlaylistURL.md → Status: 200
+[✓] ../classes/index.SearchSuggestions.md → Status: 200
+[✓] ../classes/index.Single.md → Status: 200
+[✓] ../classes/index.Song.md → Status: 200
+[✓] ../classes/index.Thumbnails.md → Status: 200
+[✓] ../classes/index.Track.md → Status: 200
+[✓] ../classes/index.Unsorted.md → Status: 200
+[✓] ../classes/index.Video.md → Status: 200
+[✓] ../classes/index.Videos.md → Status: 200
+[✓] ../classes/index.YoutubeMoosick.md → Status: 200
+[✓] ../interfaces/index.Continuation.md → Status: 200
+[✓] index.md#unsortedsubtypes → Status: 200
+[✓] ../enums/enums.Category.md → Status: 200
+[✓] ../enums/enums.ConstantURLs.md → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/blob/239aede/src/resources/generalTypes/unsorted.ts#L9 → Status: 200
+
+34 links checked.
+
+FILE: ./docs/modules/resources_generalTypes.md
+[✓] ../README.md → Status: 200
+[✓] resources_generalTypes.md#album → Status: 200
+[✓] resources_generalTypes.md#albumextended → Status: 200
+[✓] resources_generalTypes.md#artist → Status: 200
+[✓] resources_generalTypes.md#artistextended → Status: 200
+[✓] resources_generalTypes.md#continuableresult → Status: 200
+[✓] resources_generalTypes.md#continuableunsorted → Status: 200
+[✓] resources_generalTypes.md#playlist → Status: 200
+[✓] resources_generalTypes.md#song → Status: 200
+[✓] resources_generalTypes.md#thumbnails → Status: 200
+[✓] resources_generalTypes.md#unsorted → Status: 200
+[✓] resources_generalTypes.md#unsortedsubtypes → Status: 200
+[✓] resources_generalTypes.md#video → Status: 200
+[✓] ../classes/index.Album.md → Status: 200
+[✓] ../classes/index.AlbumExtended.md → Status: 200
+[✓] ../classes/index.Artist.md → Status: 200
+[✓] ../classes/index.ArtistExtended.md → Status: 200
+[✓] ../classes/index.ContinuableResult.md → Status: 200
+[✓] ../classes/index.ContinuableUnsorted.md → Status: 200
+[✓] ../classes/index.Playlist.md → Status: 200
+[✓] ../classes/index.Song.md → Status: 200
+[✓] ../classes/index.Thumbnails.md → Status: 200
+[✓] ../classes/index.Unsorted.md → Status: 200
+[✓] index.md#unsortedsubtypes → Status: 200
+[✓] ../classes/index.Video.md → Status: 200
+
+25 links checked.
+
+FILE: ./docs/modules/resources_resultTypes.md
+[✓] ../README.md → Status: 200
+[✓] resources_resultTypes.md#albumurl → Status: 200
+[✓] resources_resultTypes.md#albumurlheader → Status: 200
+[✓] resources_resultTypes.md#albums → Status: 200
+[✓] resources_resultTypes.md#artistcontent → Status: 200
+[✓] resources_resultTypes.md#artistheader → Status: 200
+[✓] resources_resultTypes.md#artisturl → Status: 200
+[✓] resources_resultTypes.md#continuableplaylisturl → Status: 200
+[✓] resources_resultTypes.md#continuation → Status: 200
+[✓] resources_resultTypes.md#playlistcontent → Status: 200
+[✓] resources_resultTypes.md#playlistheader → Status: 200
+[✓] resources_resultTypes.md#playlisturl → Status: 200
+[✓] resources_resultTypes.md#searchsuggestions → Status: 200
+[✓] resources_resultTypes.md#single → Status: 200
+[✓] resources_resultTypes.md#track → Status: 200
+[✓] resources_resultTypes.md#videos → Status: 200
+[✓] ../classes/index.AlbumURL.md → Status: 200
+[✓] ../classes/index.AlbumURLHeader.md → Status: 200
+[✓] ../classes/index.Albums.md → Status: 200
+[✓] ../classes/index.ArtistContent.md → Status: 200
+[✓] ../classes/index.ArtistHeader.md → Status: 200
+[✓] ../classes/index.ArtistURL.md → Status: 200
+[✓] ../classes/index.ContinuablePlaylistURL.md → Status: 200
+[✓] ../interfaces/index.Continuation.md → Status: 200
+[✓] ../classes/index.PlaylistContent.md → Status: 200
+[✓] ../classes/index.PlaylistHeader.md → Status: 200
+[✓] ../classes/index.PlaylistURL.md → Status: 200
+[✓] ../classes/index.SearchSuggestions.md → Status: 200
+[✓] ../classes/index.Single.md → Status: 200
+[✓] ../classes/index.Track.md → Status: 200
+[✓] ../classes/index.Videos.md → Status: 200
+
+31 links checked.
+
+FILE: ./docs/modules/enums.md
+[✓] ../README.md → Status: 200
+[✓] ../enums/enums.Category.md → Status: 200
+[✓] ../enums/enums.ConstantURLs.md → Status: 200
+
+3 links checked.
+
+FILE: ./.github/ISSUE_TEMPLATE/bug_report.md
+No hyperlinks found!
+
+0 links checked.
+
+FILE: ./README.md
+[✓] #search → Status: 200
+[✓] #getsearchsuggestions → Status: 200
+[✓] #getalbum → Status: 200
+[✓] #getartist → Status: 200
+[✓] #getplaylist → Status: 200
+[✓] ./docs/enums/enums.Category.md → Status: 200
+[✓] ./docs/classes/index.ContinuableUnsorted.md → Status: 200
+[✓] ./docs/enums/enums.Category.md#song → Status: 200
+[✓] ./docs/classes/index.ContinuableResult.md → Status: 200
+[✓] ./docs/classes/index.Song.md → Status: 200
+[✓] ./docs/enums/enums.Category.md#video → Status: 200
+[✓] ./docs/classes/index.Video.md → Status: 200
+[✓] ./docs/enums/enums.Category.md#album → Status: 200
+[✓] ./docs/enums/enums.Category.md#single → Status: 200
+[✓] ./docs/enums/enums.Category.md#ep → Status: 200
+[✓] ./docs/classes/index.Album.md → Status: 200
+[✓] ./docs/enums/enums.Category.md#artist → Status: 200
+[✓] ./docs/classes/index.ArtistExtended.md → Status: 200
+[✓] ./docs/enums/enums.Category.md#playlist → Status: 200
+[✓] ./docs/classes/index.Playlist.md → Status: 200
+[✓] ./docs/modules/index.md → Status: 200
+[✓] ./docs/classes/index.SearchSuggestions.md → Status: 200
+[✓] ./docs/classes/index.AlbumURL.md → Status: 200
+[✓] ./docs/classes/index.ArtistURL.md → Status: 200
+[✓] ./docs/classes/index.PlaylistURL.md → Status: 200
+[✓] https://github.com/substack/tape → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/issues → Status: 200
+[✓] https://github.com/EvasiveXkiller/youtube-moosick/pulls → Status: 200
+[✓] https://github.com/EvasiveXkiller → Status: 200
+[✓] https://github.com/Sxxov → Status: 200
+[✓] https://opensource.org/licenses/MIT → Status: 200
+
+31 links checked.
