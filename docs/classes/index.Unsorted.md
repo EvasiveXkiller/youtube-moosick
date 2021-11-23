@@ -86,7 +86,7 @@ Array<UnsortedSubTypes\>.constructor
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1455
+node_modules/typescript/lib/lib.es5.d.ts:1406
 
 • **new Unsorted**(...`items`)
 
@@ -102,7 +102,7 @@ Array<UnsortedSubTypes\>.constructor
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1456
+node_modules/typescript/lib/lib.es5.d.ts:1407
 
 ## Properties
 
@@ -112,7 +112,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1456
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L24)
+[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L24)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L27)
+[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L27)
 
 ___
 
@@ -138,7 +138,7 @@ Array.length
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1273
+node_modules/typescript/lib/lib.es5.d.ts:1224
 
 ___
 
@@ -148,7 +148,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L26)
+[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L26)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L28)
+[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L28)
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L25)
+[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L25)
 
 ___
 
@@ -288,7 +288,7 @@ Array.concat
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1297
+node_modules/typescript/lib/lib.es5.d.ts:1248
 
 ▸ **concat**(...`items`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]
 
@@ -311,7 +311,7 @@ Array.concat
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1303
+node_modules/typescript/lib/lib.es5.d.ts:1254
 
 ___
 
@@ -393,7 +393,7 @@ Array.every
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1380
+node_modules/typescript/lib/lib.es5.d.ts:1331
 
 ▸ **every**(`predicate`, `thisArg?`): `boolean`
 
@@ -416,7 +416,7 @@ Array.every
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1389
+node_modules/typescript/lib/lib.es5.d.ts:1340
 
 ___
 
@@ -477,7 +477,7 @@ Array.filter
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1416
+node_modules/typescript/lib/lib.es5.d.ts:1367
 
 ▸ **filter**(`predicate`, `thisArg?`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]
 
@@ -500,7 +500,7 @@ Array.filter
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1422
+node_modules/typescript/lib/lib.es5.d.ts:1373
 
 ___
 
@@ -680,7 +680,7 @@ Array.forEach
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1404
+node_modules/typescript/lib/lib.es5.d.ts:1355
 
 ___
 
@@ -734,7 +734,7 @@ Array.indexOf
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1365
+node_modules/typescript/lib/lib.es5.d.ts:1316
 
 ___
 
@@ -760,7 +760,7 @@ Array.join
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1308
+node_modules/typescript/lib/lib.es5.d.ts:1259
 
 ___
 
@@ -807,7 +807,7 @@ Array.lastIndexOf
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1371
+node_modules/typescript/lib/lib.es5.d.ts:1322
 
 ___
 
@@ -840,7 +840,7 @@ Array.map
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1410
+node_modules/typescript/lib/lib.es5.d.ts:1361
 
 ___
 
@@ -861,7 +861,7 @@ Array.pop
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1286
+node_modules/typescript/lib/lib.es5.d.ts:1237
 
 ___
 
@@ -887,7 +887,7 @@ Array.push
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1291
+node_modules/typescript/lib/lib.es5.d.ts:1242
 
 ___
 
@@ -913,7 +913,7 @@ Array.reduce
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1428
+node_modules/typescript/lib/lib.es5.d.ts:1379
 
 ▸ **reduce**(`callbackfn`, `initialValue`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)
 
@@ -934,7 +934,7 @@ Array.reduce
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1429
+node_modules/typescript/lib/lib.es5.d.ts:1380
 
 ▸ **reduce**<`U`\>(`callbackfn`, `initialValue`): `U`
 
@@ -963,7 +963,7 @@ Array.reduce
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1435
+node_modules/typescript/lib/lib.es5.d.ts:1386
 
 ___
 
@@ -989,7 +989,7 @@ Array.reduceRight
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1441
+node_modules/typescript/lib/lib.es5.d.ts:1392
 
 ▸ **reduceRight**(`callbackfn`, `initialValue`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)
 
@@ -1010,7 +1010,7 @@ Array.reduceRight
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1442
+node_modules/typescript/lib/lib.es5.d.ts:1393
 
 ▸ **reduceRight**<`U`\>(`callbackfn`, `initialValue`): `U`
 
@@ -1039,7 +1039,7 @@ Array.reduceRight
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1448
+node_modules/typescript/lib/lib.es5.d.ts:1399
 
 ___
 
@@ -1060,7 +1060,7 @@ Array.reverse
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1313
+node_modules/typescript/lib/lib.es5.d.ts:1264
 
 ___
 
@@ -1081,7 +1081,7 @@ Array.shift
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1318
+node_modules/typescript/lib/lib.es5.d.ts:1269
 
 ___
 
@@ -1110,7 +1110,7 @@ Array.slice
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1328
+node_modules/typescript/lib/lib.es5.d.ts:1279
 
 ___
 
@@ -1137,7 +1137,7 @@ Array.some
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1398
+node_modules/typescript/lib/lib.es5.d.ts:1349
 
 ___
 
@@ -1152,7 +1152,7 @@ This method mutates the array and returns a reference to the same array.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `compareFn?` | (`a`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `b`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)) => `number` | Function used to determine the order of the elements. It is expected to return a negative value if the first argument is less than the second argument, zero if they're equal, and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order. ```ts [11,2,22,1].sort((a, b) => a - b) ``` |
+| `compareFn?` | (`a`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `b`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)) => `number` | Function used to determine the order of the elements. It is expected to return a negative value if first argument is less than second argument, zero if they're equal and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order. ```ts [11,2,22,1].sort((a, b) => a - b) ``` |
 
 #### Returns
 
@@ -1164,7 +1164,7 @@ Array.sort
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1339
+node_modules/typescript/lib/lib.es5.d.ts:1290
 
 ___
 
@@ -1193,7 +1193,7 @@ Array.splice
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1346
+node_modules/typescript/lib/lib.es5.d.ts:1297
 
 ▸ **splice**(`start`, `deleteCount`, ...`items`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]
 
@@ -1219,7 +1219,7 @@ Array.splice
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1354
+node_modules/typescript/lib/lib.es5.d.ts:1305
 
 ___
 
@@ -1239,7 +1239,7 @@ Array.toLocaleString
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1281
+node_modules/typescript/lib/lib.es5.d.ts:1232
 
 ___
 
@@ -1259,7 +1259,7 @@ Array.toString
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1277
+node_modules/typescript/lib/lib.es5.d.ts:1228
 
 ___
 
@@ -1285,7 +1285,7 @@ Array.unshift
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1359
+node_modules/typescript/lib/lib.es5.d.ts:1310
 
 ___
 
@@ -1451,7 +1451,7 @@ Array.isArray
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1460
+node_modules/typescript/lib/lib.es5.d.ts:1411
 
 ___
 

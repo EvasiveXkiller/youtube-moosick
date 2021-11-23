@@ -66,4 +66,4 @@ Re-exports [ConstantURLs](../enums/enums.ConstantURLs.md)
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L9)
+[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L9)

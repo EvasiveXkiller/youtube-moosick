@@ -90,7 +90,7 @@
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1455
+node_modules/typescript/lib/lib.es5.d.ts:1406
 
 • **new ContinuableUnsorted**(...`items`)
 
@@ -106,7 +106,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1455
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1456
+node_modules/typescript/lib/lib.es5.d.ts:1407
 
 ## Properties
 
@@ -120,7 +120,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1456
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L24)
+[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L24)
 
 ___
 
@@ -134,7 +134,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L27)
+[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L27)
 
 ___
 
@@ -150,7 +150,7 @@ Gets or sets the length of the array. This is a number one higher than the highe
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1273
+node_modules/typescript/lib/lib.es5.d.ts:1224
 
 ___
 
@@ -164,7 +164,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L26)
+[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L26)
 
 ___
 
@@ -178,7 +178,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L28)
+[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L28)
 
 ___
 
@@ -192,7 +192,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/unsorted.ts#L25)
+[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/unsorted.ts#L25)
 
 ___
 
@@ -284,7 +284,7 @@ Supports adding non POJA's (will add keys to `this`)
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/continuableResult.ts#L131)
+[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 
@@ -339,7 +339,7 @@ This method returns a new array without modifying any existing arrays.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1297
+node_modules/typescript/lib/lib.es5.d.ts:1248
 
 ▸ **concat**(...`items`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]
 
@@ -362,7 +362,7 @@ This method returns a new array without modifying any existing arrays.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1303
+node_modules/typescript/lib/lib.es5.d.ts:1254
 
 ___
 
@@ -444,7 +444,7 @@ this is S[]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1380
+node_modules/typescript/lib/lib.es5.d.ts:1331
 
 ▸ **every**(`predicate`, `thisArg?`): `boolean`
 
@@ -467,7 +467,7 @@ Determines whether all the members of an array satisfy the specified test.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1389
+node_modules/typescript/lib/lib.es5.d.ts:1340
 
 ___
 
@@ -528,7 +528,7 @@ Returns the elements of an array that meet the condition specified in a callback
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1416
+node_modules/typescript/lib/lib.es5.d.ts:1367
 
 ▸ **filter**(`predicate`, `thisArg?`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]
 
@@ -551,7 +551,7 @@ Returns the elements of an array that meet the condition specified in a callback
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1422
+node_modules/typescript/lib/lib.es5.d.ts:1373
 
 ___
 
@@ -731,7 +731,7 @@ Performs the specified action for each element in an array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1404
+node_modules/typescript/lib/lib.es5.d.ts:1355
 
 ___
 
@@ -785,7 +785,7 @@ Returns the index of the first occurrence of a value in an array, or -1 if it is
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1365
+node_modules/typescript/lib/lib.es5.d.ts:1316
 
 ___
 
@@ -803,7 +803,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/continuableResult.ts#L171)
+[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/continuableResult.ts#L171)
 
 ___
 
@@ -829,7 +829,7 @@ Adds all the elements of an array into a string, separated by the specified sepa
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1308
+node_modules/typescript/lib/lib.es5.d.ts:1259
 
 ___
 
@@ -876,7 +876,7 @@ Returns the index of the last occurrence of a specified value in an array, or -1
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1371
+node_modules/typescript/lib/lib.es5.d.ts:1322
 
 ___
 
@@ -896,7 +896,7 @@ Loads the next continuation
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/continuableResult.ts#L96)
+[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/continuableResult.ts#L96)
 
 ___
 
@@ -920,7 +920,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/09e3313/src/resources/generalTypes/continuableResult.ts#L150)
+[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/1fd45d4/src/resources/generalTypes/continuableResult.ts#L150)
 
 ___
 
@@ -953,7 +953,7 @@ Calls a defined callback function on each element of an array, and returns an ar
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1410
+node_modules/typescript/lib/lib.es5.d.ts:1361
 
 ___
 
@@ -974,7 +974,7 @@ If the array is empty, undefined is returned and the array is not modified.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1286
+node_modules/typescript/lib/lib.es5.d.ts:1237
 
 ___
 
@@ -1000,7 +1000,7 @@ Appends new elements to the end of an array, and returns the new length of the a
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1291
+node_modules/typescript/lib/lib.es5.d.ts:1242
 
 ___
 
@@ -1026,7 +1026,7 @@ Calls the specified callback function for all the elements in an array. The retu
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1428
+node_modules/typescript/lib/lib.es5.d.ts:1379
 
 ▸ **reduce**(`callbackfn`, `initialValue`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)
 
@@ -1047,7 +1047,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1428
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1429
+node_modules/typescript/lib/lib.es5.d.ts:1380
 
 ▸ **reduce**<`U`\>(`callbackfn`, `initialValue`): `U`
 
@@ -1076,7 +1076,7 @@ Calls the specified callback function for all the elements in an array. The retu
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1435
+node_modules/typescript/lib/lib.es5.d.ts:1386
 
 ___
 
@@ -1102,7 +1102,7 @@ Calls the specified callback function for all the elements in an array, in desce
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1441
+node_modules/typescript/lib/lib.es5.d.ts:1392
 
 ▸ **reduceRight**(`callbackfn`, `initialValue`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)
 
@@ -1123,7 +1123,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1441
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1442
+node_modules/typescript/lib/lib.es5.d.ts:1393
 
 ▸ **reduceRight**<`U`\>(`callbackfn`, `initialValue`): `U`
 
@@ -1152,7 +1152,7 @@ Calls the specified callback function for all the elements in an array, in desce
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1448
+node_modules/typescript/lib/lib.es5.d.ts:1399
 
 ___
 
@@ -1173,7 +1173,7 @@ This method mutates the array and returns a reference to the same array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1313
+node_modules/typescript/lib/lib.es5.d.ts:1264
 
 ___
 
@@ -1194,7 +1194,7 @@ If the array is empty, undefined is returned and the array is not modified.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1318
+node_modules/typescript/lib/lib.es5.d.ts:1269
 
 ___
 
@@ -1223,7 +1223,7 @@ For example, -2 refers to the second to last element of the array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1328
+node_modules/typescript/lib/lib.es5.d.ts:1279
 
 ___
 
@@ -1250,7 +1250,7 @@ Determines whether the specified callback function returns true for any element 
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1398
+node_modules/typescript/lib/lib.es5.d.ts:1349
 
 ___
 
@@ -1265,7 +1265,7 @@ This method mutates the array and returns a reference to the same array.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `compareFn?` | (`a`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `b`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)) => `number` | Function used to determine the order of the elements. It is expected to return a negative value if the first argument is less than the second argument, zero if they're equal, and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order. ```ts [11,2,22,1].sort((a, b) => a - b) ``` |
+| `compareFn?` | (`a`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `b`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)) => `number` | Function used to determine the order of the elements. It is expected to return a negative value if first argument is less than second argument, zero if they're equal and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order. ```ts [11,2,22,1].sort((a, b) => a - b) ``` |
 
 #### Returns
 
@@ -1277,7 +1277,7 @@ This method mutates the array and returns a reference to the same array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1339
+node_modules/typescript/lib/lib.es5.d.ts:1290
 
 ___
 
@@ -1306,7 +1306,7 @@ An array containing the elements that were deleted.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1346
+node_modules/typescript/lib/lib.es5.d.ts:1297
 
 ▸ **splice**(`start`, `deleteCount`, ...`items`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]
 
@@ -1332,7 +1332,7 @@ An array containing the elements that were deleted.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1354
+node_modules/typescript/lib/lib.es5.d.ts:1305
 
 ___
 
@@ -1352,7 +1352,7 @@ Returns a string representation of an array. The elements are converted to strin
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1281
+node_modules/typescript/lib/lib.es5.d.ts:1232
 
 ___
 
@@ -1372,7 +1372,7 @@ Returns a string representation of an array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1277
+node_modules/typescript/lib/lib.es5.d.ts:1228
 
 ___
 
@@ -1398,7 +1398,7 @@ Inserts new elements at the start of an array, and returns the new length of the
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1359
+node_modules/typescript/lib/lib.es5.d.ts:1310
 
 ___
 
@@ -1564,7 +1564,7 @@ arg is any[]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1460
+node_modules/typescript/lib/lib.es5.d.ts:1411
 
 ___
 
