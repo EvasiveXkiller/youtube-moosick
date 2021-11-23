@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:35](https://github.com/EvasiveXkiller/youtube-moosick/blob/f150e01/src/resources/resultTypes/playlistURL.ts#L35)
+[src/resources/resultTypes/playlistURL.ts:35](https://github.com/EvasiveXkiller/youtube-moosick/blob/cfe2213/src/resources/resultTypes/playlistURL.ts#L35)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/playlistURL.ts:34](https://github.com/EvasiveXkiller/youtube-moosick/blob/f150e01/src/resources/resultTypes/playlistURL.ts#L34)
+[src/resources/resultTypes/playlistURL.ts:34](https://github.com/EvasiveXkiller/youtube-moosick/blob/cfe2213/src/resources/resultTypes/playlistURL.ts#L34)
