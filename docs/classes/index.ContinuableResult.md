@@ -12,7 +12,7 @@ Enables the loading of continuation
 | :------ | :------ |
 | `T` | extends `Item` |
 | `ParserResult` | `ContinuableResultBlueprint`<`T`\> |
-| `GetContentResult` | extends `any`[]`T`[] |
+| `GetContentResult` | extends `any`[] = `T`[] |
 
 ## Hierarchy
 
@@ -93,7 +93,7 @@ Enables the loading of continuation
 | :------ | :------ |
 | `T` | extends `Item`<`T`\> |
 | `ParserResult` | `ContinuableResultBlueprint`<`T`\> |
-| `GetContentResult` | extends `any`[]`T`[] |
+| `GetContentResult` | extends `any`[] = `T`[] |
 
 #### Parameters
 
@@ -117,7 +117,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1406
 | :------ | :------ |
 | `T` | extends `Item`<`T`\> |
 | `ParserResult` | `ContinuableResultBlueprint`<`T`\> |
-| `GetContentResult` | extends `any`[]`T`[] |
+| `GetContentResult` | extends `any`[] = `T`[] |
 
 #### Parameters
 
@@ -235,7 +235,7 @@ Supports adding non POJA's (will add keys to `this`)
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/cfe2213/src/resources/generalTypes/continuableResult.ts#L131)
+[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/f5f31ec/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 
@@ -601,7 +601,7 @@ specified depth.
 | Name | Type |
 | :------ | :------ |
 | `A` | `A` |
-| `D` | extends `number```1`` |
+| `D` | extends `number` = ``1`` |
 
 #### Parameters
 
@@ -750,7 +750,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/cfe2213/src/resources/generalTypes/continuableResult.ts#L171)
+[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/f5f31ec/src/resources/generalTypes/continuableResult.ts#L171)
 
 ___
 
@@ -839,7 +839,7 @@ Loads the next continuation
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/cfe2213/src/resources/generalTypes/continuableResult.ts#L96)
+[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/f5f31ec/src/resources/generalTypes/continuableResult.ts#L96)
 
 ___
 
@@ -859,7 +859,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/cfe2213/src/resources/generalTypes/continuableResult.ts#L150)
+[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/f5f31ec/src/resources/generalTypes/continuableResult.ts#L150)
 
 ___
 

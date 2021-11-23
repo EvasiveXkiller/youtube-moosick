@@ -23,70 +23,70 @@
 
 ### Album
 
-• **Album**: `Object`
+Re-exports [Album](../classes/index.Album.md)
 
 ___
 
 ### AlbumExtended
 
-• **AlbumExtended**: `Object`
+Re-exports [AlbumExtended](../classes/index.AlbumExtended.md)
 
 ___
 
 ### Artist
 
-• **Artist**: `Object`
+Re-exports [Artist](../classes/index.Artist.md)
 
 ___
 
 ### ArtistExtended
 
-• **ArtistExtended**: `Object`
+Re-exports [ArtistExtended](../classes/index.ArtistExtended.md)
 
 ___
 
 ### ContinuableResult
 
-• **ContinuableResult**: `Object`
+Re-exports [ContinuableResult](../classes/index.ContinuableResult.md)
 
 ___
 
 ### ContinuableUnsorted
 
-• **ContinuableUnsorted**: `Object`
+Re-exports [ContinuableUnsorted](../classes/index.ContinuableUnsorted.md)
 
 ___
 
 ### Playlist
 
-• **Playlist**: `Object`
+Re-exports [Playlist](../classes/index.Playlist.md)
 
 ___
 
 ### Song
 
-• **Song**: `Object`
+Re-exports [Song](../classes/index.Song.md)
 
 ___
 
 ### Thumbnails
 
-• **Thumbnails**: `Object`
+Re-exports [Thumbnails](../classes/index.Thumbnails.md)
 
 ___
 
 ### Unsorted
 
-• **Unsorted**: `Object`
+Re-exports [Unsorted](../classes/index.Unsorted.md)
 
 ___
 
 ### UnsortedSubTypes
 
-• **UnsortedSubTypes**: `Object`
+Re-exports [UnsortedSubTypes](index.md#unsortedsubtypes)
 
 ___
 
 ### Video
 
-• **Video**: `Object`
+Re-exports [Video](../classes/index.Video.md)

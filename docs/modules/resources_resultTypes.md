@@ -26,88 +26,88 @@
 
 ### AlbumURL
 
-• **AlbumURL**: `Object`
+Re-exports [AlbumURL](../classes/index.AlbumURL.md)
 
 ___
 
 ### AlbumURLHeader
 
-• **AlbumURLHeader**: `Object`
+Re-exports [AlbumURLHeader](../classes/index.AlbumURLHeader.md)
 
 ___
 
 ### Albums
 
-• **Albums**: `Object`
+Re-exports [Albums](../classes/index.Albums.md)
 
 ___
 
 ### ArtistContent
 
-• **ArtistContent**: `Object`
+Re-exports [ArtistContent](../classes/index.ArtistContent.md)
 
 ___
 
 ### ArtistHeader
 
-• **ArtistHeader**: `Object`
+Re-exports [ArtistHeader](../classes/index.ArtistHeader.md)
 
 ___
 
 ### ArtistURL
 
-• **ArtistURL**: `Object`
+Re-exports [ArtistURL](../classes/index.ArtistURL.md)
 
 ___
 
 ### ContinuablePlaylistURL
 
-• **ContinuablePlaylistURL**: `Object`
+Re-exports [ContinuablePlaylistURL](../classes/index.ContinuablePlaylistURL.md)
 
 ___
 
 ### Continuation
 
-• **Continuation**: `Object`
+Re-exports [Continuation](../interfaces/index.Continuation.md)
 
 ___
 
 ### PlaylistContent
 
-• **PlaylistContent**: `Object`
+Re-exports [PlaylistContent](../classes/index.PlaylistContent.md)
 
 ___
 
 ### PlaylistHeader
 
-• **PlaylistHeader**: `Object`
+Re-exports [PlaylistHeader](../classes/index.PlaylistHeader.md)
 
 ___
 
 ### PlaylistURL
 
-• **PlaylistURL**: `Object`
+Re-exports [PlaylistURL](../classes/index.PlaylistURL.md)
 
 ___
 
 ### SearchSuggestions
 
-• **SearchSuggestions**: `Object`
+Re-exports [SearchSuggestions](../classes/index.SearchSuggestions.md)
 
 ___
 
 ### Single
 
-• **Single**: `Object`
+Re-exports [Single](../classes/index.Single.md)
 
 ___
 
 ### Track
 
-• **Track**: `Object`
+Re-exports [Track](../classes/index.Track.md)
 
 ___
 
 ### Videos
 
-• **Videos**: `Object`
+Re-exports [Videos](../classes/index.Videos.md)
