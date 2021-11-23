@@ -180,14 +180,14 @@ export class YoutubeMoosick extends AsyncConstructor {
 				headers: {
 					'x-origin': this.client.defaults.baseURL ?? '',
 					'X-Goog-Visitor-Id': this.config.VISITOR_DATA ?? '',
-					'X-YouTube-Client-Name': this.config.INNERTUBE_CONTEXT_CLIENT_NAME,
+					'X-YouTube-Client-Name': this.config.INNERTUBE_CONTEXT_CLIENT_NAME as unknown as string,
 					'X-YouTube-Client-Version': this.config.INNERTUBE_CLIENT_VERSION,
 					'X-YouTube-Device': this.config.DEVICE,
-					'X-YouTube-Page-CL': this.config.PAGE_CL,
+					'X-YouTube-Page-CL': this.config.PAGE_CL as unknown as string,
 					'X-YouTube-Page-Label': this.config.PAGE_BUILD_LABEL,
 					'X-YouTube-Utc-Offset': String(-new Date().getTimezoneOffset()),
 					'X-YouTube-Time-Zone': new Intl.DateTimeFormat().resolvedOptions().timeZone,
-					...(this.client.defaults.headers as Record<string, string>),
+					...(this.client.defaults.headers as unknown as Record<string, string>),
 				},
 			});
 
