@@ -49,6 +49,7 @@ for (let i = 2, l = process.argv.length; i < l; ++i) {
 			config[key] = true as never;
 			break;
 		case 'string':
+		// eslint-disable-next-line no-lone-blocks,no-fallthrough
 		case 'number': {
 			const next = process.argv[++i];
 
