@@ -71,6 +71,6 @@ export declare class ContinuableResult<T extends Item, ParserResult = Continuabl
      */
     append(obj: Record<string | number | symbol, T> | T[]): this;
     loadUntil(minimumLength?: number): Promise<ContinuableResultBlueprint<T>>;
-    iterator(): AsyncGenerator<T, void, unknown>;
+    iterator(): AsyncGenerator<Awaited<T>, void, unknown>;
 }
 //# sourceMappingURL=continuableResult.d.ts.map
