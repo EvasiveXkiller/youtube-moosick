@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[src/resources/generalTypes/album.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/generalTypes/album.ts#L7)
+[src/resources/generalTypes/album.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/generalTypes/album.ts#L7)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/album.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/generalTypes/album.ts#L6)
+[src/resources/generalTypes/album.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/generalTypes/album.ts#L6)
 
 ___
 
@@ -52,13 +52,13 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/album.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/generalTypes/album.ts#L8)
+[src/resources/generalTypes/album.ts:8](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/generalTypes/album.ts#L8)
 
 ## Methods
 
 ### from
 
-▸ `Static` **from**<`T`\>(`options`): `T`
+▸ `Static` **from**<`T`\>(`this`, `options`): `T`
 
 #### Type parameters
 
@@ -70,6 +70,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
+| `this` | () => `T` |
 | `options` | `ItemOptions`<() => `T`\> |
 
 #### Returns
@@ -82,4 +83,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/blocks/item.ts#L25)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/blocks/item.ts#L25)

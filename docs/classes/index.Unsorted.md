@@ -112,7 +112,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1456
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/generalTypes/unsorted.ts#L24)
+[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/generalTypes/unsorted.ts#L24)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/generalTypes/unsorted.ts#L27)
+[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/generalTypes/unsorted.ts#L27)
 
 ___
 
@@ -148,7 +148,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/generalTypes/unsorted.ts#L26)
+[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/generalTypes/unsorted.ts#L26)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/generalTypes/unsorted.ts#L28)
+[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/generalTypes/unsorted.ts#L28)
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/generalTypes/unsorted.ts#L25)
+[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/generalTypes/unsorted.ts#L25)
 
 ___
 
@@ -178,7 +178,7 @@ ___
 
 #### Inherited from
 
-Array.\_\_@species@368
+Array.\_\_@species@370
 
 #### Defined in
 
@@ -229,7 +229,7 @@ when they will be absent when used in a 'with' statement.
 
 #### Inherited from
 
-Array.\_\_@unscopables@318
+Array.\_\_@unscopables@319
 
 #### Defined in
 
@@ -241,15 +241,13 @@ ___
 
 ▸ **at**(`index`): `undefined` \| [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)
 
-Takes an integer value and returns the item at that index,
-allowing for positive and negative integers.
-Negative integers count back from the last item in the array.
+Returns the item located at the specified index.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `index` | `number` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `index` | `number` | The zero-based index of the desired code unit. A negative index will count back from the last item. |
 
 #### Returns
 
@@ -261,7 +259,7 @@ Array.at
 
 #### Defined in
 
-node_modules/@types/node/globals.d.ts:86
+node_modules/typescript/lib/lib.es2022.array.d.ts:26
 
 ___
 
@@ -521,7 +519,7 @@ otherwise.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `obj`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => value is S | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, find immediately returns that element value. Otherwise, find returns undefined. |
+| `predicate` | (`this`: `void`, `value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `obj`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => value is S | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, find immediately returns that element value. Otherwise, find returns undefined. |
 | `thisArg?` | `any` | If provided, it will be used as the this value for each invocation of predicate. If it is not provided, undefined is used instead. |
 
 #### Returns
@@ -589,7 +587,7 @@ ___
 
 ### flat
 
-▸ **flat**<`A`, `D`\>(`depth?`): `FlatArray`<`A`, `D`\>[]
+▸ **flat**<`A`, `D`\>(`this`, `depth?`): `FlatArray`<`A`, `D`\>[]
 
 Returns a new array with all sub-array elements concatenated into it recursively up to the
 specified depth.
@@ -605,6 +603,7 @@ specified depth.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
+| `this` | `A` | - |
 | `depth?` | `D` | The maximum recursion depth |
 
 #### Returns
@@ -640,7 +639,7 @@ This is identical to a map followed by flat with depth 1.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callback` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `U` \| readonly `U`[] | A function that accepts up to three arguments. The flatMap method calls the callback function one time for each element in the array. |
+| `callback` | (`this`: `This`, `value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `U` \| readonly `U`[] | A function that accepts up to three arguments. The flatMap method calls the callback function one time for each element in the array. |
 | `thisArg?` | `This` | An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns

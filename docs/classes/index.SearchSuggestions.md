@@ -29,7 +29,7 @@
 
 #### Defined in
 
-[src/resources/resultTypes/searchSuggestions.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/searchSuggestions.ts#L5)
+[src/resources/resultTypes/searchSuggestions.ts:5](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/searchSuggestions.ts#L5)
 
 ___
 
@@ -39,13 +39,13 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/searchSuggestions.ts:4](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/searchSuggestions.ts#L4)
+[src/resources/resultTypes/searchSuggestions.ts:4](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/searchSuggestions.ts#L4)
 
 ## Methods
 
 ### from
 
-▸ `Static` **from**<`T`\>(`options`): `T`
+▸ `Static` **from**<`T`\>(`this`, `options`): `T`
 
 #### Type parameters
 
@@ -57,6 +57,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
+| `this` | () => `T` |
 | `options` | `ItemOptions`<() => `T`\> |
 
 #### Returns
@@ -69,4 +70,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/blocks/item.ts#L25)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/blocks/item.ts#L25)

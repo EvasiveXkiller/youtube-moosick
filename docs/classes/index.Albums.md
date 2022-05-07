@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/artistURL.ts#L26)
+[src/resources/resultTypes/artistURL.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/artistURL.ts#L26)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/artistURL.ts#L25)
+[src/resources/resultTypes/artistURL.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/artistURL.ts#L25)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/artistURL.ts#L28)
+[src/resources/resultTypes/artistURL.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/artistURL.ts#L28)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/artistURL.ts#L24)
+[src/resources/resultTypes/artistURL.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/artistURL.ts#L24)
 
 ___
 
@@ -72,13 +72,13 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/artistURL.ts#L27)
+[src/resources/resultTypes/artistURL.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/artistURL.ts#L27)
 
 ## Methods
 
 ### from
 
-▸ `Static` **from**<`T`\>(`options`): `T`
+▸ `Static` **from**<`T`\>(`this`, `options`): `T`
 
 #### Type parameters
 
@@ -90,6 +90,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
+| `this` | () => `T` |
 | `options` | `ItemOptions`<() => `T`\> |
 
 #### Returns
@@ -102,4 +103,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/blocks/item.ts#L25)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/blocks/item.ts#L25)

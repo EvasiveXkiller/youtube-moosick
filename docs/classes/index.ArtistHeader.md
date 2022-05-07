@@ -31,7 +31,7 @@
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/artistURL.ts#L17)
+[src/resources/resultTypes/artistURL.ts:17](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/artistURL.ts#L17)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:19](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/artistURL.ts#L19)
+[src/resources/resultTypes/artistURL.ts:19](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/artistURL.ts#L19)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/artistURL.ts#L20)
+[src/resources/resultTypes/artistURL.ts:20](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/artistURL.ts#L20)
 
 ___
 
@@ -61,13 +61,13 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:18](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/resources/resultTypes/artistURL.ts#L18)
+[src/resources/resultTypes/artistURL.ts:18](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/resources/resultTypes/artistURL.ts#L18)
 
 ## Methods
 
 ### from
 
-▸ `Static` **from**<`T`\>(`options`): `T`
+▸ `Static` **from**<`T`\>(`this`, `options`): `T`
 
 #### Type parameters
 
@@ -79,6 +79,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
+| `this` | () => `T` |
 | `options` | `ItemOptions`<() => `T`\> |
 
 #### Returns
@@ -91,4 +92,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/f01b3ac/src/blocks/item.ts#L25)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/78493f9/src/blocks/item.ts#L25)
