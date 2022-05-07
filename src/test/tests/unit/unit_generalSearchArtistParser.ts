@@ -1,6 +1,6 @@
 import test from 'tape';
 import { GeneralParser } from '../../../parsers/generalParser.js';
-import generalSearchArtist from '../../dummy/general/generalSearchArtist.json';
+import generalSearchArtist from '../../dummy/general/generalSearchArtist.json' assert {type: 'json'};
 import { Category } from '../../../enums.js';
 import { ArtistExtended } from '../../../resources/generalTypes/artist.js';
 import { EitherShape, WalkUtility } from '../../../resources/utilities/walk.utility.js';

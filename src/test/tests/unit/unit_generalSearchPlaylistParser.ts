@@ -1,6 +1,6 @@
 import test from 'tape';
 import { GeneralParser } from '../../../parsers/generalParser.js';
-import generalSearchPlaylist from '../../dummy/general/generalSearchPlaylist.json';
+import generalSearchPlaylist from '../../dummy/general/generalSearchPlaylist.json' assert {type: 'json'};
 import { Category } from '../../../enums.js';
 import { Playlist } from '../../../resources/generalTypes/playlist.js';
 import { Artist } from '../../../resources/generalTypes/artist.js';

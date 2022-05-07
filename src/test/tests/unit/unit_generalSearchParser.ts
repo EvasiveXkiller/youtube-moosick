@@ -8,7 +8,7 @@ import { Song } from '../../../resources/generalTypes/song.js';
 import { Thumbnails } from '../../../resources/generalTypes/thumbnails.js';
 import { Video } from '../../../resources/generalTypes/video.js';
 import { EitherShape, WalkUtility } from '../../../resources/utilities/walk.utility.js';
-import generalSearchFull from '../../dummy/general/generalSearchFull.json';
+import generalSearchFull from '../../dummy/general/generalSearchFull.json' assert {type: 'json'};
 
 test('GeneralParser', async (t) => {
 	const { result } = GeneralParser.parseSearchResult(generalSearchFull as any);

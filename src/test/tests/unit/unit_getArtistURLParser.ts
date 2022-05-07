@@ -1,5 +1,5 @@
 import test from 'tape';
-import rawGetArtistURL from '../../dummy/rawGetArtistURL.json';
+import rawGetArtistURL from '../../dummy/rawGetArtistURL.json' assert {type: 'json'};
 import { GetArtistParser } from '../../../parsers/getArtistParser.js';
 import { WalkUtility } from '../../../resources/utilities/index.js';
 import { Albums, ArtistContent, ArtistHeader, ArtistURL, Single, Videos } from '../../../resources/resultTypes/index.js';

@@ -1,5 +1,5 @@
 import test from 'tape';
-import rawGetPlaylistURL from '../../dummy/rawGetPlaylistURL.json';
+import rawGetPlaylistURL from '../../dummy/rawGetPlaylistURL.json' assert {type: 'json'};
 import { GetPlaylistParser } from '../../../parsers/getPlaylistParser.js';
 import { WalkUtility, EitherShape } from '../../../resources/utilities/index.js';
 import { PlaylistContent, PlaylistHeader, PlaylistURL } from '../../../resources/resultTypes/index.js';

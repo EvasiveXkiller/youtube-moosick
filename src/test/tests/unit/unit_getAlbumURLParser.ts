@@ -1,5 +1,5 @@
 import test from 'tape';
-import rawGetAlbumURL from '../../dummy/rawGetAlbumURL.json';
+import rawGetAlbumURL from '../../dummy/rawGetAlbumURL.json' assert {type: 'json'};
 import type { AlbumURLFullResult } from '../../../resources/etc/rawResultTypes/rawGetAlbumURL.js';
 import { GetAlbumParser } from '../../../parsers/getAlbumParser.js';
 import { AlbumURL, AlbumURLHeader, Track } from '../../../resources/resultTypes/index.js';
