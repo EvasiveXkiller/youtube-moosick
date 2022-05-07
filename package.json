@@ -55,7 +55,7 @@
     "devDependencies": {
         "@nextools/suppress-experimental-warnings": "^0.1.0",
         "@types/glob": "^7.1.4",
-        "@types/node": "^16.9.1",
+        "@types/node": "^17.0.31",
         "@types/tape": "^4.13.2",
         "@types/tough-cookie": "^4.0.1",
         "@typescript-eslint/eslint-plugin": "^4.31.0",
