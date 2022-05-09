@@ -10,7 +10,7 @@ Unofficial YouTube Music Library, written in TypeScript.
 <br>
 
 ```ts
-import { YoutubeMoosick } from "MooSick";
+import { YoutubeMoosick } from "youtube-moosick";
 
 const ytms = new YoutubeMoosick.new();
 
