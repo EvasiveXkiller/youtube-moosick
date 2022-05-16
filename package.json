@@ -64,7 +64,7 @@
         "eslint-config-xo-typescript": "^0.44.0",
         "eslint-plugin-import": "^2.24.2",
         "eslint-plugin-tsdoc": "^0.2.14",
-        "glob": "^7.1.7",
+        "glob": "^8.0.3",
         "tape": "^5.3.1",
         "typedoc": "^0.22.0",
         "typedoc-plugin-markdown": "^3.10.4",
