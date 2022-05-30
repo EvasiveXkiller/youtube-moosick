@@ -1,11 +1,7 @@
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -80,7 +76,7 @@ class YoutubeMoosick extends asyncConstructor_js_1.AsyncConstructor {
             if (headers['set-cookie'] == null) {
                 return res;
             }
-            if (headers['set-cookie'] instanceof Array) {
+            if (headers['set-cookie'] instanceof Array || typeof headers['set-cookie'] === 'object') {
                 headers['set-cookie'].forEach((value) => {
                     this.parseAndSetCookie(value, res.config.baseURL);
                 });
