@@ -409,5 +409,5 @@ All contributions are welcome. File an [issue](https://github.com/EvasiveXkiller
 - [Sxxov](https://github.com/Sxxov)
 
 ## License
-
+<!-- markdown-link-check-disable-next-line -->
 [MIT](https://opensource.org/licenses/MIT)
