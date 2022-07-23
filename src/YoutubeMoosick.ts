@@ -97,8 +97,8 @@ export class YoutubeMoosick extends AsyncConstructor {
 				return res;
 			}
 
-			if (headers['set-cookie'] instanceof Array) {
-				headers['set-cookie'].forEach((value) => {
+			if (headers['set-cookie'] instanceof Array || typeof headers['set-cookie'] === 'object') {
+				headers['set-cookie'].forEach((value: string) => {
 					this.parseAndSetCookie(value, res.config.baseURL!);
 				});
 			} else {
