@@ -29,7 +29,7 @@
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/b21cfe6/src/resources/resultTypes/artistURL.ts#L7)
+[src/resources/resultTypes/artistURL.ts:7](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/resultTypes/artistURL.ts#L7)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[src/resources/resultTypes/artistURL.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/b21cfe6/src/resources/resultTypes/artistURL.ts#L6)
+[src/resources/resultTypes/artistURL.ts:6](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/resultTypes/artistURL.ts#L6)
 
 ## Methods
 
@@ -70,4 +70,4 @@ Item.from
 
 #### Defined in
 
-[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/b21cfe6/src/blocks/item.ts#L25)
+[src/blocks/item.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/blocks/item.ts#L25)
