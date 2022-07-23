@@ -8,7 +8,7 @@ Categories that can be placed into search()
 
 ## Table of contents
 
-### Enumeration members
+### Enumeration Members
 
 - [ALBUM](enums.Category.md#album)
 - [ARTIST](enums.Category.md#artist)
@@ -18,86 +18,86 @@ Categories that can be placed into search()
 - [SONG](enums.Category.md#song)
 - [VIDEO](enums.Category.md#video)
 
-## Enumeration members
+## Enumeration Members
 
 ### ALBUM
 
-• **ALBUM** = `"ALBUM"`
+• **ALBUM** = ``"ALBUM"``
 
 Category Album
 
 #### Defined in
 
-[src/enums.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/enums.ts#L39)
+[src/enums.ts:39](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/enums.ts#L39)
 
 ___
 
 ### ARTIST
 
-• **ARTIST** = `"ARTIST"`
+• **ARTIST** = ``"ARTIST"``
 
 Category Artist
 
 #### Defined in
 
-[src/enums.ts:43](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/enums.ts#L43)
+[src/enums.ts:43](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/enums.ts#L43)
 
 ___
 
 ### EP
 
-• **EP** = `"EP"`
+• **EP** = ``"EP"``
 
 Category Ep
 
 #### Defined in
 
-[src/enums.ts:51](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/enums.ts#L51)
+[src/enums.ts:51](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/enums.ts#L51)
 
 ___
 
 ### PLAYLIST
 
-• **PLAYLIST** = `"PLAYLIST"`
+• **PLAYLIST** = ``"PLAYLIST"``
 
 Category Playlist
 
 #### Defined in
 
-[src/enums.ts:47](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/enums.ts#L47)
+[src/enums.ts:47](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/enums.ts#L47)
 
 ___
 
 ### SINGLE
 
-• **SINGLE** = `"SINGLE"`
+• **SINGLE** = ``"SINGLE"``
 
 Category Single
 
 #### Defined in
 
-[src/enums.ts:55](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/enums.ts#L55)
+[src/enums.ts:55](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/enums.ts#L55)
 
 ___
 
 ### SONG
 
-• **SONG** = `"SONG"`
+• **SONG** = ``"SONG"``
 
 Category Song
 
 #### Defined in
 
-[src/enums.ts:31](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/enums.ts#L31)
+[src/enums.ts:31](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/enums.ts#L31)
 
 ___
 
 ### VIDEO
 
-• **VIDEO** = `"VIDEO"`
+• **VIDEO** = ``"VIDEO"``
 
 Category Video
 
 #### Defined in
 
-[src/enums.ts:35](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/enums.ts#L35)
+[src/enums.ts:35](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/enums.ts#L35)

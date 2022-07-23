@@ -42,7 +42,7 @@
 
 - [Continuation](../interfaces/index.Continuation.md)
 
-### Type aliases
+### Type Aliases
 
 - [UnsortedSubTypes](index.md#unsortedsubtypes)
 
@@ -58,7 +58,7 @@ ___
 
 Re-exports [ConstantURLs](../enums/enums.ConstantURLs.md)
 
-## Type aliases
+## Type Aliases
 
 ### UnsortedSubTypes
 
@@ -66,4 +66,4 @@ Re-exports [ConstantURLs](../enums/enums.ConstantURLs.md)
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/unsorted.ts#L9)
+[src/resources/generalTypes/unsorted.ts:9](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/unsorted.ts#L9)

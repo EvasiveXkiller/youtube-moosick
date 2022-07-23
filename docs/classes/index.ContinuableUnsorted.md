@@ -4,6 +4,8 @@
 
 [index](../modules/index.md).ContinuableUnsorted
 
+Enables the loading of continuation
+
 ## Hierarchy
 
 - [`ContinuableResult`](index.ContinuableResult.md)<[`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)\>
@@ -90,7 +92,7 @@
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1455
+node_modules/typescript/lib/lib.es5.d.ts:1461
 
 • **new ContinuableUnsorted**(...`items`)
 
@@ -106,7 +108,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1455
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1456
+node_modules/typescript/lib/lib.es5.d.ts:1462
 
 ## Properties
 
@@ -120,7 +122,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1456
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/unsorted.ts#L24)
+[src/resources/generalTypes/unsorted.ts:24](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/unsorted.ts#L24)
 
 ___
 
@@ -134,7 +136,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/unsorted.ts#L27)
+[src/resources/generalTypes/unsorted.ts:27](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/unsorted.ts#L27)
 
 ___
 
@@ -150,7 +152,7 @@ Gets or sets the length of the array. This is a number one higher than the highe
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1273
+node_modules/typescript/lib/lib.es5.d.ts:1279
 
 ___
 
@@ -164,7 +166,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/unsorted.ts#L26)
+[src/resources/generalTypes/unsorted.ts:26](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/unsorted.ts#L26)
 
 ___
 
@@ -178,7 +180,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/unsorted.ts#L28)
+[src/resources/generalTypes/unsorted.ts:28](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/unsorted.ts#L28)
 
 ___
 
@@ -192,7 +194,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/unsorted.ts#L25)
+[src/resources/generalTypes/unsorted.ts:25](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/unsorted.ts#L25)
 
 ___
 
@@ -284,7 +286,7 @@ Supports adding non POJA's (will add keys to `this`)
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/continuableResult.ts#L131)
+[src/resources/generalTypes/continuableResult.ts:131](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/continuableResult.ts#L131)
 
 ___
 
@@ -337,7 +339,7 @@ This method returns a new array without modifying any existing arrays.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1297
+node_modules/typescript/lib/lib.es5.d.ts:1303
 
 ▸ **concat**(...`items`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]
 
@@ -360,7 +362,7 @@ This method returns a new array without modifying any existing arrays.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1303
+node_modules/typescript/lib/lib.es5.d.ts:1309
 
 ___
 
@@ -375,8 +377,8 @@ to the same array starting at position target
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `target` | `number` | If target is negative, it is treated as length+target where length is the length of the array. |
-| `start` | `number` | If start is negative, it is treated as length+start. If end is negative, it is treated as length+end. |
+| `target` | `number` | If target is negative, it is treated as length+target where length is the  length of the array. |
+| `start` | `number` | If start is negative, it is treated as length+start. If end is negative, it  is treated as length+end. |
 | `end?` | `number` | If not specified, length of the this object is used as its default value. |
 
 #### Returns
@@ -429,8 +431,8 @@ Determines whether all the members of an array satisfy the specified test.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => value is S | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
-| `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => value is S | A function that accepts up to three arguments. The every method calls  the predicate function for each element in the array until the predicate returns a value  which is coercible to the Boolean value false, or until the end of the array. |
+| `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function.  If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
 
@@ -442,7 +444,7 @@ this is S[]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1380
+node_modules/typescript/lib/lib.es5.d.ts:1386
 
 ▸ **every**(`predicate`, `thisArg?`): `boolean`
 
@@ -452,8 +454,8 @@ Determines whether all the members of an array satisfy the specified test.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `unknown` | A function that accepts up to three arguments. The every method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value false, or until the end of the array. |
-| `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `unknown` | A function that accepts up to three arguments. The every method calls  the predicate function for each element in the array until the predicate returns a value  which is coercible to the Boolean value false, or until the end of the array. |
+| `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function.  If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
 
@@ -465,7 +467,7 @@ Determines whether all the members of an array satisfy the specified test.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1389
+node_modules/typescript/lib/lib.es5.d.ts:1395
 
 ___
 
@@ -480,8 +482,8 @@ Changes all array elements from `start` to `end` index to a static `value` and r
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `value` | [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes) | value to fill array section with |
-| `start?` | `number` | index to start filling the array at. If start is negative, it is treated as length+start where length is the length of the array. |
-| `end?` | `number` | index to stop filling the array at. If end is negative, it is treated as length+end. |
+| `start?` | `number` | index to start filling the array at. If start is negative, it is treated as  length+start where length is the length of the array. |
+| `end?` | `number` | index to stop filling the array at. If end is negative, it is treated as  length+end. |
 
 #### Returns
 
@@ -526,7 +528,7 @@ Returns the elements of an array that meet the condition specified in a callback
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1416
+node_modules/typescript/lib/lib.es5.d.ts:1422
 
 ▸ **filter**(`predicate`, `thisArg?`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]
 
@@ -549,7 +551,7 @@ Returns the elements of an array that meet the condition specified in a callback
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1422
+node_modules/typescript/lib/lib.es5.d.ts:1428
 
 ___
 
@@ -570,8 +572,8 @@ otherwise.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`this`: `void`, `value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `obj`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => value is S | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, find immediately returns that element value. Otherwise, find returns undefined. |
-| `thisArg?` | `any` | If provided, it will be used as the this value for each invocation of predicate. If it is not provided, undefined is used instead. |
+| `predicate` | (`this`: `void`, `value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `obj`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => value is S | find calls predicate once for each element of the array, in ascending  order, until it finds one where predicate returns true. If such an element is found, find  immediately returns that element value. Otherwise, find returns undefined. |
+| `thisArg?` | `any` | If provided, it will be used as the this value for each invocation of  predicate. If it is not provided, undefined is used instead. |
 
 #### Returns
 
@@ -619,8 +621,8 @@ otherwise.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `obj`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `unknown` | find calls predicate once for each element of the array, in ascending order, until it finds one where predicate returns true. If such an element is found, findIndex immediately returns that element index. Otherwise, findIndex returns -1. |
-| `thisArg?` | `any` | If provided, it will be used as the this value for each invocation of predicate. If it is not provided, undefined is used instead. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `obj`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `unknown` | find calls predicate once for each element of the array, in ascending  order, until it finds one where predicate returns true. If such an element is found,  findIndex immediately returns that element index. Otherwise, findIndex returns -1. |
+| `thisArg?` | `any` | If provided, it will be used as the this value for each invocation of  predicate. If it is not provided, undefined is used instead. |
 
 #### Returns
 
@@ -690,8 +692,8 @@ This is identical to a map followed by flat with depth 1.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `callback` | (`this`: `This`, `value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `U` \| readonly `U`[] | A function that accepts up to three arguments. The flatMap method calls the callback function one time for each element in the array. |
-| `thisArg?` | `This` | An object to which the this keyword can refer in the callback function. If thisArg is omitted, undefined is used as the this value. |
+| `callback` | (`this`: `This`, `value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `U` \| readonly `U`[] | A function that accepts up to three arguments. The flatMap method calls the  callback function one time for each element in the array. |
+| `thisArg?` | `This` | An object to which the this keyword can refer in the callback function. If  thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
 
@@ -730,7 +732,7 @@ Performs the specified action for each element in an array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1404
+node_modules/typescript/lib/lib.es5.d.ts:1410
 
 ___
 
@@ -784,7 +786,7 @@ Returns the index of the first occurrence of a value in an array, or -1 if it is
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1365
+node_modules/typescript/lib/lib.es5.d.ts:1371
 
 ___
 
@@ -802,7 +804,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/continuableResult.ts#L171)
+[src/resources/generalTypes/continuableResult.ts:171](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/continuableResult.ts#L171)
 
 ___
 
@@ -828,7 +830,7 @@ Adds all the elements of an array into a string, separated by the specified sepa
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1308
+node_modules/typescript/lib/lib.es5.d.ts:1314
 
 ___
 
@@ -875,7 +877,7 @@ Returns the index of the last occurrence of a specified value in an array, or -1
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1371
+node_modules/typescript/lib/lib.es5.d.ts:1377
 
 ___
 
@@ -895,7 +897,7 @@ Loads the next continuation
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/continuableResult.ts#L96)
+[src/resources/generalTypes/continuableResult.ts:96](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/continuableResult.ts#L96)
 
 ___
 
@@ -919,7 +921,7 @@ ___
 
 #### Defined in
 
-[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/resources/generalTypes/continuableResult.ts#L150)
+[src/resources/generalTypes/continuableResult.ts:150](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/resources/generalTypes/continuableResult.ts#L150)
 
 ___
 
@@ -952,7 +954,7 @@ Calls a defined callback function on each element of an array, and returns an ar
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1410
+node_modules/typescript/lib/lib.es5.d.ts:1416
 
 ___
 
@@ -973,7 +975,7 @@ If the array is empty, undefined is returned and the array is not modified.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1286
+node_modules/typescript/lib/lib.es5.d.ts:1292
 
 ___
 
@@ -999,7 +1001,7 @@ Appends new elements to the end of an array, and returns the new length of the a
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1291
+node_modules/typescript/lib/lib.es5.d.ts:1297
 
 ___
 
@@ -1025,7 +1027,7 @@ Calls the specified callback function for all the elements in an array. The retu
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1428
+node_modules/typescript/lib/lib.es5.d.ts:1434
 
 ▸ **reduce**(`callbackfn`, `initialValue`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)
 
@@ -1046,7 +1048,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1428
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1429
+node_modules/typescript/lib/lib.es5.d.ts:1435
 
 ▸ **reduce**<`U`\>(`callbackfn`, `initialValue`): `U`
 
@@ -1075,7 +1077,7 @@ Calls the specified callback function for all the elements in an array. The retu
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1435
+node_modules/typescript/lib/lib.es5.d.ts:1441
 
 ___
 
@@ -1101,7 +1103,7 @@ Calls the specified callback function for all the elements in an array, in desce
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1441
+node_modules/typescript/lib/lib.es5.d.ts:1447
 
 ▸ **reduceRight**(`callbackfn`, `initialValue`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)
 
@@ -1122,7 +1124,7 @@ node_modules/typescript/lib/lib.es5.d.ts:1441
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1442
+node_modules/typescript/lib/lib.es5.d.ts:1448
 
 ▸ **reduceRight**<`U`\>(`callbackfn`, `initialValue`): `U`
 
@@ -1151,7 +1153,7 @@ Calls the specified callback function for all the elements in an array, in desce
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1448
+node_modules/typescript/lib/lib.es5.d.ts:1454
 
 ___
 
@@ -1172,7 +1174,7 @@ This method mutates the array and returns a reference to the same array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1313
+node_modules/typescript/lib/lib.es5.d.ts:1319
 
 ___
 
@@ -1193,7 +1195,7 @@ If the array is empty, undefined is returned and the array is not modified.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1318
+node_modules/typescript/lib/lib.es5.d.ts:1324
 
 ___
 
@@ -1209,8 +1211,8 @@ For example, -2 refers to the second to last element of the array.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `start?` | `number` | The beginning index of the specified portion of the array. If start is undefined, then the slice begins at index 0. |
-| `end?` | `number` | The end index of the specified portion of the array. This is exclusive of the element at the index 'end'. If end is undefined, then the slice extends to the end of the array. |
+| `start?` | `number` | The beginning index of the specified portion of the array.  If start is undefined, then the slice begins at index 0. |
+| `end?` | `number` | The end index of the specified portion of the array. This is exclusive of the element at the index 'end'.  If end is undefined, then the slice extends to the end of the array. |
 
 #### Returns
 
@@ -1222,7 +1224,7 @@ For example, -2 refers to the second to last element of the array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1328
+node_modules/typescript/lib/lib.es5.d.ts:1334
 
 ___
 
@@ -1236,8 +1238,8 @@ Determines whether the specified callback function returns true for any element 
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `unknown` | A function that accepts up to three arguments. The some method calls the predicate function for each element in the array until the predicate returns a value which is coercible to the Boolean value true, or until the end of the array. |
-| `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function. If thisArg is omitted, undefined is used as the this value. |
+| `predicate` | (`value`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `index`: `number`, `array`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]) => `unknown` | A function that accepts up to three arguments. The some method calls  the predicate function for each element in the array until the predicate returns a value  which is coercible to the Boolean value true, or until the end of the array. |
+| `thisArg?` | `any` | An object to which the this keyword can refer in the predicate function.  If thisArg is omitted, undefined is used as the this value. |
 
 #### Returns
 
@@ -1249,7 +1251,7 @@ Determines whether the specified callback function returns true for any element 
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1398
+node_modules/typescript/lib/lib.es5.d.ts:1404
 
 ___
 
@@ -1264,7 +1266,7 @@ This method mutates the array and returns a reference to the same array.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `compareFn?` | (`a`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `b`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)) => `number` | Function used to determine the order of the elements. It is expected to return a negative value if the first argument is less than the second argument, zero if they're equal, and a positive value otherwise. If omitted, the elements are sorted in ascending, ASCII character order. ```ts [11,2,22,1].sort((a, b) => a - b) ``` |
+| `compareFn?` | (`a`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes), `b`: [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)) => `number` | Function used to determine the order of the elements. It is expected to return  a negative value if the first argument is less than the second argument, zero if they're equal, and a positive  value otherwise. If omitted, the elements are sorted in ascending, ASCII character order.  ```ts  [11,2,22,1].sort((a, b) => a - b)  ``` |
 
 #### Returns
 
@@ -1276,7 +1278,7 @@ This method mutates the array and returns a reference to the same array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1339
+node_modules/typescript/lib/lib.es5.d.ts:1345
 
 ___
 
@@ -1305,7 +1307,7 @@ An array containing the elements that were deleted.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1346
+node_modules/typescript/lib/lib.es5.d.ts:1352
 
 ▸ **splice**(`start`, `deleteCount`, ...`items`): [`UnsortedSubTypes`](../modules/index.md#unsortedsubtypes)[]
 
@@ -1331,7 +1333,7 @@ An array containing the elements that were deleted.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1354
+node_modules/typescript/lib/lib.es5.d.ts:1360
 
 ___
 
@@ -1351,7 +1353,7 @@ Returns a string representation of an array. The elements are converted to strin
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1281
+node_modules/typescript/lib/lib.es5.d.ts:1287
 
 ___
 
@@ -1371,7 +1373,7 @@ Returns a string representation of an array.
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1277
+node_modules/typescript/lib/lib.es5.d.ts:1283
 
 ___
 
@@ -1397,7 +1399,7 @@ Inserts new elements at the start of an array, and returns the new length of the
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1359
+node_modules/typescript/lib/lib.es5.d.ts:1365
 
 ___
 
@@ -1563,7 +1565,7 @@ arg is any[]
 
 #### Defined in
 
-node_modules/typescript/lib/lib.es5.d.ts:1460
+node_modules/typescript/lib/lib.es5.d.ts:1466
 
 ___
 

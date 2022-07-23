@@ -8,27 +8,27 @@ Constant Links
 
 ## Table of contents
 
-### Enumeration members
+### Enumeration Members
 
 - [CHANNEL\_URL](enums.ConstantURLs.md#channel_url)
 - [VIDEOLINK](enums.ConstantURLs.md#videolink)
 
-## Enumeration members
+## Enumeration Members
 
 ### CHANNEL\_URL
 
-• **CHANNEL\_URL** = `"https://music.youtube.com/channel/"`
+• **CHANNEL\_URL** = ``"https://music.youtube.com/channel/"``
 
 #### Defined in
 
-[src/enums.ts:74](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/enums.ts#L74)
+[src/enums.ts:74](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/enums.ts#L74)
 
 ___
 
 ### VIDEOLINK
 
-• **VIDEOLINK** = `"https://www.youtube.com/watch?v="`
+• **VIDEOLINK** = ``"https://www.youtube.com/watch?v="``
 
 #### Defined in
 
-[src/enums.ts:73](https://github.com/EvasiveXkiller/youtube-moosick/blob/dd2e68f/src/enums.ts#L73)
+[src/enums.ts:73](https://github.com/EvasiveXkiller/youtube-moosick/blob/abeb2f9/src/enums.ts#L73)
