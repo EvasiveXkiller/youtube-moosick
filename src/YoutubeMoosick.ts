@@ -388,6 +388,20 @@ export class YoutubeMoosick extends AsyncConstructor {
 		return GetArtistParser.parseArtistURLPage(ctx as ArtistURLFullResult);
 	}
 
+	/**
+	 * Gets the `browseId` for the album based on the newer `listID`
+	 * @param listID - The `listID` of the album
+	 * @returns String The `browseID` of the album
+	 *
+	 * Example:
+	 * ```typescript
+	 * const api = await MooSick.new();
+	 * const results = await api.getAlbumBrowseId('OLAK5uy_ljhFMBuzqiynvNq_3dC2QhQaz12zkD0LE');
+	 *
+	 * console.log(results);
+	 * ```
+	 *
+	 */
 	public async getAlbumBrowseId(listID: string): Promise<string> {
 		if (!listID.startsWith('OLAK')) {
 			throw new IllegalArgumentError('Artist browse IDs must start with "OLAK"', 'listID');
