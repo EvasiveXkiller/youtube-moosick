@@ -389,6 +389,10 @@ export class YoutubeMoosick extends AsyncConstructor {
 	}
 
 	public async getAlbumBrowseId(listID: string): Promise<string> {
+		if (!listID.startsWith('OLAK')) {
+			throw new IllegalArgumentError('Artist browse IDs must start with "OLAK"', 'listID');
+		}
+
 		const res = await this.client.get(
 			`https://music.youtube.com/playlist?${
 				new URLSearchParams({
