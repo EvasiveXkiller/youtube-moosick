@@ -15,11 +15,8 @@ import type { Result as IResult } from './resources/etc/rawResultTypes/common.js
 import type { YtCfgMain } from './resources/etc/cfgInterface.js';
 import {
 	AlbumURL,
-	PlaylistURL,
 	ArtistURL,
-	SearchSuggestions,
-	PlaylistContent,
-	ContinuablePlaylistURL,
+	ContinuablePlaylistURL, PlaylistContent, PlaylistURL, SearchSuggestions,
 } from './resources/resultTypes/index.js';
 import {
 	Song,
@@ -27,11 +24,9 @@ import {
 	Video,
 	Artist,
 	ArtistExtended,
-	ContinuableUnsorted,
-	Album,
 	ContinuableResult,
 	ContinuableResultBlueprint,
-	ContinuableResultFactory,
+	ContinuableResultFactory, ContinuableUnsorted, Album,
 } from './resources/generalTypes/index.js';
 
 export * from './resources/resultTypes/index.js';
@@ -392,5 +387,22 @@ export class YoutubeMoosick extends AsyncConstructor {
 
 		return GetArtistParser.parseArtistURLPage(ctx as ArtistURLFullResult);
 	}
-}
 
+	public async getAlbumBrowseId(listID: string): Promise<string> {
+		const res = await this.client.get(
+			`https://music.youtube.com/playlist?${
+				new URLSearchParams({
+					list: listID,
+				}).toString()
+			}`,
+			{},
+		);
+
+		const result = /"MPREb.+?"/g.exec(res.data) ?? [];
+		if (result.length > 0) {
+			return decodeURI(encodeURI(result[0])).replaceAll('"', '').replaceAll('\\', '');
+		}
+
+		throw new IllegalStateError('No Album ID was found');
+	}
+}

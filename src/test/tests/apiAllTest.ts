@@ -578,3 +578,10 @@ test('api_getArtistURLParser', async (t) => {
 
 	t.end();
 });
+
+test('api_album_converter', async (t) => {
+	const ytms = await YoutubeMoosick.new();
+	const albumBrowseID = await ytms.getAlbumBrowseId('OLAK5uy_n3ccnwJfIE9hA5_SfbjIRpvpkEF5S5Al8');
+	console.log(albumBrowseID);
+	t.true(albumBrowseID === 'MPREb_l7KWNUEzx39');
+});
