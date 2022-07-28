@@ -8,7 +8,7 @@ export class AlbumURL extends Item {
 
 export class AlbumURLHeader extends Item {
 	public declare title: string;
-	public declare description: string;
+	public declare description?: string;
 	public declare trackCount: number;
 	public declare thumbnails: Thumbnails[];
 	public declare date: string;
