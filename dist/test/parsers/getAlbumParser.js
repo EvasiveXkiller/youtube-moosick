@@ -41,7 +41,7 @@ export class GetAlbumParser {
         const artist = ParsersExtended.artistParser(header[0].subtitle.runs);
         return AlbumURLHeader.from({
             title: header[0].title.runs[FlexColumnOffset.ONLYRUN].text,
-            description: header[0].description.runs[FlexColumnOffset.ONLYRUN].text,
+            description: header[0].description?.runs[FlexColumnOffset.ONLYRUN].text ?? '',
             date: header[0].subtitle.runs[header[0].subtitle.runs.length - 1].text,
             thumbnails: header[0].thumbnail.croppedSquareThumbnailRenderer.thumbnail.thumbnails,
             trackCount: parseInt(header[0].secondSubtitle.runs[FlexColumnOffset.ONLYRUN].text, 10),

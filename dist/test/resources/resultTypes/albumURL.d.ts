@@ -6,7 +6,7 @@ export declare class AlbumURL extends Item {
 }
 export declare class AlbumURLHeader extends Item {
     title: string;
-    description: string;
+    description?: string;
     trackCount: number;
     thumbnails: Thumbnails[];
     date: string;

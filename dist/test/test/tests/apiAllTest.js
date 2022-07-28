@@ -265,7 +265,8 @@ test('searchVideo', async (t) => {
 });
 test('api_getAlbumURLParser', async (t) => {
     const ytms = await YoutubeMoosick.new();
-    const result = await ytms.getAlbum('MPREb_REsMMqBZjZB');
+    const mprebLink = await ytms.getAlbumBrowseId('OLAK5uy_ljhFMBuzqiynvNq_3dC2QhQaz12zkD0LE');
+    const result = await ytms.getAlbum(mprebLink);
     const expected = [
         AlbumURL.from({
             AlbumURLHeader: AlbumURLHeader.from({
