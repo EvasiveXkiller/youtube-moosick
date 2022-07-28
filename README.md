@@ -391,7 +391,7 @@ GtnRURDTTBH',
  */
 ```
 
-### getAlbumBrowseId
+### `getAlbumBrowseId`
 
 ▸ **getAlbumBrowseId**(`listID`): `Promise`<`string`\>
 
