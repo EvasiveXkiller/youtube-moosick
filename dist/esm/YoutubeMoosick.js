@@ -7,8 +7,8 @@ import { IllegalArgumentError, IllegalStateError } from './resources/errors/inde
 import { URLSearchParams } from 'url';
 import { GeneralParser, GetArtistParser, GetAlbumParser, GetPlaylistParser } from './parsers/index.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
-import { SearchSuggestions, ContinuablePlaylistURL, } from './resources/resultTypes/index.js';
-import { ContinuableUnsorted, ContinuableResult, ContinuableResultFactory, } from './resources/generalTypes/index.js';
+import { ContinuablePlaylistURL, SearchSuggestions, } from './resources/resultTypes/index.js';
+import { ContinuableResult, ContinuableResultFactory, ContinuableUnsorted, } from './resources/generalTypes/index.js';
 export * from './resources/resultTypes/index.js';
 export * from './resources/generalTypes/index.js';
 axios.defaults.adapter = axios0;
@@ -268,6 +268,33 @@ export class YoutubeMoosick extends AsyncConstructor {
         }
         const ctx = await this.createApiRequest(EndPoint.BROWSE, utils.buildEndpointContext(browseId, Category.ARTIST));
         return GetArtistParser.parseArtistURLPage(ctx);
+    }
+    /**
+     * Gets the `browseId` for the album based on the newer `listID`
+     * @param listID - The `listID` of the album
+     * @returns String The `browseID` of the album
+     *
+     * Example:
+     * ```typescript
+     * const api = await MooSick.new();
+     * const results = await api.getAlbumBrowseId('OLAK5uy_ljhFMBuzqiynvNq_3dC2QhQaz12zkD0LE');
+     *
+     * console.log(results);
+     * ```
+     *
+     */
+    async getAlbumBrowseId(listID) {
+        if (!listID.startsWith('OLAK')) {
+            throw new IllegalArgumentError('Artist browse IDs must start with "OLAK"', 'listID');
+        }
+        const res = await this.client.get(`https://music.youtube.com/playlist?${new URLSearchParams({
+            list: listID,
+        }).toString()}`, {});
+        const result = /"MPREb.+?"/g.exec(res.data) ?? [];
+        if (result.length > 0) {
+            return decodeURI(encodeURI(result[0])).replaceAll('"', '').replaceAll('\\', '');
+        }
+        throw new IllegalStateError('No Album ID was found');
     }
 }
 //# sourceMappingURL=YoutubeMoosick.js.map

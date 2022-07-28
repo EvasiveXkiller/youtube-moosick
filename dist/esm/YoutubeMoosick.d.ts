@@ -1,7 +1,7 @@
 import { Category } from './enums.js';
 import { AsyncConstructor } from './blocks/asyncConstructor.js';
-import { AlbumURL, ArtistURL, SearchSuggestions, ContinuablePlaylistURL } from './resources/resultTypes/index.js';
-import { Song, Playlist, Video, Artist, ArtistExtended, ContinuableUnsorted, Album, ContinuableResult } from './resources/generalTypes/index.js';
+import { AlbumURL, ArtistURL, ContinuablePlaylistURL, SearchSuggestions } from './resources/resultTypes/index.js';
+import { Song, Playlist, Video, Artist, ArtistExtended, ContinuableResult, ContinuableUnsorted, Album } from './resources/generalTypes/index.js';
 export * from './resources/resultTypes/index.js';
 export * from './resources/generalTypes/index.js';
 /**
@@ -125,5 +125,20 @@ export declare class YoutubeMoosick extends AsyncConstructor {
      * ```
      */
     getArtist(browseId: string): Promise<ArtistURL>;
+    /**
+     * Gets the `browseId` for the album based on the newer `listID`
+     * @param listID - The `listID` of the album
+     * @returns String The `browseID` of the album
+     *
+     * Example:
+     * ```typescript
+     * const api = await MooSick.new();
+     * const results = await api.getAlbumBrowseId('OLAK5uy_ljhFMBuzqiynvNq_3dC2QhQaz12zkD0LE');
+     *
+     * console.log(results);
+     * ```
+     *
+     */
+    getAlbumBrowseId(listID: string): Promise<string>;
 }
 //# sourceMappingURL=YoutubeMoosick.d.ts.map

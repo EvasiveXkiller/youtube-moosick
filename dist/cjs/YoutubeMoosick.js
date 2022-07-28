@@ -289,6 +289,33 @@ class YoutubeMoosick extends asyncConstructor_js_1.AsyncConstructor {
         const ctx = await this.createApiRequest(enums_js_1.EndPoint.BROWSE, utils_js_1.utils.buildEndpointContext(browseId, enums_js_1.Category.ARTIST));
         return index_js_2.GetArtistParser.parseArtistURLPage(ctx);
     }
+    /**
+     * Gets the `browseId` for the album based on the newer `listID`
+     * @param listID - The `listID` of the album
+     * @returns String The `browseID` of the album
+     *
+     * Example:
+     * ```typescript
+     * const api = await MooSick.new();
+     * const results = await api.getAlbumBrowseId('OLAK5uy_ljhFMBuzqiynvNq_3dC2QhQaz12zkD0LE');
+     *
+     * console.log(results);
+     * ```
+     *
+     */
+    async getAlbumBrowseId(listID) {
+        if (!listID.startsWith('OLAK')) {
+            throw new index_js_1.IllegalArgumentError('Artist browse IDs must start with "OLAK"', 'listID');
+        }
+        const res = await this.client.get(`https://music.youtube.com/playlist?${new url_1.URLSearchParams({
+            list: listID,
+        }).toString()}`, {});
+        const result = /"MPREb.+?"/g.exec(res.data) ?? [];
+        if (result.length > 0) {
+            return decodeURI(encodeURI(result[0])).replaceAll('"', '').replaceAll('\\', '');
+        }
+        throw new index_js_1.IllegalStateError('No Album ID was found');
+    }
 }
 exports.YoutubeMoosick = YoutubeMoosick;
 //# sourceMappingURL=YoutubeMoosick.js.map

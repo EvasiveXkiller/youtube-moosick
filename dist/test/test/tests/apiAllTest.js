@@ -434,4 +434,9 @@ test('api_getArtistURLParser', async (t) => {
         .walkAndAssertShape(result, expected[0]), 'unit_getArtistURLParser result has expected shape');
     t.end();
 });
+test('api_album_converter', async (t) => {
+    const ytms = await YoutubeMoosick.new();
+    const albumBrowseID = await ytms.getAlbumBrowseId('OLAK5uy_ljhFMBuzqiynvNq_3dC2QhQaz12zkD0LE');
+    t.true(albumBrowseID === 'MPREb_l7KWNUEzx39');
+});
 //# sourceMappingURL=apiAllTest.js.map
