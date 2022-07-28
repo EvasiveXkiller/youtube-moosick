@@ -60,6 +60,7 @@ npm i youtube-moosick
 * [`getAlbum`](#getalbum)
 * [`getArtist`](#getartist)
 * [`getPlaylist`](#getplaylist)
+* [`getAlbumBrowseId`](#getalbumbrowseid)
 
 ### `search`
 
@@ -388,6 +389,32 @@ GtnRURDTTBH',
   }
 }
  */
+```
+
+### getAlbumBrowseId
+
+▸ **getAlbumBrowseId**(`listID`): `Promise`<`string`\>
+
+Gets the `browseId` for the album based on the newer `listID`
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `listID` | `string` | The `listID` of the album |
+
+#### Returns
+
+`Promise`<`string`\>
+
+String The `browseID` of the album
+
+Example:
+```typescript
+const api = await MooSick.new();
+const results = await api.getAlbumBrowseId('OLAK5uy_ljhFMBuzqiynvNq_3dC2QhQaz12zkD0LE');
+
+console.log(results);
 ```
 
 ## Tests

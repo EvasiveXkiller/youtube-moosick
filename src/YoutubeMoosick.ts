@@ -15,11 +15,8 @@ import type { Result as IResult } from './resources/etc/rawResultTypes/common.js
 import type { YtCfgMain } from './resources/etc/cfgInterface.js';
 import {
 	AlbumURL,
-	PlaylistURL,
 	ArtistURL,
-	SearchSuggestions,
-	PlaylistContent,
-	ContinuablePlaylistURL,
+	ContinuablePlaylistURL, PlaylistContent, PlaylistURL, SearchSuggestions,
 } from './resources/resultTypes/index.js';
 import {
 	Song,
@@ -27,11 +24,9 @@ import {
 	Video,
 	Artist,
 	ArtistExtended,
-	ContinuableUnsorted,
-	Album,
 	ContinuableResult,
 	ContinuableResultBlueprint,
-	ContinuableResultFactory,
+	ContinuableResultFactory, ContinuableUnsorted, Album,
 } from './resources/generalTypes/index.js';
 
 export * from './resources/resultTypes/index.js';
@@ -392,5 +387,40 @@ export class YoutubeMoosick extends AsyncConstructor {
 
 		return GetArtistParser.parseArtistURLPage(ctx as ArtistURLFullResult);
 	}
-}
 
+	/**
+	 * Gets the `browseId` for the album based on the newer `listID`
+	 * @param listID - The `listID` of the album
+	 * @returns String The `browseID` of the album
+	 *
+	 * Example:
+	 * ```typescript
+	 * const api = await MooSick.new();
+	 * const results = await api.getAlbumBrowseId('OLAK5uy_ljhFMBuzqiynvNq_3dC2QhQaz12zkD0LE');
+	 *
+	 * console.log(results);
+	 * ```
+	 *
+	 */
+	public async getAlbumBrowseId(listID: string): Promise<string> {
+		if (!listID.startsWith('OLAK')) {
+			throw new IllegalArgumentError('Artist browse IDs must start with "OLAK"', 'listID');
+		}
+
+		const res = await this.client.get(
+			`https://music.youtube.com/playlist?${
+				new URLSearchParams({
+					list: listID,
+				}).toString()
+			}`,
+			{},
+		);
+
+		const result = /"MPREb.+?"/g.exec(res.data) ?? [];
+		if (result.length > 0) {
+			return decodeURI(encodeURI(result[0])).replaceAll('"', '').replaceAll('\\', '');
+		}
+
+		throw new IllegalStateError('No Album ID was found');
+	}
+}
