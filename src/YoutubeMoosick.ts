@@ -16,7 +16,10 @@ import type { YtCfgMain } from './resources/etc/cfgInterface.js';
 import {
 	AlbumURL,
 	ArtistURL,
-	ContinuablePlaylistURL, PlaylistContent, PlaylistURL, SearchSuggestions,
+	ContinuablePlaylistURL,
+	PlaylistContent,
+	PlaylistURL,
+	SearchSuggestions,
 } from './resources/resultTypes/index.js';
 import {
 	Song,
@@ -26,7 +29,9 @@ import {
 	ArtistExtended,
 	ContinuableResult,
 	ContinuableResultBlueprint,
-	ContinuableResultFactory, ContinuableUnsorted, Album,
+	ContinuableResultFactory,
+	ContinuableUnsorted,
+	Album,
 } from './resources/generalTypes/index.js';
 
 export * from './resources/resultTypes/index.js';
@@ -285,9 +290,13 @@ export class YoutubeMoosick extends AsyncConstructor {
 		return continuableResult;
 	}
 
+	async getAlbum(listId: `OLAK${string}` | `RDCLAK${string}`): Promise<AlbumURL>;
+	async getAlbum(browseId: `MPREb${string}`): Promise<AlbumURL>;
+	async getAlbum(id: string): Promise<AlbumURL>;
 	/**
 	 * Gets the album details
-	 * @param browseId - The album Id only, without `https://....`
+	 * @param id - The album id only, without `https://....`.
+	 * 			   It should start with either `MPREb`, or `OLAK`
 	 * @returns AlbumURL object
 	 *
 	 * Example:
@@ -298,9 +307,16 @@ export class YoutubeMoosick extends AsyncConstructor {
 	 * console.log(results)
 	 * ```
 	 */
-	async getAlbum(browseId: string): Promise<AlbumURL> {
+	async getAlbum(id: string): Promise<AlbumURL> {
+		const browseId = id.startsWith('OLAK') || id.startsWith('RDCLAK')
+			? await this.getAlbumBrowseId(browseId)
+			: id;
+
 		if (!browseId.startsWith('MPREb')) {
-			throw new IllegalArgumentError('Album browse IDs must start with "MPREb"', 'browseId');
+			throw new IllegalArgumentError(
+				`Expected an album browse ID that started with "MPREb", but found "${browseId}" instead`,
+				'browseId'
+			);
 		}
 
 		const ctx = await this.createApiRequest(
@@ -389,8 +405,9 @@ export class YoutubeMoosick extends AsyncConstructor {
 	}
 
 	/**
-	 * Gets the `browseId` for the album based on the newer `listID`
-	 * @param listID - The `listID` of the album
+	 * Gets the `browseId` for the album based on the newer `listId`
+	 * @param listId - The `listId` of the album.
+	 * 				   It should start with `OLAK`
 	 * @returns String The `browseID` of the album
 	 *
 	 * Example:
@@ -402,25 +419,32 @@ export class YoutubeMoosick extends AsyncConstructor {
 	 * ```
 	 *
 	 */
-	public async getAlbumBrowseId(listID: string): Promise<string> {
-		if (!listID.startsWith('OLAK')) {
-			throw new IllegalArgumentError('Artist browse IDs must start with "OLAK"', 'listID');
+	public async getAlbumBrowseId(listId: string): Promise<string> {
+		if (!listId.startsWith('OLAK')) {
+			throw new IllegalArgumentError(
+				`Expected listId to start with "OLAK", but found "${listId}" instead`,
+				'listId'
+			);
 		}
 
 		const res = await this.client.get(
 			`https://music.youtube.com/playlist?${
-				new URLSearchParams({
-					list: listID,
-				}).toString()
+				String(
+					new URLSearchParams({
+						list: listId,
+					}),
+				)
 			}`,
 			{},
 		);
 
-		const result = /"MPREb.+?"/g.exec(res.data) ?? [];
-		if (result.length > 0) {
-			return decodeURI(encodeURI(result[0])).replaceAll('"', '').replaceAll('\\', '');
+		// don't use lookbehind cuz safari's a bitch
+		const result = /"MPREb.+?"/.exec(res.data);
+
+		if (!result) {
+			throw new IllegalStateError('Failed to find Album ID from playlist endpoint response');
 		}
 
-		throw new IllegalStateError('No Album ID was found');
+		return result[0].slice(1, -1).replaceAll('\\', '');
 	}
 }
