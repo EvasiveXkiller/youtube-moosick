@@ -73,7 +73,7 @@
     "dependencies": {
         "axios": "^0.27.2",
         "eslint": "^7.32.0",
-        "object-scan": "^17.0.1",
+        "object-scan": "^18.4.0",
         "readdir-enhanced": "^6.0.4",
         "tough-cookie": "^4.0.0"
     }
